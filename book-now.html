@@ -1,110 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Now!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Now • True Travel</title>
 
-<!-- CSS -->
-<link rel="stylesheet" href="/dream-vacati/main.css?v=1">
-
-
+  <!-- Root-level CSS & JS (as in your repo) -->
+  <link rel="stylesheet" href="main.css?v=1" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-  <div class="container">
-    <!-- Site title or logo -->
-    <a class="navbar-brand" href="<!-- good -->
-<a href="book-now.html">Book Now</a>
 
-<!-- bad: will look for /DreamVacati%20True%20Travel/book-now.html -->
-<a href="book-now.html">Book Now</a>
-">
-      <i class="bi bi-house-door-fill"></i> Home
-    </a>
+  <!-- Simple site header to match the rest of the site -->
+  <header class="tt-header">
+    <div class="tt-container">
+      <a class="tt-brand" href="index.html">True Travel</a>
+      <nav class="tt-nav">
+        <a href="index.html">Home</a>
+        <a href="blog-elmo.html">Blog: Traveling with Elmo</a>
+        <a href="blog-starbucks.html">Blog: Starbucks Abroad</a>
+        <a class="active" href="book-now.html">Book Now</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Toggler for mobile -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#mainNav"
-      aria-controls="mainNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <main class="tt-container tt-main">
+    <h1 class="tt-page-title">Find Your Next Adventure</h1>
 
-  
-  </div>
-</nav>
-    <h1 style="display: flex; justify-content: center; font-family: Georgia, 'Times New Roman', Times, serif;">Find your Next Adventure with Expedia</h1>
-    <style>
-  .banner-animator {
-    position: fixed;
-    top: 50%;
-    right: 0;                /* or left:0 for left side */
-    transform: translateY(-50%);
-    overflow: hidden;
-    border-radius: 8px;
-    z-index: 1000;
-  }
-  .banner-animator .banner-close {
-    position: absolute;
-    top: 4px;
-    left: 4px;               /* if it’s on the right side, you might want top/right instead */
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    font-size: 16px;
-    line-height: 1;
-    cursor: pointer;
-    z-index: 1001;
-  }
-</style>
+    <!-- Expedia Search Widget -->
+    <section class="card">
+      <h2 class="card-title">Search stays & flights</h2>
+      <div
+        class="eg-widget"
+        data-widget="search"
+        data-program="us-expedia"
+        data-lobs="stays,flights"
+        data-network="pz"
+        data-camref="1011lmen8"
+        data-pubref=""
+      ></div>
+      <p class="muted">If the widget doesn’t load, please refresh the page.</p>
+    </section>
+  </main>
 
-<div class="banner-animator">
-  <!-- close button -->
-  <button class="banner-close" aria-label="Close banner">&times;</button>
+  <!-- Right-side closable banner -->
+  <aside class="tt-banner" id="expediaBanner" aria-live="polite">
+    <button class="tt-banner-close" id="closeBanner" aria-label="Close banner">×</button>
+    <div
+      class="eg-affiliate-banners"
+      data-program="us-expedia"
+      data-network="pz"
+      data-layout="wide-skyscraper"
+      data-image="relaxing"
+      data-message="start-travel-planning"
+      data-camref="1011lmen8"
+      data-pubref=""
+      data-link="home"
+    ></div>
+  </aside>
 
-  <!-- your Expedia widget -->
-  <div
-    class="eg-affiliate-banners"
-    data-program="us-expedia"
-    data-network="pz"
-    data-layout="wide-skyscraper"
-    data-image="relaxing"
-    data-message="start-travel-planning"
-    data-camref="1011lmen8"
-    data-pubref=""
-    data-link="home"
-  ></div>
-</div>
+  <!-- Expedia assets -->
+  <script
+    class="eg-affiliate-banners-script"
+    src="https://affiliates.expediagroup.com/products/banners/assets/eg-affiliate-banners.js"
+    defer
+  ></script>
+  <script
+    class="eg-widgets-script"
+    src="https://affiliates.expediagroup.com/products/widgets/assets/eg-widgets.js"
+    defer
+  ></script>
 
-<!-- Expedia script -->
-<script
-  class="eg-affiliate-banners-script"
-  src="https://affiliates.expediagroup.com/products/banners/assets/eg-affiliate-banners.js"
-></script>
+  <!-- Your site JS -->
+  <script src="main.js?v=1" defer></script>
 
-<script>
-  // hide on close click
-  document
-    .querySelector('.banner-animator .banner-close')
-    .addEventListener('click', e => {
-      e.currentTarget.closest('.banner-animator').remove();
+  <!-- Page-specific styles (kept tiny to stay on-theme) -->
+  <style>
+    .tt-container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+    .tt-header { border-bottom: 1px solid #e6e6e6; background:#fff; position: sticky; top: 0; z-index: 20; }
+    .tt-brand { font-weight: 800; text-decoration: none; color: #111; font-size: 1.25rem; }
+    .tt-header .tt-container { display: flex; align-items: center; gap: 24px; padding: 14px 16px; }
+    .tt-nav { margin-left: auto; display: flex; gap: 16px; }
+    .tt-nav a { text-decoration: none; color: #333; padding: 6px 8px; border-radius: 6px; }
+    .tt-nav a:hover, .tt-nav a.active { background: #f3f3f3; }
+
+    .tt-main { padding: 24px 16px 64px; }
+    .tt-page-title { margin: 0 0 16px; font-size: 1.8rem; }
+
+    .card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 16px; box-shadow: 0 2px 10px rgba(0,0,0,.04); }
+    .card-title { margin: 0 0 12px; font-size: 1.25rem; }
+    .muted { color: #666; font-size: .9rem; }
+
+    /* Closable right banner */
+    .tt-banner {
+      position: fixed;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 1000;
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
+      background: #fff;
+    }
+    .tt-banner-close {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 28px;
+      height: 28px;
+      border: 0;
+      border-radius: 50%;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      color: #fff;
+      background: rgba(0,0,0,.65);
+      display: grid;
+      place-items: center;
+      z-index: 1001;
+    }
+    .tt-banner-close:hover { background: rgba(0,0,0,.8); }
+    @media (max-width: 900px) {
+      .tt-banner { display: none; } /* hide banner on small screens */
+    }
+  </style>
+
+  <!-- Tiny inline script to close the banner -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('closeBanner');
+      const wrap = document.getElementById('expediaBanner');
+      if (btn && wrap) btn.addEventListener('click', () => wrap.remove());
     });
-</script>
-
-    <div class="eg-widget" data-widget="search" data-program="us-expedia" data-lobs="stays,flights" data-network="pz" data-camref="1011lmen8" data-pubref=""></div>
-<script class="eg-widgets-script" src="https://affiliates.expediagroup.com/products/widgets/assets/eg-widgets.js"></script>
-
-<!-- JS -->
-<script src="/dream-vacati/main.js?v=1" defer></script>
-
+  </script>
 </body>
 </html>
