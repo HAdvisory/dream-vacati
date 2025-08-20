@@ -810,65 +810,7 @@
     </div>
     <button id="fetch-requirements" class="btn btn-success">Get Requirements</button>
     <div id="requirements-output" class="mt-3"></div>
-<style>
-  .banner-animator {
-    position: fixed;
-    top: 50%;
-    right: 0;                /* or left:0 for left side */
-    transform: translateY(-50%);
-    overflow: hidden;
-    border-radius: 8px;
-    z-index: 1000;
-  }
-  .banner-animator .banner-close {
-    position: absolute;
-    top: 4px;
-    left: 4px;               /* if it’s on the right side, you might want top/right instead */
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    font-size: 16px;
-    line-height: 1;
-    cursor: pointer;
-    z-index: 1001;
-  }
-</style>
 
-<div class="banner-animator">
-  <!-- close button -->
-  <button class="banner-close" aria-label="Close banner">&times;</button>
-
-  <!-- your Expedia widget -->
-  <div
-    class="eg-affiliate-banners"
-    data-program="us-expedia"
-    data-network="pz"
-    data-layout="wide-skyscraper"
-    data-image="relaxing"
-    data-message="start-travel-planning"
-    data-camref="1011lmen8"
-    data-pubref=""
-    data-link="home"
-  ></div>
-</div>
-
-<!-- Expedia script -->
-<script
-  class="eg-affiliate-banners-script"
-  src="https://affiliates.expediagroup.com/products/banners/assets/eg-affiliate-banners.js"
-></script>
-
-<script>
-  // hide on close click
-  document
-    .querySelector('.banner-animator .banner-close')
-    .addEventListener('click', e => {
-      e.currentTarget.closest('.banner-animator').remove();
-    });
-</script>
  
 </section></div>
 
