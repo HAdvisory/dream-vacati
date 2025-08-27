@@ -1,9 +1,10 @@
 /* main.css */
 
 /* Reset tweaks or overrides */
+
 body {
   font-family: 'Poppins', sans-serif;
-  color: #333;
+  color: #000000;
 }
 
 /* Hero section */
@@ -183,5 +184,44 @@ body {
     border-radius: 24px;
   }
 }
+
+/* --- DreamVacati poster palette --- */
+:root{
+  --sea-dark: #087e8b;
+  --sea:      #0b95a5;  /* main teal */
+  --aqua:     #34c0c3;  /* light aqua */
+  --sand:     #f4c27a;  /* beach sand */
+}
+
+/* page background color */
+html, body { height: 100%; }
+
+body{
+  /* solid fallback */
+  background: var(--sea);
+
+  /* poster-style gradient: LEFT (ocean) ➜ RIGHT (sand) */
+  background:
+    linear-gradient(
+      180deg,                 /* left→right */
+      var(--sea) 0%,
+      #11aab7 25%,           /* bridge into aqua */
+      var(--aqua) 50%,
+      #f6c985 75%,           /* warm transition into sand */
+      var(--sand) 100%
+    ) fixed;
+
+  color: #0f172a;            /* adjust if you need more contrast */
+}
+
+/* If Bootstrap or other bits are painting white backgrounds */
+.container, main, section { background: transparent !important; }
+
+/* Keep cards readable on the colored bg */
+.card { background: rgba(255,255,255,0.9); }
+
+/* Optional: a diagonal version closer to the beach angle
+   background: linear-gradient(135deg, var(--sea) 0%, var(--aqua) 55%, var(--sand) 100%) fixed;
+*/
 
 /* ...etc. */
