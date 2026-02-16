@@ -3,278 +3,224 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="DreamVacati — travel blogs, planning tools, and postcard-worthy inspiration." />
-  <meta name="robots" content="index, follow" />
-  <link rel="icon" href="/dream-vacati/favicon.png" type="image/png">
-  <link rel="canonical" href="https://dreamvacati.com/" />
-  <!-- 1) Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  >
+  <title>DreamVacati — Travel Blogs, Trip Planning Tools & Vacation Inspiration</title>
+  <meta name="description" content="Plan your dream vacation with DreamVacati. Expert travel blogs, budget tools, packing checklists, and booking deals for Caribbean getaways, pet travel, road trips and more.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dreamvacati.com/">
 
-<!-- in <head> -->
-<!-- CSS -->
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DreamVacati — Travel Blogs, Planning Tools & Vacation Inspiration">
+  <meta property="og:description" content="Expert travel blogs, budget tools, packing checklists, and booking deals. Plan your dream vacation with DreamVacati.">
+  <meta property="og:url" content="https://dreamvacati.com/">
+  <meta property="og:site_name" content="DreamVacati">
 
-<link rel="stylesheet" href="main.css?v=1">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DreamVacati — Travel Blogs & Planning Tools">
+  <meta name="twitter:description" content="Expert travel blogs, budget tools, packing checklists, and booking deals for your dream vacation.">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-44K7KCF676">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="main.css?v=2">
 
-  gtag('config', 'G-44K7KCF676');
-</script>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '466481928545738');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=466481928545738&ev=PageView&noscript=1"/></noscript>
 
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-44K7KCF676"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-44K7KCF676');
+  </script>
 
-  <title>DreamVacati</title>
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "DreamVacati",
+    "url": "https://dreamvacati.com/",
+    "description": "Travel blogs, trip planning tools, and vacation inspiration.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://dreamvacati.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 </head>
 <body>
-  <!-- ===== Your page structure below ===== -->
-  <header class="bg-dark text-white py-3">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
-      <h1 class="m-0">DreamVacati</h1>
-    </div>
-  </header>
-<div id="countdown-widget" class="widget text-center">
-  <h3>🌴 My Vacation begins in:</h3>
-  <p id="countdown-timer" class="fs-3 fw-bold"></p>
-  <a href="book-now.html" class="btn btn-primary">Get Ready Go! 🌺</a>
-</div>
-
-  <main class="container my-5">
-    <div class="row">
-      <!-- Example: sidebar + content -->
-      <aside class="col-md-4">
-        <!-- sidebar widgets -->
-      </aside>
-      <section class="col-md-8">
-        <!-- blog posts, featured slider, etc. -->
-      </section>
-    </div>
-    <!-- Nav tabs -->
-<ul class="nav nav-tabs" id="sectionTabs" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link active"
-      id="blogs-tab"
-      data-bs-toggle="tab"
-      data-bs-target="#blogs"
-      type="button"
-      role="tab"
-      aria-controls="blogs"
-      aria-selected="true"
-    >
-      Blogs
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link"
-      id="vlogs-tab"
-      data-bs-toggle="tab"
-      data-bs-target="#vlogs"
-      type="button"
-      role="tab"
-      aria-controls="vlogs"
-      aria-selected="false"
-    >
-      Vlogs
-    </button>
- 
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link"
-      id="travel-plan-tab"
-      data-bs-toggle="tab"
-      data-bs-target="#travel-plan"
-      type="button"
-      role="tab"
-      aria-controls="travel-plan"
-      aria-selected="false"
-    >
-      Travel Planner
-    </button>
-  </li> 
-  </li>
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link"
-      id="travel-map-tab"
-      data-bs-toggle="tab"
-      data-bs-target="#travel-map"
-      type="button"
-      role="tab"
-      aria-controls="travel-map"
-      aria-selected="false"
-    >
-      Travel Map
-    </button>
-  </li>
-  
-</li>
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link"
-      id="travel-games-tab"
-      data-bs-toggle="tab"
-      data-bs-target="#travel-games"
-      type="button"
-      role="tab"
-      aria-controls="travel-games"
-      aria-selected="false"
-    >
-      Book Now 
-    </button>
-  </li>
-  
-</ul>
-
-<!-- Tab panes -->
-<div class="tab-content" id="sectionTabsContent">
-<!-- Blogs pane -->
-<div class="tab-pane fade show active" id="blogs" role="tabpanel" aria-labelledby="blogs-tab">
-  <h2 class="mb-4">Latest Blog Posts</h2>
-
-
-  <div class="col-md-6">
-  <a href="blog-starbucks.html" class="text-decoration-none text-reset">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <h3 class="h5 card-title">☕️ Craving a Matcha Abroad? Starbucks Rewards & Global Sips</h3>
-        <p class="card-text">
-          Where Rewards work (and don’t), how to grab deals abroad, and 5 postcard-worthy Starbucks stops around the world.
-        </p>
-        <span class="btn btn-sm btn-primary">Read the post</span>
+      <a class="navbar-brand fw-bold" href="index.html">DreamVacati</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blogs">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tools">Travel Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="book-now.html">Book Now</a></li>
+        </ul>
       </div>
     </div>
-  </a>
-</div>
-<div class="col-md-6">
-  <article class="card h-100 shadow-sm">
- 
-    <div class="card-body">
-      <h3 class="h5 card-title mb-2">🌴 Caribbean Family Escapes</h3>
-      <p class="card-text small text-muted">
-        Kid-approved resorts, optional nanny services, and space for parents to breathe.
-      </p>
-      <a href="blog-caribbean-family.html" class="btn btn-primary btn-sm">Read the post</a>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="dv-hero text-white text-center py-5">
+    <div class="container py-4">
+      <h1 class="display-4 fw-bold mb-3">Your Dream Vacation Starts Here</h1>
+      <p class="lead mb-4" style="max-width:640px;margin:0 auto;">Travel blogs, planning tools, and insider tips to help you explore the world — whether you're flying with pets, traveling with family, or chasing your next adventure.</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="#blogs" class="btn btn-light btn-lg fw-semibold px-4">Read the Blog</a>
+        <a href="book-now.html" class="btn btn-outline-light btn-lg px-4">Book Your Trip</a>
+      </div>
     </div>
-  </article>
-</div> 
- <div class="row g-4">
-    <div class="col-md-6">
-      <a href="blog-elmo.html" class="text-decoration-none text-reset">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h3 class="h5 card-title">✈️🐾 Traveling with My Dog, Elmo – to Europe</h3>
-            <p class="card-text">
-              What it really takes to cross the Atlantic with your best friend—paperwork, airline rules, costs, and keeping your pup comfy on a long flight.
-            </p>
-            <span class="btn btn-sm btn-primary">Read the post</span>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
-
-
-<!-- Vlogs pane -->
-<div class="tab-pane fade" id="vlogs" role="tabpanel" aria-labelledby="vlogs-tab">
-  <ul class="vlogs-list">
-    <li class="vlogs-item">
-      <article class="vlog-card">
-        <div class="vlog-frame">
-          <iframe
-            src="https://www.youtube.com/embed/kvPk2AYk_lM?si=dofagzam2ehXY2K6"
-            title="Vlog 1"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </article>
-    </li>
-
-    <li class="vlogs-item">
-      <article class="vlog-card">
-        <div class="vlog-frame">
-          <iframe
-            src="https://www.youtube.com/embed/aoAqKnHFKKY?si=DNW7FKLpQGWaXTG0"
-            title="Vlog 2"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </article>
-    </li>
-  </ul>
-</div>
-
-
-  <!-- Travel Games pane -->
-  <div
-    class="tab-pane fade"
-    id="travel-games"
-    role="tabpanel"
-    aria-labelledby="travel-games-tab"
-  >
-    <h2>Book your travels with Expedia</h2>
-    <ul>
-      <li><div class="eg-widget" data-widget="search" data-program="us-expedia" data-lobs="stays,flights" data-network="pz" data-camref="1011lmen8" data-pubref=""></div>
-<script class="eg-widgets-script" src="https://affiliates.expediagroup.com/products/widgets/assets/eg-widgets.js"></script></li>
-      <li>
-        <div class="eg-widget" data-widget="search" data-program="us-hcom" data-lobs="stays" data-network="pz" data-camref="1100lqV7X" data-pubref=""></div>
-<script class="eg-widgets-script" src="https://affiliates.expediagroup.com/products/widgets/assets/eg-widgets.js"></script>
-      </li>
-      
-      <!-- …etc. -->
-    </ul>
-  </div>
-  <div
-    class="tab-pane fade"
-    id="travel-map"
-    role="tabpanel"
-    aria-labelledby="travel-map-tab"
-  >
-   
-    <ul>
-
-
-<script
-  class="eg-affiliate-banners-script"
-  src="https://affiliates.expediagroup.com/products/banners/assets/eg-affiliate-banners.js"
-></script>
-
-<script class="eg-affiliate-banners-script" src="https://affiliates.expediagroup.com/products/banners/assets/eg-affiliate-banners.js"></script>
-       <h1>Where have you been?</h1>
-    <form id="add-country-form">
-      <input
-        type="text"
-        id="country-input"
-        placeholder="Enter country name"
-        autocomplete="off"
-        required
-      >
-      <button type="submit">Add</button>
-      <p id="error-msg" class="error"></p>
-    </form>
-    <p>Total visited: <span id="total-count">0</span></p>
   </header>
-<div class="zoom-controls">
-  <button id="zoom-in">+</button>
-  <button id="zoom-out">−</button>
-</div>
-  <!-- inline SVG map (excerpted—just include your full SVG here) -->
-  <section class="map-container">
-    <svg
+
+  <main class="container my-5">
+
+    <!-- ===== BLOG POSTS (Always Visible — NOT in a tab) ===== -->
+    <section id="blogs" class="mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="h3 mb-0">Latest Blog Posts</h2>
+        <span class="text-muted small">New posts every week</span>
+      </div>
+
+      <div class="row g-4">
+        <!-- Blog Card: Starbucks -->
+        <div class="col-md-4">
+          <a href="blog-starbucks.html" class="text-decoration-none text-reset">
+            <article class="card h-100 shadow-sm border-0 dv-blog-card">
+              <div class="card-body d-flex flex-column">
+                <span class="badge bg-info text-dark mb-2 align-self-start">Lifestyle</span>
+                <h3 class="h5 card-title">Starbucks Rewards Abroad: Which Countries Work & Global Sips Guide</h3>
+                <p class="card-text text-muted flex-grow-1">Where Rewards work (and don't), how to grab deals abroad, and 5 postcard-worthy Starbucks stops around the world.</p>
+                <span class="btn btn-sm btn-outline-primary mt-2 align-self-start">Read the post &rarr;</span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+        <!-- Blog Card: Caribbean Family -->
+        <div class="col-md-4">
+          <a href="blog-caribbean-family.html" class="text-decoration-none text-reset">
+            <article class="card h-100 shadow-sm border-0 dv-blog-card">
+              <div class="card-body d-flex flex-column">
+                <span class="badge bg-success mb-2 align-self-start">Family Travel</span>
+                <h3 class="h5 card-title">Best Caribbean Family Resorts 2026: Kid-Approved Escapes with Nanny Services</h3>
+                <p class="card-text text-muted flex-grow-1">Top 5 all-inclusive resorts with kid clubs, nanny services, and space for parents to breathe — with real pricing.</p>
+                <span class="btn btn-sm btn-outline-primary mt-2 align-self-start">Read the post &rarr;</span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+        <!-- Blog Card: Elmo Pet Travel -->
+        <div class="col-md-4">
+          <a href="blog-elmo.html" class="text-decoration-none text-reset">
+            <article class="card h-100 shadow-sm border-0 dv-blog-card">
+              <div class="card-body d-flex flex-column">
+                <span class="badge bg-warning text-dark mb-2 align-self-start">Pet Travel</span>
+                <h3 class="h5 card-title">Flying with Your Dog to Europe 2026: Costs, Airline Rules & Complete Checklist</h3>
+                <p class="card-text text-muted flex-grow-1">Months of planning, paperwork, and tail wags. Everything it takes to fly your dog across the Atlantic.</p>
+                <span class="btn btn-sm btn-outline-primary mt-2 align-self-start">Read the post &rarr;</span>
+              </div>
+            </article>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EMAIL SIGNUP ===== -->
+    <section class="dv-email-signup rounded-4 p-4 p-md-5 mb-5 text-center">
+      <h2 class="h4 mb-2">Get Travel Tips & Deals in Your Inbox</h2>
+      <p class="text-muted mb-3" style="max-width:500px;margin:0 auto;">Join the DreamVacati community — destination guides, packing checklists, and exclusive deals. No spam, unsubscribe anytime.</p>
+      <form class="d-flex gap-2 justify-content-center flex-wrap" style="max-width:480px;margin:0 auto;" id="email-signup-form" onsubmit="return handleEmailSignup(event)">
+        <input type="email" class="form-control" placeholder="you@email.com" required style="max-width:280px;" id="signup-email">
+        <button type="submit" class="btn btn-primary fw-semibold px-4">Subscribe Free</button>
+      </form>
+      <p class="small text-muted mt-2 mb-0" id="signup-msg"></p>
+    </section>
+
+    <!-- ===== VLOGS ===== -->
+    <section class="mb-5">
+      <h2 class="h3 mb-4">Travel Vlogs</h2>
+      <ul class="vlogs-list">
+        <li class="vlogs-item">
+          <article class="vlog-card">
+            <div class="vlog-frame">
+              <iframe src="https://www.youtube.com/embed/kvPk2AYk_lM?si=dofagzam2ehXY2K6" title="DreamVacati Travel Vlog 1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </article>
+        </li>
+        <li class="vlogs-item">
+          <article class="vlog-card">
+            <div class="vlog-frame">
+              <iframe src="https://www.youtube.com/embed/aoAqKnHFKKY?si=DNW7FKLpQGWaXTG0" title="DreamVacati Travel Vlog 2" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== TRAVEL TOOLS (Tabs) ===== -->
+    <section id="tools" class="mb-5">
+      <h2 class="h3 mb-3">Travel Planning Tools</h2>
+      <ul class="nav nav-tabs" id="toolTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="map-tab" data-bs-toggle="tab" data-bs-target="#travel-map" type="button" role="tab" aria-controls="travel-map" aria-selected="true">Travel Map</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="itinerary-tab" data-bs-toggle="tab" data-bs-target="#itinerary" type="button" role="tab" aria-controls="itinerary" aria-selected="false">Itinerary Builder</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="packing-tab" data-bs-toggle="tab" data-bs-target="#packing" type="button" role="tab" aria-controls="packing" aria-selected="false">Packing List</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="budget-tab" data-bs-toggle="tab" data-bs-target="#budget" type="button" role="tab" aria-controls="budget" aria-selected="false">Budget Planner</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="prepare-tab" data-bs-toggle="tab" data-bs-target="#prepare" type="button" role="tab" aria-controls="prepare" aria-selected="false">Travel Prep</button>
+        </li>
+      </ul>
+
+      <div class="tab-content pt-4" id="toolTabsContent">
+
+        <!-- TAB: Travel Map -->
+        <div class="tab-pane fade show active" id="travel-map" role="tabpanel" aria-labelledby="map-tab">
+          <h3>Where Have You Been?</h3>
+          <form id="add-country-form" class="d-flex gap-2 mb-3 flex-wrap">
+            <input type="text" id="country-input" class="form-control" style="max-width:280px;" placeholder="Enter country name" autocomplete="off" required>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+          <p id="error-msg" class="text-danger small"></p>
+          <p>Total visited: <span id="total-count" class="fw-bold">0</span></p>
+          <div class="zoom-controls mb-2">
+            <button id="zoom-in" class="btn btn-sm btn-outline-secondary">+</button>
+            <button id="zoom-out" class="btn btn-sm btn-outline-secondary">&minus;</button>
+          </div>
+          <div class="map-container">
+            <svg
       id="world-map"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1008 651"
@@ -634,228 +580,183 @@
     
       <!-- etc. -->
     </svg>
-  </section></li>
-          <ul>
-<!-- pinned to the right -->
-<ul>
-  <!-- pinned to the right -->
-  <div
-    class="banner-animator"
-    style="
-      position: fixed;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      border-radius: 25%;
-      overflow: hidden;
-      z-index: 1000;    /* sit on top of other content */
-    "
-  >
-    <!-- close button -->
-    <button
-      class="banner-close"
-      aria-label="Close banner"
-      style="
-        position: absolute;
-        top: 25px;
-        right: 25px;
-        width: 24px;
-        height: 24px;
-        padding: 0;
-        border: none;
-        background: rgba(0,0,0,0.5);
-        color: white;
-        font-size: 16px;
-        line-height: 1;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 1025;
-      "
-    >
-      ×
-    </button>
+          </div>
+          <div class="mt-3 p-3 bg-light rounded">
+            <p class="mb-2"><strong>Ready to add a new pin?</strong></p>
+            <a href="book-now.html" class="btn btn-primary btn-sm">Search flights &amp; hotels on Expedia &rarr;</a>
+          </div>
+        </div>
 
-    <div
-      class="eg-affiliate-banners"
-      style="display: inline-block;"
-      data-program="us-expedia"
-      data-network="pz"
-      data-layout="medium-rectangle"
-      data-image="sailing"
-      data-message="bye-bye-bucket-list-hello-adventure"
-      data-camref="1011lmen8"
-      data-pubref=""
-      data-link="home"
-    ></div>
-  </div>
+        <!-- TAB: Itinerary Builder -->
+        <div class="tab-pane fade" id="itinerary" role="tabpanel" aria-labelledby="itinerary-tab">
+          <h3>Itinerary Builder</h3>
+          <div class="row">
+            <div class="col-md-4">
+              <h5>Activities</h5>
+              <ul id="activities-list" class="list-group">
+                <li class="list-group-item" draggable="true" data-activity="Museum Visit">Museum Visit</li>
+                <li class="list-group-item" draggable="true" data-activity="City Walking Tour">City Walking Tour</li>
+                <li class="list-group-item" draggable="true" data-activity="Local Cuisine Tasting">Local Cuisine Tasting</li>
+                <li class="list-group-item" draggable="true" data-activity="Beach Relaxation">Beach Relaxation</li>
+                <li class="list-group-item" draggable="true" data-activity="Hiking / Nature Walk">Hiking / Nature Walk</li>
+                <li class="list-group-item" draggable="true" data-activity="Snorkeling / Water Sports">Snorkeling / Water Sports</li>
+                <li class="list-group-item" draggable="true" data-activity="Sunset Cruise">Sunset Cruise</li>
+              </ul>
+            </div>
+            <div class="col-md-8">
+              <h5>Your Schedule</h5>
+              <div id="schedule-area" class="border p-3 rounded" style="min-height:200px;background:#f8f9fa;">
+                <p class="text-muted">Drag activities here to build your day</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3 p-3 bg-light rounded">
+            <p class="mb-2"><strong>Need tours & experiences?</strong> Browse activities on Viator for your destination.</p>
+            <a href="book-now.html" class="btn btn-primary btn-sm">Browse experiences &rarr;</a>
+          </div>
+        </div>
 
-  <script
-    class="eg-affiliate-banners-script"
-    src="https://affiliates.expediagroup.com/products/banners/assets/eg-affiliate-banners.js"
-  ></script>
+        <!-- TAB: Packing List -->
+        <div class="tab-pane fade" id="packing" role="tabpanel" aria-labelledby="packing-tab">
+          <h3>What to Pack</h3>
+          <div class="row g-3 align-items-end">
+            <div class="col-md-4">
+              <label for="pack-destination" class="form-label">Destination Type</label>
+              <select id="pack-destination" class="form-select">
+                <option value="tropical">Tropical</option>
+                <option value="mountain">Mountain</option>
+                <option value="city">City</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="pack-season" class="form-label">Season</label>
+              <select id="pack-season" class="form-select">
+                <option value="summer">Summer</option>
+                <option value="winter">Winter</option>
+                <option value="spring">Spring/Fall</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <button id="generate-packing" class="btn btn-primary w-100">Generate Checklist</button>
+            </div>
+          </div>
+          <ul id="pack-list" class="list-group list-group-flush mt-3"></ul>
+          <div class="mt-3 p-3 bg-light rounded" id="packing-cta" style="display:none;">
+            <p class="mb-2"><strong>Want the complete 50-item packing checklist?</strong></p>
+            <p class="small text-muted mb-2">Subscribe to get our free downloadable PDF packing guides for every destination type.</p>
+            <a href="#email-signup-form" class="btn btn-primary btn-sm">Get the free checklist &rarr;</a>
+          </div>
+        </div>
 
-  <script>
-    // wait for the banner to render, then wire up the close button
-    document.addEventListener('DOMContentLoaded', function() {
-      var closeBtn = document.querySelector('.banner-close');
-      var banner   = document.querySelector('.banner-animator');
-      if (closeBtn && banner) {
-        closeBtn.addEventListener('click', function() {
-          banner.style.display = 'none';
-        });
-      }
-    });
-  </script>
-</ul>
+        <!-- TAB: Budget Planner -->
+        <div class="tab-pane fade" id="budget" role="tabpanel" aria-labelledby="budget-tab">
+          <h3>Budget Dashboard</h3>
+          <div class="mb-3">
+            <label class="form-label">Total Budget: $<span id="budget-total">1000</span></label>
+            <input type="number" id="budget-input" class="form-control" value="1000" style="max-width:200px;">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Accommodations: $<span id="val-accom">300</span></label>
+            <input type="range" id="budget-accom" class="form-range" min="0" max="5000" value="300">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Food &amp; Drink: $<span id="val-food">200</span></label>
+            <input type="range" id="budget-food" class="form-range" min="0" max="5000" value="200">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Activities: $<span id="val-activities">150</span></label>
+            <input type="range" id="budget-activities" class="form-range" min="0" max="5000" value="150">
+          </div>
+          <p><strong>Remaining:</strong> $<span id="remaining-budget">350</span></p>
+          <div class="mt-3 p-3 bg-light rounded">
+            <p class="mb-2"><strong>Find deals that fit your budget</strong></p>
+            <a href="book-now.html" class="btn btn-primary btn-sm">Search deals on Expedia &rarr;</a>
+          </div>
+        </div>
 
+        <!-- TAB: Travel Prep -->
+        <div class="tab-pane fade" id="prepare" role="tabpanel" aria-labelledby="prepare-tab">
+          <h3>Prepare for Your Trip</h3>
+          <p class="text-muted small mb-3">Enter your origin and destination to see general travel requirements. Always verify with official embassy/government sources before traveling.</p>
+          <div class="row g-3 mb-3">
+            <div class="col-md-5">
+              <label for="origin-input" class="form-label">Origin</label>
+              <input id="origin-input" class="form-control" placeholder="e.g. New York, US">
+            </div>
+            <div class="col-md-5">
+              <label for="destination-input" class="form-label">Destination</label>
+              <input id="destination-input" class="form-control" placeholder="e.g. Tokyo, JP">
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+              <button id="fetch-requirements" class="btn btn-success w-100">Check</button>
+            </div>
+          </div>
+          <div id="requirements-output" class="mt-3"></div>
+          <div class="mt-3 p-3 bg-light rounded">
+            <p class="mb-2"><strong>Don't forget travel insurance</strong></p>
+            <p class="small text-muted mb-2">Protect your trip with comprehensive travel insurance coverage.</p>
+            <a href="book-now.html" class="btn btn-primary btn-sm">Get a quote &rarr;</a>
+          </div>
+        </div>
 
-      <!-- …etc. -->
-    </ul>
-  </div>
-  <!-- Travel Plan panel -->
-  <div
-    class="tab-pane fade"
-    id="travel-plan"
-    role="tabpanel"
-    aria-labelledby="travel-plan-tab"
-  >
-   <section id="itinerary-builder" class="mb-5">
-    <h3>Itinerary Builder</h3>
-    <div class="row">
-      <div class="col-md-4">
-        <h5>Activities</h5>
-        <ul id="activities-list" class="list-group">
-          <li class="list-group-item" draggable="true" data-activity="Museum Visit">Museum Visit</li>
-          <li class="list-group-item" draggable="true" data-activity="City Walking Tour">City Walking Tour</li>
-          <li class="list-group-item" draggable="true" data-activity="Local Cuisine Tasting">Local Cuisine Tasting</li>
-          <li class="list-group-item" draggable="true" data-activity="Beach Relaxation">Beach Relaxation</li>
-        </ul>
       </div>
-      <div class="col-md-8">
-        <h5>Schedule</h5>
-        <div id="schedule-area"
-             class="border p-3"
-             style="min-height: 200px; background: #f8f9fa;">
-          <p class="text-muted">Drag activities here to build your day</p>
+    </section>
+
+    <!-- ===== BOOK WITH EXPEDIA ===== -->
+    <section class="mb-5">
+      <h2 class="h3 mb-3">Book Your Travels</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="eg-widget" data-widget="search" data-program="us-expedia" data-lobs="stays,flights" data-network="pz" data-camref="1011lmen8" data-pubref=""></div>
+        </div>
+        <div class="col-md-6">
+          <div class="eg-widget" data-widget="search" data-program="us-hcom" data-lobs="stays" data-network="pz" data-camref="1100lqV7X" data-pubref=""></div>
         </div>
       </div>
-    </div>
-  </section>
-
-<script class="eg-affiliate-banners-script" src="https://affiliates.expediagroup.com/products/banners/assets/eg-affiliate-banners.js"></script>
-  <!-- 2) “What to Pack” Checklist -->
-  <section id="packing-checklist" class="mb-5">
-    <h3>What to Pack</h3>
-    <div class="row g-3 align-items-end">
-      <div class="col-md-4">
-        <label for="pack-destination" class="form-label">Destination Type</label>
-        <select id="pack-destination" class="form-select">
-          <option value="tropical">Tropical</option>
-          <option value="mountain">Mountain</option>
-          <option value="city">City</option>
-        </select>
-      </div>
-      <div class="col-md-4">
-        <label for="pack-season" class="form-label">Season</label>
-        <select id="pack-season" class="form-select">
-          <option value="summer">Summer</option>
-          <option value="winter">Winter</option>
-          <option value="spring">Spring/Fall</option>
-        </select>
-      </div>
-      <div class="col-md-4">
-        <button id="generate-packing" class="btn btn-primary w-100">
-          Generate Checklist
-        </button>
-      </div>
-    </div>
-    <ul id="pack-list" class="list-group list-group-flush mt-3"></ul>
-  </section>
-
-  <!-- 3) Budget & Currency Dashboard -->
-  <section id="budget-dashboard" class="mb-5">
-    <h3>Budget Dashboard</h3>
-    <div class="mb-3">
-      <label class="form-label">
-        Total Budget: $<span id="budget-total">1000</span>
-      </label>
-      <input type="number" id="budget-input" class="form-control" value="1000">
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">
-        Accommodations: $<span id="val-accom">300</span>
-      </label>
-      <input type="range" id="budget-accom" class="form-range" min="0" max="1000" value="300">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">
-        Food &amp; Drink: $<span id="val-food">200</span>
-      </label>
-      <input type="range" id="budget-food" class="form-range" min="0" max="1000" value="200">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">
-        Activities: $<span id="val-activities">150</span>
-      </label>
-      <input type="range" id="budget-activities" class="form-range" min="0" max="1000" value="150">
-    </div>
-
-    <p><strong>Remaining:</strong> $<span id="remaining-budget">350</span></p>
-  </section>
-
-  <!-- 4) “Let’s Prepare for Travel” Tool -->
-  <section id="prepare-travel">
-    <h3>Let’s Prepare for Travel</h3>
-    <div class="row g-3 mb-3">
-      <div class="col-md-6">
-        <label for="origin-input" class="form-label">Origin</label>
-        <input id="origin-input" class="form-control" placeholder="e.g. New York, US">
-      </div>
-      <div class="col-md-6">
-        <label for="destination-input" class="form-label">Destination</label>
-        <input id="destination-input" class="form-control" placeholder="e.g. Tokyo, JP">
-      </div>
-    </div>
-    <button id="fetch-requirements" class="btn btn-success">Get Requirements</button>
-    <div id="requirements-output" class="mt-3"></div>
-
- 
-</section></div>
-
+      <script class="eg-widgets-script" src="https://affiliates.expediagroup.com/products/widgets/assets/eg-widgets.js"></script>
+    </section>
 
   </main>
-<div class="row">
-  <aside class="col-lg-3">…</aside>
-  <section class="col-lg-9">…</section>
-</div>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8978658918402683"
-     crossorigin="anonymous"></script>
-<!-- Dreanvacati -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8978658918402683"
-     data-ad-slot="8572655744"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  <footer class="bg-light text-center py-4">
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="dv-footer bg-dark text-white py-5">
     <div class="container">
-      &copy; 2025 DreamVacati
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h3 class="h5 mb-3">DreamVacati</h3>
+          <p class="small text-white-50">Travel blogs, planning tools, and vacation inspiration. Making dream trips happen since 2020.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h5 mb-3">Latest Posts</h3>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="blog-starbucks.html" class="text-white-50 text-decoration-none">Starbucks Rewards Abroad: Global Sips Guide</a></li>
+            <li class="mb-2"><a href="blog-caribbean-family.html" class="text-white-50 text-decoration-none">Best Caribbean Family Resorts 2026</a></li>
+            <li class="mb-2"><a href="blog-elmo.html" class="text-white-50 text-decoration-none">Flying with Your Dog to Europe 2026</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h5 mb-3">Stay in Touch</h3>
+          <p class="small text-white-50 mb-2">Get weekly travel tips and exclusive deals.</p>
+          <form class="d-flex gap-2" onsubmit="return handleEmailSignup(event)">
+            <input type="email" class="form-control form-control-sm" placeholder="you@email.com" required>
+            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          </form>
+          <p class="small text-white-50 mt-3">Contact: <a href="mailto:dreamvacati@gmail.com" class="text-white-50">dreamvacati@gmail.com</a></p>
+        </div>
+      </div>
+      <hr class="border-secondary mt-4 mb-3">
+      <p class="text-center small text-white-50 mb-0">&copy; 2025 DreamVacati. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- 3) Bootstrap JS bundle (includes Popper) -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-  ></script>
+  <!-- Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8978658918402683" crossorigin="anonymous"></script>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978658918402683" data-ad-slot="8572655744" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-  
-
-<script src="main.js?v=1" defer></script>
-
-
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Site JS -->
+  <script src="main.js?v=2" defer></script>
 </body>
 </html>

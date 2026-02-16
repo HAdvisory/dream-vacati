@@ -1,140 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Book Now • True Travel</title>
-
-  <!-- Root-level CSS & JS (as in your repo) -->
-  <link rel="stylesheet" href="main.css?v=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book Your Dream Vacation — DreamVacati | Flights, Hotels & Deals</title>
+  <meta name="description" content="Search and book flights, hotels, and vacation packages through DreamVacati. Compare deals on Expedia and Hotels.com for your next trip.">
+  <link rel="canonical" href="https://dreamvacati.com/book-now.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Book Your Dream Vacation — DreamVacati">
+  <meta property="og:description" content="Search flights, hotels, and vacation packages. Compare deals for your next trip.">
+  <meta property="og:url" content="https://dreamvacati.com/book-now.html">
+  <meta property="og:site_name" content="DreamVacati">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css?v=2">
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','466481928545738');fbq('track','PageView');</script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=466481928545738&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">DreamVacati</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#blogs">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#tools">Travel Tools</a></li>
+          <li class="nav-item"><a class="nav-link active" href="book-now.html">Book Now</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <!-- Simple site header to match the rest of the site -->
-  <header class="tt-header">
-    <div class="tt-container">
-      <a class="tt-brand" href="index.html">True Travel</a>
-      <nav class="tt-nav">
-        <a href="index.html">Home</a>
-        <a href="blog-elmo.html">Blog: Traveling with Elmo</a>
-        <a href="blog-starbucks.html">Blog: Starbucks Abroad</a>
-        <a href="blog-caribbean-family.html">Blog: Caribbean Family Escapes</a>
-        <a class="active" href="book-now.html">Book Now</a>
-      </nav>
+  <header class="dv-hero text-white text-center py-5">
+    <div class="container py-3">
+      <h1 class="display-5 fw-bold mb-3">Find Your Next Adventure</h1>
+      <p class="lead" style="max-width:600px;margin:0 auto;">Search and compare flights, hotels, and vacation packages through our trusted partners.</p>
     </div>
   </header>
 
-  <main class="tt-container tt-main">
-    <h1 class="tt-page-title">Find Your Next Adventure</h1>
+  <main class="container my-5">
+    <section class="mb-5">
+      <h2 class="h4 mb-3">Search Stays &amp; Flights</h2>
+      <div class="card border-0 shadow-sm p-4" style="border-radius:12px;">
+        <div class="eg-widget" data-widget="search" data-program="us-expedia" data-lobs="stays,flights" data-network="pz" data-camref="1011lmen8" data-pubref=""></div>
+        <p class="text-muted small mt-2">Powered by Expedia. If the widget doesn't load, try refreshing the page.</p>
+      </div>
+    </section>
 
-    <!-- Expedia Search Widget -->
-    <section class="card">
-      <h2 class="card-title">Search stays & flights</h2>
-      <div
-        class="eg-widget"
-        data-widget="search"
-        data-program="us-expedia"
-        data-lobs="stays,flights"
-        data-network="pz"
-        data-camref="1011lmen8"
-        data-pubref=""
-      ></div>
-      <p class="muted">If the widget doesn’t load, please refresh the page.</p>
+    <section class="mb-5">
+      <h2 class="h4 mb-3">Compare Hotels</h2>
+      <div class="card border-0 shadow-sm p-4" style="border-radius:12px;">
+        <div class="eg-widget" data-widget="search" data-program="us-hcom" data-lobs="stays" data-network="pz" data-camref="1100lqV7X" data-pubref=""></div>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="h4 mb-3">Not Sure Where to Go? Read Our Guides</h2>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <a href="blog-caribbean-family.html" class="text-decoration-none text-reset">
+            <div class="card h-100 shadow-sm border-0 dv-blog-card">
+              <div class="card-body">
+                <span class="badge bg-success mb-2">Family Travel</span>
+                <h3 class="h6 card-title">Best Caribbean Family Resorts 2026</h3>
+                <p class="card-text small text-muted">Kid-approved resorts with nanny services and real pricing.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="blog-elmo.html" class="text-decoration-none text-reset">
+            <div class="card h-100 shadow-sm border-0 dv-blog-card">
+              <div class="card-body">
+                <span class="badge bg-warning text-dark mb-2">Pet Travel</span>
+                <h3 class="h6 card-title">Flying with Your Dog to Europe 2026</h3>
+                <p class="card-text small text-muted">Costs, airline rules, and a complete checklist.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="blog-starbucks.html" class="text-decoration-none text-reset">
+            <div class="card h-100 shadow-sm border-0 dv-blog-card">
+              <div class="card-body">
+                <span class="badge bg-info text-dark mb-2">Lifestyle</span>
+                <h3 class="h6 card-title">Starbucks Rewards Abroad</h3>
+                <p class="card-text small text-muted">Which countries work and how to save on coffee worldwide.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- Right-side closable banner -->
-  <aside class="tt-banner" id="expediaBanner" aria-live="polite">
-    <button class="tt-banner-close" id="closeBanner" aria-label="Close banner">×</button>
-    <div
-      class="eg-affiliate-banners"
-      data-program="us-expedia"
-      data-network="pz"
-      data-layout="wide-skyscraper"
-      data-image="relaxing"
-      data-message="start-travel-planning"
-      data-camref="1011lmen8"
-      data-pubref=""
-      data-link="home"
-    ></div>
+  <aside class="tt-banner" id="expediaBanner" aria-live="polite" style="position:fixed;top:50%;right:12px;transform:translateY(-50%);border-radius:12px;overflow:hidden;z-index:1000;box-shadow:0 8px 24px rgba(0,0,0,.18);background:#fff;">
+    <button id="closeBanner" aria-label="Close banner" style="position:absolute;top:6px;right:6px;width:28px;height:28px;border:0;border-radius:50%;font-size:20px;line-height:1;cursor:pointer;color:#fff;background:rgba(0,0,0,.65);display:grid;place-items:center;z-index:1001;">&times;</button>
+    <div class="eg-affiliate-banners" data-program="us-expedia" data-network="pz" data-layout="wide-skyscraper" data-image="relaxing" data-message="start-travel-planning" data-camref="1011lmen8" data-pubref="" data-link="home"></div>
   </aside>
 
-  <!-- Expedia assets -->
-  <script
-    class="eg-affiliate-banners-script"
-    src="https://affiliates.expediagroup.com/products/banners/assets/eg-affiliate-banners.js"
-    defer
-  ></script>
-  <script
-    class="eg-widgets-script"
-    src="https://affiliates.expediagroup.com/products/widgets/assets/eg-widgets.js"
-    defer
-  ></script>
+  <footer class="dv-footer bg-dark text-white py-4">
+    <div class="container text-center">
+      <p class="small text-white-50 mb-1">DreamVacati &mdash; Travel Blogs, Planning Tools & Vacation Inspiration</p>
+      <p class="small text-white-50 mb-0">&copy; 2025 DreamVacati. Contact: <a href="mailto:dreamvacati@gmail.com" class="text-white-50">dreamvacati@gmail.com</a></p>
+    </div>
+  </footer>
 
- >
+  <script class="eg-affiliate-banners-script" src="https://affiliates.expediagroup.com/products/banners/assets/eg-affiliate-banners.js" defer></script>
+  <script class="eg-widgets-script" src="https://affiliates.expediagroup.com/products/widgets/assets/eg-widgets.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="main.js?v=2" defer></script>
 
-  <!-- Page-specific styles (kept tiny to stay on-theme) -->
-  <style>
-    .tt-container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
-    .tt-header { border-bottom: 1px solid #e6e6e6; background:#fff; position: sticky; top: 0; z-index: 20; }
-    .tt-brand { font-weight: 800; text-decoration: none; color: #111; font-size: 1.25rem; }
-    .tt-header .tt-container { display: flex; align-items: center; gap: 24px; padding: 14px 16px; }
-    .tt-nav { margin-left: auto; display: flex; gap: 16px; }
-    .tt-nav a { text-decoration: none; color: #333; padding: 6px 8px; border-radius: 6px; }
-    .tt-nav a:hover, .tt-nav a.active { background: #f3f3f3; }
-
-    .tt-main { padding: 24px 16px 64px; }
-    .tt-page-title { margin: 0 0 16px; font-size: 1.8rem; }
-
-    .card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 16px; box-shadow: 0 2px 10px rgba(0,0,0,.04); }
-    .card-title { margin: 0 0 12px; font-size: 1.25rem; }
-    .muted { color: #666; font-size: .9rem; }
-
-    /* Closable right banner */
-    .tt-banner {
-      position: fixed;
-      top: 50%;
-      right: 12px;
-      transform: translateY(-50%);
-      border-radius: 12px;
-      overflow: hidden;
-      z-index: 1000;
-      box-shadow: 0 8px 24px rgba(0,0,0,.18);
-      background: #fff;
-    }
-    .tt-banner-close {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      width: 28px;
-      height: 28px;
-      border: 0;
-      border-radius: 50%;
-      font-size: 20px;
-      line-height: 1;
-      cursor: pointer;
-      color: #fff;
-      background: rgba(0,0,0,.65);
-      display: grid;
-      place-items: center;
-      z-index: 1001;
-    }
-    .tt-banner-close:hover { background: rgba(0,0,0,.8); }
-    @media (max-width: 900px) {
-      .tt-banner { display: none; } /* hide banner on small screens */
-    }
-  </style>
-
-  <!-- Tiny inline script to close the banner -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const btn = document.getElementById('closeBanner');
       const wrap = document.getElementById('expediaBanner');
       if (btn && wrap) btn.addEventListener('click', () => wrap.remove());
     });
-  </script> 
-  
-  <!-- Your site JS -->
-  <script src="main.js?v=1" defer></script>
+  </script>
+  <style>
+    @media (max-width: 900px) { .tt-banner { display: none; } }
+  </style>
 </body>
 </html>
