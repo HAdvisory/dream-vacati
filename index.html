@@ -78,7 +78,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#blogs">Blog</a></li>
-          <li class="nav-item"><a class="nav-link" href="#tools">Travel Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="tools.html">Travel Tools</a></li>
           <li class="nav-item"><a class="nav-link" href="book-now.html">Book Now</a></li>
         </ul>
       </div>
@@ -183,43 +183,270 @@
       </ul>
     </section>
 
-    <!-- ===== TRAVEL TOOLS (Tabs) ===== -->
+    <!-- ===== TRAVEL PLANNING TOOLS (Upgraded) ===== -->
     <section id="tools" class="mb-5">
-      <h2 class="h3 mb-3">Travel Planning Tools</h2>
-      <ul class="nav nav-tabs" id="toolTabs" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="map-tab" data-bs-toggle="tab" data-bs-target="#travel-map" type="button" role="tab" aria-controls="travel-map" aria-selected="true">Travel Map</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="itinerary-tab" data-bs-toggle="tab" data-bs-target="#itinerary" type="button" role="tab" aria-controls="itinerary" aria-selected="false">Itinerary Builder</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="packing-tab" data-bs-toggle="tab" data-bs-target="#packing" type="button" role="tab" aria-controls="packing" aria-selected="false">Packing List</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="budget-tab" data-bs-toggle="tab" data-bs-target="#budget" type="button" role="tab" aria-controls="budget" aria-selected="false">Budget Planner</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="prepare-tab" data-bs-toggle="tab" data-bs-target="#prepare" type="button" role="tab" aria-controls="prepare" aria-selected="false">Travel Prep</button>
-        </li>
-      </ul>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h3 mb-0">Free Travel Planning Tools</h2>
+        <a href="tools.html" class="btn btn-sm btn-outline-primary">Open Full Tools Page &rarr;</a>
+      </div>
+      <p class="text-muted mb-4">Budget your trip, build your packing list, estimate pet travel costs, and plan your itinerary &mdash; all free, no signup required.</p>
 
-      <div class="tab-content pt-4" id="toolTabsContent">
+      <style>
+        .dv-tool-card{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:28px;margin-bottom:20px;border:1px solid #e2e8f0;transition:transform .2s,box-shadow .2s}
+        .dv-tool-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.12)}
+        .dv-tool-card h3{font-size:1.2rem;color:var(--sea-dark,#087e8b);margin-bottom:12px}
+        .dv-form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:16px}
+        .dv-form-row label{font-weight:500;font-size:.88rem;display:block;margin-bottom:4px}
+        .dv-form-row select,.dv-form-row input[type="number"]{width:100%;padding:10px 14px;border:2px solid #e2e8f0;border-radius:10px;font-size:.95rem;font-family:inherit}
+        .dv-form-row select:focus,.dv-form-row input:focus{outline:none;border-color:var(--sea,#0b95a5)}
+        .dv-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border:none;border-radius:10px;font-size:.95rem;font-weight:600;font-family:inherit;cursor:pointer;transition:all .2s}
+        .dv-btn-teal{background:var(--sea,#0b95a5);color:#fff}.dv-btn-teal:hover{background:var(--sea-dark,#087e8b)}
+        .dv-btn-coral{background:#e8590c;color:#fff}.dv-btn-coral:hover{background:#c7480a}
+        .dv-btn-dark{background:#000;color:#fff;font-size:.82rem;padding:8px 16px;border-radius:8px}.dv-btn-dark:hover{background:#333}
+        .dv-btn-outline{background:transparent;border:2px solid var(--sea,#0b95a5);color:var(--sea,#0b95a5);padding:8px 16px;font-size:.82rem;border-radius:8px}.dv-btn-outline:hover{background:var(--sea,#0b95a5);color:#fff}
+        .dv-budget-bar{height:36px;border-radius:10px;overflow:hidden;display:flex;margin:14px 0;background:#e2e8f0}
+        .dv-budget-bar div{display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#fff;transition:width .4s ease}
+        .dv-bar-accom{background:var(--sea,#0b95a5)}.dv-bar-food{background:#e8590c}.dv-bar-act{background:#f4c27a;color:#1a1b2e}.dv-bar-buf{background:#a78bfa}
+        .dv-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:.82rem}
+        .dv-legend span{display:inline-flex;align-items:center;gap:5px}
+        .dv-ldot{width:10px;height:10px;border-radius:50%;display:inline-block}
+        .dv-range-group{margin-bottom:16px}
+        .dv-range-group .dv-rh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+        .dv-range-group .dv-rv{font-weight:700;font-size:1.15rem;color:var(--sea-dark,#087e8b)}
+        .dv-range-group input[type="range"]{-webkit-appearance:none;width:100%;height:7px;border-radius:4px;background:#e2e8f0;outline:none;border:none;padding:0}
+        .dv-range-group input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--sea,#0b95a5);cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+        .dv-summary{margin-top:16px;padding:16px;background:#e0f5f7;border-radius:12px;border:1px solid rgba(11,149,165,.2)}
+        .dv-summary h4{color:var(--sea-dark,#087e8b);margin-bottom:4px;font-size:1rem}
+        .dv-share-box{margin-top:20px;padding:16px;background:#0a0a0a;border-radius:12px;color:#fff}
+        .dv-share-box p{font-size:.82rem;opacity:.7;margin-bottom:10px}
+        .dv-share-text{font-size:.8rem;background:rgba(255,255,255,.1);padding:10px 14px;border-radius:8px;margin-bottom:10px;line-height:1.5;color:#e2e8f0;white-space:pre-line}
+        .dv-share-actions{display:flex;gap:8px;flex-wrap:wrap}
+        .dv-pack-category{margin-bottom:16px}
+        .dv-pack-category h4{font-size:.85rem;font-weight:700;color:var(--sea,#0b95a5);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid #e0f5f7}
+        .dv-pack-item{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:.9rem}
+        .dv-pack-item input[type="checkbox"]{width:18px;height:18px;accent-color:var(--sea,#0b95a5);cursor:pointer;flex-shrink:0}
+        .dv-pack-item.checked span{text-decoration:line-through;color:#999}
+        .dv-pack-progress{margin-top:12px;padding:14px;background:#e0f5f7;border-radius:10px;text-align:center}
+        .dv-pack-progress .dv-count{font-size:1.8rem;font-weight:700;color:var(--sea,#0b95a5)}
+        .dv-cost-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f1f5f9}
+        .dv-cost-row:last-child{border-bottom:none}
+        .dv-cost-icon{width:32px;height:32px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:1.1rem;margin-right:8px}
+        .dv-cost-total{margin-top:16px;padding:18px;background:linear-gradient(135deg,var(--sea,#0b95a5),var(--sea-dark,#087e8b));border-radius:14px;color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+        .dv-cost-total .dv-total-amt{font-size:1.5rem;font-weight:700}
+        .dv-cost-tip{margin-top:12px;padding:14px;background:#fdf6e9;border-radius:10px;border-left:4px solid #f4c27a;font-size:.9rem}
+        .dv-cost-tip strong{color:#b8860b}
+        .dv-day-col{background:var(--light,#f8f9fa);border-radius:10px;padding:16px;min-height:160px;border:2px dashed #cbd5e1;transition:border-color .2s}
+        .dv-day-col.drag-over{border-color:var(--sea,#0b95a5);background:#e0f5f7}
+        .dv-act-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;border-radius:8px;margin:3px;cursor:grab;border:1px solid #e2e8f0;font-size:.85rem;user-select:none;transition:all .15s}
+        .dv-act-chip:active{cursor:grabbing;transform:scale(.95)}
+        .dv-sched-item{padding:10px 14px;background:#fff;border-radius:8px;margin-bottom:6px;border-left:4px solid var(--sea,#0b95a5);display:flex;justify-content:space-between;align-items:center;font-size:.85rem;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+        @media(max-width:640px){.dv-tool-card{padding:18px}.dv-form-row{grid-template-columns:1fr}.dv-cost-total{flex-direction:column;text-align:center}}
+      </style>
 
-        <!-- TAB: Travel Map -->
-        <div class="tab-pane fade show active" id="travel-map" role="tabpanel" aria-labelledby="map-tab">
-          <h3>Where Have You Been?</h3>
-          <form id="add-country-form" class="d-flex gap-2 mb-3 flex-wrap">
-            <input type="text" id="country-input" class="form-control" style="max-width:280px;" placeholder="Enter country name" autocomplete="off" required>
-            <button type="submit" class="btn btn-primary">Add</button>
-          </form>
-          <p id="error-msg" class="text-danger small"></p>
-          <p>Total visited: <span id="total-count" class="fw-bold">0</span></p>
-          <div class="zoom-controls mb-2">
-            <button id="zoom-in" class="btn btn-sm btn-outline-secondary">+</button>
-            <button id="zoom-out" class="btn btn-sm btn-outline-secondary">&minus;</button>
+      <!-- ══════════════════════════════════════════ -->
+      <!-- TOOL 1: BUDGET CALCULATOR -->
+      <!-- ══════════════════════════════════════════ -->
+      <div class="dv-tool-card" id="tool-budget">
+        <h3>&#128200; Travel Budget Calculator</h3>
+        <p class="text-muted small mb-3">Use the 40/25/20/15 rule to allocate your vacation budget. Adjust sliders and share your plan.</p>
+        <div class="dv-form-row" style="max-width:400px">
+          <div><label for="dv-b-total">Total Budget ($)</label><input type="number" id="dv-b-total" value="3000" min="100" step="100"></div>
+          <div><label for="dv-b-travelers">Travelers</label><input type="number" id="dv-b-travelers" value="2" min="1" max="20"></div>
+        </div>
+        <div class="dv-budget-bar" id="dv-budget-bar">
+          <div class="dv-bar-accom" style="width:40%">40%</div>
+          <div class="dv-bar-food" style="width:25%">25%</div>
+          <div class="dv-bar-act" style="width:20%">20%</div>
+          <div class="dv-bar-buf" style="width:15%">15%</div>
+        </div>
+        <div class="dv-legend">
+          <span><i class="dv-ldot" style="background:var(--sea,#0b95a5)"></i> Accommodation</span>
+          <span><i class="dv-ldot" style="background:#e8590c"></i> Food &amp; Drink</span>
+          <span><i class="dv-ldot" style="background:#f4c27a"></i> Activities</span>
+          <span><i class="dv-ldot" style="background:#a78bfa"></i> Buffer</span>
+        </div>
+        <div style="margin-top:20px">
+          <div class="dv-range-group"><div class="dv-rh"><label>&#127976; Accommodation</label><span class="dv-rv" id="dv-rv-accom">$1,200</span></div><input type="range" id="dv-rs-accom" min="0" max="100" value="40"></div>
+          <div class="dv-range-group"><div class="dv-rh"><label>&#127869; Food &amp; Drink</label><span class="dv-rv" id="dv-rv-food">$750</span></div><input type="range" id="dv-rs-food" min="0" max="100" value="25"></div>
+          <div class="dv-range-group"><div class="dv-rh"><label>&#127919; Activities</label><span class="dv-rv" id="dv-rv-act">$600</span></div><input type="range" id="dv-rs-act" min="0" max="100" value="20"></div>
+          <div class="dv-range-group"><div class="dv-rh"><label>&#128735; Buffer</label><span class="dv-rv" id="dv-rv-buf">$450</span></div><input type="range" id="dv-rs-buf" min="0" max="100" value="15"></div>
+        </div>
+        <div class="dv-summary" id="dv-budget-summary"><h4>Per Person: $1,500/trip</h4><p class="mb-0 small text-muted">Total: $3,000 for 2 travelers</p></div>
+        <div class="dv-share-box" id="dv-budget-share">
+          <p>Share your budget plan on X:</p>
+          <div class="dv-share-text" id="dv-budget-share-text">My vacation budget breakdown (40/25/20/15 rule):
+
+&#127976; Accommodation: $1,200 (40%)
+&#127869; Food: $750 (25%)
+&#127919; Activities: $600 (20%)
+&#128735; Buffer: $450 (15%)
+
+Total: $3,000 for 2 travelers
+
+Try the free budget calculator at dreamvacati.com/tools</div>
+          <div class="dv-share-actions">
+            <button class="dv-btn dv-btn-dark" onclick="dvShareX('dv-budget-share-text')"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:middle;margin-right:4px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button>
+            <button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-budget-share-text',this)">&#128203; Copy</button>
           </div>
-          <div class="map-container">
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════ -->
+      <!-- TOOL 2: PACKING CHECKLIST -->
+      <!-- ══════════════════════════════════════════ -->
+      <div class="dv-tool-card" id="tool-packing">
+        <h3>&#127890; Packing Checklist Generator</h3>
+        <p class="text-muted small mb-3">Select your destination, season, and trip length for a complete categorized checklist you can check off and share.</p>
+        <div class="dv-form-row" style="grid-template-columns:1fr 1fr 1fr">
+          <div><label for="dv-p-dest">Destination Type</label>
+            <select id="dv-p-dest"><option value="tropical">&#127965; Tropical / Beach</option><option value="mountain">&#9968; Mountain / Hiking</option><option value="city">&#127961; City / Urban</option><option value="cold">&#10052; Cold / Winter</option><option value="roadtrip">&#128663; Road Trip</option></select></div>
+          <div><label for="dv-p-season">Season</label>
+            <select id="dv-p-season"><option value="summer">&#9728; Summer</option><option value="winter">&#10052; Winter</option><option value="spring">&#127800; Spring / Fall</option></select></div>
+          <div><label for="dv-p-days">Trip Length</label>
+            <select id="dv-p-days"><option value="short">Weekend (1-3)</option><option value="week" selected>Week (4-7)</option><option value="long">Extended (8+)</option></select></div>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px">
+          <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:.88rem"><input type="checkbox" id="dv-p-intl" style="width:16px;height:16px;accent-color:var(--sea,#0b95a5)"> International trip</label>
+          <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:.88rem"><input type="checkbox" id="dv-p-kids" style="width:16px;height:16px;accent-color:var(--sea,#0b95a5)"> Traveling with kids</label>
+          <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:.88rem"><input type="checkbox" id="dv-p-pet" style="width:16px;height:16px;accent-color:var(--sea,#0b95a5)"> Bringing a pet</label>
+        </div>
+        <button class="dv-btn dv-btn-coral" onclick="dvGenPack()">Generate My Checklist</button>
+        <div id="dv-pack-results" style="display:none"></div>
+      </div>
+
+      <!-- ══════════════════════════════════════════ -->
+      <!-- TOOL 3: PET TRAVEL COST ESTIMATOR -->
+      <!-- ══════════════════════════════════════════ -->
+      <div class="dv-tool-card" id="tool-petcost">
+        <h3>&#128054; Pet Travel Cost Estimator</h3>
+        <p class="text-muted small mb-3">Flying your dog or cat internationally? Estimate your total cost based on pet size, destination, and airline type.</p>
+        <div class="dv-form-row">
+          <div><label for="dv-pet-type">Pet Type</label>
+            <select id="dv-pet-type"><option value="dog-sm">&#128021; Small Dog (&lt;20 lbs)</option><option value="dog-md">&#128021; Medium Dog (20-50 lbs)</option><option value="dog-lg" selected>&#128021; Large Dog (50+ lbs)</option><option value="cat">&#128049; Cat</option></select></div>
+          <div><label for="dv-pet-dest">Destination</label>
+            <select id="dv-pet-dest"><option value="eu" selected>&#127466;&#127482; Europe (EU)</option><option value="uk">&#127468;&#127463; United Kingdom</option><option value="ca">&#127464;&#127462; Canada</option><option value="mx">&#127474;&#127485; Mexico</option><option value="other">&#127758; Other International</option></select></div>
+          <div><label for="dv-pet-cabin">Travel Method</label>
+            <select id="dv-pet-cabin"><option value="cabin">&#9992; In-Cabin (small pets)</option><option value="cargo" selected>&#128230; Cargo / Checked</option></select></div>
+        </div>
+        <button class="dv-btn dv-btn-teal" onclick="dvCalcPet()">Calculate Cost</button>
+        <div id="dv-pet-results" style="display:none"></div>
+      </div>
+
+      <!-- ══════════════════════════════════════════ -->
+      <!-- TOOL 4: ITINERARY BUILDER -->
+      <!-- ══════════════════════════════════════════ -->
+      <div class="dv-tool-card" id="tool-itinerary">
+        <h3>&#128197; Trip Itinerary Builder</h3>
+        <p class="text-muted small mb-3">Drag activities to each day to build your trip plan.</p>
+        <div style="margin-bottom:16px">
+          <label style="margin-bottom:6px;font-size:.88rem;font-weight:500">Add Custom Activity</label>
+          <div style="display:flex;gap:8px"><input type="text" id="dv-custom-act" placeholder="e.g. Sunset Cruise, Cooking Class..." style="flex:1;padding:10px 14px;border:2px solid #e2e8f0;border-radius:10px;font-size:.95rem;font-family:inherit"><button class="dv-btn dv-btn-teal" onclick="dvAddAct()" style="padding:10px 18px">+ Add</button></div>
+        </div>
+        <p class="text-muted small mb-2">Drag activities into your day plan:</p>
+        <div id="dv-act-pool" style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px;padding:14px;background:var(--light,#f8f9fa);border-radius:10px"></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px" id="dv-days-grid">
+          <div class="dv-day-col" data-day="1" ondragover="dvE(event)" ondragleave="dvDL(event)" ondrop="dvDrop(event)"><h4 style="font-size:.85rem;color:var(--sea,#0b95a5);margin-bottom:10px">&#128197; Day 1</h4></div>
+          <div class="dv-day-col" data-day="2" ondragover="dvE(event)" ondragleave="dvDL(event)" ondrop="dvDrop(event)"><h4 style="font-size:.85rem;color:var(--sea,#0b95a5);margin-bottom:10px">&#128197; Day 2</h4></div>
+          <div class="dv-day-col" data-day="3" ondragover="dvE(event)" ondragleave="dvDL(event)" ondrop="dvDrop(event)"><h4 style="font-size:.85rem;color:var(--sea,#0b95a5);margin-bottom:10px">&#128197; Day 3</h4></div>
+        </div>
+        <button class="dv-btn dv-btn-outline" onclick="dvAddDay()" style="margin-top:12px">+ Add Day</button>
+        <div class="dv-share-box" id="dv-itin-share" style="display:none">
+          <p>Share your itinerary on X:</p>
+          <div class="dv-share-text" id="dv-itin-share-text"></div>
+          <div class="dv-share-actions">
+            <button class="dv-btn dv-btn-dark" onclick="dvShareX('dv-itin-share-text')"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:middle;margin-right:4px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button>
+            <button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-itin-share-text',this)">&#128203; Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-3">
+        <a href="tools.html" class="btn btn-primary btn-lg fw-semibold px-5">Open Full Tools Page &rarr;</a>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- TRAVEL MAP — Where Have You Been? -->
+    <!-- ══════════════════════════════════════════ -->
+    <section id="travel-map-section" class="mb-5">
+      <div class="dv-tool-card" id="tool-map">
+        <h3>&#127758; Where Have You Been?</h3>
+        <p class="text-muted small mb-3">Click any country on the map to mark it visited, or type a country name below. Track your progress and share your travel map.</p>
+
+        <style>
+          .dv-map-stats{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+          .dv-map-stat{background:#e0f5f7;border-radius:10px;padding:10px 18px;text-align:center}
+          .dv-map-stat .num{font-size:1.6rem;font-weight:700;color:var(--sea-dark,#087e8b);display:block;line-height:1.2}
+          .dv-map-stat .lbl{font-size:.72rem;color:#666;text-transform:uppercase;letter-spacing:.5px}
+          .dv-map-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+          .dv-map-controls input[type="text"]{padding:10px 14px;border:2px solid #e2e8f0;border-radius:10px;font-size:.95rem;font-family:inherit;width:220px}
+          .dv-map-controls input:focus{outline:none;border-color:var(--sea,#0b95a5)}
+          .dv-continent-btns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+          .dv-continent-btn{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:8px;padding:6px 12px;font-size:.78rem;font-weight:500;cursor:pointer;font-family:inherit;transition:all .15s;color:#333}
+          .dv-continent-btn:hover{background:var(--sea,#0b95a5);color:#fff;border-color:var(--sea,#0b95a5)}
+          .dv-map-wrap{position:relative;border:2px solid #e2e8f0;border-radius:14px;overflow:hidden;background:#f8fafc}
+          .dv-map-tooltip{position:absolute;top:8px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);color:#fff;padding:5px 14px;border-radius:8px;font-size:.82rem;pointer-events:none;opacity:0;transition:opacity .15s;z-index:10;white-space:nowrap}
+          .dv-map-wrap:hover .dv-map-tooltip{opacity:1}
+          .dv-zoom-bar{display:flex;gap:6px;align-items:center;margin-bottom:8px}
+          .dv-zoom-btn{width:32px;height:32px;border-radius:8px;border:1px solid #e2e8f0;background:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+          .dv-zoom-btn:hover{background:var(--sea,#0b95a5);color:#fff;border-color:var(--sea,#0b95a5)}
+          .dv-map-container{width:100%;max-width:100%;touch-action:none}
+          #world-map{width:100%;height:auto;cursor:grab;user-select:none}
+          #world-map.dragging{cursor:grabbing}
+          #world-map path{fill:#e9ecef;stroke:#ccc;stroke-width:0.4;cursor:pointer;transition:fill .2s}
+          #world-map path:hover{fill:#b8d4d9}
+          #world-map path.visited{fill:#2b8a3e}
+          #world-map path.visited:hover{fill:#237032}
+          .dv-visited-list{margin-top:16px;max-height:120px;overflow-y:auto;padding:10px 14px;background:#f8fafc;border-radius:10px;border:1px solid #e2e8f0}
+          .dv-visited-tag{display:inline-block;background:#2b8a3e;color:#fff;padding:3px 10px;border-radius:6px;font-size:.75rem;margin:2px;cursor:pointer}
+          .dv-visited-tag:hover{background:#c92a2a;text-decoration:line-through}
+          .dv-goal-bar{height:10px;background:#e2e8f0;border-radius:5px;overflow:hidden;margin-top:8px;margin-bottom:4px}
+          .dv-goal-fill{height:100%;background:linear-gradient(90deg,var(--sea,#0b95a5),#2b8a3e);border-radius:5px;transition:width .5s ease}
+        </style>
+
+        <!-- Stats Row -->
+        <div class="dv-map-stats">
+          <div class="dv-map-stat"><span class="num" id="total-count">0</span><span class="lbl">Countries</span></div>
+          <div class="dv-map-stat"><span class="num" id="continent-count">0</span><span class="lbl">Continents</span></div>
+          <div class="dv-map-stat" style="flex:1;min-width:180px;text-align:left">
+            <span class="lbl">Goal: 30 countries</span>
+            <div class="dv-goal-bar"><div class="dv-goal-fill" id="goal-fill" style="width:0%"></div></div>
+            <span class="lbl" id="goal-text" style="color:var(--sea,#0b95a5)">0% complete</span>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="dv-map-controls">
+          <form id="add-country-form" style="display:flex;gap:8px;margin:0">
+            <input type="text" id="country-input" placeholder="Type country name..." autocomplete="off" required>
+            <button type="submit" class="dv-btn dv-btn-teal" style="padding:10px 18px">+ Add</button>
+          </form>
+          <button class="dv-btn dv-btn-outline" onclick="dvClearMap()" style="padding:10px 14px;font-size:.82rem">Clear All</button>
+        </div>
+        <p id="error-msg" class="text-danger small" style="margin-bottom:8px"></p>
+
+        <!-- Continent Quick-Fill -->
+        <div class="dv-continent-btns">
+          <span style="font-size:.78rem;color:#999;margin-right:4px">Quick add:</span>
+          <button class="dv-continent-btn" onclick="dvAddContinent('na')">North America</button>
+          <button class="dv-continent-btn" onclick="dvAddContinent('eu')">Europe</button>
+          <button class="dv-continent-btn" onclick="dvAddContinent('as')">Asia</button>
+          <button class="dv-continent-btn" onclick="dvAddContinent('sa')">South America</button>
+          <button class="dv-continent-btn" onclick="dvAddContinent('af')">Africa</button>
+          <button class="dv-continent-btn" onclick="dvAddContinent('oc')">Oceania</button>
+        </div>
+
+        <!-- Map -->
+        <div class="dv-zoom-bar">
+          <button class="dv-zoom-btn" id="zoom-in">+</button>
+          <button class="dv-zoom-btn" id="zoom-out">&minus;</button>
+          <button class="dv-zoom-btn" id="zoom-reset" style="font-size:.7rem;width:auto;padding:0 10px">Reset</button>
+          <span style="font-size:.75rem;color:#999;margin-left:8px">Click countries to toggle &bull; Drag to pan</span>
+        </div>
+        <div class="dv-map-wrap">
+          <div class="dv-map-tooltip" id="map-tooltip">Hover over a country</div>
+          <div class="dv-map-container">
             <svg
       id="world-map"
       xmlns="http://www.w3.org/2000/svg"
@@ -580,125 +807,29 @@
     
       <!-- etc. -->
     </svg>
-          </div>
-          <div class="mt-3 p-3 bg-light rounded">
-            <p class="mb-2"><strong>Ready to add a new pin?</strong></p>
-            <a href="book-now.html" class="btn btn-primary btn-sm">Search flights &amp; hotels on Expedia &rarr;</a>
+
           </div>
         </div>
 
-        <!-- TAB: Itinerary Builder -->
-        <div class="tab-pane fade" id="itinerary" role="tabpanel" aria-labelledby="itinerary-tab">
-          <h3>Itinerary Builder</h3>
-          <div class="row">
-            <div class="col-md-4">
-              <h5>Activities</h5>
-              <ul id="activities-list" class="list-group">
-                <li class="list-group-item" draggable="true" data-activity="Museum Visit">Museum Visit</li>
-                <li class="list-group-item" draggable="true" data-activity="City Walking Tour">City Walking Tour</li>
-                <li class="list-group-item" draggable="true" data-activity="Local Cuisine Tasting">Local Cuisine Tasting</li>
-                <li class="list-group-item" draggable="true" data-activity="Beach Relaxation">Beach Relaxation</li>
-                <li class="list-group-item" draggable="true" data-activity="Hiking / Nature Walk">Hiking / Nature Walk</li>
-                <li class="list-group-item" draggable="true" data-activity="Snorkeling / Water Sports">Snorkeling / Water Sports</li>
-                <li class="list-group-item" draggable="true" data-activity="Sunset Cruise">Sunset Cruise</li>
-              </ul>
-            </div>
-            <div class="col-md-8">
-              <h5>Your Schedule</h5>
-              <div id="schedule-area" class="border p-3 rounded" style="min-height:200px;background:#f8f9fa;">
-                <p class="text-muted">Drag activities here to build your day</p>
-              </div>
-            </div>
-          </div>
-          <div class="mt-3 p-3 bg-light rounded">
-            <p class="mb-2"><strong>Need tours & experiences?</strong> Browse activities on Viator for your destination.</p>
-            <a href="book-now.html" class="btn btn-primary btn-sm">Browse experiences &rarr;</a>
-          </div>
+        <!-- Visited Countries Tags -->
+        <div class="dv-visited-list" id="visited-tags" style="display:none">
+          <span style="font-size:.75rem;color:#999">Click a country to remove it:</span><br>
+          <span id="visited-tags-inner"></span>
         </div>
 
-        <!-- TAB: Packing List -->
-        <div class="tab-pane fade" id="packing" role="tabpanel" aria-labelledby="packing-tab">
-          <h3>What to Pack</h3>
-          <div class="row g-3 align-items-end">
-            <div class="col-md-4">
-              <label for="pack-destination" class="form-label">Destination Type</label>
-              <select id="pack-destination" class="form-select">
-                <option value="tropical">Tropical</option>
-                <option value="mountain">Mountain</option>
-                <option value="city">City</option>
-              </select>
-            </div>
-            <div class="col-md-4">
-              <label for="pack-season" class="form-label">Season</label>
-              <select id="pack-season" class="form-select">
-                <option value="summer">Summer</option>
-                <option value="winter">Winter</option>
-                <option value="spring">Spring/Fall</option>
-              </select>
-            </div>
-            <div class="col-md-4">
-              <button id="generate-packing" class="btn btn-primary w-100">Generate Checklist</button>
-            </div>
-          </div>
-          <ul id="pack-list" class="list-group list-group-flush mt-3"></ul>
-          <div class="mt-3 p-3 bg-light rounded" id="packing-cta" style="display:none;">
-            <p class="mb-2"><strong>Want the complete 50-item packing checklist?</strong></p>
-            <p class="small text-muted mb-2">Subscribe to get our free downloadable PDF packing guides for every destination type.</p>
-            <a href="#email-signup-form" class="btn btn-primary btn-sm">Get the free checklist &rarr;</a>
+        <!-- Share -->
+        <div class="dv-share-box" style="margin-top:20px">
+          <p>Share your travel map on X:</p>
+          <div class="dv-share-text" id="dv-map-share-text">I've visited 0 countries across 0 continents! 🌍
+
+Track your own travels with the free map at dreamvacati.com
+
+#TravelMap #Wanderlust</div>
+          <div class="dv-share-actions">
+            <button class="dv-btn dv-btn-dark" onclick="dvShareX('dv-map-share-text')"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:middle;margin-right:4px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button>
+            <button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-map-share-text',this)">&#128203; Copy</button>
           </div>
         </div>
-
-        <!-- TAB: Budget Planner -->
-        <div class="tab-pane fade" id="budget" role="tabpanel" aria-labelledby="budget-tab">
-          <h3>Budget Dashboard</h3>
-          <div class="mb-3">
-            <label class="form-label">Total Budget: $<span id="budget-total">1000</span></label>
-            <input type="number" id="budget-input" class="form-control" value="1000" style="max-width:200px;">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Accommodations: $<span id="val-accom">300</span></label>
-            <input type="range" id="budget-accom" class="form-range" min="0" max="5000" value="300">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Food &amp; Drink: $<span id="val-food">200</span></label>
-            <input type="range" id="budget-food" class="form-range" min="0" max="5000" value="200">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Activities: $<span id="val-activities">150</span></label>
-            <input type="range" id="budget-activities" class="form-range" min="0" max="5000" value="150">
-          </div>
-          <p><strong>Remaining:</strong> $<span id="remaining-budget">350</span></p>
-          <div class="mt-3 p-3 bg-light rounded">
-            <p class="mb-2"><strong>Find deals that fit your budget</strong></p>
-            <a href="book-now.html" class="btn btn-primary btn-sm">Search deals on Expedia &rarr;</a>
-          </div>
-        </div>
-
-        <!-- TAB: Travel Prep -->
-        <div class="tab-pane fade" id="prepare" role="tabpanel" aria-labelledby="prepare-tab">
-          <h3>Prepare for Your Trip</h3>
-          <p class="text-muted small mb-3">Enter your origin and destination to see general travel requirements. Always verify with official embassy/government sources before traveling.</p>
-          <div class="row g-3 mb-3">
-            <div class="col-md-5">
-              <label for="origin-input" class="form-label">Origin</label>
-              <input id="origin-input" class="form-control" placeholder="e.g. New York, US">
-            </div>
-            <div class="col-md-5">
-              <label for="destination-input" class="form-label">Destination</label>
-              <input id="destination-input" class="form-control" placeholder="e.g. Tokyo, JP">
-            </div>
-            <div class="col-md-2 d-flex align-items-end">
-              <button id="fetch-requirements" class="btn btn-success w-100">Check</button>
-            </div>
-          </div>
-          <div id="requirements-output" class="mt-3"></div>
-          <div class="mt-3 p-3 bg-light rounded">
-            <p class="mb-2"><strong>Don't forget travel insurance</strong></p>
-            <p class="small text-muted mb-2">Protect your trip with comprehensive travel insurance coverage.</p>
-            <a href="book-now.html" class="btn btn-primary btn-sm">Get a quote &rarr;</a>
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -713,8 +844,8 @@
           <div class="eg-widget" data-widget="search" data-program="us-hcom" data-lobs="stays" data-network="pz" data-camref="1100lqV7X" data-pubref=""></div>
         </div>
       </div>
-      <script class="eg-widgets-script" src="https://affiliates.expediagroup.com/products/widgets/assets/eg-widgets.js"></script>
     </section>
+
 
   </main>
 
@@ -725,10 +856,12 @@
         <div class="col-md-4">
           <h3 class="h5 mb-3">DreamVacati</h3>
           <p class="small text-white-50">Travel blogs, planning tools, and vacation inspiration. Making dream trips happen since 2020.</p>
+          <p class="small text-white-50 mb-0"><a href="privacy.html" class="text-white-50 text-decoration-none">Privacy Policy</a></p>
         </div>
         <div class="col-md-4">
-          <h3 class="h5 mb-3">Latest Posts</h3>
+          <h3 class="h5 mb-3">Explore</h3>
           <ul class="list-unstyled small">
+            <li class="mb-2"><a href="tools.html" class="text-white-50 text-decoration-none">&#128295; Free Travel Tools</a></li>
             <li class="mb-2"><a href="blog-starbucks.html" class="text-white-50 text-decoration-none">Starbucks Rewards Abroad: Global Sips Guide</a></li>
             <li class="mb-2"><a href="blog-caribbean-family.html" class="text-white-50 text-decoration-none">Best Caribbean Family Resorts 2026</a></li>
             <li class="mb-2"><a href="blog-elmo.html" class="text-white-50 text-decoration-none">Flying with Your Dog to Europe 2026</a></li>
@@ -741,13 +874,14 @@
             <input type="email" class="form-control form-control-sm" placeholder="you@email.com" required>
             <button type="submit" class="btn btn-primary btn-sm">Join</button>
           </form>
-          <p class="small text-white-50 mt-3">Contact: <a href="mailto:dreamvacati@gmail.com" class="text-white-50">dreamvacati@gmail.com</a></p>
+          <p class="small text-white-50 mt-3">Contact: <a href="mailto:dreamvacai@gmail.com" class="text-white-50">dreamvacai@gmail.com</a></p>
         </div>
       </div>
       <hr class="border-secondary mt-4 mb-3">
-      <p class="text-center small text-white-50 mb-0">&copy; 2025 DreamVacati. All rights reserved.</p>
+      <p class="text-center small text-white-50 mb-0">&copy; 2026 DreamVacati. All rights reserved. | <a href="privacy.html" class="text-white-50">Privacy Policy</a></p>
     </div>
   </footer>
+
 
   <!-- Adsense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8978658918402683" crossorigin="anonymous"></script>
@@ -756,7 +890,223 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Site JS -->
+  <!-- Main JS (map, email handler) -->
   <script src="main.js?v=2" defer></script>
+
+  <!-- ═══ INLINE TOOL SCRIPTS ═══ -->
+  <script>
+  // === BUDGET CALCULATOR ===
+  const dvSIds=['dv-rs-accom','dv-rs-food','dv-rs-act','dv-rs-buf'];
+  const dvVIds=['dv-rv-accom','dv-rv-food','dv-rv-act','dv-rv-buf'];
+  const dvBars=['dv-bar-accom','dv-bar-food','dv-bar-act','dv-bar-buf'];
+  const dvLabels=['Accommodation','Food','Activities','Buffer'];
+  const dvEmoji=['\u{1F3E8}','\u{1F37D}','\u{1F3AF}','\u{1F6DF}'];
+  function dvUpdateBudget(){
+    const t=parseInt(document.getElementById('dv-b-total').value)||0;
+    const tr=parseInt(document.getElementById('dv-b-travelers').value)||1;
+    const p=dvSIds.map(id=>parseInt(document.getElementById(id).value));
+    const s=p.reduce((a,b)=>a+b,0);
+    const bar=document.getElementById('dv-budget-bar');
+    const am=p.map(v=>Math.round(t*v/s));
+    bar.innerHTML=p.map((v,i)=>{const w=Math.round(v/s*100);return w>4?`<div class="${dvBars[i]}" style="width:${w}%">${w}%</div>`:`<div class="${dvBars[i]}" style="width:${w}%"></div>`;}).join('');
+    dvVIds.forEach((id,i)=>{document.getElementById(id).textContent='$'+am[i].toLocaleString();});
+    const pp=Math.round(t/tr);
+    document.getElementById('dv-budget-summary').innerHTML=`<h4>Per Person: $${pp.toLocaleString()}/trip</h4><p class="mb-0 small text-muted">Total: $${t.toLocaleString()} for ${tr} traveler${tr>1?'s':''}</p>`;
+    const sl=am.map((a,i)=>`${dvEmoji[i]} ${dvLabels[i]}: $${a.toLocaleString()} (${Math.round(p[i]/s*100)}%)`).join('\n');
+    document.getElementById('dv-budget-share-text').textContent=`My vacation budget breakdown:\n\n${sl}\n\nTotal: $${t.toLocaleString()} for ${tr} traveler${tr>1?'s':''}\nPer person: $${pp.toLocaleString()}\n\nTry the free budget calculator at dreamvacati.com/tools`;
+  }
+  dvSIds.forEach(id=>document.getElementById(id).addEventListener('input',dvUpdateBudget));
+  document.getElementById('dv-b-total').addEventListener('input',dvUpdateBudget);
+  document.getElementById('dv-b-travelers').addEventListener('input',dvUpdateBudget);
+  dvUpdateBudget();
+
+  // === PACKING CHECKLIST ===
+  const dvPackDB={
+    essentials:{always:["Passport/ID","Phone + charger","Wallet + travel cards","Travel insurance docs","Medications (prescription + OTC basics)","Reusable water bottle","Portable battery pack"]},
+    tropical:{clothing:["Swimsuits (2-3)","Light cotton shirts/tops","Shorts","Sundress or linen outfit","Flip-flops","Water shoes","Light cover-up","One nice dinner outfit"],gear:["Reef-safe sunscreen (SPF 50+)","Sunglasses (polarized)","Wide-brim hat","Waterproof phone case","Dry bag for beach days","Insect repellent","After-sun aloe gel"],extras:["Snorkel gear (or rent there)","Beach towel (microfiber)","Waterproof camera or GoPro"]},
+    mountain:{clothing:["Moisture-wicking base layers","Hiking pants/shorts","Warm fleece or midlayer","Waterproof jacket","Hiking boots (broken in!)","Wool hiking socks (3+ pairs)","Warm hat + gloves (winter)","Sunglasses"],gear:["Daypack (25-35L)","Trekking poles","Headlamp","Sunscreen (UV stronger at altitude)","Blister kit + first aid","Water purification tabs","Trail snacks/bars"],extras:["Camera","Binoculars","Compression bags for layers"]},
+    city:{clothing:["Comfortable walking shoes","Smart casual outfit (2-3)","Light jacket or cardigan","Compact umbrella","Versatile scarf","Comfortable jeans/pants","Crossbody bag (theft-deterrent)"],gear:["Portable charger","Guidebook or offline maps","Transit card/pass","Noise-canceling earbuds","Travel adapter (international)"],extras:["Foldable tote bag","Journal or sketchbook","Small camera"]},
+    cold:{clothing:["Thermal base layers (top + bottom)","Insulated jacket/parka","Waterproof outer layer","Warm boots (waterproof)","Wool socks (4+ pairs)","Warm hat, gloves, scarf","Fleece midlayer","Snow pants (if applicable)"],gear:["Hand warmers (10-pack)","Lip balm (SPF)","Moisturizer (cold air dries skin)","Sunscreen (snow reflects UV)","Thermos for hot drinks"],extras:["Ski goggles (if skiing)","Neck gaiter/balaclava","Foot warmers"]},
+    roadtrip:{clothing:["Comfortable driving clothes","Layers for temperature changes","Comfortable shoes","Pajamas","Swimsuit (hotel pools/hot springs)"],gear:["Phone mount for GPS","Car charger (USB-C + lightning)","Cooler bag + snacks","Paper towels + wet wipes","Reusable bags","First aid kit","Flashlight","Jumper cables"],extras:["Road atlas/paper map (backup)","Playlist/podcast queue","Travel pillow","Blanket for passengers"]},
+    international:["Passport (valid 6+ months!)","Visa or e-Visa (check requirements)","Travel adapter + voltage converter","Copies of passport (digital + paper)","Foreign currency or travel debit card","International phone plan or eSIM","Embassy contact info","Vaccination records"],
+    kids:["Snacks (SO many snacks)","Tablet + headphones + charger","Coloring books/activity pads","Favorite stuffed animal","Kid-safe sunscreen","Change of clothes in carry-on","Plastic bags (for messes)","Car seat or booster (if needed)"],
+    pet:["Pet carrier (airline-approved IATA crate)","Leash + harness","Food + treats (enough + extra day)","Collapsible water bowl","Vaccination records + health cert","Calming spray (Adaptil/Feliway)","Poop bags","Comfort blanket/toy with home scent","Pet first aid kit"]
+  };
+  function dvGenPack(){
+    const dest=document.getElementById('dv-p-dest').value;
+    const intl=document.getElementById('dv-p-intl').checked;
+    const kids=document.getElementById('dv-p-kids').checked;
+    const pet=document.getElementById('dv-p-pet').checked;
+    const c=document.getElementById('dv-pack-results');c.style.display='block';
+    const cats=[];
+    cats.push({name:'\u2708\uFE0F Essentials',items:[...dvPackDB.essentials.always]});
+    const d=dvPackDB[dest];
+    if(d.clothing)cats.push({name:'\u{1F455} Clothing',items:[...d.clothing]});
+    if(d.gear)cats.push({name:'\u{1F392} Gear & Accessories',items:[...d.gear]});
+    if(d.extras)cats.push({name:'\u{1F4F8} Extras',items:[...d.extras]});
+    if(intl)cats.push({name:'\u{1F30D} International',items:[...dvPackDB.international]});
+    if(kids)cats.push({name:'\u{1F476} Kids',items:[...dvPackDB.kids]});
+    if(pet)cats.push({name:'\u{1F43E} Pet Travel',items:[...dvPackDB.pet]});
+    const total=cats.reduce((s,c)=>s+c.items.length,0);
+    let h=`<div class="dv-pack-progress"><span class="dv-count" id="dv-pack-done">0</span><span style="color:#999"> / ${total} packed</span></div>`;
+    cats.forEach(cat=>{
+      h+=`<div class="dv-pack-category"><h4>${cat.name}</h4>`;
+      cat.items.forEach(item=>{h+=`<div class="dv-pack-item"><input type="checkbox" onchange="dvPackCheck(this)"><span>${item}</span></div>`;});
+      h+='</div>';
+    });
+    const summary=cats.map(c=>`${c.name}: ${c.items.length} items`).join('\n');
+    const shareText=`My travel packing checklist (${total} items):\n\n${summary}\n\nGenerated at dreamvacati.com/tools \u2014 free packing checklist for any trip!\n\n#PackingList #TravelTips`;
+    h+=`<div class="dv-share-box"><p>Share your checklist on X:</p><div class="dv-share-text" id="dv-pack-share-text">${shareText}</div><div class="dv-share-actions"><button class="dv-btn dv-btn-dark" onclick="dvShareX('dv-pack-share-text')"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:middle;margin-right:4px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button><button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-pack-share-text',this)">\u{1F4CB} Copy</button></div></div>`;
+    c.innerHTML=h;
+  }
+  function dvPackCheck(cb){cb.parentElement.classList.toggle('checked',cb.checked);const done=document.querySelectorAll('#dv-pack-results .dv-pack-item input:checked').length;const el=document.getElementById('dv-pack-done');if(el)el.textContent=done;}
+
+  // === PET TRAVEL COST ESTIMATOR ===
+  function dvCalcPet(){
+    const type=document.getElementById('dv-pet-type').value;
+    const dest=document.getElementById('dv-pet-dest').value;
+    const cabin=document.getElementById('dv-pet-cabin').value;
+    const c=document.getElementById('dv-pet-results');c.style.display='block';
+    const isLg=type==='dog-lg'||type==='dog-md',isCat=type==='cat';
+    const costs={
+      microchip:{low:45,high:75,label:'Microchip (ISO 11784/11785)',icon:'\u{1F489}',bg:'#e0f5f7'},
+      rabies:{low:25,high:50,label:'Rabies Vaccine',icon:'\u{1F48A}',bg:'#fff3ed'},
+      healthcert:{low:100,high:250,label:dest==='eu'?'EU Health Certificate + USDA':'Health Certificate',icon:'\u{1F4C4}',bg:'#fdf6e9'},
+      crate:{low:isLg?150:isCat?50:75,high:isLg?350:isCat?100:150,label:'IATA-Approved Carrier/Crate',icon:'\u{1F4E6}',bg:'#e0f5f7'},
+      airline:{low:cabin==='cabin'?100:200,high:cabin==='cabin'?250:500,label:`Airline Fee (${cabin==='cabin'?'In-Cabin':'Cargo'})`,icon:'\u2708\uFE0F',bg:'#fff3ed'},
+      extras:{low:40,high:100,label:'Calming spray, bedding, water dispenser',icon:'\u{1F9F4}',bg:'#fdf6e9'}
+    };
+    if(dest==='eu'||dest==='uk')costs.tapeworm={low:20,high:50,label:'Tapeworm Treatment (EU/UK req)',icon:'\u{1F48A}',bg:'#e0f5f7'};
+    let tL=0,tH=0,rows='';
+    Object.values(costs).forEach(co=>{tL+=co.low;tH+=co.high;rows+=`<div class="dv-cost-row"><div><span class="dv-cost-icon" style="background:${co.bg}">${co.icon}</span>${co.label}</div><span style="font-weight:700;font-size:1.05rem">$${co.low}\u2013$${co.high}</span></div>`;});
+    const tips={eu:'Microchip must come BEFORE rabies vaccine (EU law). After rabies shot, wait 21 days before traveling.',uk:'UK requires tapeworm treatment 1-5 days before entry. No longer part of EU pet passport system.',ca:'Canada requires current rabies vaccination certificate. No quarantine for dogs from the US.',mx:'Mexico requires health certificate issued within 72 hours of travel. Simpler than EU.',other:'Requirements vary widely. Start 3+ months early and contact your destination embassy.'};
+    const destName=dest==='eu'?'Europe':dest==='uk'?'the UK':dest==='ca'?'Canada':dest==='mx'?'Mexico':'abroad';
+    const shareText=`Planning to fly my ${type.replace(/-/g,' ')} to ${destName}.\n\nEstimated cost: $${tL}\u2013$${tH}\n\n${Object.values(costs).map(co=>`${co.icon} ${co.label}: $${co.low}\u2013$${co.high}`).join('\n')}\n\nFree pet travel cost calculator at dreamvacati.com/tools`;
+    c.innerHTML=`<div style="margin-top:20px">${rows}</div><div class="dv-cost-total"><span style="opacity:.9">Estimated Total Cost</span><span class="dv-total-amt">$${tL.toLocaleString()} \u2013 $${tH.toLocaleString()}</span></div><div class="dv-cost-tip"><strong>\u{1F4A1} Key Tip:</strong> ${tips[dest]}</div><p style="margin-top:14px;font-size:.88rem;color:#666">\u{1F4D6} Full guide with airline comparisons: <a href="blog-elmo.html" style="color:var(--sea,#0b95a5);font-weight:600">Flying Your Dog to Europe \u2192</a></p><div class="dv-share-box"><p>Share on X:</p><div class="dv-share-text" id="dv-pet-share-text">${shareText}</div><div class="dv-share-actions"><button class="dv-btn dv-btn-dark" onclick="dvShareX('dv-pet-share-text')"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:middle;margin-right:4px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button><button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-pet-share-text',this)">\u{1F4CB} Copy</button></div></div>`;
+  }
+
+  // === ITINERARY BUILDER ===
+  const dvDefActs=['Beach Day','Museum Visit','City Walking Tour','Local Food Tour','Sunset Cruise','Hiking Trail','Shopping District','Spa Day','Snorkeling/Diving','Cooking Class','Wine Tasting','Night Market'];
+  let dvDayCount=3;
+  function dvRenderPool(){const pool=document.getElementById('dv-act-pool');pool.innerHTML='';dvDefActs.forEach(a=>{const ch=document.createElement('div');ch.className='dv-act-chip';ch.draggable=true;ch.textContent=a;ch.ondragstart=ev=>ev.dataTransfer.setData('text/plain',a);pool.appendChild(ch);});}
+  dvRenderPool();
+  function dvAddAct(){const inp=document.getElementById('dv-custom-act');const n=inp.value.trim();if(!n)return;if(!dvDefActs.includes(n))dvDefActs.push(n);dvRenderPool();inp.value='';}
+  function dvE(ev){ev.preventDefault();ev.currentTarget.classList.add('drag-over');}
+  function dvDL(ev){ev.currentTarget.classList.remove('drag-over');}
+  function dvDrop(ev){ev.preventDefault();ev.currentTarget.classList.remove('drag-over');const a=ev.dataTransfer.getData('text/plain');const item=document.createElement('div');item.className='dv-sched-item';item.innerHTML=`<span>${a}</span><span style="cursor:pointer;color:#999" onclick="this.parentElement.remove();dvUpdateItin()">\u2715</span>`;ev.currentTarget.appendChild(item);dvUpdateItin();}
+  function dvAddDay(){dvDayCount++;const g=document.getElementById('dv-days-grid');const col=document.createElement('div');col.className='dv-day-col';col.dataset.day=dvDayCount;col.ondragover=dvE;col.ondragleave=dvDL;col.ondrop=dvDrop;col.innerHTML=`<h4 style="font-size:.85rem;color:var(--sea,#0b95a5);margin-bottom:10px">\u{1F4C5} Day ${dvDayCount}</h4>`;g.appendChild(col);}
+  function dvUpdateItin(){const sb=document.getElementById('dv-itin-share');const days=document.querySelectorAll('.dv-day-col');let has=false,text='My trip itinerary:\n';days.forEach(d=>{const items=d.querySelectorAll('.dv-sched-item span:first-child');if(items.length){has=true;text+=`\n\u{1F4C5} Day ${d.dataset.day}:\n`;items.forEach(it=>text+=`  \u2022 ${it.textContent}\n`);}});if(has){text+='\nBuilt with the free itinerary planner at dreamvacati.com/tools';document.getElementById('dv-itin-share-text').textContent=text;sb.style.display='block';}else{sb.style.display='none';}}
+
+  // === SHARE UTILITIES ===
+  function dvShareX(id){const t=document.getElementById(id).textContent;window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(t)}`,'_blank','width=600,height=400');}
+  function dvCopy(id,btn){const t=document.getElementById(id).textContent;navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent='\u2713 Copied!';setTimeout(()=>btn.textContent=o,2000);});}
+
+  // === ENHANCED TRAVEL MAP ===
+  const MAP_KEY='visitedCountries';
+  const mapSvg=document.getElementById('world-map');
+  const tooltip=document.getElementById('map-tooltip');
+  let mapVisited=[];
+  try{mapVisited=JSON.parse(localStorage.getItem(MAP_KEY)||'[]');}catch(e){mapVisited=[];}
+
+  // Continent codes
+  const continentMap={
+    na:['US','CA','MX','GT','BZ','SV','HN','NI','CR','PA','CU','JM','HT','DO','PR','BS','TT','BB','AG','DM','GD','KN','LC','VC'],
+    sa:['BR','AR','CO','PE','VE','CL','EC','BO','PY','UY','GY','SR','GF'],
+    eu:['GB','FR','DE','IT','ES','PT','NL','BE','AT','CH','SE','NO','FI','DK','IE','PL','CZ','SK','HU','RO','BG','GR','HR','RS','BA','SI','AL','MK','ME','XK','EE','LV','LT','IS','LU','MT','CY','MD','UA','BY'],
+    af:['ZA','EG','NG','KE','ET','TZ','GH','MA','TN','DZ','SN','CI','CM','AO','MZ','MG','ZW','UG','RW','BW','NA','ML','BF','NE','TD','SD','SS','LY','SO','ER','DJ','MW','ZM','SL','LR','CF','CG','CD','GA','GQ','BJ','TG','GM','GN','GW','MR','LS','SZ'],
+    as:['CN','JP','KR','IN','ID','TH','VN','MY','PH','SG','MM','KH','LA','BD','LK','PK','AF','IR','IQ','SA','AE','IL','JO','LB','SY','TR','GE','AM','AZ','KZ','UZ','TM','KG','TJ','MN','NP','BT','TW','BN','TL','KW','QA','BH','OM','YE'],
+    oc:['AU','NZ','PG','FJ','SB','VU','WS','TO','FM','KI','MH','PW','NR','TV']
+  };
+
+  function getCountryName(code){const el=mapSvg.querySelector('#'+code);return el?el.getAttribute('title'):code;}
+  function getContinentsVisited(){const s=new Set();Object.entries(continentMap).forEach(([cont,codes])=>{if(mapVisited.some(v=>codes.includes(v)))s.add(cont);});return s.size;}
+
+  function renderMapFull(){
+    mapSvg.querySelectorAll('path').forEach(p=>p.classList.remove('visited'));
+    mapVisited.forEach(code=>{const p=mapSvg.querySelector('#'+code.toUpperCase());if(p)p.classList.add('visited');});
+    const count=mapVisited.length;
+    const conts=getContinentsVisited();
+    document.getElementById('total-count').textContent=count;
+    document.getElementById('continent-count').textContent=conts;
+    const pct=Math.min(Math.round(count/30*100),100);
+    document.getElementById('goal-fill').style.width=pct+'%';
+    document.getElementById('goal-text').textContent=pct>=100?'Goal reached! \u{1F389}':pct+'% complete';
+    // Tags
+    const tagsDiv=document.getElementById('visited-tags');
+    const inner=document.getElementById('visited-tags-inner');
+    if(count>0){
+      tagsDiv.style.display='block';
+      inner.innerHTML=mapVisited.map(c=>`<span class="dv-visited-tag" onclick="dvRemoveCountry('${c}')" title="Click to remove">${getCountryName(c)}</span>`).join('');
+    }else{tagsDiv.style.display='none';}
+    // Share text
+    const names=mapVisited.slice(0,10).map(c=>getCountryName(c)).join(', ');
+    const extra=count>10?` and ${count-10} more`:'';
+    document.getElementById('dv-map-share-text').textContent=`I've visited ${count} countries across ${conts} continent${conts!==1?'s':''}! \u{1F30D}\n\n${names}${extra}\n\nTrack your travels at dreamvacati.com\n\n#TravelMap #Wanderlust #DreamVacati`;
+  }
+
+  function dvRemoveCountry(code){
+    mapVisited=mapVisited.filter(c=>c!==code);
+    try{localStorage.setItem(MAP_KEY,JSON.stringify(mapVisited));}catch(e){}
+    renderMapFull();
+  }
+  function dvClearMap(){
+    if(!confirm('Clear all visited countries?'))return;
+    mapVisited=[];
+    try{localStorage.setItem(MAP_KEY,JSON.stringify(mapVisited));}catch(e){}
+    renderMapFull();
+  }
+  function dvAddContinent(cont){
+    const codes=continentMap[cont]||[];
+    codes.forEach(c=>{if(!mapVisited.includes(c))mapVisited.push(c);});
+    try{localStorage.setItem(MAP_KEY,JSON.stringify(mapVisited));}catch(e){}
+    renderMapFull();
+  }
+
+  // Form submit
+  const mapForm=document.getElementById('add-country-form');
+  const mapInput=document.getElementById('country-input');
+  const mapErr=document.getElementById('error-msg');
+  if(mapForm){
+    mapForm.addEventListener('submit',e=>{
+      e.preventDefault();mapErr.textContent='';
+      const name=mapInput.value.trim();if(!name)return;
+      const match=Array.from(mapSvg.querySelectorAll('path')).find(p=>p.getAttribute('title')?.toLowerCase().includes(name.toLowerCase()));
+      if(!match){mapErr.textContent='Country not found. Try the full name.';}
+      else if(mapVisited.includes(match.id)){mapErr.textContent='Already added!';}
+      else{mapVisited.push(match.id);try{localStorage.setItem(MAP_KEY,JSON.stringify(mapVisited));}catch(e){}renderMapFull();mapInput.value='';}
+    });
+  }
+
+  // Tooltip on hover
+  if(mapSvg){
+    mapSvg.addEventListener('mouseover',e=>{
+      if(e.target.tagName==='path'){const name=e.target.getAttribute('title');const v=mapVisited.includes(e.target.id)?' \u2705':'';tooltip.textContent=name+v;}
+    });
+    mapSvg.addEventListener('mouseout',()=>{tooltip.textContent='Hover over a country';});
+  }
+
+  // Zoom + Pan
+  if(mapSvg){
+    const zoomF=1.25;
+    let vb=mapSvg.getAttribute('viewBox').split(' ').map(Number);
+    const origVB=[...vb];
+    function setVB(){mapSvg.setAttribute('viewBox',vb.join(' '));}
+    document.getElementById('zoom-in').addEventListener('click',()=>{let[x,y,w,h]=vb;const nw=w/zoomF,nh=h/zoomF;vb=[x+(w-nw)/2,y+(h-nh)/2,nw,nh];setVB();});
+    document.getElementById('zoom-out').addEventListener('click',()=>{let[x,y,w,h]=vb;const nw=w*zoomF,nh=h*zoomF;vb=[x-(nw-w)/2,y-(nh-h)/2,nw,nh];setVB();});
+    document.getElementById('zoom-reset').addEventListener('click',()=>{vb=[...origVB];setVB();});
+
+    let isDrag=false,hasMoved=false,startPt={x:0,y:0},startVB=[...vb];
+    mapSvg.addEventListener('pointerdown',ev=>{isDrag=true;hasMoved=false;startPt={x:ev.clientX,y:ev.clientY};startVB=[...vb];mapSvg.classList.add('dragging');mapSvg.setPointerCapture(ev.pointerId);});
+    mapSvg.addEventListener('pointermove',ev=>{if(!isDrag)return;hasMoved=true;const r=mapSvg.getBoundingClientRect();vb[0]=startVB[0]+(startPt.x-ev.clientX)*(vb[2]/r.width);vb[1]=startVB[1]+(startPt.y-ev.clientY)*(vb[3]/r.height);setVB();});
+    mapSvg.addEventListener('pointerup',ev=>{mapSvg.releasePointerCapture(ev.pointerId);mapSvg.classList.remove('dragging');isDrag=false;
+      if(!hasMoved&&ev.target.tagName==='path'){const code=ev.target.id;const idx=mapVisited.indexOf(code);if(idx>=0)mapVisited.splice(idx,1);else mapVisited.push(code);try{localStorage.setItem(MAP_KEY,JSON.stringify(mapVisited));}catch(e){}renderMapFull();}
+    });
+    mapSvg.addEventListener('pointerleave',()=>{if(isDrag){isDrag=false;mapSvg.classList.remove('dragging');}});
+  }
+  renderMapFull();
+  </script>
+
+  <!-- Expedia Widgets -->
+  <script class="eg-widgets-script" src="https://affiliates.expediagroup.com/products/widgets/assets/eg-widgets.js" defer></script>
 </body>
 </html>
