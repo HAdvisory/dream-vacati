@@ -120,6 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ─── 5) Travel Map + Zoom/Pan + Tap-to-Toggle ─────────────
+  // Skip if upgraded inline map script already loaded
+  if (!window.__dvMapUpgraded) {
   const STORAGE_KEY = 'visitedCountries';
   const form = document.getElementById('add-country-form');
   const input = document.getElementById('country-input');
@@ -225,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderMap();
   }
+  } // end __dvMapUpgraded check
 });
 
 // ─── Email Signup Handler (global) ──────────────────────────

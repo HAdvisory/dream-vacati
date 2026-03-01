@@ -107,14 +107,31 @@
       </div>
 
       <div class="row g-4">
-        <!-- Blog Card: Starbucks -->
-        <div class="col-md-4">
-          <a href="blog-starbucks.html" class="text-decoration-none text-reset">
+        <!-- Blog Card: Budget Planning (NEW — Featured) -->
+        <div class="col-md-6">
+          <a href="blog-budget-planning.html" class="text-decoration-none text-reset">
+            <article class="card h-100 shadow-sm border-0 dv-blog-card" style="border-left:4px solid var(--sea, #0b95a5) !important">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex gap-2 mb-2">
+                  <span class="badge bg-primary align-self-start">NEW</span>
+                  <span class="badge bg-dark align-self-start">Budget &amp; Planning</span>
+                </div>
+                <h3 class="h5 card-title">How to Budget a Vacation in 2026: The 40/25/20/15 Rule That Actually Works</h3>
+                <p class="card-text text-muted flex-grow-1">The budget framework that prevents overspending. Real cost breakdowns for Caribbean, Europe, and road trips &mdash; plus links to our free calculator, packing checklists, and pet cost estimator.</p>
+                <span class="btn btn-sm btn-outline-primary mt-2 align-self-start">Read the guide &rarr;</span>
+              </div>
+            </article>
+          </a>
+        </div>
+
+        <!-- Blog Card: Elmo Pet Travel -->
+        <div class="col-md-6">
+          <a href="blog-elmo.html" class="text-decoration-none text-reset">
             <article class="card h-100 shadow-sm border-0 dv-blog-card">
               <div class="card-body d-flex flex-column">
-                <span class="badge bg-info text-dark mb-2 align-self-start">Lifestyle</span>
-                <h3 class="h5 card-title">Starbucks Rewards Abroad: Which Countries Work & Global Sips Guide</h3>
-                <p class="card-text text-muted flex-grow-1">Where Rewards work (and don't), how to grab deals abroad, and 5 postcard-worthy Starbucks stops around the world.</p>
+                <span class="badge bg-warning text-dark mb-2 align-self-start">Pet Travel</span>
+                <h3 class="h5 card-title">Flying with Your Dog to Europe 2026: Costs, Airline Rules & Complete Checklist</h3>
+                <p class="card-text text-muted flex-grow-1">Months of planning, paperwork, and tail wags. Everything it takes to fly your dog across the Atlantic.</p>
                 <span class="btn btn-sm btn-outline-primary mt-2 align-self-start">Read the post &rarr;</span>
               </div>
             </article>
@@ -122,27 +139,27 @@
         </div>
 
         <!-- Blog Card: Caribbean Family -->
-        <div class="col-md-4">
+        <div class="col-md-6">
           <a href="blog-caribbean-family.html" class="text-decoration-none text-reset">
             <article class="card h-100 shadow-sm border-0 dv-blog-card">
               <div class="card-body d-flex flex-column">
                 <span class="badge bg-success mb-2 align-self-start">Family Travel</span>
                 <h3 class="h5 card-title">Best Caribbean Family Resorts 2026: Kid-Approved Escapes with Nanny Services</h3>
-                <p class="card-text text-muted flex-grow-1">Top 5 all-inclusive resorts with kid clubs, nanny services, and space for parents to breathe — with real pricing.</p>
+                <p class="card-text text-muted flex-grow-1">Top 5 all-inclusive resorts with kid clubs, nanny services, and space for parents to breathe &mdash; with real pricing.</p>
                 <span class="btn btn-sm btn-outline-primary mt-2 align-self-start">Read the post &rarr;</span>
               </div>
             </article>
           </a>
         </div>
 
-        <!-- Blog Card: Elmo Pet Travel -->
-        <div class="col-md-4">
-          <a href="blog-elmo.html" class="text-decoration-none text-reset">
+        <!-- Blog Card: Starbucks -->
+        <div class="col-md-6">
+          <a href="blog-starbucks.html" class="text-decoration-none text-reset">
             <article class="card h-100 shadow-sm border-0 dv-blog-card">
               <div class="card-body d-flex flex-column">
-                <span class="badge bg-warning text-dark mb-2 align-self-start">Pet Travel</span>
-                <h3 class="h5 card-title">Flying with Your Dog to Europe 2026: Costs, Airline Rules & Complete Checklist</h3>
-                <p class="card-text text-muted flex-grow-1">Months of planning, paperwork, and tail wags. Everything it takes to fly your dog across the Atlantic.</p>
+                <span class="badge bg-info text-dark mb-2 align-self-start">Lifestyle</span>
+                <h3 class="h5 card-title">Starbucks Rewards Abroad: Which Countries Work & Global Sips Guide</h3>
+                <p class="card-text text-muted flex-grow-1">Where Rewards work (and don't), how to grab deals abroad, and 5 postcard-worthy Starbucks stops around the world.</p>
                 <span class="btn btn-sm btn-outline-primary mt-2 align-self-start">Read the post &rarr;</span>
               </div>
             </article>
@@ -248,7 +265,7 @@
       <!-- ══════════════════════════════════════════ -->
       <div class="dv-tool-card" id="tool-budget">
         <h3>&#128200; Travel Budget Calculator</h3>
-        <p class="text-muted small mb-3">Use the 40/25/20/15 rule to allocate your vacation budget. Adjust sliders and share your plan.</p>
+        <p class="text-muted small mb-3">Use the 40/25/20/15 rule to allocate your vacation budget. Adjust sliders and share your plan. <a href="blog-budget-planning.html" style="color:var(--sea,#0b95a5)">Read the full guide &rarr;</a></p>
         <div class="dv-form-row" style="max-width:400px">
           <div><label for="dv-b-total">Total Budget ($)</label><input type="number" id="dv-b-total" value="3000" min="100" step="100"></div>
           <div><label for="dv-b-travelers">Travelers</label><input type="number" id="dv-b-travelers" value="2" min="1" max="20"></div>
@@ -319,7 +336,7 @@ Try the free budget calculator at dreamvacati.com/tools</div>
       <!-- ══════════════════════════════════════════ -->
       <div class="dv-tool-card" id="tool-petcost">
         <h3>&#128054; Pet Travel Cost Estimator</h3>
-        <p class="text-muted small mb-3">Flying your dog or cat internationally? Estimate your total cost based on pet size, destination, and airline type.</p>
+        <p class="text-muted small mb-3">Flying your dog or cat internationally? Estimate your total cost based on pet size, destination, and airline type. Ranges verified against 2025&ndash;2026 airline policies and USDA/APHIS fee schedules. See our <a href="blog-elmo.html" style="color:var(--sea,#0b95a5)">full pet travel guide</a> and <a href="blog-budget-planning.html" style="color:var(--sea,#0b95a5)">vacation budget breakdown</a>.</p>
         <div class="dv-form-row">
           <div><label for="dv-pet-type">Pet Type</label>
             <select id="dv-pet-type"><option value="dog-sm">&#128021; Small Dog (&lt;20 lbs)</option><option value="dog-md">&#128021; Medium Dog (20-50 lbs)</option><option value="dog-lg" selected>&#128021; Large Dog (50+ lbs)</option><option value="cat">&#128049; Cat</option></select></div>
@@ -862,6 +879,7 @@ Track your own travels with the free map at dreamvacati.com
           <h3 class="h5 mb-3">Explore</h3>
           <ul class="list-unstyled small">
             <li class="mb-2"><a href="tools.html" class="text-white-50 text-decoration-none">&#128295; Free Travel Tools</a></li>
+            <li class="mb-2"><a href="blog-budget-planning.html" class="text-white-50 text-decoration-none">How to Budget a Vacation: The 40/25/20/15 Rule</a></li>
             <li class="mb-2"><a href="blog-starbucks.html" class="text-white-50 text-decoration-none">Starbucks Rewards Abroad: Global Sips Guide</a></li>
             <li class="mb-2"><a href="blog-caribbean-family.html" class="text-white-50 text-decoration-none">Best Caribbean Family Resorts 2026</a></li>
             <li class="mb-2"><a href="blog-elmo.html" class="text-white-50 text-decoration-none">Flying with Your Dog to Europe 2026</a></li>
@@ -874,7 +892,7 @@ Track your own travels with the free map at dreamvacati.com
             <input type="email" class="form-control form-control-sm" placeholder="you@email.com" required>
             <button type="submit" class="btn btn-primary btn-sm">Join</button>
           </form>
-          <p class="small text-white-50 mt-3">Contact: <a href="mailto:dreamvacai@gmail.com" class="text-white-50">dreamvacai@gmail.com</a></p>
+          <p class="small text-white-50 mt-3">Contact: <a href="/cdn-cgi/l/email-protection#583c2a3d39352e393b3931183f35393134763b3735" class="text-white-50"><span class="__cf_email__" data-cfemail="2d495f484c405b4c4e4c446d4a404c4441034e4240">[email&#160;protected]</span></a></p>
         </div>
       </div>
       <hr class="border-secondary mt-4 mb-3">
@@ -884,7 +902,7 @@ Track your own travels with the free map at dreamvacati.com
 
 
   <!-- Adsense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8978658918402683" crossorigin="anonymous"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8978658918402683" crossorigin="anonymous"></script>
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978658918402683" data-ad-slot="8572655744" data-ad-format="auto" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
@@ -971,12 +989,14 @@ Track your own travels with the free map at dreamvacati.com
     const costs={
       microchip:{low:45,high:75,label:'Microchip (ISO 11784/11785)',icon:'\u{1F489}',bg:'#e0f5f7'},
       rabies:{low:25,high:50,label:'Rabies Vaccine',icon:'\u{1F48A}',bg:'#fff3ed'},
-      healthcert:{low:100,high:250,label:dest==='eu'?'EU Health Certificate + USDA':'Health Certificate',icon:'\u{1F4C4}',bg:'#fdf6e9'},
-      crate:{low:isLg?150:isCat?50:75,high:isLg?350:isCat?100:150,label:'IATA-Approved Carrier/Crate',icon:'\u{1F4E6}',bg:'#e0f5f7'},
-      airline:{low:cabin==='cabin'?100:200,high:cabin==='cabin'?250:500,label:`Airline Fee (${cabin==='cabin'?'In-Cabin':'Cargo'})`,icon:'\u2708\uFE0F',bg:'#fff3ed'},
-      extras:{low:40,high:100,label:'Calming spray, bedding, water dispenser',icon:'\u{1F9F4}',bg:'#fdf6e9'}
+      healthcert:{low:200,high:500,label:dest==='eu'?'EU Health Certificate + USDA Endorsement':'Health Certificate + USDA Endorsement',icon:'\u{1F4C4}',bg:'#fdf6e9'},
+      crate:{low:isLg?200:isCat?50:75,high:isLg?500:isCat?120:180,label:'IATA-Approved Carrier/Crate',icon:'\u{1F4E6}',bg:'#e0f5f7'},
+      airline:{low:cabin==='cabin'?125:275,high:cabin==='cabin'?300:1000,label:`Airline Fee (${cabin==='cabin'?'In-Cabin':'Cargo'})`,icon:'\u2708\uFE0F',bg:'#fff3ed'},
+      shipping:{low:60,high:120,label:'FedEx Overnight (USDA cert shipping)',icon:'\u{1F4EC}',bg:'#fdf6e9'},
+      extras:{low:40,high:100,label:'Calming spray, bedding, water dispenser',icon:'\u{1F9F4}',bg:'#e0f5f7'}
     };
-    if(dest==='eu'||dest==='uk')costs.tapeworm={low:20,high:50,label:'Tapeworm Treatment (EU/UK req)',icon:'\u{1F48A}',bg:'#e0f5f7'};
+    if(dest==='eu'||dest==='uk'){costs.tapeworm={low:20,high:50,label:'Tapeworm Treatment (EU/UK req)',icon:'\u{1F48A}',bg:'#fff3ed'};costs.titer={low:200,high:300,label:'Rabies Titer Test (EU may require)',icon:'\u{1F9EA}',bg:'#fdf6e9'};}
+    costs.insurance={low:30,high:100,label:'Pet Travel Insurance (recommended)',icon:'\u{1F6E1}',bg:'#e0f5f7'};
     let tL=0,tH=0,rows='';
     Object.values(costs).forEach(co=>{tL+=co.low;tH+=co.high;rows+=`<div class="dv-cost-row"><div><span class="dv-cost-icon" style="background:${co.bg}">${co.icon}</span>${co.label}</div><span style="font-weight:700;font-size:1.05rem">$${co.low}\u2013$${co.high}</span></div>`;});
     const tips={eu:'Microchip must come BEFORE rabies vaccine (EU law). After rabies shot, wait 21 days before traveling.',uk:'UK requires tapeworm treatment 1-5 days before entry. No longer part of EU pet passport system.',ca:'Canada requires current rabies vaccination certificate. No quarantine for dogs from the US.',mx:'Mexico requires health certificate issued within 72 hours of travel. Simpler than EU.',other:'Requirements vary widely. Start 3+ months early and contact your destination embassy.'};
@@ -1002,6 +1022,7 @@ Track your own travels with the free map at dreamvacati.com
   function dvCopy(id,btn){const t=document.getElementById(id).textContent;navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent='\u2713 Copied!';setTimeout(()=>btn.textContent=o,2000);});}
 
   // === ENHANCED TRAVEL MAP ===
+  window.__dvMapUpgraded = true; // Flag to prevent main.js duplicate handlers
   const MAP_KEY='visitedCountries';
   const mapSvg=document.getElementById('world-map');
   const tooltip=document.getElementById('map-tooltip');
@@ -1096,8 +1117,9 @@ Track your own travels with the free map at dreamvacati.com
     document.getElementById('zoom-reset').addEventListener('click',()=>{vb=[...origVB];setVB();});
 
     let isDrag=false,hasMoved=false,startPt={x:0,y:0},startVB=[...vb];
+    const DRAG_THRESHOLD=5; // pixels of movement before it counts as a drag, not a click
     mapSvg.addEventListener('pointerdown',ev=>{isDrag=true;hasMoved=false;startPt={x:ev.clientX,y:ev.clientY};startVB=[...vb];mapSvg.classList.add('dragging');mapSvg.setPointerCapture(ev.pointerId);});
-    mapSvg.addEventListener('pointermove',ev=>{if(!isDrag)return;hasMoved=true;const r=mapSvg.getBoundingClientRect();vb[0]=startVB[0]+(startPt.x-ev.clientX)*(vb[2]/r.width);vb[1]=startVB[1]+(startPt.y-ev.clientY)*(vb[3]/r.height);setVB();});
+    mapSvg.addEventListener('pointermove',ev=>{if(!isDrag)return;const dx=ev.clientX-startPt.x,dy=ev.clientY-startPt.y;if(!hasMoved&&Math.abs(dx)<DRAG_THRESHOLD&&Math.abs(dy)<DRAG_THRESHOLD)return;hasMoved=true;const r=mapSvg.getBoundingClientRect();vb[0]=startVB[0]+(startPt.x-ev.clientX)*(vb[2]/r.width);vb[1]=startVB[1]+(startPt.y-ev.clientY)*(vb[3]/r.height);setVB();});
     mapSvg.addEventListener('pointerup',ev=>{mapSvg.releasePointerCapture(ev.pointerId);mapSvg.classList.remove('dragging');isDrag=false;
       if(!hasMoved&&ev.target.tagName==='path'){const code=ev.target.id;const idx=mapVisited.indexOf(code);if(idx>=0)mapVisited.splice(idx,1);else mapVisited.push(code);try{localStorage.setItem(MAP_KEY,JSON.stringify(mapVisited));}catch(e){}renderMapFull();}
     });
