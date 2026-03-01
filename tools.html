@@ -9,6 +9,7 @@
 <meta property="og:description" content="Budget calculator, packing checklist, pet travel costs & more. Plan your trip for free.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dreamvacati.com/tools">
+  <meta property="og:image" content="https://dreamvacati.com/og-default.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Free Travel Planning Tools — DreamVacati">
 <meta name="twitter:description" content="Budget calculator, packing checklist, pet travel costs & more.">
@@ -149,6 +150,13 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;hei
 .tools-footer{background:var(--dark);color:rgba(255,255,255,.6);text-align:center;padding:24px;font-size:.85rem}
 .tools-footer a{color:var(--teal);text-decoration:none}
 </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-44K7KCF676"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-44K7KCF676');</script>
+  <!-- Meta Pixel -->
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','466481928545738');fbq('track','PageView');</script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=466481928545738&ev=PageView&noscript=1"/></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -413,11 +421,11 @@ Try the free budget calculator at dreamvacati.com</div>
 
 <footer class="tools-footer">
   <p>© 2026 <a href="index.html">DreamVacati</a> — Free travel planning tools. No signup required.</p>
-  <p style="margin-top:8px"><a href="privacy.html" style="color:var(--teal)">Privacy Policy</a> · Contact: <a href="mailto:dreamvacai@gmail.com" style="color:var(--teal)">dreamvacai@gmail.com</a></p>
+  <p style="margin-top:8px"><a href="privacy.html" style="color:var(--teal)">Privacy Policy</a> · Contact: <a href="/cdn-cgi/l/email-protection#284c5a4d49455e494b4941684f45494144064b4745" style="color:var(--teal)"><span class="__cf_email__" data-cfemail="63071106020e150200020a23040e020a0f4d000c0e">[email&#160;protected]</span></a></p>
 </footer>
 
 <!-- JSON-LD for SEO -->
-<script type="application/ld+json">
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"WebApplication",
@@ -567,10 +575,22 @@ function updatePackCount(cb){
 function printChecklist(){
   const el = document.getElementById('pack-results');
   const w = window.open('','','width=700,height=900');
-  w.document.write('<html><head><title>DreamVacati Packing Checklist</title><style>body{font-family:sans-serif;padding:20px}h4{margin-top:20px;color:#0b95a5}.pack-item{padding:6px 0;border-bottom:1px solid #eee}.pack-item input{margin-right:8px}</style></head><body>');
+  w.document.write('<html><head><title>DreamVacati Packing Checklist</title><style>body{font-family:sans-serif;padding:20px}h4{margin-top:20px;color:#0b95a5}.pack-item{padding:6px 0;border-bottom:1px solid #eee}.pack-item input{margin-right:8px}</style>  
+  
+</head><body>');
   w.document.write('<h2>DreamVacati Packing Checklist</h2>');
   w.document.write(el.innerHTML);
-  w.document.write('</body></html>');
+  w.document.write('      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8978658918402683" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978658918402683" data-ad-slot="8572655744" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <footer class="dv-footer bg-dark text-white py-4">
+    <div class="container text-center">
+      <p class="small text-white-50 mb-1">DreamVacati &mdash; Travel Blogs, Planning Tools &amp; Vacation Inspiration</p>
+      <p class="small text-white-50 mb-0">&copy; 2026 DreamVacati. <a href="privacy.html" class="text-white-50">Privacy Policy</a> | Contact: <a href="mailto:dreamvacai@gmail.com" class="text-white-50">dreamvacai@gmail.com</a></p>
+    </div>
+  </footer>
+</body></html>');
   w.document.close();
   w.print();
 }
@@ -751,12 +771,4 @@ const observer = new IntersectionObserver(entries=>{
   entries.forEach(en=>{
     if(en.isIntersecting){
       document.querySelectorAll('.tool-link').forEach(l=>l.classList.remove('active'));
-      const link = document.querySelector(`.tool-link[href="#${en.target.id}"]`);
-      if(link) link.classList.add('active');
-    }
-  });
-},{threshold:.3});
-document.querySelectorAll('.tool-section').forEach(s=>observer.observe(s));
-</script>
-</body>
-</html>
+      const lin
