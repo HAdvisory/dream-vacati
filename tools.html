@@ -3,772 +3,239 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Free travel planning tools — budget calculator, packing checklist generator, pet travel cost estimator, and itinerary builder. Plan your perfect trip at DreamVacati.">
-<meta name="keywords" content="travel budget calculator, packing checklist generator, pet travel cost, travel planning tools, free trip planner, vacation budget, travel checklist">
-<meta property="og:title" content="Free Travel Planning Tools — DreamVacati">
-<meta property="og:description" content="Budget calculator, packing checklist, pet travel costs & more. Plan your trip for free.">
+<title>Free Travel Planning Tools - DreamVacati</title>
+<meta name="description" content="Free travel planning tools: budget calculator with the 40/25/20/15 rule, packing checklist generator, pet travel cost estimator, and drag-and-drop itinerary builder. No signup required.">
+<meta name="keywords" content="travel budget calculator, packing checklist generator, pet travel cost estimator, travel planning tools, free trip planner, vacation budget, travel checklist, itinerary builder">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dreamvacati.com/tools.html">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://dreamvacati.com/tools">
-  <meta property="og:image" content="https://dreamvacati.com/og-default.jpg">
+<meta property="og:title" content="Free Travel Planning Tools - DreamVacati">
+<meta property="og:description" content="Budget calculator, packing checklist, pet travel cost estimator and itinerary builder. Plan your trip for free.">
+<meta property="og:url" content="https://dreamvacati.com/tools.html">
+<meta property="og:site_name" content="DreamVacati">
+<meta property="og:image" content="https://dreamvacati.com/og-default.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free Travel Planning Tools — DreamVacati">
-<meta name="twitter:description" content="Budget calculator, packing checklist, pet travel costs & more.">
-<title>Free Travel Planning Tools — DreamVacati</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<meta name="twitter:title" content="Free Travel Planning Tools - DreamVacati">
+<meta name="twitter:description" content="Budget calculator, packing checklist, pet travel costs and itinerary builder. Free, instant, shareable.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="main.css?v=2">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-44K7KCF676"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-44K7KCF676');</script>
+
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','466481928545738');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=466481928545738&ev=PageView&noscript=1"/></noscript>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Free Travel Planning Tools","description":"Budget calculator, packing checklist generator, pet travel cost estimator, and itinerary builder.","url":"https://dreamvacati.com/tools.html","publisher":{"@type":"Organization","name":"DreamVacati"},"mainEntity":[
+{"@type":"SoftwareApplication","name":"Travel Budget Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
+{"@type":"SoftwareApplication","name":"Packing Checklist Generator","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
+{"@type":"SoftwareApplication","name":"Pet Travel Cost Estimator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
+{"@type":"SoftwareApplication","name":"Trip Itinerary Builder","applicationCategory":"TravelApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+]}
+</script>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --teal:#0b95a5;--teal-dark:#087e8b;--teal-light:#e0f5f7;
-  --coral:#e8590c;--coral-light:#fff3ed;
-  --sand:#f4c27a;--sand-light:#fdf6e9;
-  --dark:#1a1b2e;--gray:#64748b;--light:#f8fafc;
-  --white:#fff;--shadow:0 4px 24px rgba(0,0,0,.08);
-  --radius:16px;
-}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--light);color:var(--dark);line-height:1.6}
+  .tools-hero {
+    background: linear-gradient(135deg, #087e8b, #0b95a5, #34c0c3);
+    padding: 60px 20px 50px;
+    text-align: center;
+    color: #fff;
+  }
+  .tools-hero h1 { font-weight: 700; margin-bottom: .5rem; }
+  .tools-hero p { opacity: .9; max-width: 600px; margin: 0 auto; }
 
-/* NAV */
-.tools-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;padding:12px 0}
-.tools-nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:24px;overflow-x:auto;scrollbar-width:none}
-.tools-nav-inner::-webkit-scrollbar{display:none}
-.tools-nav .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:var(--teal);text-decoration:none;white-space:nowrap}
-.tools-nav a.tool-link{font-size:.85rem;font-weight:500;color:var(--gray);text-decoration:none;white-space:nowrap;padding:6px 14px;border-radius:20px;transition:all .2s}
-.tools-nav a.tool-link:hover,.tools-nav a.tool-link.active{background:var(--teal);color:var(--white)}
+  .tool-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,.08);
+    transition: transform .2s, box-shadow .2s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,.14);
+  }
+  .tool-icon {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  .tool-card h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; }
+  .tool-card .tool-desc { color: #64748b; font-size: .92rem; flex-grow: 1; }
+  .tool-card .tool-features { list-style: none; padding: 0; margin: .75rem 0 1.25rem; }
+  .tool-card .tool-features li {
+    font-size: .85rem; color: #475569;
+    padding: 4px 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .tool-card .tool-features li:last-child { border-bottom: none; }
+  .tool-card .tool-features li::before { content: "\2713  "; color: #0b95a5; font-weight: 700; }
 
-/* HERO */
-.tools-hero{background:linear-gradient(135deg,var(--teal-dark),var(--teal),#34c0c3);padding:60px 20px;text-align:center;color:var(--white)}
-.tools-hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3.2rem);margin-bottom:12px}
-.tools-hero p{font-size:1.1rem;opacity:.9;max-width:600px;margin:0 auto}
+  .tool-cta {
+    display: inline-block;
+    background: #0b95a5;
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .92rem;
+    transition: background .2s;
+    text-align: center;
+  }
+  .tool-cta:hover { background: #087e8b; color: #fff; }
 
-/* SECTION */
-.tool-section{max-width:1100px;margin:0 auto;padding:60px 20px}
-.tool-section:nth-child(even){background:var(--white)}
-.section-badge{display:inline-block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:6px 14px;border-radius:20px;margin-bottom:16px}
-.badge-teal{background:var(--teal-light);color:var(--teal-dark)}
-.badge-coral{background:var(--coral-light);color:var(--coral)}
-.badge-sand{background:var(--sand-light);color:#b8860b}
-.tool-section h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:8px}
-.tool-section .subtitle{color:var(--gray);margin-bottom:32px;font-size:1rem}
-
-/* CARDS */
-.tool-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:32px;margin-bottom:24px;border:1px solid #e2e8f0;transition:transform .2s,box-shadow .2s}
-.tool-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.12)}
-
-/* FORMS */
-.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:20px}
-label{font-weight:500;font-size:.9rem;display:block;margin-bottom:6px;color:var(--dark)}
-select,input[type="number"],input[type="text"]{width:100%;padding:12px 16px;border:2px solid #e2e8f0;border-radius:12px;font-size:1rem;font-family:inherit;transition:border-color .2s;background:var(--white)}
-select:focus,input:focus{outline:none;border-color:var(--teal)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border:none;border-radius:12px;font-size:1rem;font-weight:600;font-family:inherit;cursor:pointer;transition:all .2s}
-.btn-primary{background:var(--teal);color:var(--white)}
-.btn-primary:hover{background:var(--teal-dark);transform:translateY(-1px)}
-.btn-coral{background:var(--coral);color:var(--white)}
-.btn-coral:hover{background:#c7480a}
-.btn-outline{background:transparent;border:2px solid var(--teal);color:var(--teal)}
-.btn-outline:hover{background:var(--teal);color:var(--white)}
-.btn-x{background:#000;color:#fff;font-size:.85rem;padding:10px 18px;border-radius:10px}
-.btn-x:hover{background:#333}
-.btn-x svg{width:16px;height:16px;fill:#fff}
-
-/* BUDGET VISUAL */
-.budget-bar{height:40px;border-radius:12px;overflow:hidden;display:flex;margin:16px 0;background:#e2e8f0}
-.budget-bar div{display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;transition:width .4s ease}
-.bar-accom{background:var(--teal)}
-.bar-food{background:var(--coral)}
-.bar-activities{background:var(--sand);color:var(--dark)}
-.bar-buffer{background:#a78bfa}
-.budget-legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px}
-.legend-item{display:flex;align-items:center;gap:6px;font-size:.85rem}
-.legend-dot{width:12px;height:12px;border-radius:50%}
-
-/* SLIDER */
-.range-group{margin-bottom:20px}
-.range-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.range-value{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--teal)}
-input[type="range"]{-webkit-appearance:none;width:100%;height:8px;border-radius:4px;background:#e2e8f0;outline:none;border:none;padding:0}
-input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--teal);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-
-/* PACKING */
-.pack-results{margin-top:24px}
-.pack-category{margin-bottom:20px}
-.pack-category h4{font-size:.9rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid var(--teal-light)}
-.pack-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f1f5f9;font-size:.95rem}
-.pack-item input[type="checkbox"]{width:20px;height:20px;accent-color:var(--teal);cursor:pointer;flex-shrink:0}
-.pack-item.checked span{text-decoration:line-through;color:var(--gray)}
-.pack-progress{margin-top:16px;padding:16px;background:var(--teal-light);border-radius:12px;text-align:center}
-.pack-progress .count{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--teal)}
-
-/* PET COST ESTIMATOR */
-.cost-breakdown{margin-top:24px}
-.cost-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #f1f5f9}
-.cost-row:last-child{border-bottom:none}
-.cost-label{display:flex;align-items:center;gap:10px}
-.cost-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
-.cost-range{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--dark)}
-.cost-total{margin-top:20px;padding:20px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:var(--radius);color:var(--white);display:flex;justify-content:space-between;align-items:center}
-.cost-total .total-label{font-size:1rem;opacity:.9}
-.cost-total .total-amount{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700}
-.cost-tip{margin-top:16px;padding:16px;background:var(--sand-light);border-radius:12px;border-left:4px solid var(--sand)}
-.cost-tip strong{color:#b8860b}
-
-/* ITINERARY */
-.day-column{background:var(--light);border-radius:12px;padding:20px;min-height:200px;border:2px dashed #cbd5e1;transition:border-color .2s}
-.day-column.drag-over{border-color:var(--teal);background:var(--teal-light)}
-.activity-chip{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:var(--white);border-radius:10px;margin:4px;cursor:grab;border:1px solid #e2e8f0;font-size:.9rem;transition:all .15s;user-select:none}
-.activity-chip:active{cursor:grabbing;transform:scale(.95)}
-.activity-chip .remove{cursor:pointer;color:var(--gray);font-weight:700;margin-left:4px}
-.activity-chip .remove:hover{color:var(--coral)}
-.scheduled-item{padding:12px 16px;background:var(--white);border-radius:10px;margin-bottom:8px;border-left:4px solid var(--teal);display:flex;justify-content:space-between;align-items:center;font-size:.9rem;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-
-/* SHARE BOX */
-.share-box{margin-top:24px;padding:20px;background:linear-gradient(135deg,#0a0a0a,#1a1a2e);border-radius:var(--radius);color:var(--white)}
-.share-box p{font-size:.9rem;opacity:.8;margin-bottom:12px}
-.share-box .share-text{font-size:.85rem;background:rgba(255,255,255,.1);padding:12px 16px;border-radius:10px;margin-bottom:12px;line-height:1.5;color:#e2e8f0}
-.share-actions{display:flex;gap:10px;flex-wrap:wrap}
-
-/* RESULTS SUMMARY */
-.results-summary{margin-top:20px;padding:20px;background:var(--teal-light);border-radius:var(--radius);border:1px solid rgba(11,149,165,.2)}
-.results-summary h4{font-family:'Space Grotesk',sans-serif;color:var(--teal-dark);margin-bottom:8px}
-
-/* RESPONSIVE */
-@media(max-width:640px){
-  .tool-card{padding:20px}
-  .form-row{grid-template-columns:1fr}
-  .cost-total{flex-direction:column;text-align:center;gap:8px}
-  .budget-legend{gap:10px}
-}
-
-/* CTA BAR */
-.cta-bar{background:linear-gradient(135deg,var(--teal-dark),var(--teal));padding:48px 20px;text-align:center;color:var(--white)}
-.cta-bar h2{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;margin-bottom:12px}
-.cta-bar p{opacity:.85;margin-bottom:24px;max-width:500px;margin-left:auto;margin-right:auto}
-.cta-bar .btn{background:var(--white);color:var(--teal-dark);font-weight:700}
-.cta-bar .btn:hover{background:var(--sand);transform:translateY(-2px)}
-
-/* FOOTER */
-.tools-footer{background:var(--dark);color:rgba(255,255,255,.6);text-align:center;padding:24px;font-size:.85rem}
-.tools-footer a{color:var(--teal);text-decoration:none}
+  .blog-links { background: #f8fafc; border-radius: 16px; padding: 2rem; }
+  .blog-links a { color: #087e8b; font-weight: 600; text-decoration: none; }
+  .blog-links a:hover { color: #0b95a5; text-decoration: underline; }
 </style>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-44K7KCF676"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-44K7KCF676');</script>
-  <!-- Meta Pixel -->
-  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','466481928545738');fbq('track','PageView');</script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=466481928545738&ev=PageView&noscript=1"/></noscript>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="tools-nav">
-  <div class="tools-nav-inner">
-    <a href="index.html" class="brand">DreamVacati</a>
-    <a href="#budget" class="tool-link">Budget Calculator</a>
-    <a href="#packing" class="tool-link">Packing Checklist</a>
-    <a href="#pet-costs" class="tool-link">Pet Travel Costs</a>
-    <a href="#itinerary" class="tool-link">Itinerary Builder</a>
-    <a href="index.html#blogs" class="tool-link" style="margin-left:auto">Blog</a>
-    <a href="book-now.html" class="tool-link">Book Now</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="tools-hero">
-  <h1>Free Travel Planning Tools</h1>
-  <p>Budget your trip, build your packing list, estimate pet travel costs, and plan your itinerary — all free, no signup required.</p>
-</section>
-
-<!-- ═══════════════════════════════════════════════ -->
-<!-- 1. BUDGET CALCULATOR -->
-<!-- ═══════════════════════════════════════════════ -->
-<section class="tool-section" id="budget">
-  <span class="section-badge badge-teal">Tool #1</span>
-  <h2>Travel Budget Calculator</h2>
-  <p class="subtitle">Use the 40/25/20/15 rule to allocate your vacation budget. Adjust the sliders and share your plan.</p>
-
-  <div class="tool-card">
-    <div class="form-row" style="grid-template-columns:1fr 1fr;max-width:500px">
-      <div>
-        <label for="b-total">Total Trip Budget</label>
-        <input type="number" id="b-total" value="3000" min="100" step="100">
-      </div>
-      <div>
-        <label for="b-travelers">Travelers</label>
-        <input type="number" id="b-travelers" value="2" min="1" max="20">
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">DreamVacati</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#blogs">Blog</a></li>
+          <li class="nav-item"><a class="nav-link active" href="tools.html">Travel Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="book-now.html">Book Now</a></li>
+        </ul>
       </div>
     </div>
+  </nav>
 
-    <!-- Visual bar -->
-    <div class="budget-bar" id="budget-bar">
-      <div class="bar-accom" style="width:40%">40%</div>
-      <div class="bar-food" style="width:25%">25%</div>
-      <div class="bar-activities" style="width:20%">20%</div>
-      <div class="bar-buffer" style="width:15%">15%</div>
-    </div>
-    <div class="budget-legend">
-      <div class="legend-item"><span class="legend-dot" style="background:var(--teal)"></span>Accommodation</div>
-      <div class="legend-item"><span class="legend-dot" style="background:var(--coral)"></span>Food & Drink</div>
-      <div class="legend-item"><span class="legend-dot" style="background:var(--sand)"></span>Activities</div>
-      <div class="legend-item"><span class="legend-dot" style="background:#a78bfa"></span>Buffer</div>
-    </div>
+  <!-- Hero -->
+  <header class="tools-hero">
+    <h1 class="display-6">Free Travel Planning Tools</h1>
+    <p>Budget smarter, pack better, plan faster. No signup, no email required. Just open and use.</p>
+  </header>
 
-    <!-- Sliders -->
-    <div style="margin-top:24px">
-      <div class="range-group">
-        <div class="range-header">
-          <label>🏨 Accommodation</label>
-          <span class="range-value" id="rv-accom">$1,200</span>
+  <!-- Main Content -->
+  <main class="container py-5">
+
+    <!-- 4 Tool Cards in 2x2 Grid -->
+    <div class="row g-4 mb-5">
+
+      <!-- Budget Calculator -->
+      <div class="col-md-6">
+        <div class="tool-card">
+          <div class="tool-icon" style="background:#e0f5f7">&#128200;</div>
+          <h2>Vacation Budget Calculator</h2>
+          <p class="tool-desc">Split your total budget using the 40/25/20/15 rule &mdash; accommodation, food, activities, and emergency buffer. See a live visual bar chart and per-person breakdown.</p>
+          <ul class="tool-features">
+            <li>Adjustable percentage sliders</li>
+            <li>Per-person cost calculation</li>
+            <li>Visual budget bar chart</li>
+            <li>Share your plan on X</li>
+          </ul>
+          <a href="index.html#tool-budget" class="tool-cta">Open Budget Calculator &rarr;</a>
         </div>
-        <input type="range" id="rs-accom" min="0" max="100" value="40">
       </div>
-      <div class="range-group">
-        <div class="range-header">
-          <label>🍽️ Food & Drink</label>
-          <span class="range-value" id="rv-food">$750</span>
+
+      <!-- Packing Checklist -->
+      <div class="col-md-6">
+        <div class="tool-card">
+          <div class="tool-icon" style="background:#fff3ed">&#127890;</div>
+          <h2>Packing Checklist Generator</h2>
+          <p class="tool-desc">Pick your destination type, season, and trip length. Get 50&ndash;80 categorized items with checkboxes. Add international, kids, or pet items with one click.</p>
+          <ul class="tool-features">
+            <li>5 destination types (tropical, mountain, city, cold, road trip)</li>
+            <li>Season &amp; trip length filters</li>
+            <li>International / kids / pets add-ons</li>
+            <li>Live packed-item counter</li>
+          </ul>
+          <a href="index.html#tool-packing" class="tool-cta">Open Packing Checklist &rarr;</a>
         </div>
-        <input type="range" id="rs-food" min="0" max="100" value="25">
       </div>
-      <div class="range-group">
-        <div class="range-header">
-          <label>🎯 Activities & Excursions</label>
-          <span class="range-value" id="rv-act">$600</span>
+
+      <!-- Pet Travel Cost Estimator -->
+      <div class="col-md-6">
+        <div class="tool-card">
+          <div class="tool-icon" style="background:#fdf6e9">&#128054;</div>
+          <h2>Pet Travel Cost Estimator</h2>
+          <p class="tool-desc">Calculate the full cost of flying your dog or cat internationally. Itemized breakdown covering microchip, vaccines, health certificate, USDA endorsement, crate, and airline fees.</p>
+          <ul class="tool-features">
+            <li>Costs by pet size &amp; destination (EU, UK, Canada, Mexico)</li>
+            <li>Cabin vs cargo pricing</li>
+            <li>Rabies titer test &amp; shipping fees for EU</li>
+            <li>Destination-specific regulatory tips</li>
+          </ul>
+          <a href="index.html#tool-petcost" class="tool-cta">Open Pet Cost Estimator &rarr;</a>
         </div>
-        <input type="range" id="rs-act" min="0" max="100" value="20">
       </div>
-      <div class="range-group">
-        <div class="range-header">
-          <label>🛟 Buffer (surprises happen)</label>
-          <span class="range-value" id="rv-buf">$450</span>
+
+      <!-- Itinerary Builder -->
+      <div class="col-md-6">
+        <div class="tool-card">
+          <div class="tool-icon" style="background:#e0f5f7">&#128197;</div>
+          <h2>Trip Itinerary Builder</h2>
+          <p class="tool-desc">Drag and drop from 12 starter activities or add your own. Build multi-day itineraries with expandable day columns, then share your full plan on X.</p>
+          <ul class="tool-features">
+            <li>12 pre-loaded activities</li>
+            <li>Custom activity input</li>
+            <li>Multi-day drag-and-drop columns</li>
+            <li>One-click share to X</li>
+          </ul>
+          <a href="index.html#tool-itinerary" class="tool-cta">Open Itinerary Builder &rarr;</a>
         </div>
-        <input type="range" id="rs-buf" min="0" max="100" value="15">
+      </div>
+
+    </div>
+
+    <!-- Blog Links Section -->
+    <div class="blog-links mb-5">
+      <h3 class="h5 mb-3">&#128214; Learn How to Use These Tools</h3>
+      <p class="mb-3 text-muted" style="font-size:.92rem">Our guides walk you through real examples with each tool:</p>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <p class="mb-1"><a href="blog-budget-planning.html">&#128176; How to Budget a Vacation: The 40/25/20/15 Rule</a></p>
+          <p class="small text-muted mb-0">Step-by-step budget breakdowns for Caribbean, Europe, and road trips.</p>
+        </div>
+        <div class="col-md-6">
+          <p class="mb-1"><a href="blog-elmo.html">&#9992;&#65039; Flying with Your Dog to Europe: Full Cost Breakdown</a></p>
+          <p class="small text-muted mb-0">Real costs verified against the pet travel estimator, plus airline comparisons.</p>
+        </div>
+        <div class="col-md-6">
+          <p class="mb-1"><a href="blog-caribbean-family.html">&#127796; Best Caribbean Family Resorts 2026</a></p>
+          <p class="small text-muted mb-0">Budget calculator and packing checklist applied to all-inclusive family pricing.</p>
+        </div>
+        <div class="col-md-6">
+          <p class="mb-1"><a href="blog-starbucks.html">&#9749; Starbucks Rewards Abroad</a></p>
+          <p class="small text-muted mb-0">Budget coffee stops into your itinerary and where Rewards actually work.</p>
+        </div>
       </div>
     </div>
 
-    <div class="results-summary" id="budget-summary">
-      <h4>Per Person: $1,500/trip</h4>
-      <p style="margin:0;font-size:.9rem;color:var(--gray)">Total: $3,000 for 2 travelers</p>
+    <!-- Booking CTA -->
+    <div class="text-center mb-4">
+      <h3 class="h5 mb-3">Ready to book?</h3>
+      <a href="book-now.html" class="tool-cta" style="padding:14px 32px;font-size:1rem;">Search Flights &amp; Hotels on Expedia &rarr;</a>
     </div>
 
-    <div class="share-box" id="budget-share">
-      <p>Share your budget plan on X:</p>
-      <div class="share-text" id="budget-share-text">My vacation budget breakdown (40/25/20/15 rule):
+  </main>
 
-🏨 Accommodation: $1,200 (40%)
-🍽️ Food: $750 (25%)
-🎯 Activities: $600 (20%)
-🛟 Buffer: $450 (15%)
-
-Total: $3,000 for 2 travelers
-
-Try the free budget calculator at dreamvacati.com</div>
-      <div class="share-actions">
-        <button class="btn btn-x" onclick="shareToX('budget')"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button>
-        <button class="btn btn-outline" onclick="copyText('budget-share-text')">📋 Copy</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════ -->
-<!-- 2. PACKING CHECKLIST -->
-<!-- ═══════════════════════════════════════════════ -->
-<section class="tool-section" id="packing" style="background:var(--white)">
-  <span class="section-badge badge-coral">Tool #2</span>
-  <h2>Packing Checklist Generator</h2>
-  <p class="subtitle">Select your destination type, season, and trip length. Get a complete categorized checklist you can check off and share.</p>
-
-  <div class="tool-card">
-    <div class="form-row" style="grid-template-columns:1fr 1fr 1fr">
-      <div>
-        <label for="p-dest">Destination Type</label>
-        <select id="p-dest">
-          <option value="tropical">🏝️ Tropical / Beach</option>
-          <option value="mountain">⛰️ Mountain / Hiking</option>
-          <option value="city">🏙️ City / Urban</option>
-          <option value="cold">❄️ Cold / Winter</option>
-          <option value="roadtrip">🚗 Road Trip</option>
-        </select>
-      </div>
-      <div>
-        <label for="p-season">Season</label>
-        <select id="p-season">
-          <option value="summer">☀️ Summer</option>
-          <option value="winter">❄️ Winter</option>
-          <option value="spring">🌸 Spring / Fall</option>
-        </select>
-      </div>
-      <div>
-        <label for="p-days">Trip Length</label>
-        <select id="p-days">
-          <option value="short">Weekend (1-3 days)</option>
-          <option value="week" selected>Week (4-7 days)</option>
-          <option value="long">Extended (8+ days)</option>
-        </select>
-      </div>
-    </div>
-
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px">
-      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.9rem">
-        <input type="checkbox" id="p-international" style="width:18px;height:18px;accent-color:var(--teal)"> International trip
-      </label>
-      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.9rem">
-        <input type="checkbox" id="p-kids" style="width:18px;height:18px;accent-color:var(--teal)"> Traveling with kids
-      </label>
-      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.9rem">
-        <input type="checkbox" id="p-pet" style="width:18px;height:18px;accent-color:var(--teal)"> Bringing a pet
-      </label>
-    </div>
-
-    <button class="btn btn-coral" onclick="generatePacking()">Generate My Checklist</button>
-
-    <div id="pack-results" class="pack-results" style="display:none"></div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════ -->
-<!-- 3. PET TRAVEL COST ESTIMATOR (NEW) -->
-<!-- ═══════════════════════════════════════════════ -->
-<section class="tool-section" id="pet-costs">
-  <span class="section-badge badge-sand">Tool #3 — NEW</span>
-  <h2>Pet Travel Cost Estimator</h2>
-  <p class="subtitle">Flying your dog or cat internationally? Estimate your total cost based on pet size, destination, and airline type.</p>
-
-  <div class="tool-card">
-    <div class="form-row">
-      <div>
-        <label for="pet-type">Pet Type</label>
-        <select id="pet-type">
-          <option value="dog-sm">🐕 Small Dog (under 20 lbs)</option>
-          <option value="dog-md">🐕 Medium Dog (20-50 lbs)</option>
-          <option value="dog-lg" selected>🐕 Large Dog (50+ lbs)</option>
-          <option value="cat">🐱 Cat</option>
-        </select>
-      </div>
-      <div>
-        <label for="pet-dest">Destination</label>
-        <select id="pet-dest">
-          <option value="eu" selected>🇪🇺 Europe (EU)</option>
-          <option value="uk">🇬🇧 United Kingdom</option>
-          <option value="ca">🇨🇦 Canada</option>
-          <option value="mx">🇲🇽 Mexico</option>
-          <option value="other">🌍 Other International</option>
-        </select>
-      </div>
-      <div>
-        <label for="pet-cabin">Travel Method</label>
-        <select id="pet-cabin">
-          <option value="cabin">✈️ In-Cabin (small pets only)</option>
-          <option value="cargo" selected>📦 Cargo / Checked</option>
-        </select>
-      </div>
-    </div>
-    <button class="btn btn-primary" onclick="calcPetCost()">Calculate Cost</button>
-    <div id="pet-results" style="display:none"></div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════ -->
-<!-- 4. ITINERARY BUILDER -->
-<!-- ═══════════════════════════════════════════════ -->
-<section class="tool-section" id="itinerary" style="background:var(--white)">
-  <span class="section-badge badge-teal">Tool #4</span>
-  <h2>Trip Itinerary Builder</h2>
-  <p class="subtitle">Drag activities to each day to build your trip plan. Add custom activities and organize your perfect vacation.</p>
-
-  <div class="tool-card">
-    <div style="margin-bottom:20px">
-      <label style="margin-bottom:8px">Add Custom Activity</label>
-      <div style="display:flex;gap:8px">
-        <input type="text" id="custom-activity" placeholder="e.g. Sunset Cruise, Cooking Class..." style="flex:1">
-        <button class="btn btn-primary" onclick="addCustomActivity()" style="padding:12px 20px">+ Add</button>
-      </div>
-    </div>
-
-    <p style="font-size:.85rem;color:var(--gray);margin-bottom:12px">Drag activities into your day plan:</p>
-    <div id="activity-pool" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;padding:16px;background:var(--light);border-radius:12px"></div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px" id="days-grid">
-      <div class="day-column" data-day="1" ondragover="e(event)" ondragleave="dl(event)" ondrop="dropDay(event)">
-        <h4 style="font-size:.9rem;color:var(--teal);margin-bottom:12px">📅 Day 1</h4>
-      </div>
-      <div class="day-column" data-day="2" ondragover="e(event)" ondragleave="dl(event)" ondrop="dropDay(event)">
-        <h4 style="font-size:.9rem;color:var(--teal);margin-bottom:12px">📅 Day 2</h4>
-      </div>
-      <div class="day-column" data-day="3" ondragover="e(event)" ondragleave="dl(event)" ondrop="dropDay(event)">
-        <h4 style="font-size:.9rem;color:var(--teal);margin-bottom:12px">📅 Day 3</h4>
-      </div>
-    </div>
-    <button class="btn btn-outline" onclick="addDay()" style="margin-top:16px">+ Add Day</button>
-
-    <div class="share-box" id="itin-share" style="display:none">
-      <p>Share your itinerary on X:</p>
-      <div class="share-text" id="itin-share-text"></div>
-      <div class="share-actions">
-        <button class="btn btn-x" onclick="shareToX('itin')"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button>
-        <button class="btn btn-outline" onclick="copyText('itin-share-text')">📋 Copy</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-bar">
-  <h2>Ready to start planning?</h2>
-  <p>Read our destination guides with real prices, honest reviews, and insider tips.</p>
-  <a href="index.html" class="btn">Explore DreamVacati Guides →</a>
-</section>
-
-<footer class="tools-footer">
-  <p>© 2026 <a href="index.html">DreamVacati</a> — Free travel planning tools. No signup required.</p>
-  <p style="margin-top:8px"><a href="privacy.html" style="color:var(--teal)">Privacy Policy</a> · Contact: <a href="/cdn-cgi/l/email-protection#284c5a4d49455e494b4941684f45494144064b4745" style="color:var(--teal)"><span class="__cf_email__" data-cfemail="63071106020e150200020a23040e020a0f4d000c0e">[email&#160;protected]</span></a></p>
-</footer>
-
-<!-- JSON-LD for SEO -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebApplication",
-  "name":"DreamVacati Travel Planning Tools",
-  "url":"https://dreamvacati.com/tools",
-  "description":"Free travel budget calculator, packing checklist generator, pet travel cost estimator, and itinerary builder.",
-  "applicationCategory":"TravelApplication",
-  "operatingSystem":"Web",
-  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
-}
-</script>
-
-<script>
-// ═══════════════════════════════════════════════════
-// BUDGET CALCULATOR
-// ═══════════════════════════════════════════════════
-const sliderIds = ['rs-accom','rs-food','rs-act','rs-buf'];
-const valueIds = ['rv-accom','rv-food','rv-act','rv-buf'];
-const barClasses = ['bar-accom','bar-food','bar-activities','bar-buffer'];
-const labels = ['Accommodation','Food','Activities','Buffer'];
-const emojis = ['🏨','🍽️','🎯','🛟'];
-
-function updateBudget(){
-  const total = parseInt(document.getElementById('b-total').value)||0;
-  const travelers = parseInt(document.getElementById('b-travelers').value)||1;
-  const pcts = sliderIds.map(id=>parseInt(document.getElementById(id).value));
-  const sum = pcts.reduce((a,b)=>a+b,0);
-  const bar = document.getElementById('budget-bar');
-  const amounts = pcts.map(p=>Math.round(total*p/sum));
-
-  bar.innerHTML = pcts.map((p,i)=>{
-    const w = Math.round(p/sum*100);
-    return w>4?`<div class="${barClasses[i]}" style="width:${w}%">${w}%</div>`
-              :`<div class="${barClasses[i]}" style="width:${w}%"></div>`;
-  }).join('');
-
-  valueIds.forEach((id,i)=>{
-    document.getElementById(id).textContent = '$'+amounts[i].toLocaleString();
-  });
-
-  const pp = Math.round(total/travelers);
-  document.getElementById('budget-summary').innerHTML = `
-    <h4>Per Person: $${pp.toLocaleString()}/trip</h4>
-    <p style="margin:0;font-size:.9rem;color:var(--gray)">Total: $${total.toLocaleString()} for ${travelers} traveler${travelers>1?'s':''}</p>`;
-
-  // Share text
-  const shareLines = amounts.map((a,i)=>`${emojis[i]} ${labels[i]}: $${a.toLocaleString()} (${Math.round(pcts[i]/sum*100)}%)`).join('\n');
-  document.getElementById('budget-share-text').textContent =
-    `My vacation budget breakdown:\n\n${shareLines}\n\nTotal: $${total.toLocaleString()} for ${travelers} traveler${travelers>1?'s':''}\nPer person: $${pp.toLocaleString()}\n\nTry the free budget calculator at dreamvacati.com`;
-}
-
-sliderIds.forEach(id=>document.getElementById(id).addEventListener('input',updateBudget));
-document.getElementById('b-total').addEventListener('input',updateBudget);
-document.getElementById('b-travelers').addEventListener('input',updateBudget);
-updateBudget();
-
-// ═══════════════════════════════════════════════════
-// PACKING CHECKLIST
-// ═══════════════════════════════════════════════════
-const packDB = {
-  essentials: {always:["Passport/ID","Phone + charger","Wallet + travel cards","Travel insurance docs","Medications (prescription + OTC basics)","Reusable water bottle","Portable battery pack"]},
-  tropical: {
-    clothing:["Swimsuits (2-3)","Light cotton shirts/tops","Shorts","Sundress or linen outfit","Flip-flops","Water shoes","Light cover-up","One nice dinner outfit"],
-    gear:["Reef-safe sunscreen (SPF 50+)","Sunglasses (polarized)","Wide-brim hat","Waterproof phone case","Dry bag for beach days","Insect repellent","After-sun aloe gel"],
-    extras:["Snorkel gear (or rent there)","Beach towel (microfiber)","Waterproof camera or GoPro"]
-  },
-  mountain: {
-    clothing:["Moisture-wicking base layers","Hiking pants/shorts","Warm fleece or midlayer","Waterproof jacket","Hiking boots (broken in!)","Wool hiking socks (3+ pairs)","Warm hat + gloves (winter)","Sunglasses"],
-    gear:["Daypack (25-35L)","Trekking poles","Headlamp","Sunscreen (UV stronger at altitude)","Blister kit + first aid","Water purification tabs","Trail snacks/bars"],
-    extras:["Camera","Binoculars","Compression bags for layers"]
-  },
-  city: {
-    clothing:["Comfortable walking shoes","Smart casual outfit (2-3)","Light jacket or cardigan","Compact umbrella","Versatile scarf","Comfortable jeans/pants","Crossbody bag (theft-deterrent)"],
-    gear:["Portable charger","Guidebook or offline maps","Transit card/pass","Noise-canceling earbuds","Travel adapter (international)"],
-    extras:["Foldable tote bag","Journal or sketchbook","Small camera"]
-  },
-  cold: {
-    clothing:["Thermal base layers (top + bottom)","Insulated jacket/parka","Waterproof outer layer","Warm boots (waterproof)","Wool socks (4+ pairs)","Warm hat, gloves, scarf","Fleece midlayer","Snow pants (if applicable)"],
-    gear:["Hand warmers (10-pack)","Lip balm (SPF)","Moisturizer (cold air dries skin)","Sunscreen (snow reflects UV)","Thermos for hot drinks"],
-    extras:["Ski goggles (if skiing)","Neck gaiter/balaclava","Foot warmers"]
-  },
-  roadtrip: {
-    clothing:["Comfortable driving clothes","Layers for temperature changes","Comfortable shoes","Pajamas","Swimsuit (hotel pools/hot springs)"],
-    gear:["Phone mount for GPS","Car charger (USB-C + lightning)","Cooler bag + snacks","Paper towels + wet wipes","Reusable bags","First aid kit","Flashlight","Jumper cables"],
-    extras:["Road atlas/paper map (backup)","Playlist/podcast queue","Travel pillow","Blanket for passengers"]
-  },
-  international: ["Passport (valid 6+ months beyond return!)","Visa or e-Visa (check requirements)","Travel adapter + voltage converter","Copies of passport (digital + paper)","Foreign currency or travel debit card","International phone plan or eSIM","Embassy contact info","Vaccination records"],
-  kids: ["Snacks (SO many snacks)","Tablet + headphones + charger","Coloring books/activity pads","Favorite stuffed animal or comfort item","Kid-safe sunscreen","Change of clothes in carry-on","Plastic bags (for messes)","Car seat or booster (if needed)"],
-  pet: ["Pet carrier (airline-approved IATA crate)","Leash + harness","Food + treats (enough for trip + extra day)","Collapsible water bowl","Vaccination records + health certificate","Calming spray (Adaptil/Feliway)","Poop bags","Comfort blanket or toy with home scent","Pet first aid kit"]
-};
-
-function generatePacking(){
-  const dest = document.getElementById('p-dest').value;
-  const intl = document.getElementById('p-international').checked;
-  const kids = document.getElementById('p-kids').checked;
-  const pet = document.getElementById('p-pet').checked;
-  const container = document.getElementById('pack-results');
-  container.style.display = 'block';
-
-  const categories = [];
-  categories.push({name:'✈️ Essentials',items:[...packDB.essentials.always]});
-  const d = packDB[dest];
-  if(d.clothing) categories.push({name:'👕 Clothing',items:[...d.clothing]});
-  if(d.gear) categories.push({name:'🎒 Gear & Accessories',items:[...d.gear]});
-  if(d.extras) categories.push({name:'📸 Extras',items:[...d.extras]});
-  if(intl) categories.push({name:'🌍 International',items:[...packDB.international]});
-  if(kids) categories.push({name:'👶 Kids',items:[...packDB.kids]});
-  if(pet) categories.push({name:'🐾 Pet Travel',items:[...packDB.pet]});
-
-  const totalItems = categories.reduce((s,c)=>s+c.items.length,0);
-
-  let html = `<div class="pack-progress"><span class="count" id="pack-done">0</span><span style="color:var(--gray)"> / ${totalItems} packed</span></div>`;
-
-  categories.forEach(cat=>{
-    html += `<div class="pack-category"><h4>${cat.name}</h4>`;
-    cat.items.forEach(item=>{
-      html += `<div class="pack-item"><input type="checkbox" onchange="updatePackCount(this)"><span>${item}</span></div>`;
-    });
-    html += '</div>';
-  });
-
-  // Share box
-  const summary = categories.map(c=>`${c.name}: ${c.items.length} items`).join('\n');
-  const shareText = `My travel packing checklist (${totalItems} items):\n\n${summary}\n\nGenerated at dreamvacati.com — free packing checklist for any trip type!\n\n#PackingList #TravelTips`;
-
-  html += `<div class="share-box">
-    <p>Share your checklist on X:</p>
-    <div class="share-text" id="pack-share-text">${shareText}</div>
-    <div class="share-actions">
-      <button class="btn btn-x" onclick="shareToX('pack')"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button>
-      <button class="btn btn-outline" onclick="copyText('pack-share-text')">📋 Copy</button>
-      <button class="btn btn-outline" onclick="printChecklist()">🖨️ Print</button>
-    </div>
-  </div>`;
-
-  container.innerHTML = html;
-  window._packTotal = totalItems;
-}
-
-function updatePackCount(cb){
-  cb.parentElement.classList.toggle('checked',cb.checked);
-  const done = document.querySelectorAll('#pack-results .pack-item input:checked').length;
-  const el = document.getElementById('pack-done');
-  if(el) el.textContent = done;
-}
-
-function printChecklist(){
-  const el = document.getElementById('pack-results');
-  const w = window.open('','','width=700,height=900');
-  w.document.write('<html><head><title>DreamVacati Packing Checklist</title><style>body{font-family:sans-serif;padding:20px}h4{margin-top:20px;color:#0b95a5}.pack-item{padding:6px 0;border-bottom:1px solid #eee}.pack-item input{margin-right:8px}</style>  
-  
-</head><body>');
-  w.document.write('<h2>DreamVacati Packing Checklist</h2>');
-  w.document.write(el.innerHTML);
-  w.document.write('      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8978658918402683" crossorigin="anonymous"></script>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978658918402683" data-ad-slot="8572655744" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
+  <!-- Footer -->
   <footer class="dv-footer bg-dark text-white py-4">
     <div class="container text-center">
       <p class="small text-white-50 mb-1">DreamVacati &mdash; Travel Blogs, Planning Tools &amp; Vacation Inspiration</p>
       <p class="small text-white-50 mb-0">&copy; 2026 DreamVacati. <a href="privacy.html" class="text-white-50">Privacy Policy</a> | Contact: <a href="mailto:dreamvacai@gmail.com" class="text-white-50">dreamvacai@gmail.com</a></p>
     </div>
   </footer>
-</body></html>');
-  w.document.close();
-  w.print();
-}
 
-// ═══════════════════════════════════════════════════
-// PET TRAVEL COST ESTIMATOR
-// ═══════════════════════════════════════════════════
-function calcPetCost(){
-  const type = document.getElementById('pet-type').value;
-  const dest = document.getElementById('pet-dest').value;
-  const cabin = document.getElementById('pet-cabin').value;
-  const container = document.getElementById('pet-results');
-  container.style.display = 'block';
-
-  const isLarge = type==='dog-lg'||type==='dog-md';
-  const isCat = type==='cat';
-
-  // Costs database
-  const costs = {
-    microchip: {low:45,high:75,label:'Microchip (ISO 11784/11785)',icon:'💉',bg:'var(--teal-light)'},
-    rabies: {low:25,high:50,label:'Rabies Vaccine',icon:'💊',bg:'var(--coral-light)'},
-    healthcert: {low:100,high:250,label:dest==='eu'?'EU Health Certificate + USDA Endorsement':'Health Certificate',icon:'📄',bg:'var(--sand-light)'},
-    crate: {low:isLarge?150:isCat?50:75, high:isLarge?350:isCat?100:150, label:'IATA-Approved Carrier/Crate',icon:'📦',bg:'var(--teal-light)'},
-    airline: {low:cabin==='cabin'?100:200, high:cabin==='cabin'?250:500, label:`Airline Fee (${cabin==='cabin'?'In-Cabin':'Cargo'})`,icon:'✈️',bg:'var(--coral-light)'},
-    extras: {low:40,high:100,label:'Calming spray, bedding, water dispenser',icon:'🧴',bg:'var(--sand-light)'}
-  };
-
-  // Add tapeworm for EU
-  if(dest==='eu'||dest==='uk'){
-    costs.tapeworm = {low:20,high:50,label:'Tapeworm Treatment (EU/UK requirement)',icon:'💊',bg:'var(--teal-light)'};
-  }
-
-  let totalLow=0, totalHigh=0;
-  let rows = '';
-  Object.values(costs).forEach(c=>{
-    totalLow += c.low;
-    totalHigh += c.high;
-    rows += `<div class="cost-row">
-      <div class="cost-label">
-        <div class="cost-icon" style="background:${c.bg}">${c.icon}</div>
-        <span>${c.label}</span>
-      </div>
-      <span class="cost-range">$${c.low}–$${c.high}</span>
-    </div>`;
-  });
-
-  // Destination-specific tips
-  const tips = {
-    eu:'Microchip must come BEFORE rabies vaccine (EU law). After rabies shot, wait 21 days before traveling. Health cert valid for 4 months of intra-EU travel.',
-    uk:'UK requires a tapeworm treatment 1-5 days before entry. The UK is no longer part of the EU pet passport system post-Brexit.',
-    ca:'Canada requires a current rabies vaccination certificate. No quarantine for dogs from the US if paperwork is in order.',
-    mx:'Mexico requires a health certificate issued within 72 hours of travel. Much simpler than EU requirements.',
-    other:'Requirements vary widely. Start 3+ months early and contact your destination country\'s embassy for exact requirements.'
-  };
-
-  const shareText = `Planning to fly my ${type.replace('-',' ')} to ${dest==='eu'?'Europe':dest==='uk'?'the UK':dest==='ca'?'Canada':dest==='mx'?'Mexico':'abroad'}.\n\nEstimated cost: $${totalLow}–$${totalHigh}\n\n${Object.values(costs).map(c=>`${c.icon} ${c.label}: $${c.low}–$${c.high}`).join('\n')}\n\nFree pet travel cost calculator at dreamvacati.com\nFull guide: dreamvacati.com/blog-elmo.html`;
-
-  container.innerHTML = `
-    <div class="cost-breakdown">${rows}</div>
-    <div class="cost-total">
-      <span class="total-label">Estimated Total Cost</span>
-      <span class="total-amount">$${totalLow.toLocaleString()} – $${totalHigh.toLocaleString()}</span>
-    </div>
-    <div class="cost-tip">
-      <strong>💡 Key Tip:</strong> ${tips[dest]}
-    </div>
-    <p style="margin-top:16px;font-size:.9rem;color:var(--gray)">📖 Read our complete guide with airline comparisons and step-by-step checklist: <a href="blog-elmo.html" style="color:var(--teal);font-weight:600">Flying Your Dog to Europe →</a></p>
-    <div class="share-box">
-      <p>Share on X:</p>
-      <div class="share-text" id="pet-share-text">${shareText}</div>
-      <div class="share-actions">
-        <button class="btn btn-x" onclick="shareToX('pet')"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button>
-        <button class="btn btn-outline" onclick="copyText('pet-share-text')">📋 Copy</button>
-      </div>
-    </div>`;
-}
-
-// ═══════════════════════════════════════════════════
-// ITINERARY BUILDER
-// ═══════════════════════════════════════════════════
-const defaultActivities = ['Beach Day','Museum Visit','City Walking Tour','Local Food Tour','Sunset Cruise','Hiking Trail','Shopping District','Spa Day','Snorkeling/Diving','Cooking Class','Wine Tasting','Night Market'];
-let dayCount = 3;
-
-function renderPool(){
-  const pool = document.getElementById('activity-pool');
-  pool.innerHTML = '';
-  defaultActivities.forEach(a=>{
-    const chip = document.createElement('div');
-    chip.className = 'activity-chip';
-    chip.draggable = true;
-    chip.textContent = a;
-    chip.ondragstart = ev=>ev.dataTransfer.setData('text/plain',a);
-    pool.appendChild(chip);
-  });
-}
-renderPool();
-
-function addCustomActivity(){
-  const input = document.getElementById('custom-activity');
-  const name = input.value.trim();
-  if(!name)return;
-  if(!defaultActivities.includes(name)) defaultActivities.push(name);
-  renderPool();
-  input.value = '';
-}
-
-function e(ev){ev.preventDefault();ev.currentTarget.classList.add('drag-over')}
-function dl(ev){ev.currentTarget.classList.remove('drag-over')}
-
-function dropDay(ev){
-  ev.preventDefault();
-  ev.currentTarget.classList.remove('drag-over');
-  const activity = ev.dataTransfer.getData('text/plain');
-  const item = document.createElement('div');
-  item.className = 'scheduled-item';
-  item.innerHTML = `<span>${activity}</span><span class="remove" onclick="this.parentElement.remove();updateItinShare()" style="cursor:pointer;color:var(--gray)">✕</span>`;
-  ev.currentTarget.appendChild(item);
-  updateItinShare();
-}
-
-function addDay(){
-  dayCount++;
-  const grid = document.getElementById('days-grid');
-  const col = document.createElement('div');
-  col.className = 'day-column';
-  col.dataset.day = dayCount;
-  col.ondragover = e;
-  col.ondragleave = dl;
-  col.ondrop = dropDay;
-  col.innerHTML = `<h4 style="font-size:.9rem;color:var(--teal);margin-bottom:12px">📅 Day ${dayCount}</h4>`;
-  grid.appendChild(col);
-}
-
-function updateItinShare(){
-  const shareBox = document.getElementById('itin-share');
-  const days = document.querySelectorAll('.day-column');
-  let hasItems = false;
-  let text = 'My trip itinerary:\n';
-  days.forEach(day=>{
-    const items = day.querySelectorAll('.scheduled-item span:first-child');
-    if(items.length){
-      hasItems = true;
-      text += `\n📅 Day ${day.dataset.day}:\n`;
-      items.forEach(it=>text+=`  • ${it.textContent}\n`);
-    }
-  });
-  if(hasItems){
-    text += '\nBuilt with the free itinerary planner at dreamvacati.com';
-    document.getElementById('itin-share-text').textContent = text;
-    shareBox.style.display = 'block';
-  } else {
-    shareBox.style.display = 'none';
-  }
-}
-
-// ═══════════════════════════════════════════════════
-// SHARE UTILITIES
-// ═══════════════════════════════════════════════════
-function shareToX(tool){
-  const textEl = document.getElementById(tool==='budget'?'budget-share-text':tool==='pack'?'pack-share-text':tool==='pet'?'pet-share-text':'itin-share-text');
-  const text = textEl.textContent;
-  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
-  window.open(url,'_blank','width=600,height=400');
-}
-
-function copyText(id){
-  const text = document.getElementById(id).textContent;
-  navigator.clipboard.writeText(text).then(()=>{
-    const btn = event.target;
-    const orig = btn.textContent;
-    btn.textContent = '✓ Copied!';
-    setTimeout(()=>btn.textContent=orig,2000);
-  });
-}
-
-// NAV active state
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(en=>{
-    if(en.isIntersecting){
-      document.querySelectorAll('.tool-link').forEach(l=>l.classList.remove('active'));
-      const lin
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
