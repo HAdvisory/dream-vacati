@@ -64,8 +64,6 @@
     }
   }
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <meta property="og:image" content="https://dreamvacati.com/og-default.jpg">
 </head>
 <body>
 
@@ -377,6 +375,61 @@ Try the free budget calculator at dreamvacati.com/tools</div>
             <button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-itin-share-text',this)">&#128203; Copy</button>
           </div>
         </div>
+      </div>
+
+      <!-- ═══ International Travel Requirements Checker ═══ -->
+      <div class="dv-tool-card" id="tool-requirements">
+        <h3>&#127758; International Travel Requirements Checker</h3>
+        <p class="text-muted small mb-3">Select your destination to see passport, visa, health, customs, and entry requirements for U.S. citizens. Data current as of 2026.</p>
+        <div class="dv-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+          <div>
+            <label style="font-size:.85rem;font-weight:500;margin-bottom:4px;display:block">Destination Region</label>
+            <select id="dv-req-region" onchange="dvUpdateCountries()" style="width:100%;padding:10px 14px;border:2px solid #e2e8f0;border-radius:10px;font-size:.95rem;font-family:inherit">
+              <option value="">Select region...</option>
+              <option value="europe">Europe (Schengen)</option>
+              <option value="uk">United Kingdom</option>
+              <option value="caribbean">Caribbean</option>
+              <option value="mexico">Mexico</option>
+              <option value="canada">Canada</option>
+              <option value="japan">Japan</option>
+              <option value="skorea">South Korea</option>
+              <option value="thailand">Thailand</option>
+              <option value="australia">Australia</option>
+              <option value="nz">New Zealand</option>
+              <option value="brazil">Brazil</option>
+              <option value="china">China</option>
+              <option value="uae">UAE (Dubai)</option>
+              <option value="israel">Israel</option>
+              <option value="costarica">Costa Rica</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:.85rem;font-weight:500;margin-bottom:4px;display:block">Trip Length</label>
+            <select id="dv-req-length" style="width:100%;padding:10px 14px;border:2px solid #e2e8f0;border-radius:10px;font-size:.95rem;font-family:inherit">
+              <option value="short">Under 30 days</option>
+              <option value="medium">30&#8211;90 days</option>
+              <option value="long">90+ days</option>
+            </select>
+          </div>
+        </div>
+        <div class="dv-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+          <div>
+            <label style="font-size:.85rem;font-weight:500;margin-bottom:4px;display:block">Traveling with</label>
+            <select id="dv-req-travelers" style="width:100%;padding:10px 14px;border:2px solid #e2e8f0;border-radius:10px;font-size:.95rem;font-family:inherit">
+              <option value="solo">Solo / Adults only</option>
+              <option value="kids">With children (under 18)</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:.85rem;font-weight:500;margin-bottom:4px;display:block">Bringing medication?</label>
+            <select id="dv-req-meds" style="width:100%;padding:10px 14px;border:2px solid #e2e8f0;border-radius:10px;font-size:.95rem;font-family:inherit">
+              <option value="no">No prescription meds</option>
+              <option value="yes">Yes, prescription medication</option>
+            </select>
+          </div>
+        </div>
+        <button class="dv-btn dv-btn-teal" onclick="dvCheckReqs()" style="padding:10px 22px">Check Requirements</button>
+        <div id="dv-req-results" style="margin-top:20px"></div>
       </div>
 
       <div class="text-center mt-3">
@@ -1022,6 +1075,268 @@ Track your own travels with the free map at dreamvacati.com
   // === SHARE UTILITIES ===
   function dvShareX(id){const t=document.getElementById(id).textContent;window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(t)}`,'_blank','width=600,height=400');}
   function dvCopy(id,btn){const t=document.getElementById(id).textContent;navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent='\u2713 Copied!';setTimeout(()=>btn.textContent=o,2000);});}
+
+  // === INTERNATIONAL TRAVEL REQUIREMENTS CHECKER ===
+  const dvReqData = {
+    europe: {
+      name: "Europe (Schengen Area)", visa: "Visa-free for stays up to 90 days within any 180-day period",
+      passport: "Must be valid for at least 3 months beyond planned departure date from the EU",
+      eTA: "ETIAS authorization expected late 2026 (\u20AC7 fee, valid 3 years). Not yet enforced \u2014 check etiasvisa.com for launch updates",
+      entry: "EU Entry/Exit System (EES) now active \u2014 fingerprints and facial image collected at first entry. No fee required",
+      health: "No mandatory vaccinations for most EU countries. Carry European Health Insurance Card (EHIC) or travel insurance. COVID vaccination may still be recommended",
+      customs: "Declare cash/valuables over \u20AC10,000. Duty-free limits: 200 cigarettes, 1L spirits, 4L wine. Strict limits on food/plant imports",
+      currency: "Euro in most countries. Avoid airport exchanges (8\u201312% markup). Use travel cards with no foreign transaction fee",
+      plugs: "Type C/F (round 2-pin). Voltage 220\u2013240V \u2014 bring adapter and check device compatibility",
+      tips: ["The 90/180-day rule is cumulative across ALL Schengen countries \u2014 track your days carefully", "Passport stamping may be replaced by digital EES \u2014 keep a photo of your entry record", "Some prescription meds (especially opioids, ADHD medication) require a Schengen certificate \u2014 check with your doctor 30+ days before travel"]
+    },
+    uk: {
+      name: "United Kingdom", visa: "Visa-free for tourism/business up to 6 months",
+      passport: "Must be valid for duration of stay. Recommended: 6 months validity",
+      eTA: "UK Electronic Travel Authorization (ETA) REQUIRED since Feb 25, 2026. Cost: \u00A310 (~$13). Apply online or via UK ETA app before travel",
+      entry: "eGates available for US passport holders at major airports. Biometric checks at border",
+      health: "No mandatory vaccinations. NHS emergency treatment available but not free \u2014 travel insurance strongly recommended",
+      customs: "Declare cash over \u00A310,000. Duty-free: 200 cigarettes, 1L spirits, 4L wine. Cannot bring meat, dairy, or fresh produce from outside UK",
+      currency: "British Pound (GBP). Cards widely accepted. Contactless payment standard everywhere",
+      plugs: "Type G (3-pin rectangular). Voltage 230V. UK plugs are unique \u2014 you WILL need an adapter",
+      tips: ["UK ETA is separate from Schengen/ETIAS \u2014 you need both if visiting Europe and UK on same trip", "Northern Ireland has different rules for some goods due to the Windsor Framework", "Register with STEP (Smart Traveler Enrollment Program) at travel.state.gov before departure"]
+    },
+    caribbean: {
+      name: "Caribbean", visa: "Most Caribbean nations are visa-free for US citizens (30\u201390 days depending on island)",
+      passport: "Valid passport required. Some islands require 6 months validity beyond stay",
+      eTA: "No eTA required for most Caribbean destinations. Jamaica, Barbados, and Bahamas use online immigration forms \u2014 complete before arrival",
+      entry: "Immigration and customs forms typically completed on the plane or online pre-arrival. Return ticket usually required",
+      health: "Yellow fever vaccination required if arriving from endemic country. Some islands may require health declaration form. Mosquito precautions recommended",
+      customs: "Declare cash over $10,000 (US CBP on return). Duty-free limits vary by island. Do NOT bring back Cuban cigars to the US",
+      currency: "Varies: USD widely accepted in most tourist areas. Eastern Caribbean Dollar (XCD) in smaller islands",
+      plugs: "Varies by island: Type A/B (US-style) in most. Type G (UK-style) in former British colonies. Check your specific island",
+      tips: ["Cuba has separate requirements \u2014 US citizens need a specific license category and tourist card (visa)", "Hurricane season runs June\u2013November \u2014 travel insurance with weather coverage is essential", "Some islands charge departure taxes ($20\u2013$75) not included in your flight \u2014 keep cash on hand"]
+    },
+    mexico: {
+      name: "Mexico", visa: "Visa-free for tourism up to 180 days",
+      passport: "Valid passport required. 6 months validity recommended but not strictly enforced",
+      eTA: "No eTA required. FMM (tourist card) is now electronic \u2014 automatically generated from your flight data. Paper FMM being phased out",
+      entry: "Immigration form auto-processed on arrival. Customs uses red/green light random inspection system. Return ticket may be requested",
+      health: "No mandatory vaccinations. Hepatitis A and Typhoid recommended. Do not drink tap water. Travel insurance recommended",
+      customs: "Declare cash over $10,000 USD. Duty-free: 3L alcohol, 200 cigarettes. Strict penalties for drug possession \u2014 zero tolerance",
+      currency: "Mexican Peso (MXN). USD accepted in tourist zones but at poor rates. ATMs offer best exchange rates",
+      plugs: "Type A/B (same as US). Voltage 127V \u2014 US devices work without adapter",
+      tips: ["Keep your FMM confirmation \u2014 you need it to exit the country", "US auto insurance does NOT cover Mexico \u2014 buy Mexican liability insurance before driving across", "STEP enrollment recommended. Check travel.state.gov for state-specific safety advisories"]
+    },
+    canada: {
+      name: "Canada", visa: "Visa-free for US citizens. Valid passport or NEXUS card required",
+      passport: "Valid US passport required (or enhanced driver's license for land/sea crossings from some states)",
+      eTA: "US citizens do NOT need an eTA for Canada. Other visa-exempt nationals do",
+      entry: "ArriveCAN app declaration optional but speeds up customs. Can submit up to 72 hours before arrival. NEXUS lanes available for trusted travelers",
+      health: "No mandatory vaccinations. Provincial health care does NOT cover tourists \u2014 travel insurance essential. Prescription meds must be in original labeled containers",
+      customs: "Declare all food, plant, and animal products. Duty-free: 1.5L wine OR 1.14L spirits OR 8.5L beer, 200 cigarettes. Cannabis is legal in Canada but CANNOT cross the border in either direction",
+      currency: "Canadian Dollar (CAD). Cards accepted everywhere. Contactless common",
+      plugs: "Type A/B (same as US). Voltage 120V \u2014 US devices work without adapter",
+      tips: ["Admitting past cannabis use to Canadian border agents can result in entry denial", "DUI convictions (even old ones) can result in being turned away at the Canadian border \u2014 check admissibility before booking", "Winter travel: carry emergency kit in vehicles. Some highways require winter tires October\u2013April"]
+    },
+    japan: {
+      name: "Japan", visa: "Visa-free for tourism up to 90 days",
+      passport: "Must be valid for duration of stay. 6 months recommended",
+      eTA: "Visit Japan Web required \u2014 register online before arrival for immigration, customs, and tax-free purchases. Free",
+      entry: "Fingerprints and photo taken at immigration. Visit Japan Web QR code speeds processing. Return ticket may be requested",
+      health: "No mandatory vaccinations. Japanese healthcare is excellent but expensive without insurance \u2014 travel insurance strongly recommended",
+      customs: "Declare cash over \u00A51,000,000 (~$6,700). Strict drug laws \u2014 some OTC US medications (Sudafed, Vicks inhalers with pseudoephedrine) are ILLEGAL. Adderall/stimulants prohibited",
+      currency: "Japanese Yen (JPY). Japan is still heavily cash-based outside major cities. Carry \u00A510,000\u201320,000 for daily use",
+      plugs: "Type A (US 2-prong). Voltage 100V \u2014 US devices work but may charge slowly. No adapter needed for 2-prong plugs",
+      tips: ["Many common US medications are banned in Japan \u2014 check the Ministry of Health list before packing", "IC cards (Suica/Pasmo) are essential for trains. Get one at any station or use iPhone/Apple Watch", "Cash is king outside Tokyo \u2014 7-Eleven ATMs accept international cards reliably"]
+    },
+    skorea: {
+      name: "South Korea", visa: "Visa-free for tourism up to 90 days. K-ETA suspended through Dec 2026",
+      passport: "Must be valid for at least 6 months beyond planned stay",
+      eTA: "K-ETA (Korean Electronic Travel Authorization) currently SUSPENDED for US citizens through Dec 31, 2026. No pre-authorization needed",
+      entry: "Arrival card completed on plane or at kiosk. Biometric collection at immigration. Return or onward ticket required",
+      health: "No mandatory vaccinations. Hepatitis A recommended. Excellent healthcare but English-speaking doctors limited outside Seoul",
+      customs: "Declare cash over $10,000 USD equivalent. Duty-free: 1L alcohol, 200 cigarettes. Strict counterfeit goods enforcement",
+      currency: "Korean Won (KRW). Cards widely accepted. T-money card for transit. Cash needed at street food vendors and markets",
+      plugs: "Type C/F (round 2-pin European style). Voltage 220V. Adapter required \u2014 same as European adapters",
+      tips: ["K-ETA suspension means one fewer step, but could be reinstated in 2027 \u2014 check before booking", "Download KakaoMap (not Google Maps) \u2014 it's far more accurate for Korean transit and addresses", "Pharmacies (yakguk) sell most medications OTC but pharmacists rarely speak English \u2014 carry translated prescriptions"]
+    },
+    thailand: {
+      name: "Thailand", visa: "Visa-free for tourism up to 60 days (extendable 30 days at immigration office)",
+      passport: "Must be valid for at least 6 months beyond entry date",
+      eTA: "No eTA required. TM6 arrival/departure card has been discontinued for air travel. Still required at land borders",
+      entry: "Proof of onward travel required (airlines may check). Immigration may ask for proof of funds (~$500 equivalent) and accommodation booking",
+      health: "No mandatory vaccinations. Hepatitis A, Typhoid recommended. Mosquito protection essential (dengue risk). Travel insurance strongly recommended",
+      customs: "Declare cash over 450,000 THB (~$12,500). Duty-free: 1L alcohol, 200 cigarettes. Extremely strict drug laws \u2014 severe penalties including death for trafficking",
+      currency: "Thai Baht (THB). ATMs everywhere but charge 220 THB (~$6) per withdrawal. Cards accepted in cities, cash essential in rural areas and islands",
+      plugs: "Type A/B/C (US 2-prong works). Voltage 220V \u2014 check device compatibility. Some outlets accept US plugs without adapter",
+      tips: ["Overstaying your visa results in fines (500 THB/day) and potential ban from re-entry", "Thai hospitals are excellent and affordable \u2014 but travel insurance is still recommended for serious illness/evacuation", "Lese-majeste laws are strictly enforced \u2014 never disrespect the monarchy in any form"]
+    },
+    australia: {
+      name: "Australia", visa: "ETA (Electronic Travel Authority) required before travel",
+      passport: "Must be valid for at least 6 months beyond planned stay",
+      eTA: "ETA (subclass 601) REQUIRED. Apply via Australian ETA app. Cost: AUD $20 (~$13). Valid for 12 months, multiple entries, 90 days per visit",
+      entry: "Incoming Passenger Card completed before landing. Strict biosecurity screening \u2014 declare ALL food, plant material, animal products, outdoor equipment",
+      health: "No mandatory vaccinations. Sun protection critical (highest UV rates in the world). Travel insurance essential \u2014 Australian medical costs are very high for non-residents",
+      customs: "Declare cash over AUD $10,000. Duty-free: 2.25L alcohol, 25g tobacco. ZERO tolerance for undeclared food/biosecurity items \u2014 fines from AUD $626 to criminal charges",
+      currency: "Australian Dollar (AUD). Almost entirely cashless \u2014 cards/tap accepted everywhere including markets",
+      plugs: "Type I (angled 2/3-pin). Voltage 230V. Australian plugs are unique \u2014 adapter required",
+      tips: ["Australia has the strictest biosecurity in the world \u2014 declare everything, even trail dirt on hiking boots", "Driving is on the LEFT side. International Driving Permit recommended but not always required", "Phone service is limited in outback areas \u2014 download offline maps before road trips"]
+    },
+    nz: {
+      name: "New Zealand", visa: "Visa-free for US citizens up to 90 days. NZeTA required before travel",
+      passport: "Must be valid for at least 3 months beyond planned departure date",
+      eTA: "NZeTA (New Zealand Electronic Travel Authority) REQUIRED. Apply via app (NZD $17/~$10) or online (NZD $23/~$14). Plus International Visitor Conservation and Tourism Levy (IVL): NZD $100 (~$60)",
+      entry: "New Zealand Traveller Declaration completed online before arrival. Strict biosecurity \u2014 similar to Australia",
+      health: "No mandatory vaccinations. Travel insurance strongly recommended \u2014 emergency services can charge non-residents",
+      customs: "Declare ALL food, outdoor gear, and biological materials. Declare cash over NZD $10,000. Duty-free: 3 bottles (max 1.125L each) spirits/liqueur, 4.5L wine/beer, 50 cigarettes",
+      currency: "New Zealand Dollar (NZD). Cards/contactless widely accepted. Cash useful in rural areas",
+      plugs: "Type I (same as Australia \u2014 angled pins). Voltage 230V. Adapter required",
+      tips: ["NZeTA + IVL together cost ~$70\u201374 USD \u2014 budget for this and apply at least 72 hours before travel", "Campervans require a certified self-contained vehicle (CSC) sticker for freedom camping", "New Zealand has no snakes but does have sandflies \u2014 bring insect repellent for South Island"]
+    },
+    brazil: {
+      name: "Brazil", visa: "Visa-free for US citizens for tourism up to 90 days (effective since 2024)",
+      passport: "Must be valid for at least 6 months beyond entry date",
+      eTA: "No eTA required. International Traveler's Health Declaration (DSVI) may be required during health emergencies",
+      entry: "Immigration card completed electronically. Return ticket and proof of accommodation may be requested",
+      health: "Yellow fever vaccination REQUIRED for travel to Amazon/interior regions. Recommended for all travelers. Carry yellow International Certificate of Vaccination. Zika, dengue risk \u2014 mosquito protection essential",
+      customs: "Declare cash over $10,000 USD equivalent. Duty-free: 400 cigarettes, 24 units alcohol (12L wine/beer or 1L spirits). Electronics may be taxed if appearing commercial",
+      currency: "Brazilian Real (BRL). Cards accepted in cities. Cash essential in smaller towns and for street vendors",
+      plugs: "Type N (unique 3-pin) and Type C. Voltage varies: 127V in S\u00E3o Paulo/Rio, 220V in most other cities. Universal adapter recommended",
+      tips: ["Yellow fever vaccine must be given at least 10 days before travel to be valid", "eSIM or local SIM recommended \u2014 Uber and 99 (ride-share) are safer than street taxis in major cities", "Carry color copies of your passport \u2014 leave the original in your hotel safe"]
+    },
+    china: {
+      name: "China", visa: "Visa-free for US citizens for tourism up to 30 days (extended through Dec 31, 2026)",
+      passport: "Must be valid for at least 6 months beyond entry date with at least 2 blank pages",
+      eTA: "No eTA required under current visa-free policy. For stays over 30 days, apply for L (tourist) visa at Chinese embassy",
+      entry: "Health declaration form required (can be completed on WeChat mini-program or paper). Fingerprints collected at immigration. Proof of hotel booking and return ticket required",
+      health: "No mandatory vaccinations. Hepatitis A and Typhoid recommended. Air quality varies \u2014 consider masks for Beijing/northern cities in winter",
+      customs: "Declare cash over $5,000 USD or CNY 20,000. Duty-free: 400 cigarettes, 1.5L alcohol. Strict regulation on VPN use \u2014 download VPN before arrival",
+      currency: "Chinese Yuan/RMB (CNY). China is almost fully cashless via WeChat Pay and Alipay. International credit cards now work via Alipay \u2014 set up before travel. Cash rarely accepted in cities",
+      plugs: "Type A/C/I (multiple types). Voltage 220V. Universal adapter recommended",
+      tips: ["Google, Gmail, WhatsApp, Instagram, Facebook are ALL blocked in China \u2014 install a VPN before you arrive", "Set up Alipay international before departure \u2014 you will need mobile payment for almost everything", "The 30-day visa-free policy could change in 2027 \u2014 confirm before booking"]
+    },
+    uae: {
+      name: "UAE (Dubai/Abu Dhabi)", visa: "Visa-free for US citizens for tourism up to 30 days (extendable to 60 days)",
+      passport: "Must be valid for at least 6 months beyond entry date",
+      eTA: "No eTA required for US citizens. 30-day visa stamped on arrival. 60-day extension available at immigration offices",
+      entry: "Smart Gates (iris/face scan) available at Dubai airports for registered travelers. Standard immigration for first-time visitors",
+      health: "No mandatory vaccinations. Extreme heat (May\u2013September can exceed 45\u00B0C/113\u00B0F). Travel insurance recommended",
+      customs: "Declare cash over AED 60,000 (~$16,300). Duty-free: 400 cigarettes, 4L alcohol (non-Muslim adults). Prescription medications \u2014 especially painkillers, psychotropics \u2014 require doctor's letter and may require pre-approval",
+      currency: "UAE Dirham (AED). Cards widely accepted. Tipping not required but appreciated (10\u201315%)",
+      plugs: "Type G (UK-style 3-pin). Voltage 220V. UK adapter required",
+      tips: ["Many common medications (codeine, Tramadol, some antidepressants) are controlled substances in the UAE \u2014 check the MOHAP approved list", "Alcohol is legal in licensed venues but public intoxication is a criminal offense", "Ramadan dates vary \u2014 eating, drinking, or smoking in public during daylight hours is prohibited during Ramadan"]
+    },
+    israel: {
+      name: "Israel", visa: "Visa-free for US citizens for tourism up to 90 days",
+      passport: "Must be valid for at least 6 months beyond entry date",
+      eTA: "ETA-IL (Electronic Travel Authorization) REQUIRED since August 2025. Apply at eta-il.gov.il. Cost: ~$25. Valid for 2 years, multiple entries",
+      entry: "Entry card (smart card) issued at immigration \u2014 Israel no longer stamps passports. Security interview standard at departure. Biometric collection at immigration",
+      health: "No mandatory vaccinations. Travel insurance strongly recommended. Check travel.state.gov for current security advisories",
+      customs: "Declare cash over $12,500 or equivalent. Duty-free: 250 cigarettes, 1L spirits, 2L wine. Strict security screening for all checked luggage",
+      currency: "Israeli New Shekel (ILS). Cards widely accepted. Cash useful at markets and smaller shops",
+      plugs: "Type H (unique Israeli 3-pin) and Type C. Voltage 230V. Israeli adapter needed \u2014 some European adapters fit Type C outlets",
+      tips: ["ETA-IL is new (2025) \u2014 apply at least 72 hours before travel", "Security at Ben Gurion airport is the most thorough in the world \u2014 arrive 3+ hours early for departures", "Stamps from certain countries in your passport may cause issues \u2014 Israel no longer stamps, but some neighboring countries do"]
+    },
+    costarica: {
+      name: "Costa Rica", visa: "Visa-free for US citizens for tourism up to 90 days",
+      passport: "Must be valid for at least 1 day beyond entry date (but 6 months recommended by most airlines)",
+      eTA: "No eTA required. Health Pass (QR code) may be required during health emergencies \u2014 check before travel",
+      entry: "Customs declaration form completed digitally or on paper. Proof of outward travel (return ticket) REQUIRED. Proof of funds (~$100/day) may be requested",
+      health: "No mandatory vaccinations for direct travel from US. Yellow fever certificate required if arriving from endemic country. Mosquito precautions recommended (dengue, Zika)",
+      customs: "Declare cash over $10,000. Duty-free: 500g tobacco, 5L alcohol. Strict environmental import restrictions \u2014 no fresh produce",
+      currency: "Costa Rican Col\u00F3n (CRC). USD widely accepted in tourist areas but change given in col\u00F3nes. ATMs available but charge fees",
+      plugs: "Type A/B (US-style). Voltage 120V \u2014 US devices work without adapter",
+      tips: ["Exit tax (~$29) is usually included in airline tickets \u2014 confirm with your airline", "National parks require advance online reservations for many popular sites (Manuel Antonio, Arenal)", "Rental car insurance from US carriers typically does NOT cover Costa Rica \u2014 buy local liability insurance"]
+    }
+  };
+
+  function dvUpdateCountries() {
+    // Future: could filter sub-regions. Currently just triggers visual feedback
+    const r = document.getElementById('dv-req-region').value;
+    if (r) document.getElementById('dv-req-region').style.borderColor = '#0b95a5';
+  }
+
+  function dvCheckReqs() {
+    const region = document.getElementById('dv-req-region').value;
+    const length = document.getElementById('dv-req-length').value;
+    const travelers = document.getElementById('dv-req-travelers').value;
+    const meds = document.getElementById('dv-req-meds').value;
+    const c = document.getElementById('dv-req-results');
+
+    if (!region) { c.innerHTML = '<p style="color:#e8590c;font-weight:600">Please select a destination region.</p>'; return; }
+
+    const d = dvReqData[region];
+    if (!d) { c.innerHTML = '<p style="color:#e8590c">Data not available for this region.</p>'; return; }
+
+    let h = `<div style="border-radius:12px;overflow:hidden;border:1px solid #e2e8f0">`;
+    h += `<div style="background:linear-gradient(135deg,#087e8b,#0b95a5);color:#fff;padding:16px 20px"><strong style="font-size:1.1rem">${d.name}</strong><br><span style="opacity:.85;font-size:.85rem">Requirements for U.S. Citizens | Updated 2026</span></div>`;
+
+    const items = [
+      ["\uD83D\uDCD8", "Passport", d.passport],
+      ["\uD83D\uDCCB", "Visa", d.visa],
+      ["\uD83D\uDCF1", "eTA / Pre-Travel Authorization", d.eTA],
+      ["\uD83D\uDEC3", "Entry Process", d.entry],
+      ["\uD83C\uDFE5", "Health Requirements", d.health],
+      ["\uD83D\uDEF3", "Customs & Declarations", d.customs],
+      ["\uD83D\uDCB1", "Currency", d.currency],
+      ["\uD83D\uDD0C", "Electrical Plugs", d.plugs],
+    ];
+
+    items.forEach(([icon, label, text]) => {
+      h += `<div style="padding:12px 20px;border-bottom:1px solid #f1f5f9;display:flex;gap:12px;align-items:flex-start">`;
+      h += `<span style="font-size:1.2rem;flex-shrink:0">${icon}</span>`;
+      h += `<div><strong style="font-size:.88rem;color:#087e8b">${label}</strong><br><span style="font-size:.85rem;color:#1a1b2e">${text}</span></div></div>`;
+    });
+
+    // Trip length warning
+    if (length === 'medium' || length === 'long') {
+      h += `<div style="padding:12px 20px;border-bottom:1px solid #f1f5f9;background:#fff7ed;display:flex;gap:12px;align-items:flex-start">`;
+      h += `<span style="font-size:1.2rem">&#9888;&#65039;</span><div><strong style="font-size:.88rem;color:#e8590c">Extended Stay Warning</strong><br>`;
+      h += `<span style="font-size:.85rem;color:#1a1b2e">`;
+      if (length === 'long') h += `Stays over 90 days typically require a visa or residency permit in most countries. Check with the destination's embassy for long-stay visa requirements. Tax implications may apply for stays over 183 days.`;
+      else h += `For stays of 30\u201390 days, verify the exact visa-free allowance for your destination. Some countries limit visa-free stays to 30 or 60 days. Extensions may be available at local immigration offices.`;
+      h += `</span></div></div>`;
+    }
+
+    // Kids warning
+    if (travelers === 'kids') {
+      h += `<div style="padding:12px 20px;border-bottom:1px solid #f1f5f9;background:#f0fdf4;display:flex;gap:12px;align-items:flex-start">`;
+      h += `<span style="font-size:1.2rem">\uD83D\uDC76</span><div><strong style="font-size:.88rem;color:#16a34a">Traveling with Children</strong><br>`;
+      h += `<span style="font-size:.85rem;color:#1a1b2e">If traveling with minors without both parents: carry a notarized letter of consent from the absent parent, plus the child's birth certificate. Some countries strictly enforce this. Single parents should carry a custody order or death certificate if applicable. All children need their own passport.</span></div></div>`;
+    }
+
+    // Medication warning
+    if (meds === 'yes') {
+      h += `<div style="padding:12px 20px;border-bottom:1px solid #f1f5f9;background:#fef2f2;display:flex;gap:12px;align-items:flex-start">`;
+      h += `<span style="font-size:1.2rem">\uD83D\uDC8A</span><div><strong style="font-size:.88rem;color:#dc2626">Prescription Medication Alert</strong><br>`;
+      h += `<span style="font-size:.85rem;color:#1a1b2e">Some common US prescriptions (opioids, ADHD medication, anxiety meds, sleep aids) are controlled or illegal in many countries. Carry all medications in original labeled containers with a doctor's letter stating the medication name, dosage, and medical necessity. Check your destination's drug control list before traveling. Japan, UAE, and some Asian countries have the strictest rules.</span></div></div>`;
+    }
+
+    // Tips
+    if (d.tips && d.tips.length) {
+      h += `<div style="padding:14px 20px;background:#f0f9fa">`;
+      h += `<strong style="font-size:.88rem;color:#087e8b">\uD83D\uDCA1 Insider Tips</strong>`;
+      d.tips.forEach(tip => {
+        h += `<p style="font-size:.85rem;color:#1a1b2e;margin:8px 0 0;padding-left:16px;border-left:3px solid #0b95a5">${tip}</p>`;
+      });
+      h += `</div>`;
+    }
+
+    h += `</div>`;
+
+    // General reminders
+    h += `<div style="margin-top:16px;padding:14px;background:#f8f9fa;border-radius:10px;font-size:.82rem;color:#64748b">`;
+    h += `<strong>Before every international trip:</strong> Enroll in <a href="https://step.state.gov" target="_blank" rel="noopener" style="color:#0b95a5">STEP (Smart Traveler Enrollment Program)</a> | `;
+    h += `Make 2 copies of all documents (leave one at home) | `;
+    h += `Check <a href="https://travel.state.gov" target="_blank" rel="noopener" style="color:#0b95a5">travel.state.gov</a> for current advisories | `;
+    h += `Notify your bank of travel dates`;
+    h += `</div>`;
+
+    // Share box
+    const shareText = `\u2708\uFE0F Travel requirements for ${d.name} (US citizens):\n\uD83D\uDCD8 ${d.passport}\n\uD83D\uDCCB ${d.visa}\n\uD83D\uDCF1 ${d.eTA}\n\nFree requirements checker for 15 destinations \u2193\nhttps://dreamvacati.com`;
+    h += `<div class="dv-share-box" style="margin-top:16px"><p>Share on X:</p><div class="dv-share-text" id="dv-req-share-text">${shareText}</div>`;
+    h += `<div class="dv-share-actions">`;
+    h += `<button class="dv-btn dv-btn-dark" onclick="dvShareX('dv-req-share-text')"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:middle;margin-right:4px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button>`;
+    h += `<button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-req-share-text',this)">&#128203; Copy</button>`;
+    h += `</div></div>`;
+
+    c.innerHTML = h;
+  }
 
   // === ENHANCED TRAVEL MAP ===
   window.__dvMapUpgraded = true; // Flag to prevent main.js duplicate handlers
