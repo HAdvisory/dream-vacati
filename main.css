@@ -247,8 +247,48 @@ body {
   50% { transform: translateY(-8px); }
 }
 
+/* ===== Tool Cards ===== */
+.dv-tool-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 28px 24px;
+  height: 100%;
+  transition: box-shadow .2s, transform .2s;
+}
+.dv-tool-card:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,.1);
+  transform: translateY(-3px);
+}
+.dv-btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: .95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity .2s, transform .15s;
+}
+.dv-btn:hover { opacity: .88; transform: translateY(-1px); }
+.dv-form-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.dv-form-row input[type="email"],
+.dv-form-row input[type="text"],
+.dv-form-row select {
+  flex: 1 1 160px;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: .95rem;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .dv-hero { padding: 40px 0 !important; }
   .dv-hero h1 { font-size: 1.75rem; }
+  .dv-form-row { flex-direction: column; }
 }

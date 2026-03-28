@@ -78,7 +78,7 @@
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#blogs">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="tools.html">Travel Tools</a></li>
           <li class="nav-item"><a class="nav-link" href="book-now.html">Book Now</a></li>
         </ul>
@@ -238,11 +238,21 @@
     <section class="dv-email-signup rounded-4 p-4 p-md-5 mb-5 text-center">
       <h2 class="h4 mb-2">Get Travel Tips & Deals in Your Inbox</h2>
       <p class="text-muted mb-3" style="max-width:500px;margin:0 auto;">Join the DreamVacati community — destination guides, packing checklists, and exclusive deals. No spam, unsubscribe anytime.</p>
-      <form class="d-flex gap-2 justify-content-center flex-wrap" style="max-width:480px;margin:0 auto;" id="email-signup-form" onsubmit="return handleEmailSignup(event)">
-        <input type="email" class="form-control" placeholder="you@email.com" required style="max-width:280px;" id="signup-email">
-        <button type="submit" class="btn btn-primary fw-semibold px-4">Subscribe Free</button>
+      <!-- Mailchimp Signup Form
+           To activate: Go to Mailchimp → Audience → Signup Forms → Embedded Forms
+           Replace the action URL, u= and id= parameters with your own values -->
+      <form action="https://dreamvacati.us1.list-manage.com/subscribe/post?u=REPLACE_U_PARAM&amp;id=REPLACE_LIST_ID"
+            method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+            class="d-flex gap-2 justify-content-center flex-wrap validate" style="max-width:480px;margin:0 auto;"
+            target="_blank" novalidate>
+        <input type="email" name="EMAIL" class="form-control required email" placeholder="you@email.com" required style="max-width:280px;" id="mce-EMAIL">
+        <!-- Mailchimp bot-prevention field — do not remove -->
+        <div style="position:absolute;left:-5000px" aria-hidden="true">
+          <input type="text" name="b_REPLACE_U_PARAM_REPLACE_LIST_ID" tabindex="-1" value="">
+        </div>
+        <button type="submit" name="subscribe" class="btn btn-primary fw-semibold px-4">Subscribe Free</button>
       </form>
-      <p class="small text-muted mt-2 mb-0" id="signup-msg"></p>
+      <p class="small text-muted mt-2 mb-0">No spam. Unsubscribe anytime.</p>
     </section>
 
     <!-- ===== VLOGS ===== -->
@@ -443,10 +453,13 @@ Try the free budget calculator at dreamvacati.com/tools</div>
         </div>
       </div>
 
-      <!-- ═══ International Travel Requirements Checker ═══ -->
+      <!-- ═══ Travel Requirements Planning Guide ═══ -->
       <div class="dv-tool-card" id="tool-requirements">
-        <h3>&#127758; International Travel Requirements Checker</h3>
-        <p class="text-muted small mb-3">Select your destination to see passport, visa, health, customs, and entry requirements for U.S. citizens. Data current as of 2026.</p>
+        <h3>&#127758; Travel Requirements Planning Guide</h3>
+        <p class="text-muted small mb-3">General planning guidance for U.S. passport holders: passport validity, visa rules, eTAs, health recommendations, customs, currency, and plug types. 2026 data — 15 destinations.</p>
+        <div style="background:#fef9c3;border:1px solid #fcd34d;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:.8rem;color:#78350f">
+          <strong>&#9888;&#65039; Planning guidance only — not legal advice.</strong> Entry requirements change frequently. Always verify current rules with the official embassy, consulate, or government immigration website of your destination before travel. This tool does not guarantee accuracy for your specific circumstances.
+        </div>
         <div class="dv-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
           <div>
             <label style="font-size:.85rem;font-weight:500;margin-bottom:4px;display:block">Destination Region</label>
@@ -1013,9 +1026,14 @@ Track your own travels with the free map at dreamvacati.com
         <div class="col-md-4">
           <h3 class="h5 mb-3">Stay in Touch</h3>
           <p class="small text-white-50 mb-2">Get weekly travel tips and exclusive deals.</p>
-          <form class="d-flex gap-2" onsubmit="return handleEmailSignup(event)">
-            <input type="email" class="form-control form-control-sm" placeholder="you@email.com" required>
-            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          <!-- Mailchimp Signup — replace action URL with your Mailchimp embed URL -->
+          <form action="https://dreamvacati.us1.list-manage.com/subscribe/post?u=REPLACE_U_PARAM&amp;id=REPLACE_LIST_ID"
+                method="post" class="d-flex gap-2 validate" target="_blank" novalidate>
+            <input type="email" name="EMAIL" class="form-control form-control-sm required email" placeholder="you@email.com" required>
+            <div style="position:absolute;left:-5000px" aria-hidden="true">
+              <input type="text" name="b_REPLACE_U_PARAM_REPLACE_LIST_ID" tabindex="-1" value="">
+            </div>
+            <button type="submit" name="subscribe" class="btn btn-primary btn-sm">Join</button>
           </form>
           <p class="small text-white-50 mt-3">Contact: <a href="mailto:dreamvacai@gmail.com" class="text-white-50">dreamvacai@gmail.com</a></p>
         </div>
@@ -1517,5 +1535,8 @@ Track your own travels with the free map at dreamvacati.com
 
   <!-- Expedia Widgets -->
   <script class="eg-widgets-script" src="https://affiliates.expediagroup.com/products/widgets/assets/eg-widgets.js" defer></script>
+
+  <!-- Mailchimp Popup Signup -->
+  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/72806d79d56746ac091d7015d/6a7f76b512a742247cfc7630b.js");</script>
 </body>
 </html>

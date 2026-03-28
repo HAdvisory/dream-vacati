@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best Time to Travel — Seasonal Destination Guide 2026 | DreamVacati</title>
+  <meta name="description" content="Find the best time to visit 22 destinations worldwide. Compare peak, shoulder, and avoid months for Caribbean islands, European cities, Pacific islands, and more. Free seasonal travel planner.">
+  <meta name="keywords" content="best time to travel, when to visit Jamaica, best time Europe, Caribbean travel seasons, seasonal travel guide 2026, when to visit Italy, travel planning tool">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dreamvacati.com/best-time.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Best Time to Travel — Seasonal Destination Guide | DreamVacati">
+  <meta property="og:description" content="Find the best months to visit 22 destinations worldwide. Color-coded seasonal calendar for every destination.">
+  <meta property="og:url" content="https://dreamvacati.com/best-time.html">
+  <meta property="og:site_name" content="DreamVacati">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Best Time to Travel — DreamVacati">
+  <meta name="twitter:description" content="Find the best months for 22 destinations. Seasonal travel planning tool — free, instant, no signup.">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css?v=2">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-44K7KCF676"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-44K7KCF676');</script>
+
+  <!-- Meta Pixel -->
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','466481928545738');fbq('track','PageView');</script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=466481928545738&ev=PageView&noscript=1"/></noscript>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Best Time to Travel Tool",
+    "description": "Seasonal travel planning tool showing best months, shoulder seasons, and months to avoid for 22 destinations worldwide.",
+    "url": "https://dreamvacati.com/best-time.html",
+    "applicationCategory": "TravelApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "DreamVacati" }
+  }
+  </script>
+
+  <style>
+    /* ── Tool layout ─────────────────────────────────── */
+    .btt-hero {
+      background: linear-gradient(135deg, #0b4f6c, #0b95a5, #34c0c3);
+      padding: 56px 20px 48px;
+      text-align: center;
+      color: #fff;
+    }
+    .btt-hero h1 { font-weight: 700; margin-bottom: .5rem; }
+    .btt-hero p  { opacity: .9; max-width: 600px; margin: 0 auto 1.5rem; }
+
+    .btt-controls {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e2e8f0;
+    }
+    .btt-controls label { font-weight: 600; font-size: .85rem; color: #475569; margin-bottom: 4px; display: block; }
+    .btt-controls select,
+    .btt-controls input  { border-radius: 8px; border: 1.5px solid #e2e8f0; padding: 8px 12px; font-size: .9rem; width: 100%; }
+    .btt-controls select:focus { outline: none; border-color: #0b95a5; }
+
+    .btt-btn {
+      background: #0b95a5;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 22px;
+      font-weight: 600;
+      font-size: .9rem;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btt-btn:hover { background: #087e8b; }
+    .btt-btn--outline {
+      background: transparent;
+      color: #0b95a5;
+      border: 2px solid #0b95a5;
+    }
+    .btt-btn--outline:hover { background: #0b95a5; color: #fff; }
+
+    .btt-result-meta {
+      font-size: .85rem;
+      color: #64748b;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Cards ───────────────────────────────────────── */
+    .btt-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,.07);
+      height: 100%;
+      transition: transform .2s, box-shadow .2s;
+      border: 1px solid #f1f5f9;
+    }
+    .btt-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+    .btt-card--detailed { box-shadow: 0 4px 24px rgba(0,0,0,.1); }
+
+    .btt-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: .75rem; }
+    .btt-card-title  { font-size: 1.05rem; font-weight: 700; margin: 0; color: #1e293b; }
+    .btt-card-subtitle { font-size: .8rem; color: #64748b; margin: 2px 0 0; }
+    .btt-card-badges { display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; flex-shrink: 0; }
+
+    /* ── Status badge ────────────────────────────────── */
+    .btt-status {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: .8rem;
+      font-weight: 700;
+      margin-bottom: .75rem;
+    }
+    .btt-status--best     { background: #dcfce7; color: #15803d; }
+    .btt-status--shoulder { background: #fef9c3; color: #a16207; }
+    .btt-status--avoid    { background: #fee2e2; color: #b91c1c; }
+    .btt-status--ok       { background: #f1f5f9; color: #64748b; }
+
+    /* ── Calendar strip ──────────────────────────────── */
+    .btt-calendar {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 2px;
+      margin-bottom: 4px;
+    }
+    .btt-cal-cell {
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 4px;
+      font-size: .7rem;
+      font-weight: 600;
+      cursor: default;
+    }
+    .btt-cal-cell--best     { background: #22c55e; color: #fff; }
+    .btt-cal-cell--shoulder { background: #fbbf24; color: #fff; }
+    .btt-cal-cell--avoid    { background: #ef4444; color: #fff; }
+    .btt-cal-cell--ok       { background: #e2e8f0; color: #64748b; }
+    .btt-cal-cell--today    { outline: 2px solid #0b95a5; outline-offset: 1px; border-radius: 4px; }
+
+    .btt-cal-legend {
+      display: flex;
+      gap: 12px;
+      font-size: .72rem;
+      color: #64748b;
+      margin-bottom: .75rem;
+      flex-wrap: wrap;
+    }
+    .btt-cal-legend-item { display: flex; align-items: center; gap: 4px; }
+    .btt-cal-dot {
+      width: 10px; height: 10px; border-radius: 50%; display: inline-block;
+    }
+    .btt-cal-dot--best     { background: #22c55e; }
+    .btt-cal-dot--shoulder { background: #fbbf24; }
+    .btt-cal-dot--avoid    { background: #ef4444; }
+    .btt-cal-dot--ok       { background: #e2e8f0; border: 1px solid #cbd5e1; }
+
+    /* ── Card text ───────────────────────────────────── */
+    .btt-weather {
+      font-size: .85rem;
+      color: #475569;
+      margin-bottom: .5rem;
+      line-height: 1.5;
+    }
+    .btt-notes {
+      font-size: .82rem;
+      color: #475569;
+      margin-bottom: .5rem;
+      line-height: 1.6;
+      background: #f8fafc;
+      padding: .75rem;
+      border-radius: 8px;
+      border-left: 3px solid #0b95a5;
+    }
+    .btt-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: .5rem; }
+    .btt-tag {
+      background: #f0fdfa;
+      color: #0b95a5;
+      border: 1px solid #a7f3d0;
+      border-radius: 12px;
+      padding: 2px 9px;
+      font-size: .75rem;
+      font-weight: 600;
+    }
+    .btt-crowd-row {
+      display: flex;
+      gap: 1.5rem;
+      font-size: .8rem;
+      color: #64748b;
+      margin-top: .5rem;
+      padding-top: .5rem;
+      border-top: 1px solid #f1f5f9;
+      flex-wrap: wrap;
+    }
+
+    .btt-expand-btn {
+      background: none;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: .8rem;
+      color: #0b95a5;
+      cursor: pointer;
+      margin-top: .5rem;
+      transition: background .2s;
+    }
+    .btt-expand-btn:hover { background: #f0fdfa; }
+
+    /* ── Single result panel ─────────────────────────── */
+    #btt-single-result {
+      margin-bottom: 2rem;
+    }
+    #btt-single-result .btt-card {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* ── Error ───────────────────────────────────────── */
+    #btt-error {
+      display: none;
+      background: #fee2e2;
+      color: #b91c1c;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Responsive ──────────────────────────────────── */
+    @media (max-width: 576px) {
+      .btt-calendar { grid-template-columns: repeat(6, 1fr); }
+      .btt-cal-cell  { padding: 6px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">DreamVacati</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link active" href="tools.html">Travel Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="book-now.html">Book Now</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="btt-hero">
+    <h1 class="display-6">Best Time to Travel</h1>
+    <p>22 destinations, color-coded by month. Find your perfect travel window — or see what's ideal <em>right now</em>.</p>
+    <button class="btt-btn" id="btt-best-now">&#127869; Show Best Destinations This Month</button>
+  </header>
+
+  <main class="container py-5">
+
+    <div id="btt-error"></div>
+
+    <!-- Controls row -->
+    <div class="btt-controls">
+      <div class="row g-3 align-items-end">
+
+        <div class="col-12 col-md-4">
+          <label for="btt-destination">Look up a specific destination</label>
+          <select id="btt-destination">
+            <option value="">— Select a destination —</option>
+          </select>
+        </div>
+
+        <div class="col-6 col-md-2">
+          <label for="btt-month">Filter by month</label>
+          <select id="btt-month">
+            <option value="">Any month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+        </div>
+
+        <div class="col-6 col-md-2">
+          <label for="btt-region">Region</label>
+          <select id="btt-region">
+            <option value="">All regions</option>
+          </select>
+        </div>
+
+        <div class="col-6 col-md-2">
+          <label for="btt-budget">Budget level</label>
+          <select id="btt-budget">
+            <option value="">Any budget</option>
+            <option value="budget">$ Budget-Friendly</option>
+            <option value="moderate">$$ Moderate</option>
+            <option value="high">$$$ Premium</option>
+            <option value="luxury">$$$$ Luxury</option>
+          </select>
+        </div>
+
+        <div class="col-6 col-md-2">
+          <label for="btt-triptype">Trip type</label>
+          <select id="btt-triptype">
+            <option value="">Any type</option>
+            <option value="beach">Beach</option>
+            <option value="culture">Culture</option>
+            <option value="adventure">Adventure</option>
+            <option value="romance">Romance</option>
+            <option value="honeymoon">Honeymoon</option>
+            <option value="family">Family</option>
+            <option value="skiing">Skiing</option>
+            <option value="diving">Diving</option>
+            <option value="nature">Nature</option>
+            <option value="budget">Budget Travel</option>
+            <option value="luxury">Luxury</option>
+            <option value="nightlife">Nightlife</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Single destination result -->
+    <div id="btt-single-result" style="display:none"></div>
+
+    <!-- Filter results -->
+    <div>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h5 mb-0" id="btt-results-heading">Best Destinations This Month</h2>
+        <span class="btt-result-meta" id="btt-result-count"></span>
+      </div>
+      <div class="row g-4" id="btt-filter-results">
+        <p class="text-muted text-center py-4">Loading destinations&hellip;</p>
+      </div>
+    </div>
+
+    <!-- How to use -->
+    <section class="mt-5 p-4 rounded-4" style="background:#f8fafc;border:1px solid #e2e8f0;">
+      <h2 class="h5 mb-3">&#128204; How to Use This Tool</h2>
+      <div class="row g-3">
+        <div class="col-md-3">
+          <strong>&#128337; This Month</strong>
+          <p class="small text-muted mb-0 mt-1">Click "Show Best Destinations This Month" to instantly see which destinations are in their prime right now.</p>
+        </div>
+        <div class="col-md-3">
+          <strong>&#128197; Plan Ahead</strong>
+          <p class="small text-muted mb-0 mt-1">Select a future month from the filter to see which destinations will be at their best when you plan to travel.</p>
+        </div>
+        <div class="col-md-3">
+          <strong>&#127757; Find a Destination</strong>
+          <p class="small text-muted mb-0 mt-1">Know where you want to go? Use the destination dropdown for a full year-round seasonal breakdown.</p>
+        </div>
+        <div class="col-md-3">
+          <strong>&#128200; Calendar Colors</strong>
+          <p class="small text-muted mb-0 mt-1"><span style="color:#16a34a">Green = Best.</span> <span style="color:#a16207">Yellow = Good (shoulder).</span> <span style="color:#b91c1c">Red = Avoid.</span> Grey = Off-season.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related tools CTA -->
+    <section class="mt-4 mb-2">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <a href="tools.html" class="d-block p-3 rounded-3 text-decoration-none" style="background:#f0fdfa;border:1px solid #a7f3d0;">
+            <div class="fw-bold text-dark">&#128200; All Planning Tools</div>
+            <div class="small text-muted">Budget calculator, packing checklist, itinerary builder, and requirements checker</div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="blog-destination-comparison.html" class="d-block p-3 rounded-3 text-decoration-none" style="background:#f0fdfa;border:1px solid #a7f3d0;">
+            <div class="fw-bold text-dark">&#127757; Destination Comparison Guide</div>
+            <div class="small text-muted">Framework for comparing destinations by budget, season, and trip style</div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="blog-compare-caribbean-islands.html" class="d-block p-3 rounded-3 text-decoration-none" style="background:#f0fdfa;border:1px solid #a7f3d0;">
+            <div class="fw-bold text-dark">&#127796; Compare Caribbean Islands</div>
+            <div class="small text-muted">Head-to-head cost comparison of 7 islands with real budget tables</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="dv-footer bg-dark text-white py-4">
+    <div class="container text-center">
+      <p class="small text-white-50 mb-1">DreamVacati &mdash; Travel Blogs, Planning Tools &amp; Vacation Inspiration</p>
+      <p class="small text-white-50 mb-0">&copy; 2026 DreamVacati. <a href="privacy.html" class="text-white-50">Privacy Policy</a> | Contact: <a href="mailto:dreamvacai@gmail.com" class="text-white-50">dreamvacai@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="JS/best-time.js"></script>
+
+  <!-- Mailchimp Popup Signup -->
+  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/72806d79d56746ac091d7015d/6a7f76b512a742247cfc7630b.js");</script>
+</body>
+</html>

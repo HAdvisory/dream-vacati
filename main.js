@@ -89,33 +89,22 @@ document.addEventListener('DOMContentLoaded', () => {
     updateBudget();
   }
 
-  // ─── 4) Travel Prep (honest implementation) ───────────────
+  // ─── 4) Travel Prep — redirect to full requirements tool ──
+  // The comprehensive requirements guide is in index.html#tool-requirements
+  // and is powered by inline destination data. This section handles
+  // any legacy origin/destination inputs if they exist on the page.
   const fetchBtn = document.getElementById('fetch-requirements');
   if (fetchBtn) {
     fetchBtn.addEventListener('click', () => {
       const out = document.getElementById('requirements-output');
-      const origin = document.getElementById('origin-input').value.trim();
-      const destination = document.getElementById('destination-input').value.trim();
-
-      if (!origin || !destination) {
-        out.innerHTML = '<div class="alert alert-warning">Please fill in both origin and destination.</div>';
-        return;
+      if (out) {
+        out.innerHTML = `
+          <div class="alert alert-info">
+            <strong>Planning tip:</strong> Use the <a href="index.html#tool-requirements">Travel Requirements Planning Guide</a>
+            to get destination-specific passport, visa, eTA, health, and customs guidance for 15 destinations.
+            <br><small class="text-muted mt-1 d-block">Planning guidance only — always verify with official embassy or immigration sources before travel.</small>
+          </div>`;
       }
-
-      out.innerHTML = `
-        <div class="alert alert-info">
-          <h5 class="alert-heading">Travel Prep: ${origin} → ${destination}</h5>
-          <p class="mb-2">Here's a general checklist for international travel. <strong>Always verify requirements</strong> with official sources before your trip:</p>
-          <ul class="mb-3">
-            <li><strong>Passport:</strong> Ensure it's valid for 6+ months beyond your travel dates</li>
-            <li><strong>Visa:</strong> Check if you need a visa or e-visa — visit <a href="https://travel.state.gov" target="_blank" rel="noopener">travel.state.gov</a></li>
-            <li><strong>Vaccines:</strong> Check CDC requirements at <a href="https://wwwnc.cdc.gov/travel" target="_blank" rel="noopener">CDC Traveler's Health</a></li>
-            <li><strong>Travel Insurance:</strong> Highly recommended for international trips</li>
-            <li><strong>Currency:</strong> Research local currency and whether your bank cards work abroad</li>
-            <li><strong>Emergency Numbers:</strong> Save local emergency contacts for your destination</li>
-          </ul>
-          <p class="small text-muted mb-0">This is general guidance, not destination-specific. For precise entry requirements, check your destination's embassy website or <a href="https://travel.state.gov/content/travel/en/international-travel.html" target="_blank" rel="noopener">U.S. State Department Travel Advisories</a>.</p>
-        </div>`;
     });
   }
 
@@ -230,36 +219,10 @@ document.addEventListener('DOMContentLoaded', () => {
   } // end __dvMapUpgraded check
 });
 
-// ─── Email Signup Handler (global) ──────────────────────────
-function handleEmailSignup(event) {
-  event.preventDefault();
-  const form = event.target;
-  const emailInput = form.querySelector('input[type="email"]');
-  const email = emailInput?.value?.trim();
-  if (!email) return false;
-
-  // Store locally (replace with your email service integration)
-  let subscribers = [];
-  try { subscribers = JSON.parse(localStorage.getItem('dv_subscribers') || '[]'); } catch(e) {}
-
-  if (subscribers.includes(email)) {
-    const msg = form.closest('section')?.querySelector('#signup-msg') || form.nextElementSibling;
-    if (msg) msg.textContent = "You're already subscribed! Check your inbox for our latest.";
-    return false;
-  }
-
-  subscribers.push(email);
-  try { localStorage.setItem('dv_subscribers', JSON.stringify(subscribers)); } catch(e) {}
-
-  emailInput.value = '';
-  const msg = form.closest('section')?.querySelector('#signup-msg') || form.nextElementSibling;
-  if (msg) {
-    msg.textContent = '✅ Welcome to DreamVacati! You\'ll get our next travel guide in your inbox.';
-    msg.style.color = '#2b8a3e';
-  }
-
-  // TODO: Replace localStorage with actual email service API call
-  // Example: fetch('https://your-email-service.com/api/subscribe', { method: 'POST', body: JSON.stringify({ email }) })
-
-  return false;
-}
+// ─── Email Signup ────────────────────────────────────────────
+// Forms now use Mailchimp's standard embed format and POST directly
+// to Mailchimp's servers — no JavaScript handler needed.
+//
+// To activate: replace REPLACE_U_PARAM and REPLACE_LIST_ID in
+// index.html and blog.html with your actual Mailchimp audience values.
+// Get them from: Mailchimp → Audience → Signup Forms → Embedded Forms

@@ -1,0 +1,213 @@
+{
+  "_meta": {
+    "disclaimer": "This data is for general planning guidance only and is not legal advice. Entry requirements change frequently. Always verify current rules with the official embassy, consulate, or government immigration website of your destination before travel.",
+    "audience": "U.S. passport holders",
+    "lastReviewed": "2026-01"
+  },
+  "destinations": [
+    {
+      "id": "uk",
+      "name": "United Kingdom",
+      "flag": "🇬🇧",
+      "passport": "Valid U.S. passport required. Must be valid for the duration of your stay — no 6-month rule, but carry extra time as buffer.",
+      "visa": "No visa required for tourism stays up to 6 months.",
+      "eta": "UK ETA required from January 2025 for most non-visa nationals including U.S. citizens. Apply at eta.homeoffice.gov.uk — approx. £10, usually approved within hours.",
+      "health": "No mandatory vaccinations. Travel insurance strongly recommended. GHIC (NHS access) is for UK residents only — U.S. visitors need private travel insurance.",
+      "customs": "Duty-free allowance: 200 cigarettes or equivalent, 2L wine + 1L spirits, £390 in goods.",
+      "currency": "British Pound (GBP). Most cards accepted. Inform your bank before travel. ATMs widely available.",
+      "electricity": "Type G plug (3 flat rectangular pins). 230V/50Hz. Adapter required for U.S. devices.",
+      "tips": ["Apply for UK ETA well before travel — it's quick but can have delays.", "Drive on the left.", "Tipping 10–15% is customary in restaurants."],
+      "officialLinks": [
+        { "label": "UK ETA Application", "url": "https://www.gov.uk/apply-uk-visit-visa" },
+        { "label": "UK Border Force Entry Requirements", "url": "https://www.gov.uk/check-uk-visa" }
+      ]
+    },
+    {
+      "id": "schengen",
+      "name": "Schengen Europe (France, Italy, Spain, Germany, etc.)",
+      "flag": "🇪🇺",
+      "passport": "Valid U.S. passport required. Must be valid at least 3 months beyond your planned departure from the Schengen Area.",
+      "visa": "No visa required for stays up to 90 days within any 180-day period across all Schengen countries combined.",
+      "eta": "ETIAS (European Travel Information and Authorization System) expected to launch late 2026. Once live, U.S. citizens will need pre-travel authorization (approx. €7). Check etias.eu for launch updates.",
+      "health": "No mandatory vaccinations. U.S. health insurance rarely covers abroad — purchase travel insurance. EHIC/GHIC only for EU/UK residents.",
+      "customs": "200 cigarettes or equivalent, 4L wine, 1L spirits, €430 in goods when entering from outside the EU.",
+      "currency": "Euro (EUR) in most Schengen countries. Switzerland uses CHF. Sweden uses SEK. All widely accept cards.",
+      "electricity": "Type C/E/F plug (2 round pins). 230V/50Hz. Adapter required for U.S. devices.",
+      "tips": ["Track your 90/180 day count carefully if visiting multiple Schengen countries.", "UK is not in Schengen — separate rules apply.", "Museum tickets in Paris/Rome/Florence sell out — book well ahead."],
+      "officialLinks": [
+        { "label": "Schengen Visa Info", "url": "https://www.schengenvisainfo.com/" },
+        { "label": "ETIAS Info", "url": "https://travel-europe.europa.eu/etias_en" }
+      ]
+    },
+    {
+      "id": "japan",
+      "name": "Japan",
+      "flag": "🇯🇵",
+      "passport": "Valid U.S. passport required. No minimum validity requirement beyond trip duration, but 6 months recommended.",
+      "visa": "No visa required for U.S. citizens for stays up to 90 days for tourism.",
+      "eta": "Visit Japan Web is recommended for pre-registration of immigration/customs forms but is not mandatory. No ETA or K-ETA equivalent currently required for U.S. citizens.",
+      "health": "No required vaccinations. Japan has excellent medical facilities. Travel insurance strongly recommended. Some rural areas may have limited English-speaking doctors.",
+      "customs": "200 cigarettes, 3 bottles of spirits (760ml each), and gifts/souvenirs up to ¥200,000 (~$1,300).",
+      "currency": "Japanese Yen (JPY). Japan remains heavily cash-dependent — carry yen. 7-Eleven ATMs reliably accept foreign cards. IC transport cards (Suica/Pasmo) are essential.",
+      "electricity": "Type A plug (2 flat pins — same as U.S.). 100V/50–60Hz. U.S. devices generally work; check your device's voltage range.",
+      "tips": ["Book Shinkansen (bullet train) tickets through JR Pass for multi-city travel.", "Cherry blossom (late Mar–early Apr) and autumn foliage (Nov) are peak — book 6+ months ahead.", "Bow as a greeting — handshakes are not the norm."],
+      "officialLinks": [
+        { "label": "Japan Tourism Agency", "url": "https://www.jnto.go.jp/eng/" },
+        { "label": "Visit Japan Web", "url": "https://vjw-lp.digital.go.jp/en/" }
+      ]
+    },
+    {
+      "id": "uae",
+      "name": "United Arab Emirates (Dubai / Abu Dhabi)",
+      "flag": "🇦🇪",
+      "passport": "Valid U.S. passport required. Passport must be valid at least 6 months beyond intended stay.",
+      "visa": "Visa on arrival available to U.S. passport holders — 30 days, extendable once for another 30 days. Free of charge.",
+      "eta": "No separate ETA required. Visa on arrival is processed at the airport.",
+      "health": "No mandatory vaccinations for U.S. citizens. Hepatitis A and typhoid recommended. Summer heat (110°F+) means hydration is critical.",
+      "customs": "Alcohol is legal in Dubai but restricted elsewhere. Non-Muslims allowed to bring 4L of alcohol or 2 cartons of beer. Medications: carry prescription paperwork — some common U.S. medications are controlled in UAE.",
+      "currency": "UAE Dirham (AED). Pegged to USD at approximately 3.67 AED/USD. Cards widely accepted in Dubai. Some markets are cash-only.",
+      "electricity": "Type G plug (same as UK — 3 flat rectangular pins). 220–240V/50Hz. Adapter required for U.S. devices.",
+      "tips": ["Ramadan timing: some restaurants closed during daytime fasting hours. Check dates.", "Dress modestly in malls, mosques, and Abu Dhabi's Sheikh Zayed Mosque (abayas provided).", "Public displays of affection are technically illegal — keep it private."],
+      "officialLinks": [
+        { "label": "UAE Tourism", "url": "https://visitdubai.com/" },
+        { "label": "UAE Visa Info", "url": "https://icp.gov.ae/en/services/visa-services/" }
+      ]
+    },
+    {
+      "id": "canada",
+      "name": "Canada",
+      "flag": "🇨🇦",
+      "passport": "Valid U.S. passport recommended. U.S. citizens can technically enter with just a passport card or enhanced driver's license at land/sea borders, but a full passport is required for air travel.",
+      "visa": "No visa required for U.S. citizens.",
+      "eta": "eTA (Electronic Travel Authorization) required for U.S. citizens flying into Canada since 2016. Cost: CAD $7 (~$5 USD). Apply at canada.ca/en/immigration-refugees-citizenship. Usually approved instantly.",
+      "health": "No mandatory vaccinations. Canada has universal healthcare for residents — U.S. visitors need private travel insurance or check if your U.S. plan covers Canada.",
+      "customs": "800 CAD duty-free allowance when returning to the U.S. from Canada (U.S. Customs rules). Within Canada: no restrictions on bringing personal use alcohol within provincial limits.",
+      "currency": "Canadian Dollar (CAD). Cards widely accepted. USD often accepted at border towns and tourist areas but at unfavorable rates.",
+      "electricity": "Type A/B plug (same as U.S.). 120V/60Hz. No adapter needed for U.S. devices.",
+      "tips": ["National parks (Banff, Jasper) require Parks Canada day passes — purchase online to skip queues.", "NEXUS card allows expedited border crossing for pre-approved travelers.", "Cannabis is legal federally — but do not cross the U.S. border with any."],
+      "officialLinks": [
+        { "label": "Canada eTA Application", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+        { "label": "Parks Canada Passes", "url": "https://parks.canada.ca/voyage-travel/admission" }
+      ]
+    },
+    {
+      "id": "mexico",
+      "name": "Mexico",
+      "flag": "🇲🇽",
+      "passport": "Valid U.S. passport required for air travel. Must be valid for the duration of your stay.",
+      "visa": "No visa required for U.S. citizens for tourism stays up to 180 days.",
+      "eta": "No eTA or prior authorization required. Tourist card (FMM) previously required — now issued digitally at entry.",
+      "health": "No mandatory vaccinations. Hepatitis A, typhoid, and traveler's diarrhea precautions recommended. Avoid tap water in all regions. Travel insurance is strongly recommended.",
+      "customs": "Bring receipts for electronics and valuables to prove they're not for resale. $75 USD duty-free on return to U.S. (separate from standard $800 personal exemption — check current CBP rules).",
+      "currency": "Mexican Peso (MXN). USD widely accepted in tourist areas but you'll get better rates using pesos. ATMs in airports charge higher fees — use local bank ATMs in town.",
+      "electricity": "Type A/B plug (same as U.S.). 127V/60Hz. No adapter needed for most U.S. devices.",
+      "tips": ["U.S. State Dept Travel Advisory: check specific state advisories — Yucatan/Quintana Roo (Cancun/Tulum) is Level 2 (Exercise Increased Caution) as of 2026.", "Travel insurance covering medical evacuation is strongly recommended.", "Avoid flashing valuables and use hotel safes."],
+      "officialLinks": [
+        { "label": "U.S. State Dept — Mexico", "url": "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Mexico.html" },
+        { "label": "Mexico Tourism Board", "url": "https://www.visitmexico.com/en" }
+      ]
+    },
+    {
+      "id": "jamaica",
+      "name": "Jamaica",
+      "flag": "🇯🇲",
+      "passport": "Valid U.S. passport required. Must be valid for at least 6 months beyond your departure date.",
+      "visa": "No visa required for U.S. citizens for stays up to 90 days.",
+      "eta": "C5 Form required before arrival — completed online or on the flight. Free of charge. Submit at enterjamaica.com within 24 hours of departure.",
+      "health": "No mandatory vaccinations. Hepatitis A and typhoid recommended. Travel insurance required by some resorts. Tap water in major hotels is generally safe; elsewhere use bottled water.",
+      "customs": "Duty-free: 1L spirits + 1L wine, 200 cigarettes, gifts up to $500 USD.",
+      "currency": "Jamaican Dollar (JMD). USD widely accepted at resorts and tourist areas. ATMs available in major towns and airports. Tip in USD or JMD.",
+      "electricity": "Type A/B plug (same as U.S.). 110V/50Hz. U.S. devices should work; some appliances may run slightly differently due to 50Hz vs 60Hz.",
+      "tips": ["All-inclusive resorts handle most logistics — good for first-time visitors.", "Outside resort zones: hire a licensed taxi, not unlicensed drivers.", "Negril for beaches and sunsets, Ocho Rios for Dunn's River Falls, Kingston for culture."],
+      "officialLinks": [
+        { "label": "Jamaica C5 Entry Form", "url": "https://enterjamaica.com" },
+        { "label": "Jamaica Tourism Board", "url": "https://www.visitjamaica.com/" }
+      ]
+    },
+    {
+      "id": "barbados",
+      "name": "Barbados",
+      "flag": "🇧🇧",
+      "passport": "Valid U.S. passport required. No minimum validity beyond duration of stay, but 6 months beyond departure recommended.",
+      "visa": "No visa required for U.S. citizens for stays up to 6 months.",
+      "eta": "Barbados Immigration Embarkation/Disembarkation form required — now completed digitally. Submit at travelform.gov.bb before departure.",
+      "health": "No mandatory vaccinations. Tap water is safe to drink — one of the few Caribbean islands where this is true. Travel insurance strongly recommended.",
+      "customs": "Duty-free: 1 liter of alcohol, 200 cigarettes, gifts up to BBD $125.",
+      "currency": "Barbadian Dollar (BBD). Fixed to USD at 2 BBD = 1 USD. USD widely accepted. Cards accepted everywhere. ATMs readily available.",
+      "electricity": "Type A/B plug (same as U.S.). 115V/50Hz. U.S. devices work without an adapter.",
+      "tips": ["Bridgetown UNESCO Garrison is worth a half-day visit.", "St. Lawrence Gap has the best nightlife and restaurant strip.", "Harrison's Cave is a popular family attraction — book ahead in peak season.", "Barbados is considered one of the safest Caribbean islands."],
+      "officialLinks": [
+        { "label": "Barbados Travel Form", "url": "https://travelform.gov.bb" },
+        { "label": "Barbados Tourism", "url": "https://www.visitbarbados.org/" }
+      ]
+    },
+    {
+      "id": "thailand",
+      "name": "Thailand",
+      "flag": "🇹🇭",
+      "passport": "Valid U.S. passport required. Must be valid at least 6 months beyond your entry date.",
+      "visa": "No visa required for U.S. citizens for stays up to 60 days (extended from 30 days in 2024). For stays 60–90 days, apply for a Tourist Visa at a Thai embassy.",
+      "eta": "No ETA currently required. Thailand Visa on Arrival program exists for some nationalities — not needed for U.S. citizens under 60-day exemption.",
+      "health": "No mandatory vaccinations. Hepatitis A and typhoid recommended. Malaria risk in border areas with Myanmar and Cambodia — carry repellent. Rabies risk: avoid stray animals.",
+      "customs": "Duty-free: 200 cigarettes, 1L alcohol, gifts up to THB 20,000 (~$560 USD). Buddha images: cannot export without a permit.",
+      "currency": "Thai Baht (THB). Cards accepted in cities and resorts; cash essential in markets and rural areas. Superrich Currency Exchange kiosks offer good rates in Bangkok.",
+      "electricity": "Type A/B/C plug (multiple types used). 220V/50Hz. Adapter likely needed. Surge protectors recommended for electronics.",
+      "tips": ["Cover shoulders and knees at temples (Wat Pho, Wat Arun, Grand Palace).", "SIM cards: buy at airport for data plans (AIS, DTAC, True Move).", "Tuk-tuks and taxis: negotiate price upfront or insist on meter.", "Songkran (Thai New Year) in April is a huge water festival — very fun but extremely crowded."],
+      "officialLinks": [
+        { "label": "Thailand Tourism Authority", "url": "https://www.tourismthailand.org/" },
+        { "label": "Royal Thai Embassy", "url": "https://thaiembdc.org/visas/" }
+      ]
+    },
+    {
+      "id": "australia",
+      "name": "Australia",
+      "flag": "🇦🇺",
+      "passport": "Valid U.S. passport required. Must be valid for the duration of your stay.",
+      "visa": "Electronic Travel Authority (ETA — subclass 601) required for U.S. citizens. Apply through the Australian ETA app or authorized agents. Cost: AUD $20 (~$13 USD). Valid multiple entries, 12 months, up to 3 months per visit.",
+      "eta": "ETA (subclass 601) IS the required authorization. Apply via the official Australian ETA app before travel.",
+      "health": "No mandatory vaccinations. Travel insurance strongly recommended — Australian healthcare does not cover non-residents. Unique wildlife hazards: box jellyfish (Oct–Apr in tropical north), sharks, and various venomous animals.",
+      "customs": "Biosecurity is strict — declare ALL food, plant material, wood, and animal products on arrival. Fines for non-declaration are significant. $900 AUD duty-free allowance.",
+      "currency": "Australian Dollar (AUD). Cards widely accepted. Tipping is not customary but appreciated.",
+      "electricity": "Type I plug (3 flat angled pins). 230V/50Hz. Adapter required for U.S. devices.",
+      "tips": ["Fly into Sydney or Melbourne for the most direct routes from the U.S. East Coast.", "Book Uluru (Ayers Rock) accommodation 6+ months ahead — limited options.", "Swim between the flags on beaches — flags mark patrolled safe zones.", "Time zones: Australia spans 3 time zones, plus daylight saving only in some states."],
+      "officialLinks": [
+        { "label": "Australian ETA App", "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601" },
+        { "label": "Tourism Australia", "url": "https://www.australia.com/en-us" }
+      ]
+    },
+    {
+      "id": "new-zealand",
+      "name": "New Zealand",
+      "flag": "🇳🇿",
+      "passport": "Valid U.S. passport required. Must be valid at least 3 months beyond your intended departure from New Zealand.",
+      "visa": "No visa required for U.S. citizens for stays up to 90 days.",
+      "eta": "NZeTA (New Zealand Electronic Travel Authority) required for visa-waiver nationals including U.S. citizens. Cost: NZD $23 (~$14 USD) via app or NZD $17 via website. Also pay the International Visitor Conservation and Tourism Levy (IVL): NZD $35. Apply at eta.immigration.govt.nz.",
+      "health": "No mandatory vaccinations. Travel insurance strongly recommended. No dangerous land mammals — but water activities carry risks (rip currents, white water).",
+      "customs": "Very strict biosecurity — similar to Australia. Declare all food, plant, and animal products. NZD $700 duty-free allowance.",
+      "currency": "New Zealand Dollar (NZD). Cards widely accepted. Tipping is not expected but appreciated at restaurants.",
+      "electricity": "Type I plug (3 flat angled pins — same shape as Australia but with slight differences). 230V/50Hz. Adapter required.",
+      "tips": ["Hire a campervan for the South Island — the most flexible way to see Fiordland and Queenstown.", "Hobbiton (Matamata) requires pre-booked tickets.", "Best months: Dec–Feb for South Island hiking (Milford Track, Tongariro). Northern winter is quiet and affordable.", "New Zealand has some of the world's best trail running and hiking."],
+      "officialLinks": [
+        { "label": "NZeTA Application", "url": "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/nzeta" },
+        { "label": "Tourism New Zealand", "url": "https://www.newzealand.com/us/" }
+      ]
+    },
+    {
+      "id": "costa-rica",
+      "name": "Costa Rica",
+      "flag": "🇨🇷",
+      "passport": "Valid U.S. passport required. Must be valid for at least 6 months beyond your entry date.",
+      "visa": "No visa required for U.S. citizens for stays up to 90 days.",
+      "eta": "No eTA required. Proof of onward travel (return or onward ticket) may be requested at entry.",
+      "health": "No mandatory vaccinations. Hepatitis A and typhoid recommended. Malaria risk in some lowland areas — consult CDC. Travel insurance is mandatory — Costa Rica requires proof of travel insurance covering $50,000 medical and $2,000 COVID-related expenses at entry.",
+      "customs": "Duty-free: $500 USD in purchases, 200 cigarettes, 5L alcohol.",
+      "currency": "Costa Rican Colón (CRC). USD widely accepted in tourist areas. Cards accepted at most hotels and restaurants. ATMs available in towns.",
+      "electricity": "Type A/B plug (same as U.S.). 120V/60Hz. No adapter needed.",
+      "tips": ["Travel insurance with coverage proof is required at the border — bring a printed or digital copy.", "Dry season (Dec–Apr) is peak for the Pacific coast. Caribbean coast (Puerto Viejo) is better May–Sep.", "4WD rental is recommended for accessing remote lodges and beaches.", "Pura Vida is the national saying — life is good, slow down."],
+      "officialLinks": [
+        { "label": "Costa Rica Tourism (ICT)", "url": "https://www.visitcostarica.com/en" },
+        { "label": "U.S. Embassy — Costa Rica", "url": "https://cr.usembassy.gov/" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /DreamVacai.html
+
+Sitemap: https://dreamvacati.com/sitemap.xml
