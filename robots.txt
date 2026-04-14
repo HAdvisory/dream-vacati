@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dreamvacati.com/sitemap.xml
+Sitemap: https://www.dreamvacati.com/sitemap.xml
