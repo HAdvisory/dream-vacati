@@ -1,27 +1,57 @@
-/* main.css — DreamVacati v2 */
+/* main.css — DreamVacati Pathfinder v3 */
 
-/* ===== Design Tokens ===== */
+/* ===== Pathfinder Design Tokens ===== */
 :root {
-  --sea-dark: #087e8b;
-  --sea: #0b95a5;
-  --aqua: #34c0c3;
-  --sand: #f4c27a;
-  --dark: #1a1b2e;
-  --gray: #6c757d;
-  --light: #f8f9fa;
-  --white: #ffffff;
+  /* Brand palette */
+  --horizon-blue:  #0077B6;
+  --deep-navy:     #03045E;
+  --action-teal:   #2EC4B6;
+  --teal-dark:     #1fa89c;
+  --teal-light:    #e0f7f5;
+  --sand:          #f4c27a;
+  --dark:          #03045E;   /* unified to deep-navy */
+  --gray:          #64748b;
+  --light:         #F8F9FA;
+  --white:         #ffffff;
+
+  /* Legacy aliases kept for backward compat */
+  --sea-dark: #0077B6;
+  --sea:      #0077B6;
+  --aqua:     #2EC4B6;
+
+  /* Typography */
+  --font-head: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(3,4,94,0.06);
+  --shadow-md: 0 4px 20px rgba(3,4,94,0.10);
+  --shadow-lg: 0 8px 32px rgba(3,4,94,0.14);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 }
+
+/* ===== Google Fonts Import ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
 
 /* ===== Base ===== */
 body {
-  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   color: var(--dark);
   background: var(--white);
 }
 
+h1, h2, h3, h4, h5, h6,
+.navbar-brand, .display-4, .display-5, .display-6 {
+  font-family: var(--font-head);
+}
+
 /* ===== Hero ===== */
 .dv-hero {
-  background: linear-gradient(135deg, var(--sea-dark) 0%, var(--sea) 40%, var(--aqua) 100%);
+  background: linear-gradient(135deg, var(--deep-navy) 0%, var(--horizon-blue) 55%, var(--action-teal) 100%);
   position: relative;
   overflow: hidden;
 }
@@ -292,3 +322,242 @@ body {
   .dv-hero h1 { font-size: 1.75rem; }
   .dv-form-row { flex-direction: column; }
 }
+
+/* ===== Pathfinder Buttons ===== */
+.btn-pathfinder,
+.btn-primary {
+  background: var(--action-teal) !important;
+  border-color: var(--action-teal) !important;
+  color: #fff !important;
+  font-family: var(--font-head);
+  font-weight: 700;
+  border-radius: var(--radius-sm) !important;
+  transition: background .2s, transform .15s !important;
+}
+.btn-pathfinder:hover,
+.btn-primary:hover {
+  background: var(--teal-dark) !important;
+  border-color: var(--teal-dark) !important;
+  transform: translateY(-1px);
+}
+.btn-outline-pathfinder,
+.btn-outline-primary {
+  border-color: var(--action-teal) !important;
+  color: var(--action-teal) !important;
+  font-family: var(--font-head);
+  font-weight: 600;
+  border-radius: var(--radius-sm) !important;
+}
+.btn-outline-pathfinder:hover,
+.btn-outline-primary:hover {
+  background: var(--action-teal) !important;
+  color: #fff !important;
+}
+
+/* ===== Pathfinder Navbar ===== */
+.navbar.bg-dark,
+.navbar-dark.bg-dark {
+  background: var(--deep-navy) !important;
+}
+.navbar-brand {
+  font-family: var(--font-head) !important;
+  font-weight: 800 !important;
+  font-size: 1.35rem !important;
+  letter-spacing: -0.3px;
+}
+.nav-link {
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
+/* ===== Pathfinder Cards ===== */
+.dv-blog-card,
+.card {
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-sm) !important;
+  border: 1px solid rgba(3,4,94,0.07) !important;
+  transition: transform .2s ease, box-shadow .2s ease !important;
+}
+.dv-blog-card:hover,
+.card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* ===== Pathfinder Footer ===== */
+.dv-footer {
+  background: var(--deep-navy);
+  color: rgba(255,255,255,0.75);
+  padding: 3rem 0 1.5rem;
+  font-size: 0.9rem;
+}
+.dv-footer .footer-brand {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: #fff;
+  letter-spacing: -0.3px;
+}
+.dv-footer a {
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  transition: color .2s;
+}
+.dv-footer a:hover {
+  color: var(--action-teal) !important;
+}
+.dv-footer .footer-divider {
+  border-color: rgba(255,255,255,0.12);
+  margin: 1.5rem 0 1rem;
+}
+.dv-footer .footer-legal {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ===== Affiliate Disclosure ===== */
+.dv-affiliate-disclosure {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  color: #0369a1;
+  margin: 1.5rem 0;
+}
+
+/* ===== In-Post Booking CTA ===== */
+.dv-booking-cta {
+  background: linear-gradient(135deg, var(--deep-navy) 0%, var(--horizon-blue) 100%);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 2rem;
+  color: #fff;
+  margin: 2.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.dv-booking-cta h3 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem;
+  color: #fff;
+}
+.dv-booking-cta p {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin: 0;
+}
+.dv-booking-cta .cta-btn {
+  background: var(--action-teal);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-head);
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background .2s;
+  flex-shrink: 0;
+}
+.dv-booking-cta .cta-btn:hover {
+  background: var(--teal-dark);
+  text-decoration: none;
+  color: #fff;
+}
+
+/* ===== Sticky Mobile Book Bar ===== */
+.dv-sticky-book {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: var(--deep-navy);
+  padding: 0.75rem 1rem;
+  text-align: center;
+  box-shadow: 0 -4px 20px rgba(3,4,94,0.2);
+}
+.dv-sticky-book a {
+  display: inline-block;
+  background: var(--action-teal);
+  color: #fff;
+  padding: 0.65rem 2rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+@media (max-width: 768px) {
+  .dv-sticky-book { display: block; }
+}
+
+/* ===== Author Box ===== */
+.dv-author-box {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--light);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin: 2.5rem 0;
+  border: 1px solid rgba(3,4,94,0.07);
+}
+.dv-author-box .author-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--horizon-blue);
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.dv-author-box .author-name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--deep-navy);
+  margin-bottom: 0.15rem;
+}
+.dv-author-box .author-bio {
+  font-size: 0.85rem;
+  color: var(--gray);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===== Email Signup Upgrade ===== */
+.dv-email-signup {
+  background: linear-gradient(135deg, var(--deep-navy) 0%, var(--horizon-blue) 100%) !important;
+  border: none !important;
+  border-radius: var(--radius-md);
+  color: #fff;
+  padding: 2.5rem !important;
+}
+.dv-email-signup h2 { color: #fff !important; font-family: var(--font-head); font-weight: 800; }
+.dv-email-signup p { color: rgba(255,255,255,0.8) !important; }
+.dv-email-signup .btn-primary { background: var(--action-teal) !important; border-color: var(--action-teal) !important; }
+
+/* ===== Pathfinder Badge (navbar book CTA) ===== */
+.nav-cta-btn {
+  background: var(--action-teal);
+  color: #fff !important;
+  padding: 0.4rem 1.1rem;
+  border-radius: 6px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.875rem;
+  transition: background .2s;
+  text-decoration: none !important;
+}
+.nav-cta-btn:hover { background: var(--teal-dark); }

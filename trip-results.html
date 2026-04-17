@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Trip Plan — DreamVacati</title>
+  <meta name="robots" content="noindex">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="main.css?v=3">
+
+  <style>
+    body { background: #f8f9fa; }
+
+    /* ── Loading state ── */
+    #loadingState { text-align: center; padding: 5rem 1rem; }
+    .spinner-lg   { width: 56px; height: 56px; border: 5px solid #e5e7eb; border-top-color: #2EC4B6; border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto 1.5rem; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Result layout ── */
+    #resultState  { display: none; }
+    .result-hero  { background: linear-gradient(135deg, #03045E 0%, #0077B6 100%); color: #fff; border-radius: 16px; padding: 2rem; margin-bottom: 1.75rem; }
+    .result-hero h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.9rem; margin-bottom: 0.25rem; }
+    .result-hero .meta-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+    .meta-tag     { background: rgba(255,255,255,.15); border-radius: 999px; padding: .25rem .8rem; font-size: .8rem; }
+
+    /* ── Section cards ── */
+    .result-section { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(3,4,94,.06); padding: 1.75rem; margin-bottom: 1.5rem; }
+    .result-section h2 { font-family: 'Plus Jakarta Sans', sans-serif; color: #03045E; font-size: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
+    .result-section h2 .icon { font-size: 1.3rem; }
+
+    /* Budget grid */
+    .budget-grid  { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .75rem; }
+    .budget-item  { background: #f0f9ff; border-radius: 10px; padding: .9rem 1rem; }
+    .budget-item .b-label { font-size: .75rem; color: #666; text-transform: uppercase; letter-spacing: .04em; }
+    .budget-item .b-value { font-size: 1.1rem; font-weight: 700; color: #03045E; margin-top: .2rem; }
+
+    /* Day cards */
+    .day-card     { border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
+    .day-card:last-child { margin-bottom: 0; }
+    .day-header   { display: flex; align-items: baseline; gap: .75rem; margin-bottom: .5rem; }
+    .day-num      { background: #0077B6; color: #fff; border-radius: 6px; padding: .15rem .55rem; font-size: .75rem; font-weight: 700; white-space: nowrap; }
+    .day-title    { font-weight: 700; color: #1a1a2e; font-size: 1rem; }
+    .day-theme    { font-size: .82rem; color: #2EC4B6; font-style: italic; margin-bottom: .6rem; }
+    .day-activities { padding-left: 1.25rem; margin: 0; }
+    .day-activities li { margin-bottom: .3rem; font-size: .9rem; color: #374151; line-height: 1.5; }
+    .day-tip      { margin-top: .75rem; background: #fffbeb; border-radius: 6px; padding: .5rem .75rem; font-size: .85rem; color: #555; }
+
+    /* Tag list (tips/packing) */
+    .tag-list     { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .tag-item     { background: #f1f5f9; border-radius: 8px; padding: .4rem .8rem; font-size: .85rem; color: #374151; }
+
+    /* ── Locked sections ── */
+    .locked-wrapper { position: relative; overflow: hidden; border-radius: 12px; }
+    .locked-content { filter: blur(5px); pointer-events: none; user-select: none; opacity: .65; }
+    .locked-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 0%, rgba(248,249,250,.85) 40%, rgba(248,249,250,1) 100%); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 2rem; z-index: 2; }
+    .unlock-cta   { text-align: center; }
+    .unlock-cta h3 { font-family: 'Plus Jakarta Sans', sans-serif; color: #03045E; font-size: 1.1rem; margin-bottom: .4rem; }
+    .unlock-cta p { font-size: .85rem; color: #666; margin-bottom: 1rem; }
+    .btn-unlock   { background: #0077B6; color: #fff; border: none; border-radius: 10px; padding: .85rem 2.25rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1.05rem; cursor: pointer; transition: background .2s; display: inline-block; text-decoration: none; }
+    .btn-unlock:hover { background: #03045E; color: #fff; }
+    .btn-unlock:disabled { opacity: .6; cursor: not-allowed; }
+
+    /* ── Paid unlock banner ── */
+    .paid-banner  { background: linear-gradient(135deg, #2EC4B6, #0077B6); color: #fff; border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.75rem; display: flex; align-items: center; gap: 1rem; }
+    .paid-banner .check { width: 40px; height: 40px; background: rgba(255,255,255,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .paid-banner h3 { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0 0 .15rem; font-size: 1rem; }
+    .paid-banner p  { margin: 0; font-size: .85rem; opacity: .9; }
+
+    /* ── Error state ── */
+    #errorState   { display: none; text-align: center; padding: 4rem 1rem; }
+
+    /* Sticky footer CTA (mobile) */
+    .sticky-unlock { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #03045E; padding: 1rem 1.5rem; z-index: 999; text-align: center; }
+    @media (max-width: 768px) {
+      .sticky-unlock.visible { display: block; }
+    }
+    .sticky-unlock .btn-unlock { width: 100%; display: block; }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="#03045E"/>
+        <path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="26" cy="6" r="2.5" fill="#0077B6"/>
+      </svg>
+      <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:-.3px">DreamVacati</span>
+    </a>
+  </div>
+</nav>
+
+<main class="container py-4" style="max-width:780px">
+
+  <!-- Loading -->
+  <div id="loadingState">
+    <div class="spinner-lg"></div>
+    <p style="color:#555;font-size:1rem">Building your trip plan…</p>
+    <p style="color:#aaa;font-size:.85rem">Hang tight — just a moment</p>
+  </div>
+
+  <!-- Error -->
+  <div id="errorState">
+    <p style="font-size:2rem">😕</p>
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;color:#03045E">Couldn't load your plan</h2>
+    <p id="errorMsg" style="color:#666;margin:.75rem 0 1.5rem"></p>
+    <a href="/trip-planner.html" class="btn-unlock" style="text-decoration:none">Start a new plan</a>
+  </div>
+
+  <!-- Result -->
+  <div id="resultState">
+
+    <!-- Paid banner (shown only after payment) -->
+    <div class="paid-banner" id="paidBanner" style="display:none">
+      <div class="check">✓</div>
+      <div>
+        <h3>Your full plan is unlocked!</h3>
+        <p>Thank you for your purchase. Your complete trip plan is ready below. <a href="#" id="pdfLink" style="color:rgba(255,255,255,.85)">Download PDF ↗</a></p>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="result-hero">
+      <h1 id="heroDestination">Your Trip Plan</h1>
+      <p id="heroOverview" style="opacity:.9;line-height:1.7;margin:0;font-size:.95rem"></p>
+      <div class="meta-tags" id="metaTags"></div>
+    </div>
+
+    <!-- Budget -->
+    <div class="result-section">
+      <h2><span class="icon">💰</span> Budget Breakdown</h2>
+      <div class="budget-grid" id="budgetGrid"></div>
+      <p id="budgetNote" style="font-size:.82rem;color:#888;margin-top:.75rem"></p>
+    </div>
+
+    <!-- Itinerary preview (free) -->
+    <div class="result-section">
+      <h2><span class="icon">📅</span> Your Itinerary <span id="itineraryBadge" style="font-size:.7rem;background:#e0f7f5;color:#0d7e76;border-radius:999px;padding:.2rem .7rem;font-weight:600;margin-left:.25rem">Preview</span></h2>
+      <div id="itineraryDays"></div>
+    </div>
+
+    <!-- Locked sections container -->
+    <div id="lockedContainer">
+      <!-- Populated by JS when plan is not paid -->
+      <div class="locked-wrapper">
+        <div class="locked-content" id="lockedBlurContent">
+          <!-- Fake locked content shown blurred -->
+          <div class="result-section" style="margin-bottom:1.5rem">
+            <h2><span class="icon">🗺️</span> Full Itinerary — All Days</h2>
+            <div class="day-card"><div class="day-header"><span class="day-num">Day 3</span><span class="day-title">Local exploration &amp; hidden gems</span></div><div class="day-theme">Off the beaten path</div><ul class="day-activities"><li>Morning visit to the local food market</li><li>Guided walking tour of the old quarter</li><li>Afternoon relaxation at a rooftop café</li><li>Sunset viewpoint with panoramic views</li><li>Dinner at a chef-recommended local spot</li></ul></div>
+            <div class="day-card"><div class="day-header"><span class="day-num">Day 4</span><span class="day-title">Adventure &amp; experiences</span></div><div class="day-theme">Active day out</div><ul class="day-activities"><li>Early morning guided excursion</li><li>Cultural cooking class or workshop</li><li>Visit to top-rated attraction</li><li>Evening leisure — choose your pace</li></ul></div>
+          </div>
+          <div class="result-section" style="margin-bottom:1.5rem">
+            <h2><span class="icon">💡</span> Insider Travel Tips</h2>
+            <div class="tag-list"><span class="tag-item">Book transport in advance</span><span class="tag-item">Best local currency exchange</span><span class="tag-item">Avoiding tourist traps</span><span class="tag-item">Safety tips for your area</span><span class="tag-item">Best time to visit attractions</span></div>
+          </div>
+          <div class="result-section">
+            <h2><span class="icon">🧳</span> Packing Suggestions</h2>
+            <div class="tag-list"><span class="tag-item">Lightweight daypack</span><span class="tag-item">Travel adapter</span><span class="tag-item">Sunscreen SPF50+</span><span class="tag-item">Comfortable walking shoes</span><span class="tag-item">Travel insurance documents</span></div>
+          </div>
+        </div>
+        <div class="locked-overlay">
+          <div class="unlock-cta">
+            <h3>Unlock Your Full Trip Plan</h3>
+            <p>Complete itinerary + insider tips + packing list + hotel picks</p>
+            <button class="btn-unlock" id="unlockBtn" onclick="startCheckout()">
+              Unlock for $19 →
+            </button>
+            <p style="font-size:.75rem;color:#888;margin-top:.6rem">🔒 Secure checkout via Stripe · Instant access</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paid sections (hidden until paid) -->
+    <div id="paidContent" style="display:none">
+      <div class="result-section">
+        <h2><span class="icon">🗺️</span> Full Itinerary</h2>
+        <div id="fullItinerary"></div>
+      </div>
+      <div class="result-section">
+        <h2><span class="icon">💡</span> Insider Travel Tips</h2>
+        <div class="tag-list" id="travelTips"></div>
+      </div>
+      <div class="result-section">
+        <h2><span class="icon">🧳</span> Packing Suggestions</h2>
+        <div class="tag-list" id="packingList"></div>
+      </div>
+      <div class="result-section" id="hotelSection" style="display:none">
+        <h2><span class="icon">🏨</span> Hotel Suggestions</h2>
+        <ul id="hotelList" style="padding-left:1.25rem;line-height:2;color:#374151"></ul>
+      </div>
+      <div class="result-section">
+        <h2><span class="icon">🌍</span> About Your Destination</h2>
+        <p id="destSummary" style="line-height:1.9;color:#374151"></p>
+      </div>
+      <!-- PDF/share actions -->
+      <div style="text-align:center;padding:1.5rem 0;">
+        <a href="#" id="pdfBtn" target="_blank" class="btn-unlock" style="text-decoration:none;display:inline-block;margin-bottom:.75rem">
+          📄 Download PDF
+        </a>
+        <p style="font-size:.8rem;color:#888">Opens a print-ready page — use your browser's "Print → Save as PDF"</p>
+      </div>
+    </div>
+
+  </div><!-- /#resultState -->
+
+</main>
+
+<!-- Sticky mobile CTA (unlocked plans only) -->
+<div class="sticky-unlock" id="stickyBar">
+  <button class="btn-unlock" onclick="startCheckout()">Unlock Full Plan — $19 →</button>
+</div>
+
+<!-- Footer -->
+<footer class="dv-footer mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="dv-footer-brand">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="vertical-align:middle;margin-right:6px"><rect width="32" height="32" rx="7" fill="#03045E"/><path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="26" cy="6" r="2.5" fill="#0077B6"/></svg>
+          DreamVacati
+        </div>
+        <p style="color:#94a3b8;font-size:.85rem;margin-top:.5rem">Real trip planning. Honest advice.</p>
+      </div>
+      <div class="col-6 col-md-2">
+        <h6 class="dv-footer-heading">Site</h6>
+        <ul class="dv-footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog.html">Blog</a></li>
+          <li><a href="/tools.html">Tools</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-2">
+        <h6 class="dv-footer-heading">Legal</h6>
+        <ul class="dv-footer-links">
+          <li><a href="/about.html#affiliate">Affiliate Disclosure</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="dv-footer-bottom">
+      <p>&copy; 2025 DreamVacati. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const BACKEND = 'https://dreamvacati-planner.up.railway.app'; // UPDATE after Railway deploy
+
+// ── URL params ────────────────────────────────────────────────────────────────
+const params      = new URLSearchParams(window.location.search);
+const planId      = params.get('planId');
+const sessionId   = params.get('session_id');  // set by Stripe on success redirect
+const cancelled   = params.get('cancelled');
+const paidParam   = params.get('paid');         // set when already paid
+
+let   currentPlan = null;
+let   isPaid      = false;
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+(async function init() {
+  if (!planId) return showError('No plan ID found. Please generate a new plan.');
+
+  // If Stripe redirected back after success → poll until webhook fires
+  if (sessionId) {
+    await pollForPayment();
+    return;
+  }
+
+  if (cancelled) {
+    // Load preview but tell user payment was cancelled
+    await loadPlan(false);
+    return;
+  }
+
+  await loadPlan(paidParam === 'true');
+})();
+
+// ── Load plan from API ────────────────────────────────────────────────────────
+async function loadPlan(expectPaid = false) {
+  try {
+    const res = await fetch(`${BACKEND}/api/plan/${planId}`);
+    if (!res.ok) {
+      const err = await res.json();
+      return showError(err.error || 'Plan not found.');
+    }
+    const data = await res.json();
+    isPaid = data.paid;
+
+    if (isPaid) {
+      renderFullPlan(data.plan);
+    } else {
+      renderPreview(data.preview);
+    }
+  } catch (err) {
+    showError(`Could not connect to the server. Please try again.\n${err.message}`);
+  }
+}
+
+// ── Poll after Stripe redirect ────────────────────────────────────────────────
+async function pollForPayment(attempts = 0) {
+  if (attempts > 12) {
+    // Webhook took too long — show preview, user can refresh
+    await loadPlan(false);
+    return;
+  }
+  try {
+    const res  = await fetch(`${BACKEND}/api/plan/${planId}`);
+    const data = await res.json();
+    if (data.paid) {
+      renderFullPlan(data.plan);
+    } else {
+      await delay(2500);
+      await pollForPayment(attempts + 1);
+    }
+  } catch {
+    await delay(2500);
+    await pollForPayment(attempts + 1);
+  }
+}
+
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// ── Render preview ────────────────────────────────────────────────────────────
+function renderPreview(preview) {
+  hideLoading();
+  showResult();
+
+  const meta = preview.meta || {};
+  renderHero(meta, preview.trip_overview);
+  renderBudget(preview.budget_breakdown);
+  renderItineraryDays(preview.itinerary || [], false);
+
+  // Show sticky bar after scroll on mobile
+  setTimeout(() => document.getElementById('stickyBar').classList.add('visible'), 3000);
+}
+
+// ── Render full paid plan ─────────────────────────────────────────────────────
+function renderFullPlan(plan) {
+  hideLoading();
+  showResult();
+  isPaid = true;
+
+  const meta = plan.meta || {};
+  renderHero(meta, plan.trip_overview);
+  renderBudget(plan.budget_breakdown);
+  renderItineraryDays(plan.itinerary || [], true);
+
+  // Swap locked container for paid content
+  document.getElementById('lockedContainer').style.display = 'none';
+  document.getElementById('stickyBar').style.display       = 'none';
+
+  // Full itinerary (days 3+)
+  const remaining = (plan.itinerary || []).slice(2);
+  document.getElementById('fullItinerary').innerHTML = remaining.map(buildDayCard).join('') || '<p style="color:#888">Full itinerary included above.</p>';
+
+  // Tips
+  const tips = plan.travel_tips || [];
+  document.getElementById('travelTips').innerHTML = tips.map(t => `<span class="tag-item">${t}</span>`).join('');
+
+  // Packing
+  const packing = plan.packing_suggestions || [];
+  document.getElementById('packingList').innerHTML = packing.map(p => `<span class="tag-item">${p}</span>`).join('');
+
+  // Hotels
+  const hotels = plan.hotel_suggestions || [];
+  if (hotels.length) {
+    document.getElementById('hotelSection').style.display = 'block';
+    document.getElementById('hotelList').innerHTML = hotels.map(h => `<li>${h}</li>`).join('');
+  }
+
+  // Destination summary
+  document.getElementById('destSummary').textContent = plan.destination_summary || '';
+
+  // PDF link
+  const pdfUrl = `${BACKEND}/api/pdf/${planId}`;
+  document.getElementById('pdfBtn').href  = pdfUrl;
+  document.getElementById('pdfLink').href = pdfUrl;
+
+  // Show paid banner
+  document.getElementById('paidBanner').style.display = 'flex';
+  document.getElementById('paidContent').style.display = 'block';
+
+  // Update itinerary badge
+  document.getElementById('itineraryBadge').textContent = 'Days 1–2';
+  document.getElementById('itineraryBadge').style.background = '#e0f7f5';
+}
+
+// ── Render helpers ────────────────────────────────────────────────────────────
+function renderHero(meta, overview) {
+  document.getElementById('heroDestination').textContent = `${meta.destination || 'Your'} Trip Plan`;
+  document.getElementById('heroOverview').textContent    = overview || '';
+
+  const tags = [
+    meta.duration_days && `${meta.duration_days} days`,
+    meta.num_travelers && `${meta.num_travelers} traveler${meta.num_travelers > 1 ? 's' : ''}`,
+    meta.travel_style,
+    meta.budget,
+  ].filter(Boolean);
+
+  document.getElementById('metaTags').innerHTML = tags.map(t =>
+    `<span class="meta-tag">${t}</span>`
+  ).join('');
+}
+
+function renderBudget(b) {
+  if (!b) return;
+  const items = [
+    { label: 'Total Est.',    value: b.total },
+    { label: 'Per Person',    value: b.per_person },
+    { label: 'Flights',       value: b.flights },
+    { label: 'Accommodation', value: b.accommodation, sub: b.accommodation_per_night ? `${b.accommodation_per_night}/night` : '' },
+    { label: 'Food',          value: b.food,          sub: b.food_per_day ? `${b.food_per_day}/day` : '' },
+    { label: 'Activities',    value: b.activities },
+    { label: 'Buffer',        value: b.misc_buffer },
+  ].filter(i => i.value);
+
+  document.getElementById('budgetGrid').innerHTML = items.map(i => `
+    <div class="budget-item">
+      <div class="b-label">${i.label}</div>
+      <div class="b-value">${i.value}${i.sub ? `<span style="font-size:.72rem;font-weight:400;color:#666;display:block">${i.sub}</span>` : ''}</div>
+    </div>
+  `).join('');
+
+  if (b.note) document.getElementById('budgetNote').textContent = b.note;
+}
+
+function renderItineraryDays(days, allFree) {
+  document.getElementById('itineraryDays').innerHTML = days.map(buildDayCard).join('');
+}
+
+function buildDayCard(day) {
+  return `
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-num">Day ${day.day}</span>
+        <span class="day-title">${day.title}</span>
+      </div>
+      <div class="day-theme">${day.theme}</div>
+      <ul class="day-activities">
+        ${(day.activities || []).map(a => `<li>${a}</li>`).join('')}
+      </ul>
+      ${day.tip ? `<div class="day-tip"><strong>💡 Tip:</strong> ${day.tip}</div>` : ''}
+    </div>
+  `;
+}
+
+// ── Checkout ──────────────────────────────────────────────────────────────────
+async function startCheckout() {
+  const btn = document.getElementById('unlockBtn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Redirecting to payment…'; }
+
+  try {
+    const res = await fetch(`${BACKEND}/api/checkout`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ planId }),
+    });
+
+    if (!res.ok) throw new Error((await res.json()).error || 'Checkout failed');
+    const { checkoutUrl } = await res.json();
+    window.location.href = checkoutUrl;
+  } catch (err) {
+    if (btn) { btn.disabled = false; btn.textContent = 'Unlock for $19 →'; }
+    alert(`Checkout error: ${err.message}`);
+  }
+}
+
+// ── UI helpers ────────────────────────────────────────────────────────────────
+function hideLoading() { document.getElementById('loadingState').style.display = 'none'; }
+function showResult()  { document.getElementById('resultState').style.display = 'block'; }
+function showError(msg) {
+  document.getElementById('loadingState').style.display = 'none';
+  document.getElementById('errorState').style.display   = 'block';
+  document.getElementById('errorMsg').textContent       = msg;
+}
+</script>
+
+</body>
+</html>

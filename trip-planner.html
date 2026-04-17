@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Trip Plan — DreamVacati</title>
+  <meta name="description" content="Get your personalized day-by-day trip plan for any destination — budget breakdown, packing list, hotel picks, and local tips for $19.">
+  <meta name="robots" content="noindex"><!-- keep checkout funnel out of search -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="main.css?v=3">
+
+  <style>
+    /* ── Planner-specific styles ── */
+    :root {
+      --step-inactive: #cbd5e1;
+      --step-active:   #0077B6;
+      --step-done:     #2EC4B6;
+    }
+
+    body { background: #f8f9fa; }
+
+    /* Progress bar */
+    .planner-progress { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 2.5rem; }
+    .planner-step     { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; flex: 1; max-width: 120px; }
+    .step-dot         { width: 32px; height: 32px; border-radius: 50%; background: var(--step-inactive); color: #fff; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; transition: background .3s; position: relative; z-index: 1; }
+    .step-label       { font-size: 0.7rem; color: #888; text-align: center; font-family: var(--font-body); }
+    .planner-step.active .step-dot  { background: var(--step-active); }
+    .planner-step.done  .step-dot   { background: var(--step-done); }
+    .planner-step.active .step-label,
+    .planner-step.done  .step-label { color: #333; font-weight: 600; }
+    .step-connector   { flex: 1; height: 2px; background: var(--step-inactive); margin-bottom: 1.4rem; max-width: 60px; transition: background .3s; }
+    .step-connector.done { background: var(--step-done); }
+
+    /* Card */
+    .planner-card     { background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(3,4,94,.07); padding: 2.5rem 2rem; max-width: 640px; margin: 0 auto; }
+    .planner-card h2  { font-family: var(--font-head); color: var(--deep-navy); font-size: 1.5rem; margin-bottom: 0.4rem; }
+    .planner-card .subtitle { color: #666; margin-bottom: 1.75rem; font-size: 0.95rem; }
+
+    /* Step panels */
+    .step-panel       { display: none; }
+    .step-panel.active { display: block; }
+
+    /* Style cards */
+    .style-grid       { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.75rem; }
+    .style-card       { border: 2px solid #e5e7eb; border-radius: 10px; padding: 0.9rem 0.75rem; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; user-select: none; }
+    .style-card:hover { border-color: var(--horizon-blue); background: #f0f9ff; }
+    .style-card.selected { border-color: var(--action-teal); background: #e0f7f5; }
+    .style-card .style-icon { font-size: 1.6rem; display: block; margin-bottom: 0.4rem; }
+    .style-card .style-name { font-size: 0.8rem; font-weight: 600; color: #1a1a2e; }
+
+    /* Interest tags */
+    .interest-tags    { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .interest-tag     { border: 2px solid #e5e7eb; border-radius: 999px; padding: 0.35rem 0.9rem; font-size: 0.82rem; cursor: pointer; transition: border-color .2s, background .2s; user-select: none; }
+    .interest-tag:hover    { border-color: var(--horizon-blue); }
+    .interest-tag.selected { border-color: var(--action-teal); background: #e0f7f5; color: #03045E; font-weight: 600; }
+
+    /* Form controls */
+    .form-label       { font-weight: 600; font-size: 0.9rem; color: #374151; margin-bottom: 0.4rem; }
+    .form-control, .form-select { border-radius: 8px; border-color: #d1d5db; font-size: 0.95rem; padding: 0.6rem 0.85rem; }
+    .form-control:focus, .form-select:focus { border-color: var(--horizon-blue); box-shadow: 0 0 0 3px rgba(0,119,182,.12); }
+
+    /* Buttons */
+    .btn-next, .btn-generate {
+      background: var(--horizon-blue); color: #fff; border: none;
+      border-radius: 8px; padding: 0.75rem 2rem;
+      font-family: var(--font-head); font-weight: 700; font-size: 1rem;
+      width: 100%; transition: background .2s;
+    }
+    .btn-next:hover, .btn-generate:hover { background: var(--deep-navy); color: #fff; }
+    .btn-back { background: transparent; color: #666; border: 1px solid #d1d5db; border-radius: 8px; padding: 0.65rem 1.5rem; font-size: 0.9rem; }
+    .btn-back:hover { background: #f3f4f6; }
+
+    /* Loading state */
+    .loading-overlay { display: none; text-align: center; padding: 2rem 0; }
+    .loading-overlay.active { display: block; }
+    .spinner { width: 44px; height: 44px; border: 4px solid #e5e7eb; border-top-color: var(--action-teal); border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto 1rem; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Trust bar */
+    .trust-bar        { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .trust-item       { font-size: 0.78rem; color: #888; display: flex; align-items: center; gap: 0.35rem; }
+
+    /* Value prop banner */
+    .value-banner     { background: linear-gradient(135deg, #03045E 0%, #0077B6 100%); color: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; text-align: center; }
+    .value-banner .price { font-size: 2.5rem; font-weight: 800; font-family: var(--font-head); }
+    .value-banner .price sup { font-size: 1.2rem; vertical-align: super; }
+    .value-banner ul  { list-style: none; padding: 0; margin: 0.75rem 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.5rem; font-size: 0.85rem; opacity: 0.9; }
+    .value-banner li::before { content: '✓  '; color: #2EC4B6; font-weight: 700; }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="#03045E"/>
+        <path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="26" cy="6" r="2.5" fill="#0077B6"/>
+      </svg>
+      <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:-.3px">DreamVacati</span>
+    </a>
+  </div>
+</nav>
+
+<main class="container py-5">
+
+  <!-- Value prop -->
+  <div class="value-banner">
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.1rem;opacity:.85;margin-bottom:.25rem">DreamVacati Custom Trip Plan</div>
+    <div class="price"><sup>$</sup>19</div>
+    <div style="opacity:.75;font-size:.85rem">One-time · Instant delivery</div>
+    <ul>
+      <li>Personalized day-by-day itinerary</li>
+      <li>Full budget breakdown</li>
+      <li>Hotel suggestions</li>
+      <li>Packing list &amp; local tips</li>
+      <li>Printable PDF format</li>
+    </ul>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="planner-progress" id="progressBar" aria-label="Form progress">
+    <div class="planner-step active" data-step="1">
+      <div class="step-dot">1</div>
+      <div class="step-label">Destination</div>
+    </div>
+    <div class="step-connector" id="conn-1-2"></div>
+    <div class="planner-step" data-step="2">
+      <div class="step-dot">2</div>
+      <div class="step-label">Style</div>
+    </div>
+    <div class="step-connector" id="conn-2-3"></div>
+    <div class="planner-step" data-step="3">
+      <div class="step-dot">3</div>
+      <div class="step-label">Details</div>
+    </div>
+    <div class="step-connector" id="conn-3-4"></div>
+    <div class="planner-step" data-step="4">
+      <div class="step-dot">4</div>
+      <div class="step-label">Interests</div>
+    </div>
+    <div class="step-connector" id="conn-4-5"></div>
+    <div class="planner-step" data-step="5">
+      <div class="step-dot">5</div>
+      <div class="step-label">Generate</div>
+    </div>
+  </div>
+
+  <!-- Card -->
+  <div class="planner-card">
+
+    <!-- ── Step 1: Destination ── -->
+    <div class="step-panel active" id="step-1">
+      <h2>Where are you dreaming of?</h2>
+      <p class="subtitle">Enter any destination — city, country, or region.</p>
+      <div class="mb-3">
+        <label for="destination" class="form-label">Destination *</label>
+        <input type="text" id="destination" class="form-control" placeholder="e.g. Santorini, Japan, Bali, Iceland" autocomplete="off">
+        <div class="invalid-feedback">Please enter a destination.</div>
+      </div>
+      <div class="mb-4">
+        <label for="email" class="form-label">Email <span style="color:#888;font-weight:400">(we'll send your plan here)</span></label>
+        <input type="email" id="email" class="form-control" placeholder="you@example.com">
+      </div>
+      <button class="btn-next" onclick="nextStep(1)">Continue →</button>
+    </div>
+
+    <!-- ── Step 2: Travel Style ── -->
+    <div class="step-panel" id="step-2">
+      <h2>What's your travel style?</h2>
+      <p class="subtitle">Pick one that best describes how you like to travel.</p>
+      <div class="style-grid mb-4">
+        <div class="style-card" data-value="luxury"         onclick="selectStyle(this)"><span class="style-icon">🥂</span><span class="style-name">Luxury</span></div>
+        <div class="style-card" data-value="budget-friendly" onclick="selectStyle(this)"><span class="style-icon">💰</span><span class="style-name">Budget</span></div>
+        <div class="style-card" data-value="adventure"      onclick="selectStyle(this)"><span class="style-icon">🧗</span><span class="style-name">Adventure</span></div>
+        <div class="style-card" data-value="romantic"       onclick="selectStyle(this)"><span class="style-icon">💑</span><span class="style-name">Romantic</span></div>
+        <div class="style-card" data-value="family"         onclick="selectStyle(this)"><span class="style-icon">👨‍👩‍👧</span><span class="style-name">Family</span></div>
+        <div class="style-card" data-value="solo"           onclick="selectStyle(this)"><span class="style-icon">🎒</span><span class="style-name">Solo</span></div>
+        <div class="style-card" data-value="cultural"       onclick="selectStyle(this)"><span class="style-icon">🏛️</span><span class="style-name">Cultural</span></div>
+        <div class="style-card" data-value="eco-friendly"   onclick="selectStyle(this)"><span class="style-icon">🌿</span><span class="style-name">Eco-Friendly</span></div>
+        <div class="style-card" data-value="backpacker"     onclick="selectStyle(this)"><span class="style-icon">⛺</span><span class="style-name">Backpacker</span></div>
+        <div class="style-card" data-value="all-inclusive"  onclick="selectStyle(this)"><span class="style-icon">🏖️</span><span class="style-name">All-Inclusive</span></div>
+      </div>
+      <div id="style-error" class="text-danger mb-3" style="display:none;font-size:.875rem">Please select a travel style.</div>
+      <div class="d-flex gap-2">
+        <button class="btn-back" onclick="prevStep(2)">← Back</button>
+        <button class="btn-next flex-grow-1" onclick="nextStep(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ── Step 3: Details ── -->
+    <div class="step-panel" id="step-3">
+      <h2>Trip details</h2>
+      <p class="subtitle">A few quick details to personalise your plan.</p>
+      <div class="row g-3 mb-4">
+        <div class="col-sm-6">
+          <label for="duration" class="form-label">Trip duration (days) *</label>
+          <select id="duration" class="form-select">
+            <option value="3">3 days (weekend)</option>
+            <option value="5">5 days</option>
+            <option value="7" selected>7 days (1 week)</option>
+            <option value="10">10 days</option>
+            <option value="14">14 days (2 weeks)</option>
+            <option value="21">21 days (3 weeks)</option>
+          </select>
+        </div>
+        <div class="col-sm-6">
+          <label for="travelers" class="form-label">Number of travelers</label>
+          <select id="travelers" class="form-select">
+            <option value="1">1 — Solo</option>
+            <option value="2" selected>2 — Couple</option>
+            <option value="3">3 people</option>
+            <option value="4">4 people</option>
+            <option value="6">5–6 people</option>
+            <option value="8">7–8 people (group)</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label for="budget" class="form-label">Overall budget</label>
+          <select id="budget" class="form-select">
+            <option value="budget">Budget (under $1,500 total)</option>
+            <option value="moderate" selected>Moderate ($1,500 – $4,000)</option>
+            <option value="premium">Premium ($4,000 – $8,000)</option>
+            <option value="luxury">Luxury ($8,000+)</option>
+          </select>
+        </div>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn-back" onclick="prevStep(3)">← Back</button>
+        <button class="btn-next flex-grow-1" onclick="nextStep(3)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ── Step 4: Interests ── -->
+    <div class="step-panel" id="step-4">
+      <h2>What do you love doing?</h2>
+      <p class="subtitle">Pick as many as you like — we'll build your days around them.</p>
+      <div class="interest-tags mb-4" id="interestTags">
+        <span class="interest-tag" data-value="beaches">🏖️ Beaches</span>
+        <span class="interest-tag" data-value="hiking">🥾 Hiking</span>
+        <span class="interest-tag" data-value="food &amp; dining">🍜 Food &amp; Dining</span>
+        <span class="interest-tag" data-value="history &amp; culture">🏛️ History &amp; Culture</span>
+        <span class="interest-tag" data-value="nightlife">🍸 Nightlife</span>
+        <span class="interest-tag" data-value="photography">📸 Photography</span>
+        <span class="interest-tag" data-value="shopping">🛍️ Shopping</span>
+        <span class="interest-tag" data-value="local markets">🏪 Local Markets</span>
+        <span class="interest-tag" data-value="water sports">🤿 Water Sports</span>
+        <span class="interest-tag" data-value="wellness &amp; spa">🧖 Wellness &amp; Spa</span>
+        <span class="interest-tag" data-value="adventure sports">🪂 Adventure Sports</span>
+        <span class="interest-tag" data-value="wildlife">🦁 Wildlife</span>
+        <span class="interest-tag" data-value="art &amp; museums">🎨 Art &amp; Museums</span>
+        <span class="interest-tag" data-value="family activities">🎡 Family Activities</span>
+        <span class="interest-tag" data-value="yoga &amp; meditation">🧘 Yoga &amp; Meditation</span>
+        <span class="interest-tag" data-value="wine &amp; cocktails">🍷 Wine &amp; Cocktails</span>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn-back" onclick="prevStep(4)">← Back</button>
+        <button class="btn-next flex-grow-1" onclick="nextStep(4)">See my preview →</button>
+      </div>
+    </div>
+
+    <!-- ── Step 5: Confirm & Generate ── -->
+    <div class="step-panel" id="step-5">
+      <h2>Ready to build your plan?</h2>
+      <p class="subtitle">Here's what we'll create for you:</p>
+
+      <div id="confirmSummary" class="mb-4" style="background:#f0f9ff;border-radius:10px;padding:1.25rem 1.5rem;font-size:.92rem;line-height:2"></div>
+
+      <div class="mb-4">
+        <div style="display:flex;gap:.75rem;align-items:flex-start;padding:.9rem 1rem;background:#fff8e1;border-radius:8px;border:1px solid #ffe082">
+          <span style="font-size:1.3rem;line-height:1.2">💡</span>
+          <div style="font-size:.85rem;color:#555">We'll show you a <strong>free preview</strong> first — your overview, budget estimate, and 2 sample days. Unlock the full plan (all days, tips, packing list, hotel picks) for just $19.</div>
+        </div>
+      </div>
+
+      <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p style="color:#555;font-size:.95rem">Building your personalised trip plan…</p>
+        <p style="color:#aaa;font-size:.8rem">This takes about 5 seconds</p>
+      </div>
+
+      <button class="btn-generate" id="generateBtn" onclick="submitPlan()">
+        Build My Trip Plan →
+      </button>
+
+      <div class="trust-bar mt-3">
+        <span class="trust-item">🔒 Secure payment via Stripe</span>
+        <span class="trust-item">⚡ Instant delivery</span>
+        <span class="trust-item">📄 Printable PDF</span>
+        <span class="trust-item">💳 $19 one-time</span>
+      </div>
+
+      <div class="d-flex justify-content-center mt-3">
+        <button class="btn-back" onclick="prevStep(5)">← Edit my answers</button>
+      </div>
+    </div>
+
+  </div><!-- /.planner-card -->
+</main>
+
+<!-- Footer -->
+<footer class="dv-footer mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="dv-footer-brand">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="vertical-align:middle;margin-right:6px"><rect width="32" height="32" rx="7" fill="#03045E"/><path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="26" cy="6" r="2.5" fill="#0077B6"/></svg>
+          DreamVacati
+        </div>
+        <p style="color:#94a3b8;font-size:.85rem;margin-top:.5rem">Real trip planning. Honest advice.</p>
+      </div>
+      <div class="col-6 col-md-2">
+        <h6 class="dv-footer-heading">Site</h6>
+        <ul class="dv-footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog.html">Blog</a></li>
+          <li><a href="/tools.html">Tools</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-2">
+        <h6 class="dv-footer-heading">Legal</h6>
+        <ul class="dv-footer-links">
+          <li><a href="/about.html#affiliate">Affiliate Disclosure</a></li>
+          <li><a href="/about.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="dv-footer-bottom">
+      <p>&copy; 2025 DreamVacati. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────────────────
+const BACKEND = 'https://dreamvacati-planner.up.railway.app'; // UPDATE after Railway deploy
+
+let currentStep    = 1;
+let selectedStyle  = '';
+let selectedInterests = [];
+
+// ── Navigation ────────────────────────────────────────────────────────────────
+function showStep(n) {
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(`step-${n}`).classList.add('active');
+
+  document.querySelectorAll('.planner-step').forEach(el => {
+    const s = parseInt(el.dataset.step);
+    el.classList.remove('active', 'done');
+    if (s === n) el.classList.add('active');
+    else if (s < n) el.classList.add('done');
+  });
+
+  // Connectors
+  for (let i = 1; i < 5; i++) {
+    const c = document.getElementById(`conn-${i}-${i+1}`);
+    if (c) c.classList.toggle('done', i < n);
+  }
+
+  currentStep = n;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function prevStep(from) { showStep(from - 1); }
+
+function nextStep(from) {
+  if (from === 1) {
+    const dest = document.getElementById('destination').value.trim();
+    const destInput = document.getElementById('destination');
+    if (!dest) {
+      destInput.classList.add('is-invalid');
+      return;
+    }
+    destInput.classList.remove('is-invalid');
+  }
+  if (from === 2) {
+    if (!selectedStyle) {
+      document.getElementById('style-error').style.display = 'block';
+      return;
+    }
+    document.getElementById('style-error').style.display = 'none';
+  }
+  if (from === 4) {
+    buildConfirmSummary();
+  }
+  showStep(from + 1);
+}
+
+// ── Style cards ───────────────────────────────────────────────────────────────
+function selectStyle(el) {
+  document.querySelectorAll('.style-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedStyle = el.dataset.value;
+}
+
+// ── Interest tags ─────────────────────────────────────────────────────────────
+document.querySelectorAll('.interest-tag').forEach(tag => {
+  tag.addEventListener('click', () => {
+    tag.classList.toggle('selected');
+    const v = tag.dataset.value;
+    if (tag.classList.contains('selected')) {
+      if (!selectedInterests.includes(v)) selectedInterests.push(v);
+    } else {
+      selectedInterests = selectedInterests.filter(i => i !== v);
+    }
+  });
+});
+
+// ── Confirm summary ───────────────────────────────────────────────────────────
+function buildConfirmSummary() {
+  const dest      = document.getElementById('destination').value.trim();
+  const email     = document.getElementById('email').value.trim();
+  const duration  = document.getElementById('duration').value;
+  const travelers = document.getElementById('travelers').value;
+  const budget    = document.getElementById('budget').value;
+
+  const styleLabel = document.querySelector(`.style-card[data-value="${selectedStyle}"] .style-name`)?.textContent || selectedStyle;
+  const intLabel   = selectedInterests.length ? selectedInterests.slice(0, 4).join(', ') + (selectedInterests.length > 4 ? ` +${selectedInterests.length-4} more` : '') : 'General';
+
+  document.getElementById('confirmSummary').innerHTML = `
+    <strong>📍 Destination:</strong> ${dest}<br>
+    <strong>🗓️ Duration:</strong> ${duration} days<br>
+    <strong>👥 Travelers:</strong> ${travelers}<br>
+    <strong>💰 Budget:</strong> ${budget.charAt(0).toUpperCase() + budget.slice(1)}<br>
+    <strong>✈️ Travel style:</strong> ${styleLabel}<br>
+    <strong>❤️ Interests:</strong> ${intLabel}
+    ${email ? `<br><strong>📧 Delivery email:</strong> ${email}` : ''}
+  `;
+}
+
+// ── Submit ────────────────────────────────────────────────────────────────────
+async function submitPlan() {
+  const btn     = document.getElementById('generateBtn');
+  const loader  = document.getElementById('loadingOverlay');
+
+  btn.disabled  = true;
+  btn.style.display = 'none';
+  loader.classList.add('active');
+
+  const payload = {
+    destination:   document.getElementById('destination').value.trim(),
+    email:         document.getElementById('email').value.trim() || undefined,
+    travel_style:  selectedStyle,
+    interests:     selectedInterests,
+    duration_days: parseInt(document.getElementById('duration').value, 10),
+    num_travelers: parseInt(document.getElementById('travelers').value, 10),
+    budget:        document.getElementById('budget').value,
+  };
+
+  try {
+    const res  = await fetch(`${BACKEND}/api/generate`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || 'Generation failed');
+    }
+
+    const { planId } = await res.json();
+    window.location.href = `/trip-results.html?planId=${planId}`;
+
+  } catch (err) {
+    loader.classList.remove('active');
+    btn.disabled = false;
+    btn.style.display = 'block';
+    alert(`Something went wrong: ${err.message}\n\nPlease try again.`);
+  }
+}
+</script>
+
+</body>
+</html>
