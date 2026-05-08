@@ -21,10 +21,6 @@
   <meta property="og:site_name" content="DreamVacati">
   <meta property="og:image" content="https://www.dreamvacati.com/images/og-default.jpg">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="DreamVacati — Travel Blogs & Planning Tools">
-  <meta name="twitter:description" content="Expert travel blogs, budget tools, packing checklists, and destination comparisons. Plan smarter with DreamVacati.">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -353,7 +349,6 @@
          data-ad-slot="9149500460"
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
-    <script src="/adsense-push.js"></script>
 
     <!-- ===== EMAIL SIGNUP ===== -->
     <section class="dv-email-signup rounded-4 p-4 p-md-5 mb-5 text-center">
@@ -483,7 +478,7 @@
         </div>
         <div class="dv-summary" id="dv-budget-summary"><h4>Per Person: $1,500/trip</h4><p class="mb-0 small text-muted">Total: $3,000 for 2 travelers</p></div>
         <div class="dv-share-box" id="dv-budget-share">
-          <p>Share your budget plan on X:</p>
+          <p>Copy your results:</p>
           <div class="dv-share-text" id="dv-budget-share-text">My vacation budget breakdown (40/25/20/15 rule):
 
 &#127976; Accommodation: $1,200 (40%)
@@ -495,7 +490,7 @@ Total: $3,000 for 2 travelers
 
 Try the free budget calculator at dreamvacati.com/tools</div>
           <div class="dv-share-actions">
-            <button class="dv-btn dv-btn-dark" onclick="dvShareX('dv-budget-share-text')"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:middle;margin-right:4px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button>
+            
             <button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-budget-share-text',this)">&#128203; Copy</button>
           </div>
         </div>
@@ -561,10 +556,10 @@ Try the free budget calculator at dreamvacati.com/tools</div>
         </div>
         <button class="dv-btn dv-btn-outline" onclick="dvAddDay()" style="margin-top:12px">+ Add Day</button>
         <div class="dv-share-box" id="dv-itin-share" style="display:none">
-          <p>Share your itinerary on X:</p>
+          <p>Copy your itinerary:</p>
           <div class="dv-share-text" id="dv-itin-share-text"></div>
           <div class="dv-share-actions">
-            <button class="dv-btn dv-btn-dark" onclick="dvShareX('dv-itin-share-text')"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:middle;margin-right:4px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button>
+            
             <button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-itin-share-text',this)">&#128203; Copy</button>
           </div>
         </div>
@@ -1087,14 +1082,14 @@ Try the free budget calculator at dreamvacati.com/tools</div>
 
         <!-- Share -->
         <div class="dv-share-box" style="margin-top:20px">
-          <p>Share your travel map on X:</p>
+          <p>Copy your travel map:</p>
           <div class="dv-share-text" id="dv-map-share-text">I've visited 0 countries across 0 continents! 🌍
 
 Track your own travels with the free map at dreamvacati.com
 
 #TravelMap #Wanderlust</div>
           <div class="dv-share-actions">
-            <button class="dv-btn dv-btn-dark" onclick="dvShareX('dv-map-share-text')"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:middle;margin-right:4px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button>
+            
             <button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-map-share-text',this)">&#128203; Copy</button>
           </div>
         </div>
@@ -1219,7 +1214,7 @@ Track your own travels with the free map at dreamvacati.com
     });
     const summary=cats.map(c=>`${c.name}: ${c.items.length} items`).join('\n');
     const shareText=`My travel packing checklist (${total} items):\n\n${summary}\n\nGenerated at dreamvacati.com/tools \u2014 free packing checklist for any trip!\n\n#PackingList #TravelTips`;
-    h+=`<div class="dv-share-box"><p>Share your checklist on X:</p><div class="dv-share-text" id="dv-pack-share-text">${shareText}</div><div class="dv-share-actions"><button class="dv-btn dv-btn-dark" onclick="dvShareX('dv-pack-share-text')"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:middle;margin-right:4px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button><button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-pack-share-text',this)">\u{1F4CB} Copy</button></div></div>`;
+    h+=`<div class="dv-share-box"><p>Copy your checklist:</p><div class="dv-share-text" id="dv-pack-share-text">${shareText}</div><div class="dv-share-actions"><button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-pack-share-text',this)">\u{1F4CB} Copy</button></div></div>`;
     c.innerHTML=h;
   }
   function dvPackCheck(cb){cb.parentElement.classList.toggle('checked',cb.checked);const done=document.querySelectorAll('#dv-pack-results .dv-pack-item input:checked').length;const el=document.getElementById('dv-pack-done');if(el)el.textContent=done;}
@@ -1247,7 +1242,7 @@ Track your own travels with the free map at dreamvacati.com
     const tips={eu:'Microchip must come BEFORE rabies vaccine (EU law). After rabies shot, wait 21 days before traveling.',uk:'UK requires tapeworm treatment 1-5 days before entry. No longer part of EU pet passport system.',ca:'Canada requires current rabies vaccination certificate. No quarantine for dogs from the US.',mx:'Mexico requires health certificate issued within 72 hours of travel. Simpler than EU.',other:'Requirements vary widely. Start 3+ months early and contact your destination embassy.'};
     const destName=dest==='eu'?'Europe':dest==='uk'?'the UK':dest==='ca'?'Canada':dest==='mx'?'Mexico':'abroad';
     const shareText=`Planning to fly my ${type.replace(/-/g,' ')} to ${destName}.\n\nEstimated cost: $${tL}\u2013$${tH}\n\n${Object.values(costs).map(co=>`${co.icon} ${co.label}: $${co.low}\u2013$${co.high}`).join('\n')}\n\nFree pet travel cost calculator at dreamvacati.com/tools`;
-    c.innerHTML=`<div style="margin-top:20px">${rows}</div><div class="dv-cost-total"><span style="opacity:.9">Estimated Total Cost</span><span class="dv-total-amt">$${tL.toLocaleString()} \u2013 $${tH.toLocaleString()}</span></div><div class="dv-cost-tip"><strong>\u{1F4A1} Key Tip:</strong> ${tips[dest]}</div><p style="margin-top:14px;font-size:.88rem;color:#666">\u{1F4D6} Full guide with airline comparisons: <a href="blog-elmo.html" style="color:var(--sea,#0b95a5);font-weight:600">Flying Your Dog to Europe \u2192</a></p><div class="dv-share-box"><p>Share on X:</p><div class="dv-share-text" id="dv-pet-share-text">${shareText}</div><div class="dv-share-actions"><button class="dv-btn dv-btn-dark" onclick="dvShareX('dv-pet-share-text')"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:middle;margin-right:4px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button><button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-pet-share-text',this)">\u{1F4CB} Copy</button></div></div>`;
+    c.innerHTML=`<div style="margin-top:20px">${rows}</div><div class="dv-cost-total"><span style="opacity:.9">Estimated Total Cost</span><span class="dv-total-amt">$${tL.toLocaleString()} \u2013 $${tH.toLocaleString()}</span></div><div class="dv-cost-tip"><strong>\u{1F4A1} Key Tip:</strong> ${tips[dest]}</div><p style="margin-top:14px;font-size:.88rem;color:#666">\u{1F4D6} Full guide with airline comparisons: <a href="blog-elmo.html" style="color:var(--sea,#0b95a5);font-weight:600">Flying Your Dog to Europe \u2192</a></p><div class="dv-share-box"><p>Copy:</p><div class="dv-share-text" id="dv-pet-share-text">${shareText}</div><div class="dv-share-actions"><button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-pet-share-text',this)">\u{1F4CB} Copy</button></div></div>`;
   }
 
   // === ITINERARY BUILDER ===
@@ -1263,7 +1258,6 @@ Track your own travels with the free map at dreamvacati.com
   function dvUpdateItin(){const sb=document.getElementById('dv-itin-share');const days=document.querySelectorAll('.dv-day-col');let has=false,text='My trip itinerary:\n';days.forEach(d=>{const items=d.querySelectorAll('.dv-sched-item span:first-child');if(items.length){has=true;text+=`\n\u{1F4C5} Day ${d.dataset.day}:\n`;items.forEach(it=>text+=`  \u2022 ${it.textContent}\n`);}});if(has){text+='\nBuilt with the free itinerary planner at dreamvacati.com/tools';document.getElementById('dv-itin-share-text').textContent=text;sb.style.display='block';}else{sb.style.display='none';}}
 
   // === SHARE UTILITIES ===
-  function dvShareX(id){const t=document.getElementById(id).textContent;window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(t)}`,'_blank','width=600,height=400');}
   function dvCopy(id,btn){const t=document.getElementById(id).textContent;navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent='\u2713 Copied!';setTimeout(()=>btn.textContent=o,2000);});}
 
   // === INTERNATIONAL TRAVEL REQUIREMENTS CHECKER ===
@@ -1519,9 +1513,9 @@ Track your own travels with the free map at dreamvacati.com
 
     // Share box
     const shareText = `\u2708\uFE0F Travel requirements for ${d.name} (US citizens):\n\uD83D\uDCD8 ${d.passport}\n\uD83D\uDCCB ${d.visa}\n\uD83D\uDCF1 ${d.eTA}\n\nFree requirements checker for 15 destinations \u2193\nhttps://dreamvacati.com`;
-    h += `<div class="dv-share-box" style="margin-top:16px"><p>Share on X:</p><div class="dv-share-text" id="dv-req-share-text">${shareText}</div>`;
+    h += `<div class="dv-share-box" style="margin-top:16px"><p>Copy:</p><div class="dv-share-text" id="dv-req-share-text">${shareText}</div>`;
     h += `<div class="dv-share-actions">`;
-    h += `<button class="dv-btn dv-btn-dark" onclick="dvShareX('dv-req-share-text')"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:middle;margin-right:4px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Post to X</button>`;
+    h += ``;
     h += `<button class="dv-btn dv-btn-outline" onclick="dvCopy('dv-req-share-text',this)">&#128203; Copy</button>`;
     h += `</div></div>`;
 
@@ -1646,5 +1640,6 @@ Track your own travels with the free map at dreamvacati.com
   <!-- Cookie consent — initialized in /cookie-consent.js (external, CSP-safe) -->
   <script src="/cookie-consent.js"></script>
 
+  <script src="/adsense-push.js"></script>
 </body>
 </html>
