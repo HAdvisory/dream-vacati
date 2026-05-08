@@ -1,0 +1,17 @@
+# Security headers for DreamVacati True Travel.
+# Compatible with Netlify and Cloudflare Pages (_headers file).
+# For Render static sites, add these headers in render.yaml under routes[].headers.
+# For GitHub Pages or Bluehost shared hosting, _headers is NOT applied automatically —
+# see the "Hosting" note at the bottom of this file.
+#
+# CSP notes:
+# - script-src has NO unsafe-inline. GA and Meta Pixel run from external .js files.
+# - AdSense inline push calls remain in blog files. See adsense-push.js task to remove them.
+# - unsafe-inline is in style-src only (Bootstrap + site style="" attributes require it).
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com https://connect.facebook.net https://pagead2.googlesyndication.com https://cdn.jsdelivr.net https://www.google-analytics.com https://ssl.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://www.googletagmanager.com; img-src 'self' data: https://www.facebook.com https://www.dreamvacati.com https://pagead2.googlesyndication.com https://www.gstatic.com https://images.unsplash.com; style-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self' https://dreamvacati.us1.list-manage.com; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
