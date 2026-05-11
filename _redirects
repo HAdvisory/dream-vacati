@@ -1,0 +1,37 @@
+# Netlify _redirects
+# Handles legacy URL patterns that appear as 404s in Google Search Console.
+# Format: old-path  new-path  status-code
+
+# HTTP → HTTPS and non-www → www are handled automatically by Netlify/host.
+# These rules catch renamed or reorganised page paths.
+
+# Common old slugs that may have been crawled under different names
+/blog/                          /blog.html                    301
+/tools/                         /tools.html                   301
+/best-time/                     /best-time.html               301
+/book-now/                      /book-now.html                301
+/about/                         /about.html                   301
+/privacy/                       /privacy.html                 301
+/caribbean/                     /caribbean-travel-guide.html  301
+/caribbean-travel-guide/        /caribbean-travel-guide.html  301
+/trip-planner/                  /trip-planner.html            301
+/trip-results/                  /trip-results.html            301
+
+# Old blog slug patterns (without file extension)
+/blog-budget-planning/          /blog-budget-planning.html          301
+/blog-caribbean-family/         /blog-caribbean-family.html         301
+/blog-compare-caribbean-islands/ /blog-compare-caribbean-islands.html 301
+/blog-destination-comparison/   /blog-destination-comparison.html   301
+/blog-santorini-vs-mykonos/     /blog-santorini-vs-mykonos.html     301
+/blog-bali-vs-thailand/         /blog-bali-vs-thailand.html         301
+/blog-maldives-vs-bora-bora/    /blog-maldives-vs-bora-bora.html    301
+/blog-choose-europe-cities/     /blog-choose-europe-cities.html     301
+/blog-hidden-destinations/      /blog-hidden-destinations.html      301
+/blog-best-time-greece/         /blog-best-time-greece.html         301
+/blog-best-time-japan/          /blog-best-time-japan.html          301
+/blog-best-time-maldives/       /blog-best-time-maldives.html       301
+/blog-elmo/                     /blog-elmo.html                     301
+/blog-starbucks/                /blog-starbucks.html                301
+
+# Catch-all 404 → custom 404 page (must be last)
+/*    /404.html   404
