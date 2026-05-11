@@ -25,10 +25,10 @@
 
   <!-- Google Analytics — initialized in /ga-init.js (external, CSP-safe) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-44K7KCF676"></script>
-  <script src="/ga-init.js"></script>
+  <script defer src="/ga-init.js"></script>
 
   <!-- Meta Pixel — initialized in /meta-pixel-init.js (external, CSP-safe) -->
-  <script src="/meta-pixel-init.js"></script>
+  <script defer src="/meta-pixel-init.js"></script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=466481928545738&ev=PageView&noscript=1"/></noscript>
 
   <!-- Structured Data -->
@@ -511,7 +511,7 @@
       </div>
       <hr style="border-color:rgba(255,255,255,0.12);margin:1.5rem 0 1rem">
       <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-        <p style="font-size:0.78rem;color:rgba(255,255,255,0.4);margin:0">&copy; 2026 DreamVacati. All rights reserved.</p>
+        <p style="font-size:0.78rem;color:rgba(255,255,255,0.4);margin:0">&copy; 2026 DreamVacati. All rights reserved. | Contact: <a href="mailto:dreamvacai@gmail.com" style="color:rgba(255,255,255,0.4);">dreamvacai@gmail.com</a></p>
       </div>
     </div>
   </footer>
@@ -537,5 +537,13 @@
 
   <!-- Mailchimp Popup Signup -->
   <script src="/adsense-push.js"></script>
+  <div id="dv-cookie-banner" role="region" aria-label="Cookie consent" style="position:fixed;bottom:0;left:0;width:100%;background:#1a1a2e;color:#e2e8f0;padding:14px 24px;display:none;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;z-index:9999;font-size:.9rem;border-top:2px solid #0A7E8C;">
+    <span>We use cookies for analytics and advertising. <a href="/privacy.html" style="color:#2EC4B6;text-decoration:underline;">Privacy Policy</a></span>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button id="dv-cookie-accept" type="button" style="background:#0A7E8C;color:#fff;border:none;padding:8px 20px;border-radius:6px;font-weight:600;font-size:.88rem;cursor:pointer;white-space:nowrap;">Accept &amp; Continue</button>
+      <button id="dv-cookie-decline" type="button" style="background:transparent;color:#a0aec0;border:1px solid #4a5568;padding:8px 18px;border-radius:6px;font-size:.88rem;cursor:pointer;">Decline</button>
+    </div>
+  </div>
+  <script src="/cookie-consent.js"></script>
 </body>
 </html>
