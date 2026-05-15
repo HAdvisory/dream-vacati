@@ -137,7 +137,6 @@
   <!-- REMOVED from sitemap:
        trip-planner.html  — has <meta name="robots" content="noindex">
        trip-results.html  — has <meta name="robots" content="noindex">
-       blog-starbucks.html — off-topic; now noindex
        privacy.html       — utility page, noindex
        404.html           — error page, noindex
   -->

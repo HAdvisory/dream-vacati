@@ -2,6 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /trip-results.html
 Disallow: /trip-planner.html
-Disallow: /_snippets.html
 
 Sitemap: https://www.dreamvacati.com/sitemap.xml

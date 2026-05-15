@@ -5,8 +5,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page Not Found | DreamVacati</title>
-  <meta name="robots" content="noindex, follow">
-  <link rel="canonical" href="https://www.dreamvacati.com/">
+  <meta name="robots" content="noindex, nofollow">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="main.css?v=2">
   <style>
@@ -24,15 +23,25 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:var(--deep-navy,#03045E)">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">DreamVacati</a>
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#03045E"/>
+          <path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="26" cy="6" r="2.5" fill="#0077B6"/>
+        </svg>
+        DreamVacati
+      </a>
       <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="tools.html">Travel Tools</a></li>
-          <li class="nav-item"><a class="nav-link" href="book-now.html">Book Now</a></li>
+          <li class="nav-item"><a class="nav-link" href="best-time.html">Best Time to Visit</a></li>
+          <li class="nav-item ms-lg-2">
+            <a href="book-now.html" class="nav-cta-btn nav-link">Plan a Trip &rarr;</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -62,9 +71,17 @@
     </div>
   </div>
 
-  <footer class="dv-footer bg-dark text-white py-4">
-    <div class="container text-center">
-      <p class="small text-white-50 mb-0">&copy; 2026 DreamVacati. <a href="privacy.html" class="text-white-50">Privacy Policy</a></p>
+  <footer class="dv-footer">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin:0">&copy; 2026 DreamVacati.</p>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin:0">
+          <a href="index.html" style="color:rgba(255,255,255,0.5)">Home</a> &nbsp;&bull;&nbsp;
+          <a href="blog.html" style="color:rgba(255,255,255,0.5)">Blog</a> &nbsp;&bull;&nbsp;
+          <a href="tools.html" style="color:rgba(255,255,255,0.5)">Tools</a> &nbsp;&bull;&nbsp;
+          <a href="privacy.html" style="color:rgba(255,255,255,0.5)">Privacy Policy</a>
+        </p>
+      </div>
     </div>
   </footer>
 

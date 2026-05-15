@@ -7,8 +7,12 @@
   <title>Plan Your Next Trip — DreamVacati | Travel Planning Guide</title>
   <meta name="description" content="Step-by-step trip planning guide from DreamVacati. How to choose a destination, set a budget, book flights and hotels, and prepare for departure.">
   <meta name="robots" content="index, follow">
-  <meta name="keywords" content="how to plan a vacation, trip planning guide, vacation budget calculator, how to book a trip, travel planning checklist, DreamVacati">
   <link rel="canonical" href="https://www.dreamvacati.com/book-now.html">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Plan Your Next Trip — DreamVacati">
+  <meta name="twitter:description" content="Step-by-step trip planning guide. Destination, budget, flights, hotels, and pre-departure prep.">
+  <meta name="twitter:image" content="https://www.dreamvacati.com/images/og-default.jpg">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -16,7 +20,7 @@
   <meta property="og:description" content="Step-by-step trip planning guide. Choose a destination, set a budget, book flights and hotels, and get ready to go.">
   <meta property="og:url" content="https://www.dreamvacati.com/book-now.html">
   <meta property="og:site_name" content="DreamVacati">
-  <meta property="og:image" content="https://www.dreamvacati.com/og-default.jpg">
+  <meta property="og:image" content="https://www.dreamvacati.com/images/og-default.jpg">
 
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -36,24 +40,78 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Plan Your Next Trip — DreamVacati",
+    "name": "How to Plan Your Next Trip — DreamVacati",
     "description": "Step-by-step trip planning guide covering destination selection, budgeting, flights, hotels, and pre-departure preparation.",
     "url": "https://www.dreamvacati.com/book-now.html",
     "publisher": {"@type": "Organization", "name": "DreamVacati", "url": "https://www.dreamvacati.com/"}
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Plan Your Next Trip",
+    "description": "A practical, step-by-step guide to planning a vacation from scratch — destination, budget, flights, hotels, and departure prep.",
+    "url": "https://www.dreamvacati.com/book-now.html",
+    "totalTime": "P14D",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Choose Your Destination",
+        "text": "Decide what type of experience you want — beach, city, adventure, or culture. How many days do you have? What is your realistic total budget? Narrow to two or three destinations and compare them on cost, flight access, and timing."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Set a Realistic Budget",
+        "text": "Use the 40/25/20/15 vacation budget rule: 40% on accommodation, 25% on flights, 20% on food and activities, and 15% as a buffer. Use our free budget calculator to split your total budget automatically."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Book Flights",
+        "text": "Search flights 6-8 weeks before departure for domestic trips and 3-5 months ahead for international. Use Tuesday-Wednesday searches and flexible date tools. Book direct when flying with pets or traveling with checked luggage."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Book Accommodation",
+        "text": "Book accommodation after flights — not before — so you know exact travel dates. Compare hotels, vacation rentals, and all-inclusives based on your budget allocation. Check cancellation policies before confirming."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Prepare for Departure",
+        "text": "Check passport validity (6 months beyond return date), verify visa and eTA requirements for your destination, pack using a destination-specific checklist, and confirm travel insurance covers your activities."
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:var(--deep-navy,#03045E)">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">DreamVacati</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#03045E"/>
+          <path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="26" cy="6" r="2.5" fill="#0077B6"/>
+        </svg>
+        DreamVacati
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="tools.html">Travel Tools</a></li>
-          <li class="nav-item"><a class="nav-link active" href="book-now.html">Plan a Trip</a></li>
+          <li class="nav-item"><a class="nav-link" href="best-time.html">Best Time to Visit</a></li>
+          <li class="nav-item ms-lg-2">
+            <a href="book-now.html" class="nav-cta-btn nav-link active">Plan a Trip &rarr;</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -160,11 +218,11 @@
 
   </main>
 
-  <footer class="dv-footer bg-dark text-white py-4">
+  <footer class="dv-footer">
     <div class="container text-center">
       <p class="small text-white-50 mb-1">DreamVacati &mdash; Travel Blogs, Planning Tools &amp; Vacation Inspiration</p>
       <p class="small text-white-50 mb-1"><a href="index.html" class="text-white-50">Home</a> | <a href="blog.html" class="text-white-50">Blog</a> | <a href="tools.html" class="text-white-50">Tools</a></p>
-      <p class="small text-white-50 mb-0">&copy; 2026 DreamVacati. <a href="privacy.html" class="text-white-50">Privacy Policy</a> | <a href="about.html" class="text-white-50">About</a> | Contact: <a href="mailto:dreamvacai@gmail.com" class="text-white-50">dreamvacai@gmail.com</a></p>
+      <p class="small text-white-50 mb-0">&copy; 2026 DreamVacati. <a href="privacy.html" class="text-white-50">Privacy Policy</a> | <a href="about.html" class="text-white-50">About</a> | Contact: <a href="mailto:hello@dreamvacati.com" class="text-white-50">hello@dreamvacati.com</a></p>
     </div>
   </footer>
 
