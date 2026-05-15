@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#03045E"/>
+      <stop offset="55%"  stop-color="#023E8A"/>
+      <stop offset="100%" stop-color="#0077B6"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#2EC4B6"/>
+      <stop offset="100%" stop-color="#0096C7"/>
+    </linearGradient>
+    <!-- Subtle grid pattern -->
+    <pattern id="grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Decorative travel path arc (matches logo motif) -->
+  <path d="M 80 500 L 300 200 L 420 370 Q 550 160 700 120" stroke="rgba(46,196,182,0.18)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 80 530 L 320 230 L 440 400 Q 570 190 720 150" stroke="rgba(46,196,182,0.09)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Destination dot -->
+  <circle cx="700" cy="120" r="10" fill="#0077B6" opacity="0.7"/>
+  <circle cx="700" cy="120" r="5"  fill="#2EC4B6"/>
+
+  <!-- Large decorative globe circle -->
+  <circle cx="980" cy="315" r="240" fill="none" stroke="rgba(46,196,182,0.08)" stroke-width="1"/>
+  <circle cx="980" cy="315" r="180" fill="none" stroke="rgba(46,196,182,0.06)" stroke-width="1"/>
+  <circle cx="980" cy="315" r="120" fill="none" stroke="rgba(46,196,182,0.05)" stroke-width="1"/>
+  <!-- Globe longitude lines -->
+  <ellipse cx="980" cy="315" rx="90" ry="240" fill="none" stroke="rgba(46,196,182,0.06)" stroke-width="1"/>
+  <ellipse cx="980" cy="315" rx="180" ry="240" fill="none" stroke="rgba(46,196,182,0.04)" stroke-width="1"/>
+  <!-- Globe latitude lines -->
+  <line x1="740" y1="315" x2="1220" y2="315" stroke="rgba(46,196,182,0.06)" stroke-width="1"/>
+  <line x1="760" y1="195" x2="1200" y2="195" stroke="rgba(46,196,182,0.04)" stroke-width="1"/>
+  <line x1="760" y1="435" x2="1200" y2="435" stroke="rgba(46,196,182,0.04)" stroke-width="1"/>
+
+  <!-- Teal accent bar -->
+  <rect x="80" y="220" width="6" height="120" rx="3" fill="url(#accent)"/>
+
+  <!-- Logo mark -->
+  <rect x="80" y="120" width="52" height="52" rx="10" fill="#03045E" stroke="rgba(46,196,182,0.4)" stroke-width="1.5"/>
+  <path d="M 96 133 L 112 158 L 120 144 Q 126 134 132 132" stroke="#2EC4B6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="132" cy="132" r="3" fill="#0077B6"/>
+
+  <!-- Brand name -->
+  <text x="145" y="158" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="700" fill="rgba(255,255,255,0.95)" letter-spacing="0.5">DreamVacati</text>
+
+  <!-- Main headline -->
+  <text x="86" y="290" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="700" fill="#ffffff" letter-spacing="-0.5">Travel Smarter.</text>
+  <text x="86" y="355" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="700" fill="#ffffff" letter-spacing="-0.5">Plan Better.</text>
+
+  <!-- Subtext -->
+  <text x="86" y="405" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="24" fill="rgba(46,196,182,0.9)" letter-spacing="0.2">Destination guides, planning tools &amp; trip inspiration.</text>
+
+  <!-- URL -->
+  <text x="86" y="510" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" fill="rgba(255,255,255,0.45)" letter-spacing="0.5">dreamvacati.com</text>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="610" width="1200" height="4" fill="url(#accent)" opacity="0.6"/>
+</svg>

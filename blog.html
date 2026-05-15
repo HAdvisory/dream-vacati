@@ -17,13 +17,13 @@
   <meta property="og:description" content="Caribbean island comparisons, Europe city guides, budget planning, pet travel, family resorts, and hidden destinations. Real guidance from DreamVacati.">
   <meta property="og:url" content="https://www.dreamvacati.com/blog.html">
   <meta property="og:site_name" content="DreamVacati">
-  <meta property="og:image" content="https://www.dreamvacati.com/images/og-default.jpg">
+  <meta property="og:image" content="https://www.dreamvacati.com/images/og/og-default.svg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Travel Blog — Destination Guides & Planning Tips | DreamVacati">
   <meta name="twitter:description" content="Caribbean island comparisons, Europe city guides, budget planning, pet travel, family resorts, and hidden destinations.">
-  <meta name="twitter:image" content="https://www.dreamvacati.com/images/og-default.jpg">
+  <meta name="twitter:image" content="https://www.dreamvacati.com/images/og/og-default.svg">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="main.css?v=2">
@@ -152,17 +152,24 @@
 
   <main class="container py-5">
 
-    <!-- Category filters -->
-    <div class="blog-filter d-flex gap-2 flex-wrap mb-4">
-      <button class="btn-filter active" data-filter="all">All Posts</button>
-      <button class="btn-filter" data-filter="destinations">Destinations</button>
-      <button class="btn-filter" data-filter="budget">Budget &amp; Planning</button>
-      <button class="btn-filter" data-filter="caribbean">Caribbean</button>
-      <button class="btn-filter" data-filter="europe">Europe</button>
-      <button class="btn-filter" data-filter="greece">Greece</button>
-      <button class="btn-filter" data-filter="asia">Asia</button>
-      <button class="btn-filter" data-filter="family">Family</button>
-      <button class="btn-filter" data-filter="pets">Pet Travel</button>
+    <!-- Search + filters -->
+    <div class="mb-4">
+      <input type="search" id="blog-search" class="form-control mb-3"
+             placeholder="Search destinations, topics, guides…" aria-label="Search blog posts"
+             style="max-width:480px;border-radius:20px;padding:.55rem 1.2rem;font-size:.92rem">
+      <div id="search-no-results" style="display:none" class="text-muted small mb-2">No posts match that search.</div>
+
+      <div class="blog-filter d-flex gap-2 flex-wrap">
+        <button class="btn-filter active" data-filter="all">All Posts</button>
+        <button class="btn-filter" data-filter="jamaica">Jamaica</button>
+        <button class="btn-filter" data-filter="caribbean">Caribbean</button>
+        <button class="btn-filter" data-filter="destinations">Destinations</button>
+        <button class="btn-filter" data-filter="budget">Budget &amp; Planning</button>
+        <button class="btn-filter" data-filter="europe">Europe</button>
+        <button class="btn-filter" data-filter="asia">Asia</button>
+        <button class="btn-filter" data-filter="family">Family</button>
+        <button class="btn-filter" data-filter="pets">Pet Travel</button>
+      </div>
     </div>
 
     <!-- Blog post grid -->
@@ -398,6 +405,150 @@
         </a>
       </div>
 
+      <!-- Jamaica Travel Guide (hub) -->
+      <div class="col-md-6" data-categories="jamaica caribbean destinations">
+        <a href="jamaica-travel-guide.html" class="text-decoration-none text-reset">
+          <article class="card h-100 shadow-sm border-0 dv-blog-card" style="border-left:4px solid #006B3F !important">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex gap-2 mb-2 flex-wrap">
+                <span class="badge" style="background:#006B3F">Jamaica</span>
+                <span class="badge bg-dark">Caribbean</span>
+                <span class="badge bg-primary">NEW</span>
+              </div>
+              <h2 class="h5 card-title">Jamaica Travel Guide 2026: Everything You Need to Plan Your Trip</h2>
+              <p class="card-text text-muted flex-grow-1 small">Where to stay, best time to visit, Montego Bay vs Negril, budget breakdown for all three price tiers, and how many days you actually need.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="btn btn-sm" style="border:1px solid #006B3F;color:#006B3F">Full Jamaica guide &rarr;</span>
+                <span class="post-meta">Jamaica &bull; Planning</span>
+              </div>
+            </div>
+          </article>
+        </a>
+      </div>
+
+      <!-- Montego Bay Jamaica -->
+      <div class="col-md-6" data-categories="jamaica caribbean destinations beach">
+        <a href="montego-bay-jamaica.html" class="text-decoration-none text-reset">
+          <article class="card h-100 shadow-sm border-0 dv-blog-card" style="border-left:4px solid #006B3F !important">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex gap-2 mb-2 flex-wrap">
+                <span class="badge" style="background:#006B3F">Jamaica</span>
+                <span class="badge bg-dark">Destination Guide</span>
+              </div>
+              <h2 class="h5 card-title">Montego Bay, Jamaica: Complete Visitor's Guide for 2026</h2>
+              <p class="card-text text-muted flex-grow-1 small">Doctor's Cave Beach, Hip Strip nightlife, all-inclusive vs independent resorts, best time to visit, and real budget breakdowns from $85/night to $400+.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="btn btn-sm" style="border:1px solid #006B3F;color:#006B3F">Explore Montego Bay &rarr;</span>
+                <span class="post-meta">Jamaica &bull; Beaches</span>
+              </div>
+            </div>
+          </article>
+        </a>
+      </div>
+
+      <!-- Negril Jamaica -->
+      <div class="col-md-6" data-categories="jamaica caribbean destinations beach">
+        <a href="negril-jamaica.html" class="text-decoration-none text-reset">
+          <article class="card h-100 shadow-sm border-0 dv-blog-card" style="border-left:4px solid #006B3F !important">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex gap-2 mb-2 flex-wrap">
+                <span class="badge" style="background:#006B3F">Jamaica</span>
+                <span class="badge bg-dark">Destination Guide</span>
+              </div>
+              <h2 class="h5 card-title">Negril, Jamaica: Seven Mile Beach, West End Cliffs &amp; What to Know in 2026</h2>
+              <p class="card-text text-muted flex-grow-1 small">Seven Mile Beach vs the West End cliffs, Rick's Cafe sunset, best resorts, budget guide, and how Negril compares to Montego Bay for different trip styles.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="btn btn-sm" style="border:1px solid #006B3F;color:#006B3F">Explore Negril &rarr;</span>
+                <span class="post-meta">Jamaica &bull; Beaches</span>
+              </div>
+            </div>
+          </article>
+        </a>
+      </div>
+
+      <!-- Jamaica 5-Day Itinerary -->
+      <div class="col-md-6" data-categories="jamaica caribbean destinations">
+        <a href="jamaica-5-day-itinerary.html" class="text-decoration-none text-reset">
+          <article class="card h-100 shadow-sm border-0 dv-blog-card" style="border-left:4px solid #006B3F !important">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex gap-2 mb-2 flex-wrap">
+                <span class="badge" style="background:#006B3F">Jamaica</span>
+                <span class="badge bg-dark">Itinerary</span>
+                <span class="badge bg-primary">NEW</span>
+              </div>
+              <h2 class="h5 card-title">Jamaica 5-Day Itinerary: The Perfect First-Timer's Trip in 2026</h2>
+              <p class="card-text text-muted flex-grow-1 small">Day-by-day breakdown covering Montego Bay arrival, Dunn's River Falls, Negril sunsets, Blue Mountains, and Ocho Rios — with budget notes for each day.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="btn btn-sm" style="border:1px solid #006B3F;color:#006B3F">See the itinerary &rarr;</span>
+                <span class="post-meta">Jamaica &bull; Itinerary</span>
+              </div>
+            </div>
+          </article>
+        </a>
+      </div>
+
+      <!-- Best Time to Visit Jamaica -->
+      <div class="col-md-6" data-categories="jamaica caribbean destinations">
+        <a href="best-time-to-visit-jamaica.html" class="text-decoration-none text-reset">
+          <article class="card h-100 shadow-sm border-0 dv-blog-card" style="border-left:4px solid #006B3F !important">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex gap-2 mb-2 flex-wrap">
+                <span class="badge" style="background:#006B3F">Jamaica</span>
+                <span class="badge bg-dark">Travel Timing</span>
+                <span class="badge bg-primary">NEW</span>
+              </div>
+              <h2 class="h5 card-title">Best Time to Visit Jamaica in 2026: Month-by-Month Weather, Prices &amp; Tips</h2>
+              <p class="card-text text-muted flex-grow-1 small">Dry season vs hurricane season explained, shoulder month pricing, best timing for couples vs families, and month-by-month weather breakdown.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="btn btn-sm" style="border:1px solid #006B3F;color:#006B3F">Read the guide &rarr;</span>
+                <span class="post-meta">Jamaica &bull; Travel Timing</span>
+              </div>
+            </div>
+          </article>
+        </a>
+      </div>
+
+      <!-- Montego Bay vs Negril -->
+      <div class="col-md-6" data-categories="jamaica caribbean destinations">
+        <a href="montego-bay-vs-negril.html" class="text-decoration-none text-reset">
+          <article class="card h-100 shadow-sm border-0 dv-blog-card" style="border-left:4px solid #006B3F !important">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex gap-2 mb-2 flex-wrap">
+                <span class="badge" style="background:#006B3F">Jamaica</span>
+                <span class="badge bg-dark">Destination Comparison</span>
+                <span class="badge bg-primary">NEW</span>
+              </div>
+              <h2 class="h5 card-title">Montego Bay vs Negril 2026: Which Jamaica Destination Is Right for You?</h2>
+              <p class="card-text text-muted flex-grow-1 small">Beaches, couples vs families, budget, nightlife, airport convenience, and sunset quality compared — with an honest recommendation for each traveler type.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="btn btn-sm" style="border:1px solid #006B3F;color:#006B3F">Compare destinations &rarr;</span>
+                <span class="post-meta">Jamaica &bull; Comparison</span>
+              </div>
+            </div>
+          </article>
+        </a>
+      </div>
+
+      <!-- Seasonal Destination Finder -->
+      <div class="col-md-6" data-categories="destinations budget">
+        <a href="seasonal-recommendations.html" class="text-decoration-none text-reset">
+          <article class="card h-100 shadow-sm border-0 dv-blog-card" style="border-left:4px solid #0077B6 !important">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex gap-2 mb-2 flex-wrap">
+                <span class="badge bg-primary">NEW TOOL</span>
+                <span class="badge bg-dark">Travel Planning</span>
+              </div>
+              <h2 class="h5 card-title">Where Should I Travel This Month? — Free Seasonal Destination Finder</h2>
+              <p class="card-text text-muted flex-grow-1 small">Select your travel month, budget tier, and trip style — get instant recommendations from 20+ destinations ranked by peak vs shoulder season. No sign-up required.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="btn btn-sm btn-primary">Try the tool &rarr;</span>
+                <span class="post-meta">Tool &bull; Planning</span>
+              </div>
+            </div>
+          </article>
+        </a>
+      </div>
+
     </div>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8978658918402683"
@@ -436,6 +587,26 @@
             <a href="blog-compare-caribbean-islands.html">Compare Caribbean Islands Before You Book</a>
             <a href="blog-caribbean-family.html">Best Caribbean Family Resorts 2026</a>
             <a href="blog-maldives-vs-bora-bora.html">Maldives vs Bora Bora Comparison</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="topic-cluster" style="border-left-color:#006B3F">
+            <h3>🇯🇲 Jamaica</h3>
+            <a href="jamaica-travel-guide.html">Jamaica Travel Guide 2026</a>
+            <a href="best-time-to-visit-jamaica.html">Best Time to Visit Jamaica</a>
+            <a href="montego-bay-vs-negril.html">Montego Bay vs Negril</a>
+            <a href="jamaica-5-day-itinerary.html">5-Day Jamaica Itinerary</a>
+            <a href="montego-bay-jamaica.html">Montego Bay Visitor's Guide</a>
+            <a href="negril-jamaica.html">Negril: Seven Mile Beach &amp; West End</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="topic-cluster" style="border-left-color:#0077B6">
+            <h3>🗓️ Planning Tools</h3>
+            <a href="seasonal-recommendations.html">Where Should I Travel This Month? (Tool)</a>
+            <a href="tools.html">All Free Travel Planning Tools</a>
+            <a href="best-time.html">Best Time to Visit — 22 Destinations</a>
+            <a href="travel-map.html">Interactive World Travel Map</a>
           </div>
         </div>
         <div class="col-md-4">
@@ -531,21 +702,30 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Category filter
+    function applyBlogFilter() {
+      const q      = document.getElementById('blog-search').value.toLowerCase().trim();
+      const filter = document.querySelector('.btn-filter.active')?.dataset.filter || 'all';
+      let visible  = 0;
+      document.querySelectorAll('#blog-grid [data-categories]').forEach(card => {
+        const catMatch  = filter === 'all' || card.dataset.categories.includes(filter);
+        const textMatch = !q || card.textContent.toLowerCase().includes(q);
+        const show = catMatch && textMatch;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      const noResults = document.getElementById('search-no-results');
+      if (noResults) noResults.style.display = visible === 0 ? 'block' : 'none';
+    }
+
     document.querySelectorAll('.btn-filter').forEach(btn => {
       btn.addEventListener('click', function() {
         document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
         this.classList.add('active');
-        const filter = this.dataset.filter;
-        document.querySelectorAll('#blog-grid [data-categories]').forEach(card => {
-          if (filter === 'all' || card.dataset.categories.includes(filter)) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
+        applyBlogFilter();
       });
     });
+
+    document.getElementById('blog-search').addEventListener('input', applyBlogFilter);
   </script>
 
   <!-- Mailchimp Popup Signup -->

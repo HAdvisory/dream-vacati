@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Saved Destinations | DreamVacati</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css?v=2">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, #03045E, #0077B6);
+      padding: 44px 20px 36px;
+      color: #fff;
+      text-align: center;
+    }
+    .saved-card {
+      border-radius: 12px;
+      border: 1.5px solid #e2e8f0;
+      padding: 1.1rem 1.25rem;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      transition: box-shadow .15s;
+    }
+    .saved-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .saved-name { font-weight: 700; color: #1e293b; font-size: .97rem; }
+    .saved-region { font-size: .78rem; color: #64748b; }
+    .saved-tagline { font-size: .82rem; color: #475569; margin-top: .2rem; }
+    .btn-remove {
+      background: transparent;
+      border: 1px solid #fca5a5;
+      color: #dc2626;
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-size: .78rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-remove:hover { background: #fef2f2; }
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #94a3b8;
+    }
+    .empty-state h2 { font-size: 1.3rem; color: #64748b; margin-bottom: .75rem; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:var(--deep-navy,#03045E)">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#03045E"/>
+          <path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="26" cy="6" r="2.5" fill="#0077B6"/>
+        </svg>
+        DreamVacati
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="tools.html">Travel Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="seasonal-recommendations.html">Destination Finder</a></li>
+          <li class="nav-item ms-lg-2"><a href="book-now.html" class="nav-cta-btn nav-link">Plan a Trip &rarr;</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <h1 class="h3 fw-bold mb-1">My Saved Destinations</h1>
+    <p style="opacity:.85;max-width:480px;margin:0 auto;font-size:.95rem">Destinations you've saved while browsing DreamVacati. Stored locally in your browser — no account required.</p>
+  </header>
+
+  <main class="container py-5" style="max-width:700px">
+
+    <div id="saved-list"></div>
+
+    <div id="empty-state" class="empty-state" style="display:none">
+      <h2>No saved destinations yet</h2>
+      <p class="mb-4">Use the destination finder to browse by month, budget, and travel style — then save destinations you want to explore.</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="seasonal-recommendations.html" class="btn btn-primary">Open Destination Finder</a>
+        <a href="blog.html" class="btn btn-outline-secondary">Browse Destination Guides</a>
+      </div>
+    </div>
+
+    <div id="has-items" style="display:none">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <p class="text-muted small mb-0" id="count-label"></p>
+        <button id="clear-all" class="btn btn-sm btn-outline-danger">Clear All</button>
+      </div>
+      <div class="d-flex flex-column gap-2 mb-4" id="cards-container"></div>
+      <div class="d-flex gap-3 flex-wrap mt-4">
+        <a href="seasonal-recommendations.html" class="btn btn-primary btn-sm">Find More Destinations</a>
+        <a href="book-now.html" class="btn btn-outline-primary btn-sm">Plan a Trip &rarr;</a>
+        <a href="tools.html" class="btn btn-outline-secondary btn-sm">All Travel Tools</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="dv-footer">
+    <div class="container text-center">
+      <p class="small mb-1" style="color:rgba(255,255,255,.5)">DreamVacati &mdash; Free travel planning tools</p>
+      <p class="small mb-0" style="color:rgba(255,255,255,.4)">
+        <a href="index.html" style="color:rgba(255,255,255,.4)">Home</a> |
+        <a href="blog.html" style="color:rgba(255,255,255,.4)">Blog</a> |
+        <a href="tools.html" style="color:rgba(255,255,255,.4)">Tools</a> |
+        <a href="privacy.html" style="color:rgba(255,255,255,.4)">Privacy</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const LS_KEY = 'dv_saved_destinations';
+
+    function getSaved() {
+      try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }
+      catch(e) { return []; }
+    }
+    function setSaved(arr) { localStorage.setItem(LS_KEY, JSON.stringify(arr)); }
+
+    function removeItem(name) {
+      const saved = getSaved().filter(d => d.name !== name);
+      setSaved(saved);
+      render();
+    }
+
+    function render() {
+      const saved = getSaved();
+      const empty   = document.getElementById('empty-state');
+      const hasItems= document.getElementById('has-items');
+      const container = document.getElementById('cards-container');
+      const countLabel = document.getElementById('count-label');
+
+      if (saved.length === 0) {
+        empty.style.display = '';
+        hasItems.style.display = 'none';
+        return;
+      }
+
+      empty.style.display = 'none';
+      hasItems.style.display = '';
+      countLabel.textContent = saved.length + ' saved destination' + (saved.length !== 1 ? 's' : '');
+
+      container.innerHTML = saved.map(d => `
+        <div class="saved-card">
+          <div class="flex-grow-1">
+            <div class="saved-name">
+              <a href="${d.link}" style="color:inherit;text-decoration:none">${d.name}</a>
+            </div>
+            ${d.region ? `<div class="saved-region">${d.region}</div>` : ''}
+            ${d.tagline ? `<div class="saved-tagline">${d.tagline}</div>` : ''}
+          </div>
+          <div style="display:flex;gap:.5rem;align-items:center">
+            <a href="${d.link}" class="btn btn-sm btn-outline-primary" style="font-size:.78rem">View Guide</a>
+            <button class="btn-remove" onclick="removeItem('${d.name.replace(/'/g,"\\'")}')">Remove</button>
+          </div>
+        </div>`).join('');
+    }
+
+    document.getElementById('clear-all').addEventListener('click', function() {
+      if (confirm('Clear all saved destinations?')) {
+        setSaved([]);
+        render();
+      }
+    });
+
+    render();
+  </script>
+
+  <div id="dv-cookie-banner" role="region" aria-label="Cookie consent" style="position:fixed;bottom:0;left:0;width:100%;background:#1a1a2e;color:#e2e8f0;padding:14px 24px;display:none;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;z-index:9999;font-size:.9rem;border-top:2px solid #0A7E8C;">
+    <span>We use cookies for analytics and advertising. <a href="/privacy.html" style="color:#2EC4B6;text-decoration:underline;">Privacy Policy</a></span>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button id="dv-cookie-accept" type="button" style="background:#0A7E8C;color:#fff;border:none;padding:8px 20px;border-radius:6px;font-weight:600;font-size:.88rem;cursor:pointer;white-space:nowrap;">Accept &amp; Continue</button>
+      <button id="dv-cookie-decline" type="button" style="background:transparent;color:#a0aec0;border:1px solid #4a5568;padding:8px 18px;border-radius:6px;font-size:.88rem;cursor:pointer;">Decline</button>
+    </div>
+  </div>
+  <script src="/cookie-consent.js"></script>
+</body>
+</html>

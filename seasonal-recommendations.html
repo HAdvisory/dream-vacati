@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>When Should I Travel? Seasonal Destination Finder 2026 | DreamVacati</title>
+  <meta name="description" content="Find the best destination for any month, budget, and travel style. Free seasonal travel recommendation tool — no sign-up required.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.dreamvacati.com/seasonal-recommendations.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="When Should I Travel? Seasonal Destination Finder | DreamVacati">
+  <meta property="og:description" content="Select your month, budget, and travel style — get instant destination recommendations for any season.">
+  <meta property="og:url" content="https://www.dreamvacati.com/seasonal-recommendations.html">
+  <meta property="og:site_name" content="DreamVacati">
+  <meta property="og:image" content="https://www.dreamvacati.com/images/og/og-default.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Seasonal Destination Finder | DreamVacati">
+  <meta name="twitter:description" content="Free tool: find the best destination for your travel month, budget, and style.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "DreamVacati Seasonal Destination Finder",
+    "url": "https://www.dreamvacati.com/seasonal-recommendations.html",
+    "description": "A free interactive tool that recommends travel destinations based on month, budget, and travel style.",
+    "applicationCategory": "TravelApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "DreamVacati", "url": "https://www.dreamvacati.com" }
+  }
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css?v=2">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-44K7KCF676"></script>
+  <script defer src="/ga-init.js"></script>
+  <script defer src="/meta-pixel-init.js"></script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=466481928545738&ev=PageView&noscript=1"/></noscript>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8978658918402683" crossorigin="anonymous"></script>
+
+  <style>
+    .tool-hero {
+      background: linear-gradient(135deg, #03045E 0%, #0077B6 55%, #2EC4B6 100%);
+      padding: 52px 20px 44px;
+      color: #fff;
+      text-align: center;
+    }
+    .tool-hero h1 { font-weight: 700; margin-bottom: .5rem; }
+    .tool-hero p { opacity: .9; max-width: 560px; margin: 0 auto; }
+
+    .filter-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.08);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .filter-label {
+      font-weight: 700;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: #475569;
+      margin-bottom: .5rem;
+    }
+    .pill-group { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .pill {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: .83rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid #cbd5e1;
+      background: #f8fafc;
+      color: #475569;
+      transition: all .18s;
+      user-select: none;
+    }
+    .pill:hover { border-color: #0077B6; color: #0077B6; }
+    .pill.active { background: #03045E; color: #fff; border-color: #03045E; }
+    .pill.active-caribbean { background: #0077B6; color: #fff; border-color: #0077B6; }
+    .pill.active-jamaica { background: #006B3F; color: #fff; border-color: #006B3F; }
+    .pill.active-asia { background: #C2185B; color: #fff; border-color: #C2185B; }
+    .pill.active-europe { background: #2563EB; color: #fff; border-color: #2563EB; }
+
+    .dest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .dest-card {
+      border-radius: 12px;
+      padding: 1.25rem;
+      border: 1.5px solid #e2e8f0;
+      background: #fff;
+      transition: transform .18s, box-shadow .18s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+    .dest-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,.1);
+      color: inherit;
+    }
+    .dest-name { font-weight: 700; font-size: 1rem; color: #1e293b; }
+    .dest-region { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+    .dest-tagline { font-size: .84rem; color: #64748b; line-height: 1.45; }
+    .dest-season { font-size: .78rem; color: #0077B6; font-weight: 600; }
+    .dest-budget-tags { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .35rem; }
+    .dest-tag {
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: .72rem;
+      font-weight: 600;
+    }
+    .tag-budget { background: #d1fae5; color: #065f46; }
+    .tag-mid { background: #dbeafe; color: #1e40af; }
+    .tag-luxury { background: #ede9fe; color: #5b21b6; }
+    .tag-beach { background: #e0f2fe; color: #0369a1; }
+    .tag-couples { background: #fce7f3; color: #9d174d; }
+    .tag-family { background: #fef3c7; color: #92400e; }
+    .tag-adventure { background: #f0fdf4; color: #14532d; }
+
+    .result-header {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #1e293b;
+      margin-bottom: .25rem;
+    }
+    .result-count { font-size: .84rem; color: #94a3b8; }
+    .no-results {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: #94a3b8;
+      font-size: .92rem;
+    }
+    .peak-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 8px;
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-left: 6px;
+    }
+    .badge-peak { background: #d1fae5; color: #065f46; }
+    .badge-shoulder { background: #fef3c7; color: #92400e; }
+
+    .tool-tip-box {
+      background: linear-gradient(135deg, #f0f9ff, #f0fdf4);
+      border-left: 4px solid #2EC4B6;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      font-size: .87rem;
+      color: #374151;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:var(--deep-navy,#03045E)">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#03045E"/>
+          <path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="26" cy="6" r="2.5" fill="#0077B6"/>
+        </svg>
+        DreamVacati
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="tools.html">Travel Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="best-time.html">Best Time to Visit</a></li>
+          <li class="nav-item ms-lg-2"><a href="book-now.html" class="nav-cta-btn nav-link">Plan a Trip &rarr;</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="tool-hero">
+    <h1 class="display-6">Where Should I Travel This Month?</h1>
+    <p>Select your travel month, budget, and trip style — get instant destination recommendations based on real seasonal data.</p>
+  </header>
+
+  <main class="container py-5" style="max-width:940px">
+
+    <!-- Filters -->
+    <div class="filter-card">
+      <div class="row g-4">
+        <div class="col-md-12">
+          <div class="filter-label">Travel Month</div>
+          <div class="pill-group" id="month-pills">
+            <span class="pill" data-month="1">January</span>
+            <span class="pill" data-month="2">February</span>
+            <span class="pill" data-month="3">March</span>
+            <span class="pill" data-month="4">April</span>
+            <span class="pill" data-month="5">May</span>
+            <span class="pill" data-month="6">June</span>
+            <span class="pill" data-month="7">July</span>
+            <span class="pill" data-month="8">August</span>
+            <span class="pill" data-month="9">September</span>
+            <span class="pill" data-month="10">October</span>
+            <span class="pill" data-month="11">November</span>
+            <span class="pill" data-month="12">December</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="filter-label">Budget Tier</div>
+          <div class="pill-group" id="budget-pills">
+            <span class="pill active" data-budget="all">Any Budget</span>
+            <span class="pill" data-budget="budget">Budget</span>
+            <span class="pill" data-budget="mid">Mid-Range</span>
+            <span class="pill" data-budget="luxury">Luxury</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="filter-label">Trip Style</div>
+          <div class="pill-group" id="style-pills">
+            <span class="pill active" data-style="all">Any Style</span>
+            <span class="pill" data-style="beach">Beach</span>
+            <span class="pill" data-style="couples">Couples</span>
+            <span class="pill" data-style="family">Family</span>
+            <span class="pill" data-style="adventure">Adventure</span>
+          </div>
+        </div>
+      </div>
+      <div class="mt-3 d-flex gap-3 align-items-center flex-wrap">
+        <div class="tool-tip-box flex-grow-1" id="tool-tip">
+          <strong>Select a month above</strong> to see destination recommendations. Budget and style filters refine the results further.
+        </div>
+        <a href="saved-trips.html" id="saved-badge" class="btn btn-sm btn-outline-secondary" style="white-space:nowrap;display:none">
+          ❤️ Saved: <span id="saved-count">0</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="results-section" style="display:none">
+      <div class="d-flex justify-content-between align-items-baseline mb-2">
+        <div class="result-header" id="results-header">Destinations for January</div>
+        <div class="result-count" id="results-count"></div>
+      </div>
+      <div class="dest-grid" id="dest-grid"></div>
+      <div class="no-results" id="no-results" style="display:none">
+        No destinations match all three filters. Try removing the budget or style filter to see more options.
+      </div>
+    </div>
+
+    <!-- Adsense mid -->
+    <div class="my-4">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978658918402683" data-ad-slot="9149500460" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Tool info -->
+    <section class="mb-5">
+      <h2 class="h5 mb-3">How This Tool Works</h2>
+      <p class="text-muted small">Each destination has a peak season window (best weather, ideal conditions), a shoulder season (acceptable weather, lower prices), and a period to avoid. The tool surfaces destinations where your selected month falls in the peak or shoulder window, filters by budget tier and trip style, and shows relevant planning links. It does not use AI or backend calls — all recommendations run locally in your browser from a curated dataset of 20+ destinations.</p>
+      <p class="text-muted small">Budget tiers: <strong>Budget</strong> = $80–150/person/day on the ground; <strong>Mid-Range</strong> = $150–350/person/day; <strong>Luxury</strong> = $350+/person/day. Flights are not included in these estimates.</p>
+      <div class="d-flex gap-3 flex-wrap mt-3">
+        <a href="tools.html" class="btn btn-outline-primary btn-sm">All Travel Tools</a>
+        <a href="best-time.html" class="btn btn-outline-primary btn-sm">Best Time to Visit Tool</a>
+        <a href="blog.html" class="btn btn-outline-secondary btn-sm">Destination Guides</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="dv-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="footer-brand mb-2">DreamVacati</div>
+          <p class="mb-0" style="font-size:0.85rem;opacity:0.65;max-width:260px;">Real travel guides, free planning tools, and the best booking deals — updated for 2026.</p>
+        </div>
+        <div class="col-md-2">
+          <div class="fw-bold mb-2" style="color:#fff;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.5px">Explore</div>
+          <ul class="list-unstyled mb-0" style="font-size:0.875rem">
+            <li><a href="blog.html">Travel Blog</a></li>
+            <li><a href="tools.html">Planning Tools</a></li>
+            <li><a href="best-time.html">Best Time to Visit</a></li>
+            <li><a href="book-now.html">Book a Trip</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <div class="fw-bold mb-2" style="color:#fff;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.5px">Jamaica</div>
+          <ul class="list-unstyled mb-0" style="font-size:0.875rem">
+            <li><a href="jamaica-travel-guide.html">Jamaica Guide</a></li>
+            <li><a href="montego-bay-jamaica.html">Montego Bay</a></li>
+            <li><a href="negril-jamaica.html">Negril</a></li>
+            <li><a href="best-time-to-visit-jamaica.html">Best Time for Jamaica</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <div class="fw-bold mb-2" style="color:#fff;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.5px">Free Tools</div>
+          <ul class="list-unstyled mb-0" style="font-size:0.875rem">
+            <li><a href="index.html#tool-budget">Budget Calculator</a></li>
+            <li><a href="index.html#tool-packing">Packing Checklist</a></li>
+            <li><a href="seasonal-recommendations.html">Seasonal Finder</a></li>
+            <li><a href="travel-map.html">Travel Map</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr style="border-color:rgba(255,255,255,0.12);margin:1.5rem 0 1rem">
+      <p style="font-size:0.78rem;color:rgba(255,255,255,0.4);margin:0">
+        <a href="index.html" style="color:rgba(255,255,255,0.4)">Home</a> &nbsp;|&nbsp;
+        &copy; 2026 DreamVacati. All rights reserved. | Contact: <a href="mailto:hello@dreamvacati.com" style="color:rgba(255,255,255,0.4)">hello@dreamvacati.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+  // ── Saved trips (localStorage) ────────────────────────────────────────────
+  const LS_KEY = 'dv_saved_destinations';
+
+  function getSaved() {
+    try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }
+    catch(e) { return []; }
+  }
+  function setSaved(arr) {
+    localStorage.setItem(LS_KEY, JSON.stringify(arr));
+  }
+  function isSaved(name) {
+    return getSaved().some(d => d.name === name);
+  }
+  function toggleSave(dest, btn) {
+    let saved = getSaved();
+    const idx = saved.findIndex(d => d.name === dest.name);
+    if (idx >= 0) {
+      saved.splice(idx, 1);
+      btn.textContent = '+ Save';
+      btn.style.background = 'transparent';
+      btn.style.color = '#64748b';
+      btn.style.border = '1px solid #cbd5e1';
+    } else {
+      saved.push({ name: dest.name, link: dest.link, region: dest.region, tagline: dest.tagline });
+      btn.textContent = '❤️ Saved';
+      btn.style.background = '#fce7f3';
+      btn.style.color = '#9d174d';
+      btn.style.border = '1px solid #fbcfe8';
+    }
+    setSaved(saved);
+    updateSavedBadge();
+  }
+  function updateSavedBadge() {
+    const n = getSaved().length;
+    const badge = document.getElementById('saved-badge');
+    const count = document.getElementById('saved-count');
+    if (badge) { badge.style.display = n > 0 ? '' : 'none'; }
+    if (count) { count.textContent = n; }
+  }
+
+  // ── Destination data ─────────────────────────────────────────────────────
+  const DESTS = [
+    {
+      name: 'Jamaica — Montego Bay',
+      region: 'Caribbean', color: '#006B3F',
+      peak: [12,1,2,3,4], shoulder: [5,11,7],
+      budget: ['budget','mid','luxury'],
+      styles: ['beach','couples','family','adventure'],
+      tagline: 'Doctor\'s Cave Beach, all-inclusive resorts, Dunn\'s River Falls day trips',
+      season_note: 'Dec–Apr peak; May & Nov shoulder; Sep–Oct hurricane risk',
+      link: 'montego-bay-jamaica.html'
+    },
+    {
+      name: 'Jamaica — Negril',
+      region: 'Caribbean', color: '#006B3F',
+      peak: [12,1,2,3,4], shoulder: [5,11,7],
+      budget: ['budget','mid','luxury'],
+      styles: ['beach','couples','adventure'],
+      tagline: 'Seven Mile Beach, West End cliffs, Rick\'s Cafe sunset, laid-back vibe',
+      season_note: 'Dec–Apr peak; May & Nov shoulder; Sep–Oct hurricane risk',
+      link: 'negril-jamaica.html'
+    },
+    {
+      name: 'Aruba',
+      region: 'Caribbean', color: '#0077B6',
+      peak: [1,2,3,4,5,6,7,8,9,10,11,12],
+      shoulder: [],
+      budget: ['mid','luxury'],
+      styles: ['beach','couples','family'],
+      tagline: 'Year-round sunshine, Eagle Beach, calm resort scene outside the hurricane belt',
+      season_note: 'Year-round — sits below the hurricane belt',
+      link: 'blog-compare-caribbean-islands.html'
+    },
+    {
+      name: 'Bahamas',
+      region: 'Caribbean', color: '#0077B6',
+      peak: [12,1,2,3,4,5], shoulder: [6,7,8,11],
+      budget: ['mid','luxury'],
+      styles: ['beach','couples','family'],
+      tagline: 'Short US flights, Nassau nightlife, Exumas blue water, Atlantis resort',
+      season_note: 'Dec–May peak; avoid Sep–Oct hurricane peak',
+      link: 'blog-compare-caribbean-islands.html'
+    },
+    {
+      name: 'Barbados',
+      region: 'Caribbean', color: '#0077B6',
+      peak: [12,1,2,3,4], shoulder: [5,6,11],
+      budget: ['mid','luxury'],
+      styles: ['beach','couples','family'],
+      tagline: 'Best food scene in the Caribbean, Platinum Coast beaches, rum culture',
+      season_note: 'Dec–Apr peak; lower hurricane exposure than most islands',
+      link: 'blog-compare-caribbean-islands.html'
+    },
+    {
+      name: 'Dominican Republic',
+      region: 'Caribbean', color: '#0077B6',
+      peak: [12,1,2,3,4,5], shoulder: [6,7,8,11],
+      budget: ['budget','mid'],
+      styles: ['beach','family'],
+      tagline: 'Most affordable Caribbean all-inclusive, Punta Cana, miles of resort beach',
+      season_note: 'Dec–May peak; budget-friendly all-inclusive value year-round',
+      link: 'blog-compare-caribbean-islands.html'
+    },
+    {
+      name: 'Greece — Santorini & Mykonos',
+      region: 'Europe', color: '#2563EB',
+      peak: [5,6,9,10], shoulder: [4,7,8,11],
+      budget: ['mid','luxury'],
+      styles: ['couples','beach'],
+      tagline: 'Iconic caldera views, blue-dome churches, island-hopping, Mediterranean cuisine',
+      season_note: 'May–Jun & Sep–Oct ideal; Jul–Aug crowded and expensive',
+      link: 'blog-santorini-vs-mykonos.html'
+    },
+    {
+      name: 'Greece — Athens & Islands',
+      region: 'Europe', color: '#2563EB',
+      peak: [4,5,6,9,10], shoulder: [3,7,8,11],
+      budget: ['budget','mid','luxury'],
+      styles: ['couples','adventure','family'],
+      tagline: 'Ancient history, island variety, strong value in spring and autumn',
+      season_note: 'Apr–Jun & Sep–Oct best; skip Aug peak crowds',
+      link: 'blog-best-time-greece.html'
+    },
+    {
+      name: 'Japan',
+      region: 'Asia', color: '#C2185B',
+      peak: [3,4,10,11], shoulder: [2,5,6,9,12],
+      budget: ['mid','luxury'],
+      styles: ['couples','family','adventure'],
+      tagline: 'Cherry blossoms, autumn foliage, world-class food, trains, temples',
+      season_note: 'Mar–Apr (cherry blossoms) & Oct–Nov (autumn foliage) are peak; shoulder months cheaper',
+      link: 'blog-best-time-japan.html'
+    },
+    {
+      name: 'Bali, Indonesia',
+      region: 'Asia', color: '#C2185B',
+      peak: [6,7,8], shoulder: [4,5,9,10],
+      budget: ['budget','mid'],
+      styles: ['beach','couples','adventure'],
+      tagline: 'Volcanic scenery, rice terraces, surf, temples, budget-friendly gastronomy',
+      season_note: 'Jun–Aug dry season peak; Apr–May & Sep–Oct pleasant shoulder',
+      link: 'blog-bali-vs-thailand.html'
+    },
+    {
+      name: 'Thailand',
+      region: 'Asia', color: '#C2185B',
+      peak: [11,12,1,2,3], shoulder: [4,10],
+      budget: ['budget','mid'],
+      styles: ['beach','couples','adventure','family'],
+      tagline: 'Bangkok temples, island beaches (Koh Samui, Phuket), street food, tuk-tuks',
+      season_note: 'Nov–Feb dry season peak; Apr & Oct transitional shoulder',
+      link: 'blog-bali-vs-thailand.html'
+    },
+    {
+      name: 'Maldives',
+      region: 'Asia / Indian Ocean', color: '#C2185B',
+      peak: [12,1,2,3,4], shoulder: [5,11],
+      budget: ['luxury'],
+      styles: ['beach','couples'],
+      tagline: 'Overwater bungalows, world-class snorkeling, unmatched water clarity',
+      season_note: 'Dec–Apr dry season; May–Oct wetter but cheaper with negotiable rates',
+      link: 'blog-best-time-maldives.html'
+    },
+    {
+      name: 'Paris, France',
+      region: 'Europe', color: '#2563EB',
+      peak: [4,5,6,9,10], shoulder: [3,7,8,11],
+      budget: ['mid','luxury'],
+      styles: ['couples','family'],
+      tagline: 'Art, food, fashion, iconic landmarks, world\'s most-visited city',
+      season_note: 'Apr–Jun & Sep–Oct best weather and crowds; winter quiet with shorter queues',
+      link: 'blog-choose-europe-cities.html'
+    },
+    {
+      name: 'Lisbon & Porto, Portugal',
+      region: 'Europe', color: '#2563EB',
+      peak: [4,5,6,9,10], shoulder: [3,7,8,11],
+      budget: ['budget','mid'],
+      styles: ['couples','adventure','family'],
+      tagline: 'Trams, tiles, petiscos, Atlantic coast beaches — Western Europe\'s best value city',
+      season_note: 'Apr–Jun & Sep–Oct ideal; Jul–Aug warm but busy',
+      link: 'blog-choose-europe-cities.html'
+    },
+    {
+      name: 'Peru — Machu Picchu & Cusco',
+      region: 'South America', color: '#D97706',
+      peak: [5,6,7,8,9], shoulder: [4,10],
+      budget: ['budget','mid'],
+      styles: ['adventure','couples'],
+      tagline: 'Inca ruins, Andes trekking, Amazon access, colonial Cusco',
+      season_note: 'May–Sep dry season; Inca Trail permits sell out months ahead',
+      link: 'blog-hidden-destinations.html'
+    },
+    {
+      name: 'Turks & Caicos',
+      region: 'Caribbean', color: '#0077B6',
+      peak: [12,1,2,3,4,5], shoulder: [6,7,11],
+      budget: ['luxury'],
+      styles: ['beach','couples','family'],
+      tagline: 'Grace Bay — consistently ranked the world\'s best beach; calm, ultra-clear water',
+      season_note: 'Dec–May peak; excellent but expensive at all times',
+      link: 'blog-compare-caribbean-islands.html'
+    },
+    {
+      name: 'Iceland',
+      region: 'Europe', color: '#2563EB',
+      peak: [6,7,8], shoulder: [3,4,5,9,10],
+      budget: ['mid','luxury'],
+      styles: ['adventure','couples'],
+      tagline: 'Northern lights (winter), midnight sun (summer), waterfalls, geothermal pools',
+      season_note: 'Jun–Aug for midnight sun & accessibility; Nov–Feb for northern lights',
+      link: 'blog-hidden-destinations.html'
+    },
+    {
+      name: 'Mexico — Tulum & Yucatán',
+      region: 'Caribbean / Mexico', color: '#D97706',
+      peak: [12,1,2,3,4,5], shoulder: [6,11],
+      budget: ['budget','mid'],
+      styles: ['beach','couples','adventure'],
+      tagline: 'Cenotes, Mayan ruins, Tulum beachclubs, short US flight times',
+      season_note: 'Dec–May dry season; budget-friendly with easy US East Coast access',
+      link: 'blog-hidden-destinations.html'
+    },
+    {
+      name: 'Costa Rica',
+      region: 'Central America', color: '#006B3F',
+      peak: [12,1,2,3,4], shoulder: [5,11],
+      budget: ['budget','mid'],
+      styles: ['adventure','family','couples'],
+      tagline: 'Rainforests, zip-lining, wildlife, both Pacific and Caribbean coasts',
+      season_note: 'Dec–Apr dry season on Pacific side; year-round on Caribbean coast',
+      link: 'blog-hidden-destinations.html'
+    },
+    {
+      name: 'Morocco',
+      region: 'Africa', color: '#D97706',
+      peak: [3,4,10,11], shoulder: [2,5,9,12],
+      budget: ['budget','mid'],
+      styles: ['adventure','couples'],
+      tagline: 'Medinas, Sahara dunes, riads, Atlas Mountains, Marrakech souks',
+      season_note: 'Mar–Apr & Oct–Nov best; summer can be 100°F+ inland',
+      link: 'blog-hidden-destinations.html'
+    }
+  ];
+
+  // ── State ──────────────────────────────────────────────────────────────────
+  let selectedMonth = null;
+  let selectedBudget = 'all';
+  let selectedStyle  = 'all';
+
+  // ── Render ─────────────────────────────────────────────────────────────────
+  function renderResults() {
+    const grid    = document.getElementById('dest-grid');
+    const section = document.getElementById('results-section');
+    const header  = document.getElementById('results-header');
+    const count   = document.getElementById('results-count');
+    const noRes   = document.getElementById('no-results');
+    const tip     = document.getElementById('tool-tip');
+
+    if (!selectedMonth) return;
+
+    tip.style.display = 'none';
+    section.style.display = 'block';
+
+    const monthName = ['','January','February','March','April','May','June',
+                       'July','August','September','October','November','December'][selectedMonth];
+    header.textContent = 'Destinations for ' + monthName;
+
+    const filtered = DESTS.filter(d => {
+      const inSeason = d.peak.includes(selectedMonth) || d.shoulder.includes(selectedMonth);
+      const budgetOk = selectedBudget === 'all' || d.budget.includes(selectedBudget);
+      const styleOk  = selectedStyle  === 'all' || d.styles.includes(selectedStyle);
+      return inSeason && budgetOk && styleOk;
+    });
+
+    // Sort: peak-season destinations first
+    filtered.sort((a,b) => {
+      const aPeak = a.peak.includes(selectedMonth) ? 0 : 1;
+      const bPeak = b.peak.includes(selectedMonth) ? 0 : 1;
+      return aPeak - bPeak;
+    });
+
+    count.textContent = filtered.length + ' destination' + (filtered.length !== 1 ? 's' : '');
+    noRes.style.display = filtered.length === 0 ? 'block' : 'none';
+    grid.style.display  = filtered.length === 0 ? 'none' : 'grid';
+
+    grid.innerHTML = filtered.map(d => {
+      const isPeak  = d.peak.includes(selectedMonth);
+      const saved   = isSaved(d.name);
+      const budgeTags = d.budget.map(b =>
+        `<span class="dest-tag tag-${b}">${b === 'mid' ? 'Mid-Range' : b.charAt(0).toUpperCase()+b.slice(1)}</span>`
+      ).join('');
+      const styleTags = d.styles.map(s =>
+        `<span class="dest-tag tag-${s}">${s.charAt(0).toUpperCase()+s.slice(1)}</span>`
+      ).join('');
+      const saveBtnStyle = saved
+        ? 'background:#fce7f3;color:#9d174d;border:1px solid #fbcfe8'
+        : 'background:transparent;color:#64748b;border:1px solid #cbd5e1';
+      return `
+        <div class="dest-card" style="position:relative">
+          <a href="${d.link}" style="text-decoration:none;color:inherit;display:contents">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start">
+              <div class="dest-name">${d.name}</div>
+              <span class="peak-badge ${isPeak ? 'badge-peak' : 'badge-shoulder'}">${isPeak ? 'Peak' : 'Shoulder'}</span>
+            </div>
+            <div class="dest-region" style="color:${d.color}">${d.region}</div>
+            <div class="dest-tagline">${d.tagline}</div>
+            <div class="dest-season">📅 ${d.season_note}</div>
+            <div class="dest-budget-tags">${budgeTags}${styleTags}</div>
+          </a>
+          <button onclick="toggleSave(DESTS.find(x=>x.name==='${d.name.replace(/'/g,"\\'")}'),this)"
+                  style="margin-top:.6rem;padding:4px 12px;border-radius:16px;font-size:.75rem;font-weight:600;cursor:pointer;${saveBtnStyle}">
+            ${saved ? '❤️ Saved' : '+ Save'}
+          </button>
+        </div>`;
+    }).join('');
+  }
+
+  // ── Pill click handlers ────────────────────────────────────────────────────
+  document.querySelectorAll('#month-pills .pill').forEach(pill => {
+    pill.addEventListener('click', function() {
+      document.querySelectorAll('#month-pills .pill').forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+      selectedMonth = parseInt(this.dataset.month);
+      renderResults();
+    });
+  });
+
+  document.querySelectorAll('#budget-pills .pill').forEach(pill => {
+    pill.addEventListener('click', function() {
+      document.querySelectorAll('#budget-pills .pill').forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+      selectedBudget = this.dataset.budget;
+      renderResults();
+    });
+  });
+
+  document.querySelectorAll('#style-pills .pill').forEach(pill => {
+    pill.addEventListener('click', function() {
+      document.querySelectorAll('#style-pills .pill').forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+      selectedStyle = this.dataset.style;
+      renderResults();
+    });
+  });
+
+  // Pre-select current month + init saved badge
+  (function() {
+    updateSavedBadge();
+    const cur = new Date().getMonth() + 1;
+    const pill = document.querySelector(`#month-pills [data-month="${cur}"]`);
+    if (pill) { pill.click(); }
+  })();
+  </script>
+
+  <div id="dv-cookie-banner" role="region" aria-label="Cookie consent" style="position:fixed;bottom:0;left:0;width:100%;background:#1a1a2e;color:#e2e8f0;padding:14px 24px;display:none;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;z-index:9999;font-size:.9rem;border-top:2px solid #0A7E8C;">
+    <span>We use cookies for analytics and advertising. <a href="/privacy.html" style="color:#2EC4B6;text-decoration:underline;">Privacy Policy</a></span>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button id="dv-cookie-accept" type="button" style="background:#0A7E8C;color:#fff;border:none;padding:8px 20px;border-radius:6px;font-weight:600;font-size:.88rem;cursor:pointer;white-space:nowrap;">Accept &amp; Continue</button>
+      <button id="dv-cookie-decline" type="button" style="background:transparent;color:#a0aec0;border:1px solid #4a5568;padding:8px 18px;border-radius:6px;font-size:.88rem;cursor:pointer;">Decline</button>
+    </div>
+  </div>
+  <script src="/cookie-consent.js"></script>
+</body>
+</html>
