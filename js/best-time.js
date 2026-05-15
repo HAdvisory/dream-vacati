@@ -173,89 +173,75 @@
 
   // ── Build destination card HTML ────────────────────────────
   function buildDestinationCard(dest, detailed) {
-    const statusForToday = getMonthStatus(dest, TODAY_MONTH);
     const selectedMonth  = parseInt(document.getElementById('btt-month')?.value) || TODAY_MONTH;
     const statusForMonth = getMonthStatus(dest, selectedMonth);
 
     const calendarHtml = buildCalendarStrip(dest);
-    const tagsHtml = (dest.tags || []).slice(0, 5)
+
+    // 3 tags in grid cards, 5 in detail view — prevents visual overload
+    const tagsHtml = (dest.tags || []).slice(0, detailed ? 5 : 3)
       .map(t => `<span class="btt-tag">${t}</span>`).join('');
 
-    const statusLabel = statusForMonth.class === 'best' ? '✅ Best time' :
-                        statusForMonth.class === 'shoulder' ? '🟡 Good time' :
-                        '⚠️ Avoid if possible';
+    const statusIcon = { best: '✅', shoulder: '🌤️', avoid: '⚠️', ok: '💤' }[statusForMonth.class] || '';
+    const statusText = { best: 'Best time', shoulder: 'Good time', avoid: 'Avoid', ok: 'Off-season' }[statusForMonth.class] || statusForMonth.label;
+    const monthNote  = selectedMonth !== TODAY_MONTH
+      ? `<span style="opacity:.6;font-size:.7em;font-weight:400"> · ${MONTH_NAMES[selectedMonth - 1]}</span>` : '';
 
-    const budgetBadge = {
-      'budget':   '<span class="badge bg-success">$ Budget-Friendly</span>',
-      'moderate': '<span class="badge bg-primary">$$ Moderate</span>',
-      'high':     '<span class="badge bg-warning text-dark">$$$ Premium</span>',
-      'luxury':   '<span class="badge bg-danger">$$$$ Luxury</span>'
-    }[dest.budgetLevel] || '';
-
-    const longHaulBadge = dest.longHaul
-      ? '<span class="badge bg-secondary ms-1">Long-Haul Flight</span>'
-      : '';
+    const budgetSymbol = { budget: '$', moderate: '$$', high: '$$$', luxury: '$$$$' }[dest.budgetLevel] || '$$';
+    const budgetTitle  = { budget: 'Budget-friendly', moderate: 'Moderate', high: 'Premium', luxury: 'Luxury' }[dest.budgetLevel] || '';
 
     return `
       <div class="btt-card ${detailed ? 'btt-card--detailed' : ''}">
+
+        <!-- Title row + status badge side-by-side -->
         <div class="btt-card-header">
           <div>
             <h3 class="btt-card-title">${dest.name}</h3>
-            <p class="btt-card-subtitle">${dest.country} &bull; ${dest.region}</p>
+            <p class="btt-card-subtitle">${dest.country} &middot; ${dest.region}</p>
           </div>
-          <div class="btt-card-badges">
-            ${budgetBadge}${longHaulBadge}
+          <div class="btt-status btt-status--${statusForMonth.class}" style="flex-shrink:0;align-self:flex-start;margin:0">
+            ${statusIcon} ${statusText}${monthNote}
           </div>
         </div>
 
-        <div class="btt-status btt-status--${statusForMonth.class}">
-          ${statusLabel} ${selectedMonth !== TODAY_MONTH ? `for ${MONTH_NAMES[selectedMonth - 1]}` : 'this month'}
-        </div>
-
+        <!-- Seasonal calendar — legend shown once on page, not per card -->
         ${calendarHtml}
 
         <p class="btt-weather">${dest.weatherSummary}</p>
 
         ${detailed ? `<p class="btt-notes"><strong>Planning notes:</strong> ${dest.planningNotes}</p>` : ''}
 
-        <div class="btt-tags">${tagsHtml}</div>
+        <!-- Footer: tags left, budget symbol right -->
+        <div class="btt-card-footer">
+          <div class="btt-tags" style="margin:0">${tagsHtml}</div>
+          <span class="btt-budget-badge" title="${budgetTitle}">${budgetSymbol}</span>
+        </div>
 
         ${detailed ? `
-          <div class="btt-crowd-row">
+          <div class="btt-crowd-row" style="margin-top:.75rem">
             <span>Peak crowds: <strong>${capitalize(dest.crowdLevel.peak)}</strong></span>
             <span>Shoulder: <strong>${capitalize(dest.crowdLevel.shoulder)}</strong></span>
+            ${dest.longHaul ? '<span>✈️ Long-haul</span>' : ''}
           </div>
         ` : `
           <button class="btt-expand-btn" onclick="window.dvBestTime.expandCard('${dest.id}', this)">
-            View details &darr;
+            Full seasonal breakdown ↓
           </button>
         `}
       </div>
     `;
   }
 
-  // ── Calendar strip: 12 colored month blocks ───────────────
+  // ── Calendar strip: 12 coloured cells — legend shown once on page ─
   function buildCalendarStrip(dest) {
     const cells = MONTH_NAMES.map((name, i) => {
-      const m = i + 1;
+      const m      = i + 1;
       const status = getMonthStatus(dest, m);
       const isToday = m === TODAY_MONTH;
-      return `<div class="btt-cal-cell btt-cal-cell--${status.class}${isToday ? ' btt-cal-cell--today' : ''}" title="${MONTH_FULL[i]}: ${status.label}">
-        ${name}
-      </div>`;
+      return `<div class="btt-cal-cell btt-cal-cell--${status.class}${isToday ? ' btt-cal-cell--today' : ''}" title="${MONTH_FULL[i]}: ${status.label}">${name}</div>`;
     }).join('');
 
-    return `
-      <div class="btt-calendar">
-        ${cells}
-      </div>
-      <div class="btt-cal-legend">
-        <span class="btt-cal-legend-item"><span class="btt-cal-dot btt-cal-dot--best"></span> Best</span>
-        <span class="btt-cal-legend-item"><span class="btt-cal-dot btt-cal-dot--shoulder"></span> Good</span>
-        <span class="btt-cal-legend-item"><span class="btt-cal-dot btt-cal-dot--avoid"></span> Avoid</span>
-        <span class="btt-cal-legend-item"><span class="btt-cal-dot btt-cal-dot--ok"></span> Off-season</span>
-      </div>
-    `;
+    return `<div class="btt-calendar">${cells}</div>`;
   }
 
   function getMonthStatus(dest, month) {

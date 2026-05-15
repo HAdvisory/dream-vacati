@@ -561,3 +561,148 @@ h1, h2, h3, h4, h5, h6,
   text-decoration: none !important;
 }
 .nav-cta-btn:hover { background: var(--teal-dark); }
+
+/* ===== UX Upgrade v4 — Navbar, Layout, Exploration ===== */
+
+/* ── Navbar: taller, more authoritative ──────────────────── */
+.navbar {
+  min-height: 62px;
+  padding-top: .55rem !important;
+  padding-bottom: .55rem !important;
+}
+.navbar-brand {
+  font-size: 1.48rem !important;
+  gap: 10px !important;
+  letter-spacing: -.4px;
+}
+.navbar-dark .nav-link {
+  padding: .44rem .9rem !important;
+  border-radius: 6px;
+  transition: color .15s, background .15s !important;
+  font-size: .91rem;
+}
+.navbar-dark .nav-link:not(.nav-cta-btn):hover {
+  color: rgba(255,255,255,.95) !important;
+  background: rgba(255,255,255,.09);
+}
+.navbar-dark .nav-link.active {
+  color: var(--action-teal) !important;
+}
+.nav-cta-btn {
+  padding: .44rem 1.25rem !important;
+  font-size: .88rem !important;
+  letter-spacing: .01em;
+  transition: background .2s, box-shadow .2s !important;
+}
+.nav-cta-btn:hover {
+  box-shadow: 0 0 0 3px rgba(46,196,182,.28) !important;
+}
+
+/* ── Container utilities ─────────────────────────────────── */
+.container-wide {
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+}
+
+/* ── Destination hero chips (inspirational tags) ─────────── */
+.dest-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 30px;
+  padding: 5px 14px;
+  font-size: .79rem;
+  color: rgba(255,255,255,.82);
+  font-weight: 500;
+  white-space: nowrap;
+  backdrop-filter: blur(6px);
+}
+
+/* ── Page stat pill (hero stats strips) ──────────────────── */
+.page-stat { display: inline-flex; flex-direction: column; align-items: center; gap: 1px; }
+.page-stat .ps-num { font-size: 1.45rem; font-weight: 800; color: var(--action-teal); line-height: 1; font-family: var(--font-head); }
+.page-stat .ps-lbl { font-size: .69rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .07em; }
+.stat-sep { color: rgba(255,255,255,.2); font-size: 1.5rem; padding: 0 .5rem; align-self: center; }
+
+/* ── SVG continent label style ───────────────────────────── */
+.cont-label {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  fill: rgba(255,255,255,.42);
+  text-anchor: middle;
+  pointer-events: none;
+  letter-spacing: 1.5px;
+  user-select: none;
+  font-weight: 600;
+}
+
+/* ── Continent toggle chevron ────────────────────────────── */
+.cont-toggle {
+  margin-left: auto;
+  font-size: .72rem;
+  color: #94a3b8;
+  transition: transform .22s;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.cont-toggle.is-collapsed { transform: rotate(-90deg); }
+
+/* ── Best-time card top accent ───────────────────────────── */
+.btt-card {
+  border-top: 3px solid transparent;
+}
+.btt-card:hover {
+  border-top-color: var(--action-teal);
+}
+
+/* ── Calendar legend (single shared instance) ───────────── */
+.btt-legend-shared {
+  display: flex;
+  gap: 16px;
+  font-size: .75rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.btt-legend-shared span { display: flex; align-items: center; gap: 5px; }
+.btt-legend-shared .dot {
+  width: 11px; height: 11px; border-radius: 50%; display: inline-block; flex-shrink: 0;
+}
+
+/* ── Best-time card footer ───────────────────────────────── */
+.btt-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: .6rem;
+  flex-wrap: wrap;
+}
+.btt-budget-badge {
+  font-size: .78rem;
+  font-weight: 700;
+  color: #64748b;
+  background: #f1f5f9;
+  border-radius: 20px;
+  padding: 3px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Ambient section backgrounds ─────────────────────────── */
+.section-ambient {
+  background: linear-gradient(180deg, #f0f9ff 0%, #e6f4f8 100%);
+}
+
+/* ── Print / PDF styles ──────────────────────────────────── */
+@media print {
+  .navbar, .dv-footer, #dv-cookie-banner, .btt-controls,
+  .adsbygoogle, #btt-best-now, .btt-expand-btn { display: none !important; }
+  .btt-card { break-inside: avoid; }
+  .btt-hero { background: #fff !important; color: #1e293b !important; padding: 1rem !important; }
+  .btt-hero h1, .btt-hero p { color: #1e293b !important; }
+  body { font-size: .85rem; }
+}

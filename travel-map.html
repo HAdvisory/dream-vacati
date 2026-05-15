@@ -275,19 +275,37 @@
     <p class="section-lead">Hover a continent for progress &bull; Click to jump to its country list</p>
     <div class="svgmap-wrap" role="img" aria-label="Interactive world map showing visited countries by continent">
       <svg id="world-map-svg" viewBox="0 0 960 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- Ocean background -->
-        <rect width="960" height="480" fill="#041232"/>
-        <!-- Grid lines (subtle latitude/longitude feel) -->
-        <g stroke="rgba(255,255,255,.04)" stroke-width="0.6">
-          <line x1="0" y1="120" x2="960" y2="120"/>
-          <line x1="0" y1="240" x2="960" y2="240"/>
-          <line x1="0" y1="360" x2="960" y2="360"/>
-          <line x1="240" y1="0" x2="240" y2="480"/>
-          <line x1="480" y1="0" x2="480" y2="480"/>
-          <line x1="720" y1="0" x2="720" y2="480"/>
+        <defs>
+          <!-- Ocean depth: darker at edges, lighter in centre -->
+          <radialGradient id="oceanDepth" cx="48%" cy="44%" r="68%">
+            <stop offset="0%"   stop-color="#0d2f5a"/>
+            <stop offset="100%" stop-color="#020b1f"/>
+          </radialGradient>
+          <!-- Land texture: faint diagonal hatch for cartographic feel -->
+          <pattern id="landHatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+            <line x1="0" y1="0" x2="0" y2="5" stroke="rgba(255,255,255,.035)" stroke-width="1.4"/>
+          </pattern>
+          <!-- Continent highlight glow -->
+          <filter id="contGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- Ocean background with depth gradient -->
+        <rect width="960" height="480" fill="url(#oceanDepth)"/>
+        <!-- Graticule grid -->
+        <g stroke="rgba(255,255,255,.038)" stroke-width="0.5">
+          <line x1="0" y1="96"  x2="960" y2="96"/>
+          <line x1="0" y1="192" x2="960" y2="192"/>
+          <line x1="0" y1="288" x2="960" y2="288"/>
+          <line x1="0" y1="384" x2="960" y2="384"/>
+          <line x1="192" y1="0" x2="192" y2="480"/>
+          <line x1="384" y1="0" x2="384" y2="480"/>
+          <line x1="576" y1="0" x2="576" y2="480"/>
+          <line x1="768" y1="0" x2="768" y2="480"/>
         </g>
         <!-- Equator line -->
-        <line x1="0" y1="240" x2="960" y2="240" stroke="rgba(46,196,182,.12)" stroke-width="1" stroke-dasharray="4,6"/>
+        <line x1="0" y1="240" x2="960" y2="240" stroke="rgba(46,196,182,.14)" stroke-width="0.8" stroke-dasharray="4,7"/>
 
         <!-- ── Continent Paths ── -->
         <!-- North America -->
@@ -375,11 +393,31 @@
         <circle class="country-dot" id="dot-NZ" cx="938" cy="410" r="2.2" data-code="NZ"/>
         <circle class="country-dot" id="dot-FJ" cx="900" cy="340" r="2"   data-code="FJ"/>
 
+        <!-- Land texture overlay: faint hatch for cartographic realism -->
+        <g opacity="1" style="pointer-events:none">
+          <path d="M 55,52 L 98,36 L 152,30 L 200,40 L 245,48 L 282,63 L 316,87 L 346,118 L 358,150 L 356,186 L 336,210 L 310,232 L 280,258 L 255,278 L 232,285 L 210,272 L 190,252 L 164,240 L 122,258 L 95,242 L 72,218 L 55,188 L 42,158 L 38,120 L 42,84 Z M 175,18 L 210,12 L 240,18 L 245,32 L 228,38 L 200,36 L 178,30 Z" fill="url(#landHatch)"/>
+          <path d="M 218,278 L 272,268 L 320,278 L 350,302 L 362,338 L 360,378 L 347,418 L 320,452 L 288,468 L 258,462 L 230,445 L 212,418 L 203,382 L 202,345 L 208,312 Z" fill="url(#landHatch)"/>
+          <path d="M 418,48 L 442,40 L 465,40 L 485,42 L 512,46 L 546,52 L 572,65 L 585,84 L 588,106 L 578,126 L 558,142 L 528,152 L 498,156 L 470,148 L 448,134 L 430,118 L 418,95 L 414,72 Z M 468,20 L 488,14 L 510,18 L 522,32 L 510,42 L 490,44 L 470,40 Z" fill="url(#landHatch)"/>
+          <path d="M 420,148 L 460,140 L 510,145 L 553,158 L 590,180 L 608,214 L 614,252 L 610,294 L 600,336 L 580,372 L 550,402 L 514,416 L 480,416 L 450,403 L 430,376 L 418,342 L 412,302 L 412,260 L 418,222 L 418,185 Z" fill="url(#landHatch)"/>
+          <path d="M 572,38 L 628,30 L 698,26 L 768,28 L 838,34 L 898,48 L 942,66 L 958,94 L 955,132 L 942,170 L 925,202 L 904,232 L 872,260 L 840,280 L 806,296 L 765,299 L 725,288 L 690,268 L 654,248 L 621,228 L 598,205 L 584,178 L 574,150 L 568,118 L 568,78 Z M 855,128 L 868,120 L 878,128 L 876,145 L 865,150 L 856,144 Z" fill="url(#landHatch)"/>
+          <path d="M 750,320 L 800,312 L 860,314 L 914,325 L 946,345 L 953,372 L 946,404 L 920,424 L 885,432 L 847,428 L 808,415 L 776,396 L 756,370 L 749,345 Z M 930,354 L 943,344 L 952,356 L 950,375 L 940,380 L 930,374 Z" fill="url(#landHatch)"/>
+        </g>
+
+        <!-- Continent name labels — makes the map immediately recognizable -->
+        <g class="cont-labels" style="pointer-events:none;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:600;text-anchor:middle;letter-spacing:1.4px">
+          <text x="194" y="150" font-size="9.5"  fill="rgba(255,255,255,.42)">N. AMERICA</text>
+          <text x="281" y="372" font-size="8.5"  fill="rgba(255,255,255,.42)">S. AMERICA</text>
+          <text x="498" y="102" font-size="8"    fill="rgba(255,255,255,.42)">EUROPE</text>
+          <text x="510" y="286" font-size="10.5" fill="rgba(255,255,255,.42)">AFRICA</text>
+          <text x="758" y="165" font-size="14"   fill="rgba(255,255,255,.42)">ASIA</text>
+          <text x="840" y="378" font-size="7.5"  fill="rgba(255,255,255,.42)">OCEANIA</text>
+        </g>
+
         <!-- Compass rose (decorative) -->
-        <g transform="translate(920,452)" opacity="0.18" fill="rgba(255,255,255,.6)">
-          <polygon points="0,-10 3,0 0,10 -3,0"/>
-          <polygon points="-10,0 0,-3 10,0 0,3" fill="rgba(255,255,255,.35)"/>
-          <text x="0" y="-13" font-size="5" text-anchor="middle" fill="rgba(255,255,255,.5)">N</text>
+        <g transform="translate(28,458)" opacity="0.22" fill="rgba(255,255,255,.7)">
+          <polygon points="0,-10 2.5,0 0,10 -2.5,0"/>
+          <polygon points="-10,0 0,-2.5 10,0 0,2.5" fill="rgba(255,255,255,.3)"/>
+          <text x="0" y="-13" font-size="5" text-anchor="middle" fill="rgba(255,255,255,.5)" letter-spacing="0">N</text>
         </g>
       </svg>
 
@@ -710,6 +748,17 @@
     updateSVGMap();
   }
 
+  // ─── Collapsible continent toggle ────────────────────────────────
+  function toggleContinent(slug) {
+    const wrap   = document.getElementById('wrap-' + slug);
+    const toggle = document.getElementById('toggle-' + slug);
+    if (!wrap) return;
+    const isCollapsed = wrap.dataset.collapsed === '1';
+    wrap.dataset.collapsed = isCollapsed ? '0' : '1';
+    wrap.style.display = isCollapsed ? 'flex' : 'none';
+    if (toggle) toggle.classList.toggle('is-collapsed', !isCollapsed);
+  }
+
   // ─── Build UI ────────────────────────────────────────────────────
   function buildUI() {
     // Continent viz cards
@@ -722,17 +771,18 @@
       </div>`;
     }).join('');
 
-    // Country lists
+    // Country lists — continent rows are collapsible
     document.getElementById('continent-list').innerHTML = Object.entries(CONTINENTS).map(([name, data]) => {
       const slug = slugify(name);
       return `<div class="continent-block" id="cont-block-${slug}">
-        <div class="continent-row">
+        <div class="continent-row" onclick="toggleContinent('${slug}')" role="button" aria-expanded="true" style="cursor:pointer;user-select:none">
           <span style="font-size:1.05rem">${data.icon}</span>
           <h3>${name}</h3>
           <span class="cont-badge" id="badge-${slug}">0/${data.countries.length}</span>
+          <span class="cont-toggle" id="toggle-${slug}">▾</span>
         </div>
         <div class="cont-bar"><div class="cont-bar-fill" id="bar-${slug}" style="width:0%"></div></div>
-        <div class="country-wrap">
+        <div class="country-wrap" id="wrap-${slug}" data-collapsed="0">
           ${data.countries.map(([code, cname]) =>
             `<button class="cbtn" data-code="${code}" onclick="toggleCountry('${code}')">${cname}</button>`
           ).join('')}

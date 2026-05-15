@@ -52,13 +52,38 @@
   <style>
     /* ── Tool layout ─────────────────────────────────── */
     .btt-hero {
-      background: linear-gradient(135deg, #0b4f6c, #0b95a5, #34c0c3);
-      padding: 56px 20px 48px;
+      background: linear-gradient(150deg, var(--deep-navy,#03045E) 0%, #0a4068 45%, #0b95a5 85%, #2EC4B6 100%);
+      padding: 64px 20px 56px;
       text-align: center;
       color: #fff;
+      position: relative;
+      overflow: hidden;
     }
-    .btt-hero h1 { font-weight: 700; margin-bottom: .5rem; }
-    .btt-hero p  { opacity: .9; max-width: 600px; margin: 0 auto 1.5rem; }
+    .btt-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,.04)' stroke-width='1'%3E%3Ccircle cx='30' cy='30' r='28'/%3E%3Ccircle cx='30' cy='30' r='18'/%3E%3C/g%3E%3C/svg%3E") repeat;
+      pointer-events: none;
+    }
+    .btt-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0; height: 52px;
+      background: linear-gradient(to top, #f8fafc, transparent);
+      pointer-events: none;
+    }
+    .btt-hero h1 { font-weight: 800; margin-bottom: .5rem; font-size: 2.4rem; letter-spacing: -.02em; }
+    .btt-hero p  { opacity: .88; max-width: 560px; margin: 0 auto 1.75rem; font-size: 1.05rem; }
+    .btt-dest-chips {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+      margin-bottom: 1.75rem;
+    }
+    .btt-hero-stats {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; margin-bottom: 1.75rem;
+    }
+    .btt-hero-cta { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
 
     .btt-controls {
       background: #f8fafc;
@@ -274,12 +299,41 @@
 
   <!-- Hero -->
   <header class="btt-hero">
-    <h1 class="display-6">Best Time to Travel</h1>
-    <p>22 destinations, color-coded by month. Find your perfect travel window — or see what's ideal <em>right now</em>.</p>
-    <button class="btt-btn" id="btt-best-now">&#127869; Show Best Destinations This Month</button>
+    <div class="container" style="position:relative;z-index:1">
+      <!-- Inspirational destination chips -->
+      <div class="btt-dest-chips">
+        <span class="dest-chip">🏝️ Bali</span>
+        <span class="dest-chip">🗼 Paris</span>
+        <span class="dest-chip">⛩️ Kyoto</span>
+        <span class="dest-chip">🌊 Santorini</span>
+        <span class="dest-chip">🐘 Kenya</span>
+        <span class="dest-chip">🌺 Maldives</span>
+        <span class="dest-chip">🏔️ Patagonia</span>
+      </div>
+
+      <h1>Best Time to Travel</h1>
+      <p>22 destinations, color-coded by month. Find your perfect travel window — or discover what&rsquo;s ideal <em>right now</em>.</p>
+
+      <!-- Stats strip -->
+      <div class="btt-hero-stats">
+        <div class="page-stat"><span class="ps-num">22</span><span class="ps-lbl">Destinations</span></div>
+        <span class="stat-sep">&middot;</span>
+        <div class="page-stat"><span class="ps-num">12</span><span class="ps-lbl">Months</span></div>
+        <span class="stat-sep">&middot;</span>
+        <div class="page-stat"><span class="ps-num">4</span><span class="ps-lbl">Budget levels</span></div>
+        <span class="stat-sep">&middot;</span>
+        <div class="page-stat"><span class="ps-num">10+</span><span class="ps-lbl">Trip types</span></div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="btt-hero-cta">
+        <button class="btt-btn" id="btt-best-now">✨ Best Destinations This Month</button>
+        <a href="tools.html" class="btt-btn btt-btn--outline">All Planning Tools &rarr;</a>
+      </div>
+    </div>
   </header>
 
-  <main class="container py-5">
+  <main class="container-xl py-5">
 
     <div id="btt-error"></div>
 
@@ -358,9 +412,17 @@
 
     <!-- Filter results -->
     <div>
-      <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-2">
         <h2 class="h5 mb-0" id="btt-results-heading">Best Destinations This Month</h2>
         <span class="btt-result-meta" id="btt-result-count"></span>
+      </div>
+      <!-- Calendar legend — shared once, not repeated inside each card -->
+      <div class="btt-legend-shared mb-3">
+        <span><span class="dot" style="background:#22c55e"></span> Best time</span>
+        <span><span class="dot" style="background:#fbbf24"></span> Good / shoulder</span>
+        <span><span class="dot" style="background:#ef4444"></span> Avoid if possible</span>
+        <span><span class="dot" style="background:#e2e8f0;border:1px solid #cbd5e1"></span> Off-season</span>
+        <span style="color:#0b95a5;font-weight:600;border:1.5px solid #0b95a5;padding:0 5px;border-radius:4px;font-size:.7rem">This month</span>
       </div>
       <div class="row g-4" id="btt-filter-results">
         <p class="text-muted text-center py-4">Loading destinations&hellip;</p>
@@ -386,6 +448,23 @@
         <div class="col-md-3">
           <strong>&#128200; Calendar Colors</strong>
           <p class="small text-muted mb-0 mt-1"><span style="color:#16a34a">Green = Best.</span> <span style="color:#a16207">Yellow = Good (shoulder).</span> <span style="color:#b91c1c">Red = Avoid.</span> Grey = Off-season.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Printable Seasonal Planning Guide — integrated into workflow -->
+    <section class="mt-5">
+      <div class="row align-items-center g-4 p-4 p-md-5 rounded-4" style="background:linear-gradient(135deg,var(--deep-navy,#03045E) 0%,#0a4068 100%)">
+        <div class="col-md-8">
+          <p class="mb-1" style="font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--action-teal,#2EC4B6)">PLANNING WORKFLOW</p>
+          <h3 class="fw-bold mb-2" style="color:#fff;font-size:1.3rem">Save Your Seasonal Planning Guide</h3>
+          <p class="mb-0" style="color:rgba(255,255,255,.78);font-size:.95rem">Filter to the destinations you're considering, then print or save as a PDF — useful for comparing options with a travel partner, sharing with a travel agent, or keeping offline for reference.</p>
+          <p class="mt-2 mb-0" style="color:rgba(255,255,255,.5);font-size:.8rem">Works best after filtering by region or trip type. All cards, calendars, and budget data are included in the printout.</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <button onclick="window.print()" class="btt-btn" style="background:var(--action-teal,#2EC4B6);border:none;font-size:.95rem;padding:12px 26px">
+            🖨️ Print / Save as PDF
+          </button>
         </div>
       </div>
     </section>
