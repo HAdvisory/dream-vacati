@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travel Map — Track Countries Visited | DreamVacati</title>
+  <meta name="description" content="Track every country you've visited. Mark destinations, see your stats by continent, and discover how much of the world you've explored. Free, browser-based travel tracker.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.dreamvacati.com/travel-map.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Travel Map — Track Your World Travels | DreamVacati">
+  <meta property="og:description" content="Mark every country you've visited. See stats by continent and discover how much of the world you've explored. Free, no signup.">
+  <meta property="og:url" content="https://www.dreamvacati.com/travel-map.html">
+  <meta property="og:site_name" content="DreamVacati">
+  <meta property="og:image" content="https://www.dreamvacati.com/images/og-default.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Travel Map — Track Your World Travels | DreamVacati">
+  <meta name="twitter:description" content="Mark every country you've visited and discover how much of the world you've explored.">
+  <meta name="twitter:image" content="https://www.dreamvacati.com/images/og-default.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DreamVacati Travel Map",
+    "description": "Browser-based travel tracker. Mark countries you've visited, see stats by continent, and discover your world coverage percentage.",
+    "url": "https://www.dreamvacati.com/travel-map.html",
+    "applicationCategory": "TravelApplication",
+    "operatingSystem": "Web",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "publisher": {"@type": "Organization", "name": "DreamVacati", "url": "https://www.dreamvacati.com/"}
+  }
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-44K7KCF676"></script>
+  <script defer src="/ga-init.js"></script>
+  <script defer src="/meta-pixel-init.js"></script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=466481928545738&ev=PageView&noscript=1"/></noscript>
+
+  <style>
+    .map-hero {
+      background: linear-gradient(135deg, var(--deep-navy) 0%, #0a4fa0 55%, var(--action-teal) 100%);
+      padding: 52px 20px 56px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .map-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0; height: 48px;
+      background: linear-gradient(to top, #f0f9ff, transparent);
+      pointer-events: none;
+    }
+    .map-hero h1 { font-weight: 800; margin-bottom: .5rem; }
+    .map-hero .hero-sub { opacity: .85; max-width: 540px; margin: 0 auto 2rem; font-size: 1.05rem; }
+
+    .stat-glass {
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 14px;
+      padding: 16px 20px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+    .stat-glass .stat-num { font-size: 2rem; font-weight: 800; color: #fff; line-height: 1.1; }
+    .stat-glass .stat-lbl { font-size: .78rem; color: rgba(255,255,255,.7); margin-top: 3px; }
+    .stat-glass .stat-sub { font-size: .72rem; color: rgba(255,255,255,.45); }
+
+    .map-body { background: #f0f9ff; padding: 2rem 0 3rem; }
+
+    .panel {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(3,4,94,.07);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .panel-title {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--deep-navy);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    /* Continent visualization grid */
+    .cviz-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    @media (max-width: 400px) { .cviz-grid { grid-template-columns: repeat(2, 1fr); } }
+    .cviz-card {
+      border-radius: 10px;
+      padding: 10px 8px;
+      text-align: center;
+      border: 2px solid #e2e8f0;
+      background: #f8fafc;
+      transition: all .2s;
+      cursor: default;
+    }
+    .cviz-card.active { border-color: var(--action-teal); background: #e0f7f5; }
+    .cviz-card .cviz-icon { font-size: 1.3rem; }
+    .cviz-card .cviz-name { font-size: .68rem; font-weight: 600; color: #64748b; margin: 3px 0 2px; line-height: 1.2; }
+    .cviz-card .cviz-count { font-size: .82rem; font-weight: 700; color: var(--deep-navy); }
+    .cviz-card.active .cviz-name { color: var(--teal-dark); }
+    .cviz-card.active .cviz-count { color: var(--teal-dark); }
+
+    /* Country buttons */
+    .continent-block { margin-bottom: 1.25rem; }
+    .continent-block:last-child { margin-bottom: 0; }
+    .continent-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: .6rem;
+      cursor: pointer;
+    }
+    .continent-row h3 { font-size: .95rem; font-weight: 700; color: var(--deep-navy); margin: 0; }
+    .cont-badge {
+      font-size: .72rem;
+      background: #f1f5f9;
+      color: #64748b;
+      padding: 2px 9px;
+      border-radius: 20px;
+      font-weight: 600;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+    .cont-badge.live { background: #e0f7f5; color: var(--teal-dark); }
+    .cont-bar { height: 3px; background: #e2e8f0; border-radius: 2px; margin-bottom: .75rem; overflow: hidden; }
+    .cont-bar-fill { height: 100%; background: linear-gradient(90deg, var(--action-teal), var(--horizon-blue)); border-radius: 2px; transition: width .4s ease; }
+
+    .country-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
+    .cbtn {
+      border: 1.5px solid #e2e8f0;
+      background: #f8fafc;
+      color: #475569;
+      border-radius: 20px;
+      padding: 4px 13px;
+      font-size: .8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      line-height: 1.4;
+    }
+    .cbtn:hover { border-color: var(--action-teal); color: var(--teal-dark); background: #e0f7f5; }
+    .cbtn.visited { background: var(--action-teal); border-color: var(--action-teal); color: #fff; font-weight: 600; }
+    .cbtn.hidden { display: none !important; }
+
+    .action-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .abtn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: .85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid #e2e8f0;
+      background: transparent;
+      color: #64748b;
+      transition: all .15s;
+    }
+    .abtn:hover { border-color: #94a3b8; color: #475569; }
+    .abtn-danger { border-color: #fca5a5; color: #ef4444; }
+    .abtn-danger:hover { background: #fef2f2; border-color: #ef4444; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      font-size: .85rem;
+      margin-bottom: 1.25rem;
+      transition: color .15s;
+    }
+    .back-link:hover { color: #fff; }
+
+    .privacy-note { font-size: .75rem; color: #94a3b8; line-height: 1.55; margin: 0; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:var(--deep-navy,#03045E)">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#03045E"/>
+          <path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="26" cy="6" r="2.5" fill="#0077B6"/>
+        </svg>
+        DreamVacati
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link active" href="tools.html">Travel Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="best-time.html">Best Time to Visit</a></li>
+          <li class="nav-item ms-lg-2">
+            <a href="book-now.html" class="nav-cta-btn nav-link">Plan a Trip &rarr;</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="map-hero">
+    <div class="container">
+      <a href="tools.html" class="back-link">&larr; Back to Planning Suite</a>
+      <h1 class="display-6 mb-2">Track Your World Travels</h1>
+      <p class="hero-sub">Mark every country you've visited. See your coverage by continent and discover how much of the world you've explored.</p>
+      <div class="row g-3 justify-content-center" style="max-width:560px;margin:0 auto">
+        <div class="col-4">
+          <div class="stat-glass">
+            <div class="stat-num" id="stat-countries">0</div>
+            <div class="stat-lbl">Countries</div>
+            <div class="stat-sub">of 196</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="stat-glass">
+            <div class="stat-num" id="stat-continents">0</div>
+            <div class="stat-lbl">Continents</div>
+            <div class="stat-sub">of 6</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="stat-glass">
+            <div class="stat-num" id="stat-pct">0%</div>
+            <div class="stat-lbl">World</div>
+            <div class="stat-sub">explored</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="map-body">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- Sidebar: stats + search + actions -->
+        <div class="col-lg-4 order-lg-2">
+
+          <div class="panel">
+            <div class="panel-title">Continents Explored</div>
+            <div class="cviz-grid" id="cviz-grid"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title">Search Countries</div>
+            <input type="text" id="country-search" class="form-control" placeholder="Type a country name..." autocomplete="off" aria-label="Search countries">
+          </div>
+
+          <div class="panel">
+            <div class="panel-title">Actions</div>
+            <div class="action-row">
+              <button class="abtn" id="btn-undo" onclick="undoLast()">&#8592; Undo Last</button>
+              <button class="abtn abtn-danger" onclick="clearAll()">Clear All</button>
+            </div>
+          </div>
+
+          <p class="privacy-note">
+            <strong style="color:#64748b">Privacy:</strong> Your travel data is saved only in your browser&rsquo;s local storage. No information is sent to any server. Clearing browser data will erase your progress.
+          </p>
+
+        </div>
+
+        <!-- Country list by continent -->
+        <div class="col-lg-8 order-lg-1">
+          <div class="panel" style="padding:2rem">
+            <div id="continent-list"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="dv-footer">
+    <div class="container text-center">
+      <p class="small text-white-50 mb-1">DreamVacati &mdash; Travel Blogs, Planning Tools &amp; Vacation Inspiration</p>
+      <p class="small text-white-50 mb-1">
+        <a href="index.html" class="text-white-50">Home</a> |
+        <a href="blog.html" class="text-white-50">Blog</a> |
+        <a href="tools.html" class="text-white-50">Tools</a> |
+        <a href="best-time.html" class="text-white-50">Best Time to Visit</a>
+      </p>
+      <p class="small text-white-50 mb-0">&copy; 2026 DreamVacati. <a href="privacy.html" class="text-white-50">Privacy Policy</a> | <a href="about.html" class="text-white-50">About</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+  // ─── Travel Map: Full Country Tracker ──────────────────────────
+  const STORAGE_KEY = 'visitedCountries';
+
+  const CONTINENTS = {
+    'North America': {
+      icon: '&#127758;',
+      countries: [
+        ['US','United States'],['CA','Canada'],['MX','Mexico'],['GT','Guatemala'],
+        ['BZ','Belize'],['HN','Honduras'],['SV','El Salvador'],['NI','Nicaragua'],
+        ['CR','Costa Rica'],['PA','Panama'],['CU','Cuba'],['JM','Jamaica'],
+        ['HT','Haiti'],['DO','Dominican Republic'],['TT','Trinidad & Tobago'],
+        ['BB','Barbados'],['LC','Saint Lucia'],['VC','St Vincent & Grenadines'],
+        ['GD','Grenada'],['AG','Antigua & Barbuda'],['DM','Dominica'],
+        ['KN','Saint Kitts & Nevis'],['BS','Bahamas'],['AW','Aruba'],
+        ['TC','Turks & Caicos'],['PR','Puerto Rico'],
+      ]
+    },
+    'South America': {
+      icon: '&#127758;',
+      countries: [
+        ['BR','Brazil'],['AR','Argentina'],['CL','Chile'],['CO','Colombia'],
+        ['PE','Peru'],['VE','Venezuela'],['EC','Ecuador'],['BO','Bolivia'],
+        ['PY','Paraguay'],['UY','Uruguay'],['GY','Guyana'],['SR','Suriname'],
+        ['GF','French Guiana'],
+      ]
+    },
+    'Europe': {
+      icon: '&#127759;',
+      countries: [
+        ['GB','United Kingdom'],['FR','France'],['DE','Germany'],['IT','Italy'],
+        ['ES','Spain'],['PT','Portugal'],['NL','Netherlands'],['BE','Belgium'],
+        ['CH','Switzerland'],['AT','Austria'],['GR','Greece'],['SE','Sweden'],
+        ['NO','Norway'],['DK','Denmark'],['FI','Finland'],['PL','Poland'],
+        ['CZ','Czech Republic'],['HU','Hungary'],['RO','Romania'],['BG','Bulgaria'],
+        ['HR','Croatia'],['RS','Serbia'],['SK','Slovakia'],['SI','Slovenia'],
+        ['IE','Ireland'],['IS','Iceland'],['LU','Luxembourg'],['MT','Malta'],
+        ['CY','Cyprus'],['EE','Estonia'],['LV','Latvia'],['LT','Lithuania'],
+        ['AL','Albania'],['BA','Bosnia & Herzegovina'],['ME','Montenegro'],
+        ['MK','North Macedonia'],['MD','Moldova'],['UA','Ukraine'],['BY','Belarus'],
+        ['RU','Russia'],['TR','Turkey'],['GE','Georgia'],['AM','Armenia'],
+        ['AZ','Azerbaijan'],['AD','Andorra'],['MC','Monaco'],['SM','San Marino'],
+        ['LI','Liechtenstein'],['VA','Vatican City'],['XK','Kosovo'],
+      ]
+    },
+    'Africa': {
+      icon: '&#127759;',
+      countries: [
+        ['ZA','South Africa'],['NG','Nigeria'],['EG','Egypt'],['KE','Kenya'],
+        ['ET','Ethiopia'],['TZ','Tanzania'],['GH','Ghana'],['MA','Morocco'],
+        ['TN','Tunisia'],['DZ','Algeria'],['LY','Libya'],['SD','Sudan'],
+        ['SN','Senegal'],['CM','Cameroon'],['MG','Madagascar'],['ZW','Zimbabwe'],
+        ['ZM','Zambia'],['MZ','Mozambique'],['UG','Uganda'],['RW','Rwanda'],
+        ['BW','Botswana'],['NA','Namibia'],['MU','Mauritius'],['SC','Seychelles'],
+        ['CV','Cape Verde'],['AO','Angola'],['ER','Eritrea'],['DJ','Djibouti'],
+        ['SO','Somalia'],['MW','Malawi'],['LS','Lesotho'],['SZ','Eswatini'],
+        ['BJ','Benin'],['BF','Burkina Faso'],['TD','Chad'],['ML','Mali'],
+        ['MR','Mauritania'],['NE','Niger'],['GN','Guinea'],['SL','Sierra Leone'],
+        ['LR','Liberia'],['GM','Gambia'],['GW','Guinea-Bissau'],['GA','Gabon'],
+        ['CG','Republic of Congo'],['CD','DR Congo'],['CF','Central African Republic'],
+        ['SS','South Sudan'],['KM','Comoros'],['GQ','Equatorial Guinea'],
+      ]
+    },
+    'Asia': {
+      icon: '&#127760;',
+      countries: [
+        ['JP','Japan'],['CN','China'],['IN','India'],['TH','Thailand'],
+        ['ID','Indonesia'],['VN','Vietnam'],['SG','Singapore'],['MY','Malaysia'],
+        ['PH','Philippines'],['KR','South Korea'],['AE','UAE'],['TW','Taiwan'],
+        ['HK','Hong Kong'],['IL','Israel'],['JO','Jordan'],['LB','Lebanon'],
+        ['SA','Saudi Arabia'],['QA','Qatar'],['BH','Bahrain'],['KW','Kuwait'],
+        ['OM','Oman'],['NP','Nepal'],['LK','Sri Lanka'],['MV','Maldives'],
+        ['BT','Bhutan'],['BD','Bangladesh'],['PK','Pakistan'],['IR','Iran'],
+        ['IQ','Iraq'],['KH','Cambodia'],['LA','Laos'],['MM','Myanmar'],
+        ['BN','Brunei'],['TL','Timor-Leste'],['MN','Mongolia'],['KZ','Kazakhstan'],
+        ['UZ','Uzbekistan'],['TM','Turkmenistan'],['KG','Kyrgyzstan'],['TJ','Tajikistan'],
+        ['PS','Palestine'],['YE','Yemen'],['SY','Syria'],['AF','Afghanistan'],
+      ]
+    },
+    'Oceania': {
+      icon: '&#127760;',
+      countries: [
+        ['AU','Australia'],['NZ','New Zealand'],['FJ','Fiji'],['PG','Papua New Guinea'],
+        ['WS','Samoa'],['TO','Tonga'],['VU','Vanuatu'],['SB','Solomon Islands'],
+        ['PW','Palau'],['FM','Micronesia'],['MH','Marshall Islands'],['NR','Nauru'],
+        ['KI','Kiribati'],['TV','Tuvalu'],['CK','Cook Islands'],['NC','New Caledonia'],
+      ]
+    },
+  };
+
+  const TOTAL = Object.values(CONTINENTS).reduce((a, c) => a + c.countries.length, 0);
+  let visited = [];
+  let undoStack = [];
+
+  try { visited = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch(e) { visited = []; }
+
+  function save() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(visited)); } catch(e) {}
+  }
+
+  function toggleCountry(code) {
+    const idx = visited.indexOf(code);
+    if (idx >= 0) {
+      undoStack.push({ type: 'remove', code });
+      visited.splice(idx, 1);
+    } else {
+      undoStack.push({ type: 'add', code });
+      visited.push(code);
+    }
+    save();
+    render();
+  }
+
+  function clearAll() {
+    if (!visited.length) return;
+    if (!confirm('Clear all visited countries? This cannot be undone.')) return;
+    undoStack = [];
+    visited = [];
+    save();
+    render();
+  }
+
+  function undoLast() {
+    const last = undoStack.pop();
+    if (!last) return;
+    if (last.type === 'add') visited = visited.filter(c => c !== last.code);
+    else visited.push(last.code);
+    save();
+    render();
+  }
+
+  function render() {
+    // Stats
+    document.getElementById('stat-countries').textContent = visited.length;
+    const contVisited = Object.values(CONTINENTS).filter(c =>
+      c.countries.some(([code]) => visited.includes(code))
+    ).length;
+    document.getElementById('stat-continents').textContent = contVisited;
+    document.getElementById('stat-pct').textContent = Math.round(visited.length / TOTAL * 100) + '%';
+
+    // Country buttons
+    document.querySelectorAll('.cbtn').forEach(btn => {
+      btn.classList.toggle('visited', visited.includes(btn.dataset.code));
+    });
+
+    // Continent viz + progress
+    Object.entries(CONTINENTS).forEach(([name, data]) => {
+      const vc = data.countries.filter(([c]) => visited.includes(c)).length;
+      const pct = data.countries.length ? Math.round(vc / data.countries.length * 100) : 0;
+      const slug = slugify(name);
+
+      const badge = document.getElementById('badge-' + slug);
+      const bar = document.getElementById('bar-' + slug);
+      const viz = document.getElementById('viz-' + slug);
+
+      if (badge) { badge.textContent = vc + '/' + data.countries.length; badge.classList.toggle('live', vc > 0); }
+      if (bar) bar.style.width = pct + '%';
+      if (viz) {
+        viz.classList.toggle('active', vc > 0);
+        const cnt = viz.querySelector('.cviz-count');
+        if (cnt) cnt.textContent = vc + '/' + data.countries.length;
+      }
+    });
+  }
+
+  function slugify(str) { return str.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, ''); }
+
+  function buildUI() {
+    // Continent visualization
+    document.getElementById('cviz-grid').innerHTML = Object.entries(CONTINENTS).map(([name, data]) => {
+      const slug = slugify(name);
+      return `<div class="cviz-card" id="viz-${slug}">
+        <div class="cviz-icon">${data.icon}</div>
+        <div class="cviz-name">${name}</div>
+        <div class="cviz-count">0/${data.countries.length}</div>
+      </div>`;
+    }).join('');
+
+    // Country lists
+    document.getElementById('continent-list').innerHTML = Object.entries(CONTINENTS).map(([name, data]) => {
+      const slug = slugify(name);
+      return `<div class="continent-block">
+        <div class="continent-row">
+          <span style="font-size:1.1rem">${data.icon}</span>
+          <h3>${name}</h3>
+          <span class="cont-badge" id="badge-${slug}">0/${data.countries.length}</span>
+        </div>
+        <div class="cont-bar"><div class="cont-bar-fill" id="bar-${slug}" style="width:0%"></div></div>
+        <div class="country-wrap">
+          ${data.countries.map(([code, cname]) =>
+            `<button class="cbtn" data-code="${code}" onclick="toggleCountry('${code}')">${cname}</button>`
+          ).join('')}
+        </div>
+      </div>`;
+    }).join('<hr style="border-color:#f1f5f9;margin:1.5rem 0">');
+
+    render();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    buildUI();
+
+    document.getElementById('country-search').addEventListener('input', function() {
+      const q = this.value.toLowerCase().trim();
+      document.querySelectorAll('.cbtn').forEach(btn => {
+        btn.classList.toggle('hidden', !!q && !btn.textContent.toLowerCase().includes(q));
+      });
+    });
+  });
+  </script>
+
+  <div id="dv-cookie-banner" role="region" aria-label="Cookie consent" style="position:fixed;bottom:0;left:0;width:100%;background:#1a1a2e;color:#e2e8f0;padding:14px 24px;display:none;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;z-index:9999;font-size:.9rem;border-top:2px solid #0A7E8C;">
+    <span>We use cookies for analytics and advertising. <a href="/privacy.html" style="color:#2EC4B6;text-decoration:underline;">Privacy Policy</a></span>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button id="dv-cookie-accept" type="button" style="background:#0A7E8C;color:#fff;border:none;padding:8px 20px;border-radius:6px;font-weight:600;font-size:.88rem;cursor:pointer;white-space:nowrap;">Accept &amp; Continue</button>
+      <button id="dv-cookie-decline" type="button" style="background:transparent;color:#a0aec0;border:1px solid #4a5568;padding:8px 18px;border-radius:6px;font-size:.88rem;cursor:pointer;">Decline</button>
+    </div>
+  </div>
+  <script src="/cookie-consent.js"></script>
+</body>
+</html>
