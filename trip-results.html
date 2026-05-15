@@ -86,6 +86,7 @@
     }
     .sticky-unlock .btn-unlock { width: 100%; display: block; }
   </style>
+  <link rel="stylesheet" href="footer-global.css">
 </head>
 
 <body>
@@ -227,37 +228,6 @@
 </div>
 
 <!-- Footer -->
-<footer class="dv-footer mt-5">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="dv-footer-brand">
-          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="vertical-align:middle;margin-right:6px"><rect width="32" height="32" rx="7" fill="#03045E"/><path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="26" cy="6" r="2.5" fill="#0077B6"/></svg>
-          DreamVacati
-        </div>
-        <p style="color:#94a3b8;font-size:.85rem;margin-top:.5rem">Real trip planning. Honest advice.</p>
-      </div>
-      <div class="col-6 col-md-2">
-        <h6 class="dv-footer-heading">Site</h6>
-        <ul class="dv-footer-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/blog.html">Blog</a></li>
-          <li><a href="/tools.html">Tools</a></li>
-          <li><a href="/about.html">About</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-md-2">
-        <h6 class="dv-footer-heading">Legal</h6>
-        <ul class="dv-footer-links">
-          <li><a href="/about.html#affiliate">Affiliate Disclosure</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="dv-footer-bottom">
-      <p>&copy; 2025 DreamVacati. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
 
 <script>
 const BACKEND = 'https://dreamvacati-planner.up.railway.app'; // UPDATE after Railway deploy
@@ -490,6 +460,68 @@ function showError(msg) {
   document.getElementById('errorMsg').textContent       = msg;
 }
 </script>
+
+
+  <footer class="dv-footer-global" aria-label="Site footer">
+    <div class="dfg-inner">
+      <div class="dfg-grid">
+
+        <div>
+          <a href="index.html" class="dfg-logo" aria-label="DreamVacati home">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#03045E" stroke="rgba(255,255,255,.15)" stroke-width="1"/><path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="26" cy="6" r="2.5" fill="#0077B6"/></svg>
+            DreamVacati
+          </a>
+          <p class="dfg-tagline">Travel planning tools, destination guides, and travel intelligence for smarter trips.</p>
+        </div>
+
+        <div>
+          <div class="dfg-col-heading">Explore</div>
+          <ul class="dfg-links">
+            <li><a href="blog.html">Travel Blog</a></li>
+            <li><a href="tools.html">Planning Tools</a></li>
+            <li><a href="best-time.html">Best Time to Visit</a></li>
+            <li><a href="travel-map.html">Travel Map</a></li>
+            <li><a href="jamaica-travel-guide.html">Jamaica Travel Guide</a></li>
+            <li><a href="seasonal-recommendations.html">Where to Go This Month</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="dfg-col-heading">Company</div>
+          <ul class="dfg-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="about.html#affiliate">Affiliate Disclosure</a></li>
+            <li><a href="sitemap.xml">Sitemap</a></li>
+          </ul>
+        </div>
+
+        <div class="dfg-newsletter-col">
+          <div class="dfg-col-heading">Stay Updated</div>
+          <p class="dfg-newsletter-desc">Get travel tools, destination guides, and planning updates.</p>
+          <form class="dfg-form" action="https://dreamvacati.us1.list-manage.com/subscribe/post?u=72806d79d56746ac091d7015d&amp;id=6a7f76b512a742247cfc7630b" method="post" target="_blank" novalidate>
+            <input type="email" name="EMAIL" placeholder="your@email.com" required aria-label="Email address">
+            <div style="position:absolute;left:-5000px" aria-hidden="true">
+              <input type="text" name="b_72806d79d56746ac091d7015d_6a7f76b512a742247cfc7630b" tabindex="-1" value="">
+            </div>
+            <button type="submit">Subscribe</button>
+          </form>
+          <p class="dfg-legal">Weekly guides. No spam. Unsubscribe anytime.</p>
+        </div>
+
+      </div>
+      <hr class="dfg-divider">
+      <div class="dfg-bottom">
+        <p>&copy; 2026 DreamVacati. All rights reserved.</p>
+        <div class="dfg-bottom-links">
+          <a href="index.html">Home</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="about.html">About</a>
+          <a href="sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

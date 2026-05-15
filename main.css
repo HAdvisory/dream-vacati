@@ -384,7 +384,8 @@ h1, h2, h3, h4, h5, h6,
   box-shadow: var(--shadow-md) !important;
 }
 
-/* ===== Pathfinder Footer ===== */
+/* ===== Global Footer (footer-global.css handles all styles) ===== */
+/* Legacy .dv-footer rules — kept for safety, replaced by .dv-footer-global */
 .dv-footer {
   background: var(--deep-navy);
   color: rgba(255,255,255,0.75);
@@ -699,7 +700,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* ── Print / PDF styles ──────────────────────────────────── */
 @media print {
-  .navbar, .dv-footer, #dv-cookie-banner, .btt-controls,
+  .navbar, .dv-footer, .dv-footer-global, #dv-cookie-banner, .btt-controls,
   .adsbygoogle, #btt-best-now, .btt-expand-btn { display: none !important; }
   .btt-card { break-inside: avoid; }
   .btt-hero { background: #fff !important; color: #1e293b !important; padding: 1rem !important; }

@@ -1,0 +1,177 @@
+/* ===================================================
+   DreamVacati — Global Footer Styles
+   footer-global.css
+   Loaded by every page. Zero external dependencies.
+   =================================================== */
+
+.dv-footer-global {
+  background: #03045E;
+  color: rgba(255,255,255,.6);
+  padding: 48px 0 24px;
+  font-size: .9rem;
+  margin-top: 4rem;
+}
+
+.dfg-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 4-column grid: brand / explore / company / newsletter */
+.dfg-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr .85fr 1.4fr;
+  gap: 40px;
+}
+
+/* ── Brand ───────────────────────────── */
+.dfg-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.dfg-logo:hover { color: #2EC4B6; }
+
+.dfg-tagline {
+  font-size: .82rem;
+  opacity: .65;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 240px;
+}
+
+/* ── Navigation columns ──────────────── */
+.dfg-col-heading {
+  font-size: .73rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.dfg-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dfg-links li { margin-bottom: 9px; }
+.dfg-links a {
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  font-size: .875rem;
+  transition: color .15s;
+}
+.dfg-links a:hover { color: #2EC4B6; }
+
+/* ── Newsletter column ───────────────── */
+.dfg-newsletter-desc {
+  font-size: .85rem;
+  opacity: .7;
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+
+.dfg-form {
+  display: flex;
+  gap: 8px;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.dfg-form input[type="email"] {
+  flex: 1;
+  min-width: 120px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 6px;
+  background: rgba(255,255,255,.07);
+  color: #fff;
+  font-size: .85rem;
+  outline: none;
+  font-family: inherit;
+}
+.dfg-form input[type="email"]::placeholder { color: rgba(255,255,255,.32); }
+.dfg-form input[type="email"]:focus {
+  border-color: #2EC4B6;
+  background: rgba(255,255,255,.11);
+}
+
+.dfg-form button {
+  padding: 9px 16px;
+  background: #2EC4B6;
+  color: #03045E;
+  border: none;
+  border-radius: 6px;
+  font-size: .85rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s;
+  font-family: inherit;
+}
+.dfg-form button:hover { background: #27a99d; }
+
+.dfg-legal {
+  font-size: .72rem;
+  opacity: .42;
+  margin: 8px 0 0;
+}
+
+/* ── Bottom bar ──────────────────────── */
+.dfg-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,.1);
+  margin: 36px 0 20px;
+}
+
+.dfg-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.dfg-bottom > p {
+  margin: 0;
+  font-size: .78rem;
+  color: rgba(255,255,255,.32);
+}
+
+.dfg-bottom-links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.dfg-bottom-links a {
+  font-size: .78rem;
+  color: rgba(255,255,255,.32);
+  text-decoration: none;
+  transition: color .15s;
+}
+.dfg-bottom-links a:hover { color: #2EC4B6; }
+
+/* ── Responsive ──────────────────────── */
+@media (max-width: 900px) {
+  .dfg-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 20px;
+  }
+  .dfg-newsletter-col {
+    grid-column: 1 / -1;
+  }
+  .dfg-tagline { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .dfg-grid { grid-template-columns: 1fr; gap: 24px; }
+  .dfg-inner { padding: 0 20px; }
+  .dv-footer-global { padding: 36px 0 20px; margin-top: 3rem; }
+  .dfg-bottom { flex-direction: column; align-items: flex-start; }
+}

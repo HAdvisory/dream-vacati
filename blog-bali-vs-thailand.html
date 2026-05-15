@@ -303,14 +303,6 @@
   .back-link { text-align: center; padding: 32px 24px; }
   .back-link a { font-weight: 600; font-size: 16px; }
   .love-note { text-align: center; padding: 8px; color: var(--text-light); font-size: 14px; }
-  .site-footer {
-    text-align: center;
-    padding: 24px;
-    background: var(--nav-bg);
-    border-top: 1px solid var(--border);
-    font-size: 14px;
-    color: var(--text-light);
-  }
 
   .hamburger { display: none; background:none; border:none; font-size:24px; cursor:pointer; }
 
@@ -330,6 +322,7 @@
   <meta name="twitter:title" content="Bali vs Thailand for First-Time Travelers 2026">
   <meta name="twitter:description" content="Full comparison of costs, culture, beaches, food, and who each destination is really for in 2026.">
   <meta name="twitter:image" content="https://www.dreamvacati.com/images/og/og-default.svg">
+  <link rel="stylesheet" href="footer-global.css">
 </head>
 <body>
 
@@ -626,11 +619,6 @@
 <div class="love-note">Love, Truest &#x2764;&#xFE0F;</div>
 
 <!-- ════════ FOOTER ════════ -->
-<footer class="site-footer">
-  DreamVacati &mdash; Travel Blogs, Planning Tools &amp; Vacation Inspiration<br>
-    <a href="index.html">Home</a> | <a href="blog.html">Blog</a> | <a href="tools.html">Tools</a> | <a href="about.html">About</a><br>
-    &copy; 2026 DreamVacati. <a href="privacy.html">Privacy Policy</a> | <a href="about.html">About</a> | Contact: <a href="mailto:hello@dreamvacati.com">hello@dreamvacati.com</a>
-</footer>
 
   <script src="/adsense-push.js"></script>
   <div id="dv-cookie-banner" role="region" aria-label="Cookie consent" style="position:fixed;bottom:0;left:0;width:100%;background:#1a1a2e;color:#e2e8f0;padding:14px 24px;display:none;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;z-index:9999;font-size:.9rem;border-top:2px solid #0A7E8C;">
@@ -641,5 +629,67 @@
     </div>
   </div>
   <script src="/cookie-consent.js"></script>
+
+  <footer class="dv-footer-global" aria-label="Site footer">
+    <div class="dfg-inner">
+      <div class="dfg-grid">
+
+        <div>
+          <a href="index.html" class="dfg-logo" aria-label="DreamVacati home">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#03045E" stroke="rgba(255,255,255,.15)" stroke-width="1"/><path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="26" cy="6" r="2.5" fill="#0077B6"/></svg>
+            DreamVacati
+          </a>
+          <p class="dfg-tagline">Travel planning tools, destination guides, and travel intelligence for smarter trips.</p>
+        </div>
+
+        <div>
+          <div class="dfg-col-heading">Explore</div>
+          <ul class="dfg-links">
+            <li><a href="blog.html">Travel Blog</a></li>
+            <li><a href="tools.html">Planning Tools</a></li>
+            <li><a href="best-time.html">Best Time to Visit</a></li>
+            <li><a href="travel-map.html">Travel Map</a></li>
+            <li><a href="jamaica-travel-guide.html">Jamaica Travel Guide</a></li>
+            <li><a href="seasonal-recommendations.html">Where to Go This Month</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="dfg-col-heading">Company</div>
+          <ul class="dfg-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="about.html#affiliate">Affiliate Disclosure</a></li>
+            <li><a href="sitemap.xml">Sitemap</a></li>
+          </ul>
+        </div>
+
+        <div class="dfg-newsletter-col">
+          <div class="dfg-col-heading">Stay Updated</div>
+          <p class="dfg-newsletter-desc">Get travel tools, destination guides, and planning updates.</p>
+          <form class="dfg-form" action="https://dreamvacati.us1.list-manage.com/subscribe/post?u=72806d79d56746ac091d7015d&amp;id=6a7f76b512a742247cfc7630b" method="post" target="_blank" novalidate>
+            <input type="email" name="EMAIL" placeholder="your@email.com" required aria-label="Email address">
+            <div style="position:absolute;left:-5000px" aria-hidden="true">
+              <input type="text" name="b_72806d79d56746ac091d7015d_6a7f76b512a742247cfc7630b" tabindex="-1" value="">
+            </div>
+            <button type="submit">Subscribe</button>
+          </form>
+          <p class="dfg-legal">Weekly guides. No spam. Unsubscribe anytime.</p>
+        </div>
+
+      </div>
+      <hr class="dfg-divider">
+      <div class="dfg-bottom">
+        <p>&copy; 2026 DreamVacati. All rights reserved.</p>
+        <div class="dfg-bottom-links">
+          <a href="index.html">Home</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="about.html">About</a>
+          <a href="sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
