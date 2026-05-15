@@ -511,22 +511,22 @@
 
               <div class="budget-slider-row">
                 <label>&#127968; Accommodation (40%)</label>
-                <input type="range" id="budget-accom" min="0" max="20000" value="1200" class="form-range">
+                <input type="range" id="budget-accom" min="0" max="3000" value="1200" class="form-range">
                 <span class="budget-val">$<span id="val-accom">1200</span></span>
               </div>
               <div class="budget-slider-row">
                 <label>&#9992;&#65039; Flights (25%)</label>
-                <input type="range" id="budget-flights" min="0" max="20000" value="750" class="form-range">
+                <input type="range" id="budget-flights" min="0" max="3000" value="750" class="form-range">
                 <span class="budget-val">$<span id="val-flights">750</span></span>
               </div>
               <div class="budget-slider-row">
                 <label>&#127859; Food &amp; Dining (20%)</label>
-                <input type="range" id="budget-food" min="0" max="20000" value="600" class="form-range">
+                <input type="range" id="budget-food" min="0" max="3000" value="600" class="form-range">
                 <span class="budget-val">$<span id="val-food">600</span></span>
               </div>
               <div class="budget-slider-row">
                 <label>&#127895; Activities (15%)</label>
-                <input type="range" id="budget-activities" min="0" max="20000" value="450" class="form-range">
+                <input type="range" id="budget-activities" min="0" max="3000" value="450" class="form-range">
                 <span class="budget-val">$<span id="val-activities">450</span></span>
               </div>
             </div>
@@ -886,40 +886,52 @@
   <script src="/adsense-push.js"></script>
 
   <script>
-  // ─── Budget visual bar enhancement ───────────────────────────
-  // Runs alongside main.js budget handler to update the bar chart
+  // ─── Budget calculator — overrides main.js to handle flights slider ───
   document.addEventListener('DOMContentLoaded', () => {
-    const totalIn = document.getElementById('budget-input');
+    const totalIn  = document.getElementById('budget-input');
+    const PERCENTS = { accom: 0.40, flights: 0.25, food: 0.20, activities: 0.15 };
     const sliderIds = ['accom', 'flights', 'food', 'activities'];
+
+    function applyDefaults(total) {
+      sliderIds.forEach(id => {
+        const slider = document.getElementById('budget-' + id);
+        if (!slider) return;
+        slider.max   = total;
+        slider.value = Math.round(total * PERCENTS[id]);
+      });
+    }
 
     function updateBudgetVisual() {
       const total = parseInt(totalIn?.value) || 0;
       let used = 0;
       sliderIds.forEach(id => {
         const slider = document.getElementById('budget-' + id);
-        const valEl = document.getElementById('val-' + id);
-        const barEl = document.getElementById('bar-' + id);
+        const valEl  = document.getElementById('val-' + id);
+        const barEl  = document.getElementById('bar-' + id);
         if (!slider) return;
-        const v = parseInt(slider.value) || 0;
-        if (valEl) valEl.textContent = v;
+        slider.max = total;
+        const v = Math.min(parseInt(slider.value) || 0, total);
+        slider.value = v;
+        if (valEl) valEl.textContent = v.toLocaleString();
         if (barEl) barEl.style.width = (total ? Math.min((v / total) * 100, 100) : 0) + '%';
         used += v;
       });
-      const remEl = document.getElementById('remaining-budget');
+      const remEl   = document.getElementById('remaining-budget');
       const allocEl = document.getElementById('allocated-display');
       const totalEl = document.getElementById('budget-total');
-      if (remEl) remEl.textContent = Math.max(total - used, 0);
-      if (allocEl) allocEl.textContent = '$' + Math.min(used, total);
-      if (totalEl) totalEl.textContent = total;
+      if (remEl)   remEl.textContent   = Math.max(total - used, 0).toLocaleString();
+      if (allocEl) allocEl.textContent = '$' + Math.min(used, total).toLocaleString();
+      if (totalEl) totalEl.textContent = total.toLocaleString();
     }
 
-    // Attach to all budget sliders including flights (not in main.js)
-    const flightsSlider = document.getElementById('budget-flights');
-    if (flightsSlider) {
-      flightsSlider.addEventListener('input', updateBudgetVisual);
+    // When total changes, snap sliders to percentage defaults then redraw
+    if (totalIn) {
+      totalIn.addEventListener('input', () => {
+        applyDefaults(parseInt(totalIn.value) || 0);
+        updateBudgetVisual();
+      });
     }
-    if (totalIn) totalIn.addEventListener('input', updateBudgetVisual);
-    ['accom', 'food', 'activities'].forEach(id => {
+    sliderIds.forEach(id => {
       const el = document.getElementById('budget-' + id);
       if (el) el.addEventListener('input', updateBudgetVisual);
     });
