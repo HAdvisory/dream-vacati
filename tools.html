@@ -365,6 +365,144 @@
     /* Tool nav anchors */
     .tool-anchor { scroll-margin-top: 80px; }
 
+    /* ── Planning stage architecture ─────────────────────────── */
+    .planning-stage-divider {
+      background: linear-gradient(90deg, #f0f9ff 0%, #f8fafc 100%);
+      border-top: 2px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 14px 0 12px;
+    }
+    .psd-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .psd-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--action-teal);
+      color: #fff;
+      font-size: .73rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .psd-label {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--deep-navy);
+    }
+    .psd-desc {
+      font-size: .75rem;
+      color: #94a3b8;
+      margin-left: auto;
+    }
+
+    /* ── Workflow connector blocks ────────────────────────────── */
+    .workflow-connector {
+      margin-top: 1.25rem;
+      padding: .9rem 1.15rem;
+      background: linear-gradient(135deg, #f0f9ff, #f0fdf4);
+      border: 1px solid #bae6fd;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .8rem;
+      flex-wrap: wrap;
+    }
+    .wc-label {
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: #0369a1;
+      margin-bottom: .15rem;
+    }
+    .wc-title {
+      font-size: .88rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    .wc-sub {
+      font-size: .78rem;
+      color: #64748b;
+      margin-top: .1rem;
+    }
+    .wc-btn {
+      background: var(--deep-navy);
+      color: #fff;
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-size: .82rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background .18s;
+    }
+    .wc-btn:hover { background: #020340; color: #fff; text-decoration: none; }
+    .wc-btn-teal { background: var(--action-teal); }
+    .wc-btn-teal:hover { background: #1fada3; }
+
+    /* ── Planning overview panel ──────────────────────────────── */
+    .planning-overview {
+      background: #fff;
+      padding: 28px 0 24px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .po-stage {
+      border-radius: 12px;
+      border: 1.5px solid #e2e8f0;
+      padding: 1.1rem 1.2rem;
+      background: #f8fafc;
+      height: 100%;
+    }
+    .po-stage-active {
+      border-color: #bae6fd;
+      background: #f0f9ff;
+    }
+    .po-num {
+      font-size: .68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--action-teal);
+      margin-bottom: .3rem;
+    }
+    .po-title {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--deep-navy);
+      margin-bottom: .3rem;
+    }
+    .po-desc {
+      font-size: .78rem;
+      color: #64748b;
+      margin-bottom: .7rem;
+      line-height: 1.4;
+    }
+    .po-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+    .po-link {
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--horizon-blue);
+      text-decoration: none;
+      padding: 3px 0;
+    }
+    .po-link:hover { text-decoration: underline; color: var(--horizon-blue); }
+    .po-sep { color: #e2e8f0; font-size: .75rem; }
+
     @media (max-width: 768px) {
       .fc-banner { padding: 24px 20px 18px; }
       .fc-banner h2 { font-size: 1.2rem; }
@@ -431,6 +569,66 @@
         <span class="trust-item"><span class="ti-icon">&#127758;</span> Travel Map</span>
         <span class="trust-item"><span class="ti-icon">&#128338;</span> Best Time to Visit</span>
         <span class="trust-item"><span class="ti-icon">&#127759;</span> Seasonal Finder</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PLANNING WORKFLOW OVERVIEW ══════════════════════════ -->
+  <div class="planning-overview">
+    <div class="container">
+      <p class="text-center fw-bold mb-3" style="font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:#94a3b8">Your Planning Workflow — Start at Stage 1 or jump to where you are</p>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="po-stage">
+            <div class="po-num">Stage 1 — Discover</div>
+            <div class="po-title">Where &amp; When to Go</div>
+            <div class="po-desc">Find destinations by month, budget, and travel style. Check seasonal timing before you commit.</div>
+            <div class="po-links">
+              <a href="seasonal-recommendations.html" class="po-link">Destination Finder &rarr;</a>
+              <span class="po-sep">|</span>
+              <a href="best-time.html" class="po-link">Best Time to Visit &rarr;</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="po-stage po-stage-active">
+            <div class="po-num">Stage 2 — Plan</div>
+            <div class="po-title">Budget, Requirements &amp; Packing</div>
+            <div class="po-desc">Estimate your total trip cost, confirm what you need to enter, and build your packing list.</div>
+            <div class="po-links">
+              <a href="#tool-budget" class="po-link">Budget Calculator &darr;</a>
+              <span class="po-sep">|</span>
+              <a href="#tool-requirements" class="po-link">Entry Requirements &darr;</a>
+              <span class="po-sep">|</span>
+              <a href="#tool-packing" class="po-link">Packing Checklist &darr;</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="po-stage">
+            <div class="po-num">Stage 3 — Build</div>
+            <div class="po-title">Itinerary &amp; Trip Organization</div>
+            <div class="po-desc">Drag activities into a day-by-day schedule, save shortlisted destinations, and track your travels.</div>
+            <div class="po-links">
+              <a href="#tool-itinerary" class="po-link">Itinerary Builder &darr;</a>
+              <span class="po-sep">|</span>
+              <a href="saved-trips.html" class="po-link">Saved Trips &rarr;</a>
+              <span class="po-sep">|</span>
+              <a href="travel-map.html" class="po-link">Travel Map &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Stage 1 Divider ── -->
+  <div class="planning-stage-divider">
+    <div class="container">
+      <div class="psd-inner">
+        <div class="psd-number">1</div>
+        <div><div class="psd-label">Stage 1 &mdash; Discover Your Destination</div></div>
+        <div class="psd-desc">Where to go &middot; When to go &middot; What to track</div>
       </div>
     </div>
   </div>
@@ -512,6 +710,17 @@
     </div>
   </section>
 
+  <!-- ── Stage 2 Divider ── -->
+  <div class="planning-stage-divider">
+    <div class="container">
+      <div class="psd-inner">
+        <div class="psd-number">2</div>
+        <div><div class="psd-label">Stage 2 &mdash; Plan Your Trip</div></div>
+        <div class="psd-desc">Budget &middot; Entry requirements &middot; What to pack</div>
+      </div>
+    </div>
+  </div>
+
   <!-- ══ BUDGET CALCULATOR ══════════════════════════════════════ -->
   <section class="section-white tool-section tool-anchor" id="tool-budget">
     <div class="container" style="max-width:860px">
@@ -590,11 +799,75 @@
       <p style="font-size:.82rem;color:#94a3b8;text-align:center;margin-top:1rem">
         Learn more: <a href="blog-budget-planning.html" style="color:#0b95a5;font-weight:600">How to Budget a Vacation: The 40/25/20/15 Rule &rarr;</a>
       </p>
+      <div class="workflow-connector">
+        <div>
+          <div class="wc-label">Next Step</div>
+          <div class="wc-title">Check Entry Requirements</div>
+          <div class="wc-sub">Confirm passport validity, visa rules, eTAs, and health requirements before you finalize your dates.</div>
+        </div>
+        <a href="#tool-requirements" class="wc-btn">Entry Requirements &darr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TRAVEL REQUIREMENTS GUIDE ════════════════════════════ -->
+  <section class="section-gray tool-section tool-anchor" id="tool-requirements">
+    <div class="container" style="max-width:860px">
+      <div class="tool-wrap">
+        <div class="tool-head">
+          <div class="tool-head-icon" style="background:#fef2f2">&#127760;</div>
+          <div>
+            <h2>Entry Requirements Planning Guide</h2>
+            <p>Passport validity, visa status, eTA requirements, health rules, currency, and plug type — for U.S. passport holders.</p>
+          </div>
+        </div>
+        <div class="tool-body">
+          <div class="row g-3 align-items-end mb-3">
+            <div class="col-sm-7">
+              <label class="form-label fw-semibold" style="font-size:.85rem;color:#475569">Select Destination</label>
+              <select id="req-destination" class="form-select" style="border-color:#e2e8f0">
+                <option value="">Choose a destination...</option>
+                <option value="JP">Japan</option>
+                <option value="GB">United Kingdom</option>
+                <option value="FR">France / Schengen Europe</option>
+                <option value="IT">Italy (Schengen)</option>
+                <option value="GR">Greece (Schengen)</option>
+                <option value="ES">Spain (Schengen)</option>
+                <option value="AU">Australia</option>
+                <option value="NZ">New Zealand</option>
+                <option value="AE">UAE (Dubai / Abu Dhabi)</option>
+                <option value="TH">Thailand</option>
+                <option value="MX">Mexico</option>
+                <option value="CA">Canada</option>
+                <option value="JM">Jamaica</option>
+                <option value="MV">Maldives</option>
+              </select>
+            </div>
+            <div class="col-sm-3">
+              <button id="get-requirements" class="btn w-100 fw-bold" style="background:var(--action-teal);color:#fff;border:none;padding:10px;border-radius:8px">
+                Show Requirements
+              </button>
+            </div>
+          </div>
+          <div id="requirements-output"></div>
+          <p style="font-size:.75rem;color:#94a3b8;margin-top:1rem">
+            &#9888; Planning guidance only. Entry rules change frequently &mdash; always verify with the official embassy, consulate, or government immigration website before travel.
+          </p>
+          <div class="workflow-connector">
+            <div>
+              <div class="wc-label">Next Step</div>
+              <div class="wc-title">Build Your Packing List</div>
+              <div class="wc-sub">Entry requirements confirmed — now make sure you have everything you need to pack for this trip.</div>
+            </div>
+            <a href="#tool-packing" class="wc-btn wc-btn-teal">Packing Checklist &darr;</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ══ PACKING CHECKLIST ══════════════════════════════════════ -->
-  <section class="section-gray tool-section tool-anchor" id="tool-packing">
+  <section class="section-white tool-section tool-anchor" id="tool-packing">
     <div class="container" style="max-width:860px">
       <div class="tool-wrap">
         <div class="tool-head">
@@ -633,73 +906,34 @@
 
           <div id="packing-cta">
             <div class="mt-3 p-3 rounded-3" style="background:#f0f9ff;border:1px solid #bae6fd">
-              <p class="mb-1" style="font-size:.85rem;font-weight:700;color:#0369a1">Next step: plan your destination timing</p>
-              <p class="mb-2" style="font-size:.82rem;color:#475569">Use the Seasonal Finder to confirm the best month for your chosen destination before you finalize the itinerary.</p>
-              <a href="seasonal-recommendations.html" style="font-size:.83rem;font-weight:700;color:#0077B6;text-decoration:none">Where to Go This Month &rarr;</a>
+              <p class="mb-1" style="font-size:.85rem;font-weight:700;color:#0369a1">Next step: build your day-by-day itinerary</p>
+              <p class="mb-2" style="font-size:.82rem;color:#475569">Checklist ready — now drag activities into a schedule using the Itinerary Builder.</p>
+              <a href="#tool-itinerary" style="font-size:.83rem;font-weight:700;color:#0077B6;text-decoration:none">Build My Itinerary &darr;</a>
             </div>
+          </div>
+          <div class="workflow-connector mt-0" style="margin-top:.75rem!important">
+            <div>
+              <div class="wc-label">Next Step</div>
+              <div class="wc-title">Build Your Day-by-Day Itinerary</div>
+              <div class="wc-sub">Drag activities into a schedule, add custom plans, and copy it for sharing or reference.</div>
+            </div>
+            <a href="#tool-itinerary" class="wc-btn">Itinerary Builder &darr;</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ PET COST ESTIMATOR ════════════════════════════════════ -->
-  <section class="section-white tool-section tool-anchor" id="tool-petcost">
-    <div class="container" style="max-width:860px">
-      <div class="tool-wrap">
-        <div class="tool-head">
-          <div class="tool-head-icon" style="background:#fdf6e9">&#128054;</div>
-          <div>
-            <h2>Pet Travel Cost Estimator</h2>
-            <p>Calculate the full cost of flying your dog or cat internationally — including vet fees, USDA endorsement, airline charges, and destination-specific requirements.</p>
-          </div>
-        </div>
-        <div class="tool-body">
-          <div class="row g-3 mb-4">
-            <div class="col-sm-4">
-              <label class="form-label fw-semibold" style="font-size:.85rem;color:#475569">Pet Type</label>
-              <select id="pet-type" class="form-select" style="border-color:#e2e8f0">
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-              </select>
-            </div>
-            <div class="col-sm-4">
-              <label class="form-label fw-semibold" style="font-size:.85rem;color:#475569">Pet Weight</label>
-              <select id="pet-size" class="form-select" style="border-color:#e2e8f0">
-                <option value="small">Under 15 lbs (cabin-eligible)</option>
-                <option value="medium">15–50 lbs (cargo)</option>
-                <option value="large">Over 50 lbs (cargo)</option>
-              </select>
-            </div>
-            <div class="col-sm-4">
-              <label class="form-label fw-semibold" style="font-size:.85rem;color:#475569">Destination</label>
-              <select id="pet-dest" class="form-select" style="border-color:#e2e8f0">
-                <option value="EU">Europe (Schengen)</option>
-                <option value="UK">United Kingdom</option>
-                <option value="CA">Canada</option>
-                <option value="MX">Mexico</option>
-                <option value="CB">Caribbean</option>
-              </select>
-            </div>
-          </div>
-          <button id="pet-calc-btn" class="btn fw-bold mb-4" style="background:var(--action-teal);color:#fff;border:none;padding:10px 28px;border-radius:8px">
-            Calculate Pet Travel Cost
-          </button>
-          <div id="pet-result" style="display:none">
-            <div id="pet-items"></div>
-            <div class="pet-result-total" id="pet-total-box">
-              <span style="font-size:.9rem;opacity:.85">Estimated total (round trip)</span>
-              <strong style="font-size:1.2rem" id="pet-total-display"></strong>
-            </div>
-            <p id="pet-note" style="font-size:.78rem;color:#94a3b8;margin-top:.75rem"></p>
-          </div>
-        </div>
+  <!-- ── Stage 3 Divider ── -->
+  <div class="planning-stage-divider">
+    <div class="container">
+      <div class="psd-inner">
+        <div class="psd-number">3</div>
+        <div><div class="psd-label">Stage 3 &mdash; Build &amp; Organize</div></div>
+        <div class="psd-desc">Day-by-day itinerary &middot; Save your trip &middot; Track your travels</div>
       </div>
-      <p style="font-size:.82rem;color:#94a3b8;text-align:center;margin-top:1rem">
-        Real-world breakdown: <a href="blog-elmo.html" style="color:#0b95a5;font-weight:600">Flying with Your Dog to Europe: Full Cost Guide &rarr;</a>
-      </p>
     </div>
-  </section>
+  </div>
 
   <!-- ══ ITINERARY BUILDER ══════════════════════════════════════ -->
   <section class="section-gray tool-section tool-anchor" id="tool-itinerary">
@@ -760,56 +994,88 @@
               <p id="copy-confirm" style="display:none;font-size:.8rem;color:var(--action-teal);margin-top:.4rem">Copied to clipboard!</p>
             </div>
           </div>
+          <div class="workflow-connector">
+            <div>
+              <div class="wc-label">Your Trip Plan Is Ready</div>
+              <div class="wc-title">Save This Trip &amp; Track Your Travels</div>
+              <div class="wc-sub">Save shortlisted destinations to revisit later, or mark countries on your Travel Map.</div>
+            </div>
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+              <a href="saved-trips.html" class="wc-btn wc-btn-teal">Saved Trips &rarr;</a>
+              <a href="travel-map.html" class="wc-btn">Travel Map &rarr;</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ TRAVEL REQUIREMENTS GUIDE ════════════════════════════ -->
-  <section class="section-white tool-section tool-anchor" id="tool-requirements">
+  <!-- ── Specialty Tools Divider ── -->
+  <div class="planning-stage-divider">
+    <div class="container">
+      <div class="psd-inner">
+        <div class="psd-number" style="background:#94a3b8">+</div>
+        <div><div class="psd-label">Specialty Tool &mdash; Pet Travel</div></div>
+        <div class="psd-desc">Traveling with a dog or cat? Estimate your full international pet transport cost.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PET COST ESTIMATOR ════════════════════════════════════ -->
+  <section class="section-white tool-section tool-anchor" id="tool-petcost">
     <div class="container" style="max-width:860px">
       <div class="tool-wrap">
         <div class="tool-head">
-          <div class="tool-head-icon" style="background:#fef2f2">&#127760;</div>
+          <div class="tool-head-icon" style="background:#fdf6e9">&#128054;</div>
           <div>
-            <h2>Entry Requirements Planning Guide</h2>
-            <p>Passport validity, visa status, eTA requirements, health rules, currency, and plug type — for U.S. passport holders.</p>
+            <h2>Pet Travel Cost Estimator</h2>
+            <p>Calculate the full cost of flying your dog or cat internationally — including vet fees, USDA endorsement, airline charges, and destination-specific requirements.</p>
           </div>
         </div>
         <div class="tool-body">
-          <div class="row g-3 align-items-end mb-3">
-            <div class="col-sm-7">
-              <label class="form-label fw-semibold" style="font-size:.85rem;color:#475569">Select Destination</label>
-              <select id="req-destination" class="form-select" style="border-color:#e2e8f0">
-                <option value="">Choose a destination...</option>
-                <option value="JP">Japan</option>
-                <option value="GB">United Kingdom</option>
-                <option value="FR">France / Schengen Europe</option>
-                <option value="IT">Italy (Schengen)</option>
-                <option value="GR">Greece (Schengen)</option>
-                <option value="ES">Spain (Schengen)</option>
-                <option value="AU">Australia</option>
-                <option value="NZ">New Zealand</option>
-                <option value="AE">UAE (Dubai / Abu Dhabi)</option>
-                <option value="TH">Thailand</option>
-                <option value="MX">Mexico</option>
-                <option value="CA">Canada</option>
-                <option value="JM">Jamaica</option>
-                <option value="MV">Maldives</option>
+          <div class="row g-3 mb-4">
+            <div class="col-sm-4">
+              <label class="form-label fw-semibold" style="font-size:.85rem;color:#475569">Pet Type</label>
+              <select id="pet-type" class="form-select" style="border-color:#e2e8f0">
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
               </select>
             </div>
-            <div class="col-sm-3">
-              <button id="get-requirements" class="btn w-100 fw-bold" style="background:var(--action-teal);color:#fff;border:none;padding:10px;border-radius:8px">
-                Show Requirements
-              </button>
+            <div class="col-sm-4">
+              <label class="form-label fw-semibold" style="font-size:.85rem;color:#475569">Pet Weight</label>
+              <select id="pet-size" class="form-select" style="border-color:#e2e8f0">
+                <option value="small">Under 15 lbs (cabin-eligible)</option>
+                <option value="medium">15–50 lbs (cargo)</option>
+                <option value="large">Over 50 lbs (cargo)</option>
+              </select>
+            </div>
+            <div class="col-sm-4">
+              <label class="form-label fw-semibold" style="font-size:.85rem;color:#475569">Destination</label>
+              <select id="pet-dest" class="form-select" style="border-color:#e2e8f0">
+                <option value="EU">Europe (Schengen)</option>
+                <option value="UK">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="MX">Mexico</option>
+                <option value="CB">Caribbean</option>
+              </select>
             </div>
           </div>
-          <div id="requirements-output"></div>
-          <p style="font-size:.75rem;color:#94a3b8;margin-top:1rem">
-            &#9888; Planning guidance only. Entry rules change frequently &mdash; always verify with the official embassy, consulate, or government immigration website before travel.
-          </p>
+          <button id="pet-calc-btn" class="btn fw-bold mb-4" style="background:var(--action-teal);color:#fff;border:none;padding:10px 28px;border-radius:8px">
+            Calculate Pet Travel Cost
+          </button>
+          <div id="pet-result" style="display:none">
+            <div id="pet-items"></div>
+            <div class="pet-result-total" id="pet-total-box">
+              <span style="font-size:.9rem;opacity:.85">Estimated total (round trip)</span>
+              <strong style="font-size:1.2rem" id="pet-total-display"></strong>
+            </div>
+            <p id="pet-note" style="font-size:.78rem;color:#94a3b8;margin-top:.75rem"></p>
+          </div>
         </div>
       </div>
+      <p style="font-size:.82rem;color:#94a3b8;text-align:center;margin-top:1rem">
+        Real-world breakdown: <a href="blog-elmo.html" style="color:#0b95a5;font-weight:600">Flying with Your Dog to Europe: Full Cost Guide &rarr;</a>
+      </p>
     </div>
   </section>
 
