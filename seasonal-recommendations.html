@@ -113,6 +113,7 @@
     .dest-region { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
     .dest-tagline { font-size: .84rem; color: #64748b; line-height: 1.45; }
     .dest-season { font-size: .78rem; color: #0077B6; font-weight: 600; }
+    .dest-reason { font-size: .79rem; color: #0369a1; font-weight: 500; line-height: 1.4; background: #f0f9ff; border-left: 3px solid #2EC4B6; padding: 4px 8px; border-radius: 0 4px 4px 0; margin-top: .15rem; }
     .dest-budget-tags { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .35rem; }
     .dest-tag {
       padding: 2px 8px;
@@ -182,7 +183,7 @@
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link active" href="seasonal-recommendations.html">Destination Finder</a></li>
           <li class="nav-item"><a class="nav-link" href="tools.html">Travel Tools</a></li>
           <li class="nav-item"><a class="nav-link" href="best-time.html">Best Time to Visit</a></li>
           <li class="nav-item ms-lg-2"><a href="book-now.html" class="nav-cta-btn nav-link">Plan a Trip &rarr;</a></li>
@@ -242,9 +243,9 @@
         <div class="tool-tip-box flex-grow-1" id="tool-tip">
           <strong>Select a month above</strong> to see destination recommendations. Budget and style filters refine the results further.
         </div>
-        <a href="saved-trips.html" id="saved-badge" class="btn btn-sm btn-outline-secondary" style="white-space:nowrap;display:none">
-          ❤️ Saved: <span id="saved-count">0</span>
-        </a>
+        <span id="saved-badge" class="btn btn-sm" style="white-space:nowrap;cursor:default;background:#f8fafc;color:#94a3b8;border:1px solid #e2e8f0" aria-live="polite">
+          &#10084;&#65039; <span id="saved-count">0</span> saved
+        </span>
       </div>
     </div>
 
@@ -258,6 +259,17 @@
       <div class="no-results" id="no-results" style="display:none">
         No destinations match all three filters. Try removing the budget or style filter to see more options.
       </div>
+
+      <!-- Next-step CTA — shown once results are visible -->
+      <div class="mt-4 p-4 rounded-3" style="background:linear-gradient(135deg,#f0f9ff,#f0fdf4);border:1px solid #bae6fd">
+        <p class="mb-1" style="font-size:.9rem;font-weight:700;color:#0369a1">Ready to plan your shortlisted destination?</p>
+        <p class="mb-3" style="font-size:.84rem;color:#475569">Estimate your total trip cost, check entry requirements, and build a packing list — all free tools, no sign-up needed.</p>
+        <div class="d-flex gap-2 flex-wrap">
+          <a href="tools.html#tool-budget" class="btn btn-sm fw-bold" style="background:#03045E;color:#fff;border:none">Budget Calculator &rarr;</a>
+          <a href="tools.html#tool-requirements" class="btn btn-sm btn-outline-secondary">Entry Requirements</a>
+          <a href="best-time.html" class="btn btn-sm btn-outline-secondary">Best Time to Visit</a>
+        </div>
+      </div>
     </div>
 
     <!-- Adsense mid -->
@@ -268,13 +280,15 @@
 
     <!-- Tool info -->
     <section class="mb-5">
-      <h2 class="h5 mb-3">How This Tool Works</h2>
-      <p class="text-muted small">Each destination has a peak season window (best weather, ideal conditions), a shoulder season (acceptable weather, lower prices), and a period to avoid. The tool surfaces destinations where your selected month falls in the peak or shoulder window, filters by budget tier and trip style, and shows relevant planning links. It does not use AI or backend calls — all recommendations run locally in your browser from a curated dataset of 20+ destinations.</p>
-      <p class="text-muted small">Budget tiers: <strong>Budget</strong> = $80–150/person/day on the ground; <strong>Mid-Range</strong> = $150–350/person/day; <strong>Luxury</strong> = $350+/person/day. Flights are not included in these estimates.</p>
-      <div class="d-flex gap-3 flex-wrap mt-3">
-        <a href="tools.html" class="btn btn-outline-primary btn-sm">All Travel Tools</a>
-        <a href="best-time.html" class="btn btn-outline-primary btn-sm">Best Time to Visit Tool</a>
-        <a href="blog.html" class="btn btn-outline-secondary btn-sm">Destination Guides</a>
+      <div class="p-4 rounded-3" style="background:#fff;border:1px solid #e2e8f0;border-left:4px solid #2EC4B6">
+        <h2 class="h6 mb-3 fw-bold" style="color:#03045E;text-transform:uppercase;letter-spacing:.05em;font-size:.78rem">How This Tool Works</h2>
+        <p style="font-size:.88rem;color:#475569;margin-bottom:.75rem">Each destination has a <strong>peak season</strong> (best weather, ideal conditions), a <strong>shoulder season</strong> (acceptable weather, lower prices), and an avoid period. The tool surfaces destinations where your selected month falls in either window — then filters by budget tier and travel style. All recommendations run locally in your browser. No AI, no backend calls, no data sent anywhere.</p>
+        <p style="font-size:.88rem;color:#475569;margin-bottom:1rem"><strong>Budget tiers:</strong> Budget = $80–150/person/day on the ground &nbsp;·&nbsp; Mid-Range = $150–350/person/day &nbsp;·&nbsp; Luxury = $350+/person/day. Flights are not included.</p>
+        <div class="d-flex gap-2 flex-wrap">
+          <a href="tools.html" class="btn btn-outline-primary btn-sm">All Travel Tools</a>
+          <a href="best-time.html" class="btn btn-outline-primary btn-sm">Best Time to Visit Tool</a>
+          <a href="blog.html" class="btn btn-outline-secondary btn-sm">Destination Guides</a>
+        </div>
       </div>
     </section>
 
@@ -320,8 +334,18 @@
     const n = getSaved().length;
     const badge = document.getElementById('saved-badge');
     const count = document.getElementById('saved-count');
-    if (badge) { badge.style.display = n > 0 ? '' : 'none'; }
-    if (count) { count.textContent = n; }
+    if (count) count.textContent = n;
+    if (badge) {
+      if (n > 0) {
+        badge.style.background = '#fce7f3';
+        badge.style.color = '#9d174d';
+        badge.style.border = '1px solid #fbcfe8';
+      } else {
+        badge.style.background = '#f8fafc';
+        badge.style.color = '#94a3b8';
+        badge.style.border = '1px solid #e2e8f0';
+      }
+    }
   }
 
   // ── Destination data ─────────────────────────────────────────────────────
@@ -334,6 +358,7 @@
       styles: ['beach','couples','family','adventure'],
       tagline: 'Doctor\'s Cave Beach, all-inclusive resorts, Dunn\'s River Falls day trips',
       season_note: 'Dec–Apr peak; May & Nov shoulder; Sep–Oct hurricane risk',
+      reason: 'Peak dry season delivers consistent sunshine, calm Caribbean surf, and the island\'s best beach weather for resort stays.',
       link: 'montego-bay-jamaica.html'
     },
     {
@@ -344,6 +369,7 @@
       styles: ['beach','couples','adventure'],
       tagline: 'Seven Mile Beach, West End cliffs, Rick\'s Cafe sunset, laid-back vibe',
       season_note: 'Dec–Apr peak; May & Nov shoulder; Sep–Oct hurricane risk',
+      reason: 'Peak dry season means flat water along Seven Mile Beach and perfect cliff-dive visibility at Rick\'s Cafe.',
       link: 'negril-jamaica.html'
     },
     {
@@ -355,6 +381,7 @@
       styles: ['beach','couples','family'],
       tagline: 'Year-round sunshine, Eagle Beach, calm resort scene outside the hurricane belt',
       season_note: 'Year-round — sits below the hurricane belt',
+      reason: 'Outside the hurricane belt with reliable trade winds — Aruba delivers dependable beach weather every month of the year.',
       link: 'blog-compare-caribbean-islands.html'
     },
     {
@@ -365,6 +392,7 @@
       styles: ['beach','couples','family'],
       tagline: 'Short US flights, Nassau nightlife, Exumas blue water, Atlantis resort',
       season_note: 'Dec–May peak; avoid Sep–Oct hurricane peak',
+      reason: 'Cool, dry air keeps seas calm and visibility high — the best window for Exumas snorkeling and Nassau day trips.',
       link: 'blog-compare-caribbean-islands.html'
     },
     {
@@ -375,6 +403,40 @@
       styles: ['beach','couples','family'],
       tagline: 'Best food scene in the Caribbean, Platinum Coast beaches, rum culture',
       season_note: 'Dec–Apr peak; lower hurricane exposure than most islands',
+      reason: 'Dry season delivers reliably clear days on the Platinum Coast and the island\'s best water clarity for snorkeling.',
+      link: 'blog-compare-caribbean-islands.html'
+    },
+    {
+      name: 'Curaçao',
+      region: 'Caribbean', color: '#0077B6',
+      peak: [12,1,2,3,4,5,6,7,8], shoulder: [9,10,11],
+      budget: ['mid','luxury'],
+      styles: ['beach','couples','family'],
+      tagline: 'Colorful Willemstad architecture, secluded coves, house reefs for shore diving, Dutch-Caribbean culture',
+      season_note: 'Outside hurricane belt — dry year-round; Dec–Aug best; Sep–Nov occasional light rain',
+      reason: 'Outside the hurricane belt and reliably dry — Curaçao offers Caribbean beach weather when most islands carry storm risk.',
+      link: 'blog-compare-caribbean-islands.html'
+    },
+    {
+      name: 'St. Lucia',
+      region: 'Caribbean', color: '#0077B6',
+      peak: [12,1,2,3,4,5], shoulder: [6,7,11],
+      budget: ['mid','luxury'],
+      styles: ['beach','couples','adventure'],
+      tagline: 'Pitons World Heritage Site, rainforest zip-lining, volcanic hot springs, intimate boutique resorts',
+      season_note: 'Dec–May dry season peak; Jun–Nov lush but wetter; avoid Sep–Oct hurricane peak',
+      reason: 'Peak dry season keeps the Pitons views clear and the west coast beaches calm for snorkeling and sunset sailing.',
+      link: 'blog-compare-caribbean-islands.html'
+    },
+    {
+      name: 'Cayman Islands',
+      region: 'Caribbean', color: '#0077B6',
+      peak: [12,1,2,3,4,5], shoulder: [6,7,11],
+      budget: ['luxury'],
+      styles: ['beach','couples','family'],
+      tagline: 'Seven Mile Beach, world-class wall diving, Stingray City, best dining scene in the Caribbean',
+      season_note: 'Dec–May ideal; Jun–Jul pleasant shoulder; avoid Aug–Oct hurricane season',
+      reason: 'Dry season delivers calm Caribbean water and the best dive visibility along the island\'s famous wall drop-offs.',
       link: 'blog-compare-caribbean-islands.html'
     },
     {
@@ -385,6 +447,7 @@
       styles: ['beach','family'],
       tagline: 'Most affordable Caribbean all-inclusive, Punta Cana, miles of resort beach',
       season_note: 'Dec–May peak; budget-friendly all-inclusive value year-round',
+      reason: 'Dry season locks in the clearest skies and best all-inclusive pricing over Punta Cana\'s resort beaches.',
       link: 'blog-compare-caribbean-islands.html'
     },
     {
@@ -395,6 +458,7 @@
       styles: ['couples','beach'],
       tagline: 'Iconic caldera views, blue-dome churches, island-hopping, Mediterranean cuisine',
       season_note: 'May–Jun & Sep–Oct ideal; Jul–Aug crowded and expensive',
+      reason: 'Shoulder season means warm days, manageable crowds, and the best value-to-experience ratio in the Aegean islands.',
       link: 'blog-santorini-vs-mykonos.html'
     },
     {
@@ -405,6 +469,7 @@
       styles: ['couples','adventure','family'],
       tagline: 'Ancient history, island variety, strong value in spring and autumn',
       season_note: 'Apr–Jun & Sep–Oct best; skip Aug peak crowds',
+      reason: 'Mild hiking temperatures, open archaeological sites, and hotel rates well below the July–August peak.',
       link: 'blog-best-time-greece.html'
     },
     {
@@ -415,6 +480,7 @@
       styles: ['couples','family','adventure'],
       tagline: 'Cherry blossoms, autumn foliage, world-class food, trains, temples',
       season_note: 'Mar–Apr (cherry blossoms) & Oct–Nov (autumn foliage) are peak; shoulder months cheaper',
+      reason: 'Cherry blossoms (March–April) and autumn foliage (October–November) are fleeting — this month catches one of Japan\'s two great seasonal windows.',
       link: 'blog-best-time-japan.html'
     },
     {
@@ -425,6 +491,7 @@
       styles: ['beach','couples','adventure'],
       tagline: 'Volcanic scenery, rice terraces, surf, temples, budget-friendly gastronomy',
       season_note: 'Jun–Aug dry season peak; Apr–May & Sep–Oct pleasant shoulder',
+      reason: 'Dry season keeps the rice terraces vivid, roads passable for inland drives, and outdoor temple visits comfortable all day.',
       link: 'blog-bali-vs-thailand.html'
     },
     {
@@ -435,6 +502,7 @@
       styles: ['beach','couples','adventure','family'],
       tagline: 'Bangkok temples, island beaches (Koh Samui, Phuket), street food, tuk-tuks',
       season_note: 'Nov–Feb dry season peak; Apr & Oct transitional shoulder',
+      reason: 'Cool, dry air across the north and calm Andaman seas in the south define Thailand\'s most travel-friendly season.',
       link: 'blog-bali-vs-thailand.html'
     },
     {
@@ -445,6 +513,7 @@
       styles: ['beach','couples'],
       tagline: 'Overwater bungalows, world-class snorkeling, unmatched water clarity',
       season_note: 'Dec–Apr dry season; May–Oct wetter but cheaper with negotiable rates',
+      reason: 'Dry northeast monsoon brings calm lagoons, maximum underwater visibility, and stable weather for overwater bungalows.',
       link: 'blog-best-time-maldives.html'
     },
     {
@@ -455,6 +524,7 @@
       styles: ['couples','family'],
       tagline: 'Art, food, fashion, iconic landmarks, world\'s most-visited city',
       season_note: 'Apr–Jun & Sep–Oct best weather and crowds; winter quiet with shorter queues',
+      reason: 'Mild temperatures, long daylight hours, and open-air café culture make this one of Paris\'s two most livable seasons.',
       link: 'blog-choose-europe-cities.html'
     },
     {
@@ -465,6 +535,7 @@
       styles: ['couples','adventure','family'],
       tagline: 'Trams, tiles, petiscos, Atlantic coast beaches — Western Europe\'s best value city',
       season_note: 'Apr–Jun & Sep–Oct ideal; Jul–Aug warm but busy',
+      reason: 'Shoulder season delivers warm Atlantic coastal weather, lower accommodation rates, and easy Sintra day-trip access.',
       link: 'blog-choose-europe-cities.html'
     },
     {
@@ -475,6 +546,7 @@
       styles: ['adventure','couples'],
       tagline: 'Inca ruins, Andes trekking, Amazon access, colonial Cusco',
       season_note: 'May–Sep dry season; Inca Trail permits sell out months ahead',
+      reason: 'Dry season is the only reliable window for the Inca Trail — permits are required and sell out 4–6 months in advance.',
       link: 'blog-hidden-destinations.html'
     },
     {
@@ -485,6 +557,7 @@
       styles: ['beach','couples','family'],
       tagline: 'Grace Bay — consistently ranked the world\'s best beach; calm, ultra-clear water',
       season_note: 'Dec–May peak; excellent but expensive at all times',
+      reason: 'Calm trade winds and flat, clear water make this the ideal window for Grace Bay\'s world-famous shallow snorkeling.',
       link: 'blog-compare-caribbean-islands.html'
     },
     {
@@ -495,6 +568,7 @@
       styles: ['adventure','couples'],
       tagline: 'Northern lights (winter), midnight sun (summer), waterfalls, geothermal pools',
       season_note: 'Jun–Aug for midnight sun & accessibility; Nov–Feb for northern lights',
+      reason: 'Summer unlocks 20+ hours of daylight, passable highland roads, and glacier hikes without winter storm risk.',
       link: 'blog-hidden-destinations.html'
     },
     {
@@ -505,6 +579,7 @@
       styles: ['beach','couples','adventure'],
       tagline: 'Cenotes, Mayan ruins, Tulum beachclubs, short US flight times',
       season_note: 'Dec–May dry season; budget-friendly with easy US East Coast access',
+      reason: 'Dry season keeps cenote water crystal-clear and Tulum\'s beaches largely free from seasonal seaweed accumulation.',
       link: 'blog-hidden-destinations.html'
     },
     {
@@ -515,6 +590,7 @@
       styles: ['adventure','family','couples'],
       tagline: 'Rainforests, zip-lining, wildlife, both Pacific and Caribbean coasts',
       season_note: 'Dec–Apr dry season on Pacific side; year-round on Caribbean coast',
+      reason: 'Pacific dry season opens road access to Manuel Antonio and Arenal without the afternoon rains of the wet season.',
       link: 'blog-hidden-destinations.html'
     },
     {
@@ -525,6 +601,7 @@
       styles: ['adventure','couples'],
       tagline: 'Medinas, Sahara dunes, riads, Atlas Mountains, Marrakech souks',
       season_note: 'Mar–Apr & Oct–Nov best; summer can be 100°F+ inland',
+      reason: 'Spring and autumn sit in Morocco\'s sweet spot — warm enough for the Sahara, cool enough for medina walking tours.',
       link: 'blog-hidden-destinations.html'
     }
   ];
@@ -591,6 +668,7 @@
             </div>
             <div class="dest-region" style="color:${d.color}">${d.region}</div>
             <div class="dest-tagline">${d.tagline}</div>
+            ${d.reason ? `<div class="dest-reason">✓ ${d.reason}</div>` : ''}
             <div class="dest-season">📅 ${d.season_note}</div>
             <div class="dest-budget-tags">${budgeTags}${styleTags}</div>
           </a>
