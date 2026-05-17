@@ -78,8 +78,8 @@
 
       case 'error':
         if (btn) { btn.disabled = false; btn.textContent = btn.dataset.origText || 'Get Travel Tips'; }
-        feedback.textContent = 'Something went wrong — please try again.';
-        feedback.className   = 'dv-signup-feedback dv-signup-error';
+        feedback.textContent = 'Travel updates are coming soon — thanks for exploring DreamVacati.';
+        feedback.className   = 'dv-signup-feedback dv-signup-unavailable';
         break;
     }
   }

@@ -559,9 +559,10 @@ h1, h2, h3, h4, h5, h6,
   width: 100%;
   text-align: center;
 }
-.dv-signup-success { color: #0f6b5e; font-weight: 600; }
-.dv-signup-note    { color: #475569; }
-.dv-signup-error   { color: #b91c1c; }
+.dv-signup-success     { color: #0f6b5e; font-weight: 600; }
+.dv-signup-note        { color: #475569; }
+.dv-signup-error       { color: #b91c1c; }
+.dv-signup-unavailable { color: #64748b; font-style: italic; }
 
 /* ===== Pathfinder Badge (navbar book CTA) ===== */
 .nav-cta-btn {

@@ -121,9 +121,10 @@
 
 /* Signup feedback — light text for dark footer background */
 .dfg-form .dv-signup-feedback { color: rgba(255,255,255,.65); text-align: left; }
-.dfg-form .dv-signup-success  { color: #2EC4B6; font-weight: 600; }
-.dfg-form .dv-signup-error    { color: #fca5a5; }
-.dfg-form .dv-signup-note     { color: rgba(255,255,255,.5); }
+.dfg-form .dv-signup-success     { color: #2EC4B6; font-weight: 600; }
+.dfg-form .dv-signup-error       { color: #fca5a5; }
+.dfg-form .dv-signup-note        { color: rgba(255,255,255,.5); }
+.dfg-form .dv-signup-unavailable { color: rgba(255,255,255,.45); font-style: italic; }
 
 .dfg-legal {
   font-size: .72rem;
