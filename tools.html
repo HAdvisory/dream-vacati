@@ -329,38 +329,7 @@
     .guide-card h3 { font-size: .95rem; font-weight: 700; color: var(--deep-navy); margin-bottom: .4rem; }
     .guide-card p { font-size: .82rem; color: #64748b; margin: 0; }
 
-    /* Newsletter CTA */
-    .newsletter-section {
-      background: linear-gradient(135deg, var(--deep-navy) 0%, var(--horizon-blue) 100%);
-      padding: 4rem 0;
-      text-align: center;
-      color: #fff;
-    }
-    .newsletter-section h2 { font-weight: 800; margin-bottom: .5rem; }
-    .newsletter-section p { opacity: .85; max-width: 480px; margin: 0 auto 1.75rem; }
-    .newsletter-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
-    .newsletter-form input[type="email"] {
-      flex: 1 1 220px;
-      padding: 11px 16px;
-      border-radius: 8px;
-      border: none;
-      font-size: .93rem;
-      outline: none;
-    }
-    .newsletter-form button {
-      background: var(--action-teal);
-      color: #fff;
-      border: none;
-      padding: 11px 22px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: .93rem;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background .2s;
-    }
-    .newsletter-form button:hover { background: var(--teal-dark); }
-    .newsletter-legal { font-size: .72rem; opacity: .55; margin-top: .75rem; }
+    /* (newsletter-section removed — planning continuation block handles page exit) */
 
     /* Tool nav anchors */
     .tool-anchor { scroll-margin-top: 80px; }
@@ -1140,19 +1109,19 @@
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978658918402683" data-ad-slot="9149500460" data-ad-format="auto" data-full-width-responsive="true"></ins>
   </div>
 
-  <!-- ══ NEWSLETTER CTA ═════════════════════════════════════════ -->
-  <section class="newsletter-section">
-    <div class="container">
-      <h2 class="display-6">Get Travel Ideas &amp; Planning Tips First</h2>
-      <p>Get destination ideas, seasonal travel tips, and practical planning guides — no spam, just useful trip inspiration.</p>
-      <form class="newsletter-form" action="https://dreamvacati.us1.list-manage.com/subscribe/post?u=72806d79d56746ac091d7015d&amp;id=6a7f76b512a742247cfc7630b" method="post" target="_blank" novalidate>
-        <input type="email" name="EMAIL" placeholder="Enter your email" required autocomplete="email">
-        <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="b_72806d79d56746ac091d7015d_6a7f76b512a742247cfc7630b" tabindex="-1" value=""></div>
-        <button type="submit">Get Travel Tips</button>
-      </form>
-      <p class="newsletter-legal">Occasional travel tips and destination ideas. Unsubscribe anytime.</p>
+  <!-- ══ PLANNING CONTINUATION ════════════════════════════════ -->
+  <div style="background:#f8fafc;border-top:1px solid #e2e8f0;padding:2rem 0;">
+    <div class="container" style="max-width:860px">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+        <div>
+          <p style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#2EC4B6;margin:0 0 .25rem">Ready to Book?</p>
+          <p style="font-size:1rem;font-weight:700;color:#03045E;margin:0 0 .2rem">Turn your plan into a trip</p>
+          <p style="font-size:.85rem;color:#64748b;margin:0">Get a full personalized itinerary — day-by-day schedule, budget, packing list, and hotel suggestions.</p>
+        </div>
+        <a href="book-now.html" style="background:#03045E;color:#fff;padding:10px 22px;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap;flex-shrink:0">Start My Trip Plan &rarr;</a>
+      </div>
     </div>
-  </section>
+  </div>
 
   <!-- Footer -->
 
@@ -1443,5 +1412,6 @@
     </div>
   </footer>
 
+<script src="js/email-capture.js"></script>
 </body>
 </html>

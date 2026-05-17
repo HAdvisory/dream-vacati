@@ -537,17 +537,18 @@ h1, h2, h3, h4, h5, h6,
   margin: 0;
 }
 
-/* ===== Email Signup Upgrade ===== */
+/* ===== Email Signup — calm, integrated style ===== */
 .dv-email-signup {
-  background: linear-gradient(135deg, var(--deep-navy) 0%, var(--horizon-blue) 100%) !important;
-  border: none !important;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e6f7f5 100%);
+  border: 1px solid #bae6fd;
   border-radius: var(--radius-md);
-  color: #fff;
-  padding: 2.5rem !important;
+  color: var(--deep-navy);
 }
-.dv-email-signup h2 { color: #fff !important; font-family: var(--font-head); font-weight: 800; }
-.dv-email-signup p { color: rgba(255,255,255,0.8) !important; }
+.dv-email-signup h2 { color: var(--deep-navy) !important; font-family: var(--font-head); font-weight: 700; }
+.dv-email-signup p { color: #475569 !important; }
 .dv-email-signup .btn-primary { background: var(--action-teal) !important; border-color: var(--action-teal) !important; }
+.dv-email-signup .form-control { border-color: #bae6fd; }
+.dv-email-signup .small { color: #64748b !important; }
 
 /* ===== Pathfinder Badge (navbar book CTA) ===== */
 .nav-cta-btn {
