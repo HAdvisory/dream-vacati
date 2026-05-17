@@ -550,6 +550,19 @@ h1, h2, h3, h4, h5, h6,
 .dv-email-signup .form-control { border-color: #bae6fd; }
 .dv-email-signup .small { color: #64748b !important; }
 
+/* ===== Signup feedback states ===== */
+.dv-signup-feedback {
+  margin: 0.5rem 0 0;
+  font-size: 0.83rem;
+  line-height: 1.4;
+  min-height: 1.2em;
+  width: 100%;
+  text-align: center;
+}
+.dv-signup-success { color: #0f6b5e; font-weight: 600; }
+.dv-signup-note    { color: #475569; }
+.dv-signup-error   { color: #b91c1c; }
+
 /* ===== Pathfinder Badge (navbar book CTA) ===== */
 .nav-cta-btn {
   background: var(--action-teal);

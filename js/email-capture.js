@@ -1,116 +1,135 @@
 /**
- * email-capture.js
+ * email-capture.js — DreamVacati newsletter signup
  *
- * Intercepts newsletter form submissions on any DreamVacati page.
- * Strategy:
- *   1. POST the email to the Railway backend (/api/email-capture) — triggers
- *      a Resend confirmation email and stores the lead.
- *   2. Also submit the Mailchimp form in the background so the newsletter
- *      list stays in sync.
+ * Intercepts all newsletter forms on DreamVacati pages.
+ * Submits via fetch to the Vercel backend only — no Mailchimp redirect,
+ * no external page navigation, no broken provider pages.
  *
- * The form's action URL (Mailchimp) is kept intact in the HTML — this file
- * only adds the parallel capture layer on top.
+ * States: idle → loading → success | duplicate | error | invalid
  */
 
 (function () {
   'use strict';
 
-  const API_BASE = 'https://dreamvacati-planner.up.railway.app';
+  const API_BASE = 'https://dreamvacati-backend.vercel.app';
 
-  // Derive a human-readable source label from the current page
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
   function pageSource() {
     const slug = location.pathname.replace(/^\/|\.html$/g, '').trim() || 'home';
     return slug + '-newsletter';
   }
 
-  // POST email to Railway backend (fire-and-forget from the user's perspective)
-  async function captureEmail(email) {
-    try {
-      const res = await fetch(`${API_BASE}/api/email-capture`, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ email, source: pageSource() }),
-      });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        console.warn('[DV email-capture] backend error:', body.error || res.status);
-      }
-    } catch (err) {
-      // Network failure — silent. Mailchimp submission still proceeds.
-      console.warn('[DV email-capture] fetch failed:', err.message);
+  // ── Feedback element ────────────────────────────────────────────────────────
+
+  function getFeedback(form) {
+    let el = form.querySelector('.dv-signup-feedback');
+    if (!el) {
+      el = document.createElement('p');
+      el.className = 'dv-signup-feedback';
+      el.setAttribute('aria-live', 'polite');
+      el.setAttribute('aria-atomic', 'true');
+      form.appendChild(el);
+    }
+    return el;
+  }
+
+  // ── State machine ───────────────────────────────────────────────────────────
+
+  function setState(form, state) {
+    const btn      = form.querySelector('[type="submit"]');
+    const input    = form.querySelector('input[type="email"]');
+    const feedback = getFeedback(form);
+
+    // Store original button text once
+    if (btn && !btn.dataset.origText) {
+      btn.dataset.origText = btn.textContent.trim();
+    }
+
+    switch (state) {
+      case 'loading':
+        if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
+        feedback.textContent = '';
+        feedback.className   = 'dv-signup-feedback';
+        break;
+
+      case 'success':
+        if (btn) { btn.disabled = true; btn.textContent = '✓ You’re in!'; }
+        if (input) {
+          input.value       = '';
+          input.disabled    = true;
+          input.placeholder = 'Check your inbox — talk soon!';
+        }
+        feedback.textContent = 'Subscribed. Travel ideas are on their way.';
+        feedback.className   = 'dv-signup-feedback dv-signup-success';
+        break;
+
+      case 'duplicate':
+        if (btn) { btn.disabled = false; btn.textContent = btn.dataset.origText || 'Get Travel Tips'; }
+        feedback.textContent = 'You’re already on the list — thanks!';
+        feedback.className   = 'dv-signup-feedback dv-signup-note';
+        break;
+
+      case 'invalid':
+        if (btn) { btn.disabled = false; btn.textContent = btn.dataset.origText || 'Get Travel Tips'; }
+        feedback.textContent = 'Please enter a valid email address.';
+        feedback.className   = 'dv-signup-feedback dv-signup-error';
+        break;
+
+      case 'error':
+        if (btn) { btn.disabled = false; btn.textContent = btn.dataset.origText || 'Get Travel Tips'; }
+        feedback.textContent = 'Something went wrong — please try again.';
+        feedback.className   = 'dv-signup-feedback dv-signup-error';
+        break;
     }
   }
 
-  // Submit the Mailchimp form via hidden iframe (avoids page navigation)
-  function submitToMailchimp(form) {
-    try {
-      // Mailchimp accepts POST to the action URL — use a hidden iframe so we
-      // don't navigate away.  The response from Mailchimp is discarded.
-      let iframe = document.getElementById('mc-hidden-frame');
-      if (!iframe) {
-        iframe = document.createElement('iframe');
-        iframe.id   = 'mc-hidden-frame';
-        iframe.name = 'mc-hidden-frame';
-        iframe.style.cssText = 'display:none;position:absolute;width:0;height:0;border:0';
-        document.body.appendChild(iframe);
-      }
-      const clone = form.cloneNode(true);
-      clone.target = 'mc-hidden-frame';
-      clone.style.cssText = 'display:none;position:absolute';
-      document.body.appendChild(clone);
-      clone.submit();
-      // Clean up after Mailchimp responds (or after 5 s)
-      setTimeout(() => clone.remove(), 5000);
-    } catch (err) {
-      console.warn('[DV email-capture] Mailchimp iframe submit failed:', err.message);
-    }
-  }
-
-  function showSuccess(form) {
-    const successId = form.dataset.successTarget || null;
-    const successEl = successId ? document.getElementById(successId) : null;
-
-    if (successEl) {
-      successEl.style.display = 'block';
-    } else {
-      // Fallback: replace the submit button text
-      const btn = form.querySelector('[type="submit"]');
-      if (btn) {
-        btn.textContent = 'You\'re in!';
-        btn.disabled    = true;
-      }
-    }
-    // Clear and disable the email input
-    const input = form.querySelector('input[type="email"]');
-    if (input) {
-      input.value    = '';
-      input.disabled = true;
-      input.placeholder = 'Thanks — check your inbox!';
-    }
-  }
+  // ── Form handler ─────────────────────────────────────────────────────────────
 
   function attachToForm(form) {
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      const emailInput = form.querySelector('input[type="email"][name="EMAIL"]');
-      if (!emailInput) return; // not a Mailchimp newsletter form
+      const input = form.querySelector('input[type="email"]');
+      if (!input) return;
 
-      const email = emailInput.value.trim();
-      if (!email) return;
+      const email = input.value.trim();
 
-      // Fire both captures in parallel — neither blocks the UX response
-      captureEmail(email);
-      submitToMailchimp(form);
+      if (!email || !EMAIL_RE.test(email)) {
+        setState(form, 'invalid');
+        input.focus();
+        return;
+      }
 
-      showSuccess(form);
+      setState(form, 'loading');
+
+      try {
+        const res = await fetch(`${API_BASE}/api/email-capture`, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ email, source: pageSource() }),
+        });
+
+        if (res.ok) {
+          const data = await res.json().catch(() => ({}));
+          setState(form, data.duplicate ? 'duplicate' : 'success');
+        } else {
+          setState(form, 'error');
+        }
+      } catch {
+        // Network error (offline, CORS, etc.) — silent fail, show friendly message
+        setState(form, 'error');
+      }
     });
   }
 
-  // Attach to all Mailchimp newsletter forms on the page
+  // ── Init ─────────────────────────────────────────────────────────────────────
+
   function init() {
-    // Mailchimp forms post to us1.list-manage.com
-    const forms = document.querySelectorAll('form[action*="list-manage.com"]');
+    // Matches footer forms (action="#" data-dv-signup) and mid-page forms
+    const forms = document.querySelectorAll(
+      'form[data-dv-signup], form[action="#"][novalidate]'
+    );
     forms.forEach(attachToForm);
   }
 
@@ -119,4 +138,5 @@
   } else {
     init();
   }
+
 })();
