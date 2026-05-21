@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ─── 4) Travel Prep — redirect to full requirements tool ──
-  // The comprehensive requirements guide is in index.html#tool-requirements
+  // The comprehensive requirements guide is in tools.html#tool-requirements
   // and is powered by inline destination data. This section handles
   // any legacy origin/destination inputs if they exist on the page.
   const fetchBtn = document.getElementById('fetch-requirements');
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (out) {
         out.innerHTML = `
           <div class="alert alert-info">
-            <strong>Planning tip:</strong> Use the <a href="index.html#tool-requirements">Travel Requirements Planning Guide</a>
+            <strong>Planning tip:</strong> Use the <a href="tools.html#tool-requirements">Travel Requirements Planning Guide</a>
             to get destination-specific passport, visa, eTA, health, and customs guidance for 15 destinations.
             <br><small class="text-muted mt-1 d-block">Planning guidance only — always verify with official embassy or immigration sources before travel.</small>
           </div>`;
