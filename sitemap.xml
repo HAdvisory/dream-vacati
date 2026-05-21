@@ -4,7 +4,7 @@
   <!-- Core pages -->
   <url>
     <loc>https://www.dreamvacati.com/</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -49,13 +49,13 @@
   <!-- Caribbean cluster — pillar + supporting -->
   <url>
     <loc>https://www.dreamvacati.com/caribbean-travel-guide.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.dreamvacati.com/blog-compare-caribbean-islands.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -69,7 +69,7 @@
   <!-- Destination comparison cluster -->
   <url>
     <loc>https://www.dreamvacati.com/blog-destination-comparison.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -87,19 +87,19 @@
   </url>
   <url>
     <loc>https://www.dreamvacati.com/blog-maldives-vs-bora-bora.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.dreamvacati.com/blog-choose-europe-cities.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.dreamvacati.com/blog-hidden-destinations.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -119,7 +119,7 @@
   </url>
   <url>
     <loc>https://www.dreamvacati.com/blog-best-time-maldives.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -166,6 +166,86 @@
   <url>
     <loc>https://www.dreamvacati.com/negril-jamaica.html</loc>
     <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Japan cluster -->
+  <url>
+    <loc>https://www.dreamvacati.com/blog-tokyo-vs-osaka.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dreamvacati.com/blog-japan-travel-budget.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dreamvacati.com/blog-japan-travel-mistakes.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dreamvacati.com/blog-free-things-tokyo.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dreamvacati.com/blog-japan-packing-checklist.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dreamvacati.com/blog-tokyo-food-budget.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dreamvacati.com/blog-japan-transportation-guide.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dreamvacati.com/blog-best-areas-tokyo.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dreamvacati.com/blog-japan-cherry-blossom-guide.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dreamvacati.com/blog-cheap-eats-japan.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dreamvacati.com/blog-japan-travel-essentials.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dreamvacati.com/blog-tokyo-nightlife-budget.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dreamvacati.com/blog-is-japan-expensive.html</loc>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

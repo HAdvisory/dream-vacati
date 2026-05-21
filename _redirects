@@ -31,7 +31,7 @@
 /blog-best-time-japan/          /blog-best-time-japan.html          301
 /blog-best-time-maldives/       /blog-best-time-maldives.html       301
 /blog-elmo/                     /blog-elmo.html                     301
-/blog-starbucks/                /blog-starbucks.html                301
+# /blog-starbucks/ — REMOVED: blog-starbucks.html does not exist; this was generating live 404s in GSC.
 
 # Catch-all 404 → custom 404 page (must be last)
 /*    /404.html   404
