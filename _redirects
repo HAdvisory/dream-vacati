@@ -2,7 +2,8 @@
 # Handles legacy URL patterns that appear as 404s in Google Search Console.
 # Format: old-path  new-path  status-code
 
-# HTTP → HTTPS and non-www → www are handled automatically by Netlify/host.
+# HTTP → HTTPS is handled automatically by Netlify. www → non-www redirect is
+# handled by Netlify's primary domain setting (dreamvacati.com is primary).
 # These rules catch renamed or reorganised page paths.
 
 # Common old slugs that may have been crawled under different names
