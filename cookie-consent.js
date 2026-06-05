@@ -7,6 +7,10 @@
   function setConsent(value) {
     try {
       localStorage.setItem(CONSENT_KEY, value);
+      if (typeof gtag === 'function') {
+        var granted = value === 'accepted' ? 'granted' : 'denied';
+        gtag('consent', 'update', {'ad_storage': granted, 'analytics_storage': granted});
+      }
       var banner = document.getElementById('dv-cookie-banner');
       if (banner) banner.style.display = 'none';
     } catch (err) {

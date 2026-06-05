@@ -98,6 +98,9 @@
 
     panel.style.display = 'block';
     panel.innerHTML = buildDestinationCard(dest, true);
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'destination_lookup', {event_category: 'tools', event_label: dest.id, destination_name: dest.name});
+    }
   }
 
   function clearSingleResult() {
@@ -139,6 +142,9 @@
     }
 
     renderFilterResults(results);
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'destination_comparison', {event_category: 'tools', event_label: 'best_time_filter', result_count: results.length});
+    }
   }
 
   function renderFilterResults(results) {

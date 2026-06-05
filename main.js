@@ -59,6 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       // Show CTA after generating list
       if (ctaEl && items.length > 0) ctaEl.style.display = 'block';
+      if (items.length > 0 && typeof gtag !== 'undefined') {
+        gtag('event', 'tool_used', {event_category: 'tools', event_label: 'packing_checklist', destination_type: dest, season: season});
+      }
     });
   }
 
@@ -85,6 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (remaining) remaining.textContent = Math.max(total - used, 0);
     }
     totalInput.addEventListener('input', updateBudget);
+    totalInput.addEventListener('input', function () {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'tool_used', {event_category: 'tools', event_label: 'budget_calculator'});
+      }
+    }, {once: true});
     sliders.forEach(s => s.addEventListener('input', updateBudget));
     updateBudget();
   }
