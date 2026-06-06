@@ -114,6 +114,7 @@
           const data = await res.json().catch(() => ({}));
           if (!data.duplicate && typeof gtag !== 'undefined') {
             gtag('event', 'newsletter_signup', {event_category: 'engagement', event_label: pageSource()});
+            gtag('event', 'conversion', {'send_to': 'AW-10993996478/y0s5CID92I0ZEL6lrPoo'});
           }
           setState(form, data.duplicate ? 'duplicate' : 'success');
         } else {

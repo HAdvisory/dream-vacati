@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10993996478"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-10993996478');
+</script>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tourism Demand Index 2026 — Crowd &amp; Budget Pressure by Destination | DreamVacati</title>
+  <meta name="description" content="Compare crowd pressure and budget demand for 30 top destinations. Filter by region, tourism level, and traveler type to find destinations before they peak.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dreamvacati.com/tourism-demand-index.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tourism Demand Index 2026 — Crowd &amp; Budget Pressure by Destination">
+  <meta property="og:description" content="See which destinations are rising, stable, or cooling — with real crowd scores and budget pressure ratings for 30 top destinations worldwide.">
+  <meta property="og:url" content="https://dreamvacati.com/tourism-demand-index.html">
+  <meta property="og:site_name" content="DreamVacati">
+  <meta property="og:image" content="https://dreamvacati.com/images/og/og-default.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tourism Demand Index 2026 — Crowd &amp; Budget Pressure by Destination">
+  <meta name="twitter:description" content="30 destinations ranked by crowd and budget pressure. Rising, stable, or cooling — see where to go before the crowds arrive.">
+  <meta name="twitter:image" content="https://dreamvacati.com/images/og/og-default.svg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Tourism Demand Index 2026 — DreamVacati",
+    "description": "Interactive tool comparing crowd pressure and budget demand scores for 30 global destinations. Filter by region, tourism level, trend, and traveler type.",
+    "url": "https://dreamvacati.com/tourism-demand-index.html",
+    "publisher": {"@type": "Organization", "name": "DreamVacati"},
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "Tourism Demand Index",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "Web",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+      "description": "Compare 30 global destinations by tourism volume, crowd pressure, and budget demand. Filter by region, traveler type, and trend direction."
+    }
+  }
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css?v=3">
+  <link rel="stylesheet" href="footer-global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-44K7KCF676"></script>
+  <script defer src="/ga-init.js"></script>
+  <script defer src="/meta-pixel-init.js"></script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=466481928545738&ev=PageView&noscript=1"/></noscript>
+
+  <style>
+    /* ── Hero ────────────────────────────────────────────────── */
+    .tdi-hero {
+      background: linear-gradient(135deg, #03045E 0%, #0a4fa0 45%, #0b95a5 80%, #2EC4B6 100%);
+      padding: 64px 20px 72px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .tdi-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0; height: 56px;
+      background: linear-gradient(to top, #f0f9ff, transparent);
+      pointer-events: none;
+    }
+    .tdi-hero h1 { font-weight: 800; margin-bottom: .5rem; }
+    .tdi-hero-sub { opacity: .85; max-width: 600px; margin: 0 auto 1.75rem; font-size: 1.05rem; }
+    .tdi-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 30px;
+      padding: 6px 18px;
+      font-size: .82rem;
+      color: rgba(255,255,255,.85);
+      backdrop-filter: blur(8px);
+      margin: 4px;
+    }
+
+    /* ── Legend bar ─────────────────────────────────────────── */
+    .tdi-legend {
+      background: #fff;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 12px 0;
+    }
+    .tdi-legend-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+      font-size: .8rem;
+      color: #64748b;
+    }
+    .tdi-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+    .tdi-legend-dot {
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    /* ── Controls ───────────────────────────────────────────── */
+    .tdi-controls {
+      background: #fff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 20px 0;
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(3,4,94,.06);
+    }
+    .tdi-controls-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .tdi-select, .tdi-search-input {
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: .88rem;
+      color: #334155;
+      background: #fff;
+      transition: border-color .15s;
+      height: 40px;
+    }
+    .tdi-select:focus, .tdi-search-input:focus {
+      border-color: var(--action-teal, #2EC4B6);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(46,196,182,.15);
+    }
+    .tdi-search-input { min-width: 180px; }
+    .tdi-reset-btn {
+      background: transparent;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: #64748b;
+      cursor: pointer;
+      height: 40px;
+      transition: all .15s;
+    }
+    .tdi-reset-btn:hover { border-color: #94a3b8; color: #334155; }
+    .tdi-count-label {
+      margin-left: auto;
+      font-size: .82rem;
+      color: #94a3b8;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* ── Result grid ────────────────────────────────────────── */
+    .tdi-results-wrap { background: #f0f9ff; padding: 2rem 0 3rem; min-height: 400px; }
+    .tdi-empty {
+      text-align: center;
+      color: #64748b;
+      padding: 3rem 0;
+      font-size: .95rem;
+    }
+
+    /* ── Destination card ───────────────────────────────────── */
+    .tdi-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 16px rgba(3,4,94,.07);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .tdi-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(3,4,94,.13);
+    }
+    .tdi-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: .75rem;
+      margin-bottom: .75rem;
+    }
+    .tdi-card-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #03045E;
+      margin: 0 0 .2rem;
+    }
+    .tdi-card-subtitle {
+      font-size: .78rem;
+      color: #64748b;
+      margin: 0;
+    }
+    .tdi-badges {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .tdi-badge, .tdi-trend {
+      display: inline-block;
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: .72rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    /* Level badges */
+    .tdi-badge--low      { background: #d1fae5; color: #065f46; }
+    .tdi-badge--medium   { background: #fef9c3; color: #713f12; }
+    .tdi-badge--high     { background: #ffedd5; color: #9a3412; }
+    .tdi-badge--veryhigh { background: #fee2e2; color: #991b1b; }
+    /* Trend badges */
+    .tdi-trend--rising   { background: #ffe4e6; color: #9f1239; }
+    .tdi-trend--stable   { background: #f1f5f9; color: #475569; }
+    .tdi-trend--cooling  { background: #dbeafe; color: #1e40af; }
+
+    .tdi-arrivals {
+      font-size: .8rem;
+      color: #94a3b8;
+      font-weight: 600;
+      margin: 0 0 .9rem;
+    }
+
+    /* Score bars */
+    .tdi-scores { margin-bottom: 1rem; }
+    .tdi-score-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .tdi-score-label {
+      font-size: .76rem;
+      color: #475569;
+      font-weight: 600;
+      min-width: 108px;
+    }
+    .tdi-score-bar-track {
+      flex: 1;
+      height: 8px;
+      background: #f1f5f9;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .tdi-score-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      transition: width .4s ease;
+    }
+    .tdi-score-num {
+      font-size: .76rem;
+      font-weight: 700;
+      color: #475569;
+      min-width: 30px;
+      text-align: right;
+    }
+
+    /* Best months */
+    .tdi-best-months {
+      margin-bottom: .7rem;
+    }
+    .tdi-section-label {
+      font-size: .72rem;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .tdi-month-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .tdi-month-chip {
+      background: #e0f2fe;
+      color: #0369a1;
+      border-radius: 20px;
+      padding: 2px 9px;
+      font-size: .72rem;
+      font-weight: 600;
+    }
+    .tdi-month-chip--none { background: #f1f5f9; color: #94a3b8; }
+
+    /* Traveler chips */
+    .tdi-traveler-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: .75rem;
+    }
+    .tdi-traveler-chip {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      border-radius: 20px;
+      padding: 2px 9px;
+      font-size: .72rem;
+      font-weight: 600;
+    }
+
+    /* Notes */
+    .tdi-notes {
+      font-size: .83rem;
+      color: #475569;
+      line-height: 1.55;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    /* CTA link */
+    .tdi-card-cta {
+      margin-top: .9rem;
+      padding-top: .75rem;
+      border-top: 1px solid #f1f5f9;
+    }
+    .tdi-cta-link {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--action-teal, #2EC4B6);
+      text-decoration: none;
+    }
+    .tdi-cta-link:hover { text-decoration: underline; }
+
+    /* ── Related tools callout ──────────────────────────────── */
+    .tdi-related-tile {
+      display: block;
+      padding: .9rem 1.1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      background: #f0fdfa;
+      border: 1px solid #a7f3d0;
+      transition: background .15s;
+    }
+    .tdi-related-tile:hover { background: #d1fae5; }
+
+    /* ── Error ───────────────────────────────────────────────── */
+    #tdi-error {
+      display: none;
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: .9rem;
+      margin: 1.5rem 0 0;
+    }
+
+    @media (max-width: 576px) {
+      .tdi-controls-inner { flex-direction: column; align-items: stretch; }
+      .tdi-count-label { margin-left: 0; }
+      .tdi-select, .tdi-search-input { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:var(--deep-navy,#03045E)">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#03045E" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+          <path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="26" cy="6" r="2.5" fill="#0077B6"/>
+        </svg>
+        <strong>DreamVacati</strong>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="seasonal-recommendations.html">Destination Finder</a></li>
+          <li class="nav-item"><a class="nav-link active" href="tools.html">Travel Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Guides</a></li>
+          <li class="nav-item"><a class="nav-link" href="best-time.html">Best Time to Visit</a></li>
+          <li class="nav-item ms-lg-2">
+            <a href="book-now.html" class="nav-cta-btn nav-link">Plan a Trip &rarr;</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ══════════════════════════════════════════════════ -->
+  <header class="tdi-hero">
+    <div class="container">
+      <div class="mb-3">
+        <span class="tdi-hero-badge">&#128200; Data Tool</span>
+        <span class="tdi-hero-badge">&#127758; 30 Destinations</span>
+        <span class="tdi-hero-badge">&#9989; No Signup Required</span>
+      </div>
+      <h1 class="display-5">Tourism Demand Index</h1>
+      <p class="tdi-hero-sub">See which destinations are rising in popularity, which are cooling, and how crowd and budget pressure compare — before you book.</p>
+      <a href="#tdi-tool" class="btn btn-light btn-lg fw-bold px-4" style="border-radius:30px;color:#03045E">
+        Explore Destinations &darr;
+      </a>
+    </div>
+  </header>
+
+  <!-- ══ SCORE LEGEND ══════════════════════════════════════════ -->
+  <div class="tdi-legend">
+    <div class="container">
+      <div class="tdi-legend-inner">
+        <span style="font-weight:700;color:#475569;font-size:.8rem">Score guide:</span>
+        <span class="tdi-legend-item"><span class="tdi-legend-dot" style="background:#2EC4B6"></span>Low (1–3)</span>
+        <span class="tdi-legend-item"><span class="tdi-legend-dot" style="background:#f4a261"></span>Moderate (4–6)</span>
+        <span class="tdi-legend-item"><span class="tdi-legend-dot" style="background:#e76f51"></span>High (7–8)</span>
+        <span class="tdi-legend-item"><span class="tdi-legend-dot" style="background:#d62828"></span>Very High (9–10)</span>
+        <span style="font-size:.76rem;color:#94a3b8;margin-left:auto">Scores reflect mid-range traveler conditions</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FILTER CONTROLS ══════════════════════════════════════ -->
+  <div class="tdi-controls" id="tdi-tool">
+    <div class="container">
+      <div id="tdi-error"></div>
+      <div class="tdi-controls-inner">
+
+        <input type="search" id="tdi-search" class="tdi-search-input" placeholder="&#128269; Search destination…" aria-label="Search destinations">
+
+        <select id="tdi-region" class="tdi-select" aria-label="Filter by region">
+          <option value="">All Regions</option>
+        </select>
+
+        <select id="tdi-level" class="tdi-select" aria-label="Filter by tourism level">
+          <option value="">All Levels</option>
+          <option value="low">Low Tourism</option>
+          <option value="medium">Moderate Tourism</option>
+          <option value="high">High Tourism</option>
+          <option value="very-high">Very High Tourism</option>
+        </select>
+
+        <select id="tdi-trend" class="tdi-select" aria-label="Filter by trend">
+          <option value="">All Trends</option>
+          <option value="rising">Rising ↑</option>
+          <option value="stable">Stable →</option>
+          <option value="cooling">Cooling ↓</option>
+        </select>
+
+        <select id="tdi-traveler" class="tdi-select" aria-label="Filter by traveler type">
+          <option value="">All Traveler Types</option>
+          <option value="solo">Solo</option>
+          <option value="couples">Couples</option>
+          <option value="families">Families</option>
+          <option value="budget">Budget</option>
+          <option value="luxury">Luxury</option>
+          <option value="adventure">Adventure</option>
+          <option value="culture">Culture</option>
+          <option value="honeymoon">Honeymoon</option>
+          <option value="photography">Photography</option>
+        </select>
+
+        <select id="tdi-sort" class="tdi-select" aria-label="Sort results">
+          <option value="crowd-asc">Least Crowded First</option>
+          <option value="crowd-desc">Most Crowded First</option>
+          <option value="budget-asc">Lowest Budget Pressure</option>
+          <option value="budget-desc">Highest Budget Pressure</option>
+          <option value="arrivals-desc">Most Visited</option>
+          <option value="arrivals-asc">Least Visited</option>
+          <option value="az">A – Z</option>
+        </select>
+
+        <button id="tdi-reset" class="tdi-reset-btn" type="button">Reset</button>
+
+        <span class="tdi-count-label"><span id="tdi-count">30 destinations</span></span>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ RESULTS GRID ══════════════════════════════════════════ -->
+  <section class="tdi-results-wrap" aria-live="polite">
+    <div class="container">
+      <div class="row g-4" id="tdi-results"></div>
+    </div>
+  </section>
+
+  <!-- ══ ADSENSE ════════════════════════════════════════════════ -->
+  <div class="container my-4" style="max-width:860px">
+    <p class="text-muted text-center mb-1" style="font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8">Advertisement</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8978658918402683" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8978658918402683"
+         data-ad-slot="9149500460"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
+  <!-- ══ METHODOLOGY ════════════════════════════════════════════ -->
+  <section class="py-5" style="background:#fff">
+    <div class="container" style="max-width:780px">
+      <h2 class="mb-3" style="color:#03045E;font-size:1.35rem;font-weight:800">How We Score Destinations</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="p-3 rounded-3" style="background:#f0f9ff;border:1px solid #bae6fd">
+            <div class="fw-bold mb-1" style="color:#0369a1">&#128101; Crowd Pressure (1–10)</div>
+            <p class="small text-muted mb-0">Reflects actual in-person crowd density at attractions, beaches, and transport hubs. A 1 means you'll have places to yourself; a 10 means shoulder-to-shoulder queues and sold-out hotels months ahead.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-3 rounded-3" style="background:#f0fdf4;border:1px solid #bbf7d0">
+            <div class="fw-bold mb-1" style="color:#166534">&#128176; Budget Pressure (1–10)</div>
+            <p class="small text-muted mb-0">Reflects realistic daily spend for a mid-range traveler including accommodation, meals, and activities. A 1 means low-cost living; a 10 means premium prices with limited budget options.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-3 rounded-3" style="background:#fef9c3;border:1px solid #fde68a">
+            <div class="fw-bold mb-1" style="color:#713f12">&#128200; Trend Direction</div>
+            <p class="small text-muted mb-0"><strong>Rising</strong> = growing fast, prices increasing. <strong>Stable</strong> = steady demand and pricing. <strong>Cooling</strong> = easing crowds or softening prices — often a window of opportunity.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-3 rounded-3" style="background:#fdf4ff;border:1px solid #e9d5ff">
+            <div class="fw-bold mb-1" style="color:#6b21a8">&#128203; Annual Arrivals</div>
+            <p class="small text-muted mb-0">International tourist arrivals in millions per year (pre-pandemic baseline adjusted for 2025–26 recovery trends). Used to contextualize crowd and pricing scores.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ RELATED TOOLS ══════════════════════════════════════════ -->
+  <section class="py-4" style="background:#f8fafc;border-top:1px solid #f1f5f9">
+    <div class="container">
+      <p class="fw-bold mb-3" style="font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:#94a3b8">Related Tools &amp; Guides</p>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <a href="best-time.html" class="tdi-related-tile">
+            <div class="fw-bold text-dark">&#11088; Best Time to Visit</div>
+            <div class="small text-muted">12-month seasonal calendars for 22 destinations — peak, shoulder, and months to avoid</div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="seasonal-recommendations.html" class="tdi-related-tile">
+            <div class="fw-bold text-dark">&#127759; Seasonal Destination Finder</div>
+            <div class="small text-muted">Find the best destination for your travel month, budget, and trip style</div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="tools.html" class="tdi-related-tile">
+            <div class="fw-bold text-dark">&#128200; All Planning Tools</div>
+            <div class="small text-muted">Budget calculator, packing checklist, itinerary builder, and more</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PLANNING CONTINUATION ════════════════════════════════ -->
+  <div style="background:#f8fafc;border-top:1px solid #e2e8f0;padding:2rem 0;">
+    <div class="container" style="max-width:860px">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+        <div>
+          <p style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#2EC4B6;margin:0 0 .25rem">Ready to Book?</p>
+          <p style="font-size:1rem;font-weight:700;color:#03045E;margin:0 0 .2rem">Turn your research into a trip</p>
+          <p style="font-size:.85rem;color:#64748b;margin:0">Get a full personalized itinerary — day-by-day schedule, budget, packing list, and hotel suggestions.</p>
+        </div>
+        <a href="book-now.html" style="background:#03045E;color:#fff;padding:10px 22px;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap;flex-shrink:0">Start My Trip Plan &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="dv-cookie-banner" role="region" aria-label="Cookie consent" style="position:fixed;bottom:0;left:0;width:100%;background:#1a1a2e;color:#e2e8f0;padding:14px 24px;display:none;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;z-index:9999;font-size:.9rem;border-top:2px solid #0A7E8C;">
+    <span>We use cookies for analytics and advertising. <a href="/privacy.html" style="color:#2EC4B6;text-decoration:underline;">Privacy Policy</a></span>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button id="dv-cookie-accept" type="button" style="background:#0A7E8C;color:#fff;border:none;padding:8px 20px;border-radius:6px;font-weight:600;font-size:.88rem;cursor:pointer;white-space:nowrap;">Accept &amp; Continue</button>
+      <button id="dv-cookie-decline" type="button" style="background:transparent;color:#a0aec0;border:1px solid #4a5568;padding:8px 18px;border-radius:6px;font-size:.88rem;cursor:pointer;">Decline</button>
+    </div>
+  </div>
+  <script src="/cookie-consent.js"></script>
+
+  <footer class="dv-footer-global" aria-label="Site footer">
+    <div class="dfg-inner">
+      <div class="dfg-grid">
+
+        <div>
+          <a href="index.html" class="dfg-logo" aria-label="DreamVacati home">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#03045E" stroke="rgba(255,255,255,.15)" stroke-width="1"/><path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="26" cy="6" r="2.5" fill="#0077B6"/></svg>
+            DreamVacati
+          </a>
+          <p class="dfg-tagline">Travel planning tools, destination guides, and trip-planning resources for smarter trips.</p>
+        </div>
+
+        <div>
+          <div class="dfg-col-heading">Explore</div>
+          <ul class="dfg-links">
+            <li><a href="blog.html">Destination Guides</a></li>
+            <li><a href="tools.html">Travel Tools</a></li>
+            <li><a href="best-time.html">Best Time to Visit</a></li>
+            <li><a href="travel-map.html">Travel Map</a></li>
+            <li><a href="tourism-demand-index.html">Tourism Demand Index</a></li>
+            <li><a href="seasonal-recommendations.html">Destination Finder</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="dfg-col-heading">Company</div>
+          <ul class="dfg-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="about.html#affiliate">Affiliate Disclosure</a></li>
+          </ul>
+        </div>
+
+        <div class="dfg-newsletter-col">
+          <div class="dfg-col-heading">Stay Updated</div>
+          <p class="dfg-newsletter-desc">Destination ideas, seasonal tips, and planning guides — straight to your inbox.</p>
+          <form class="dfg-form" action="#" method="post" novalidate data-dv-signup>
+            <input type="email" name="EMAIL" placeholder="Enter your email" required aria-label="Email address">
+            <div style="position:absolute;left:-5000px" aria-hidden="true">
+              <input type="text" name="b_72806d79d56746ac091d7015d_6a7f76b512a742247cfc7630b" tabindex="-1" value="">
+            </div>
+            <button type="submit">Get Travel Tips</button>
+          </form>
+          <p class="dfg-legal">Occasional travel tips and destination ideas. Unsubscribe anytime.</p>
+        </div>
+
+      </div>
+      <hr class="dfg-divider">
+      <div class="dfg-bottom">
+        <p>&copy; 2026 DreamVacati. All rights reserved.</p>
+        <div class="dfg-bottom-links">
+          <a href="index.html">Home</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="about.html">About</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/tourism-demand-data.js"></script>
+  <script src="js/tourism-demand-index.js"></script>
+  <script src="/adsense-push.js"></script>
+  <script src="js/email-capture.js"></script>
+</body>
+</html>
