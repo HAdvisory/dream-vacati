@@ -39,6 +39,32 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- World Cup 2026 Travel Planning Hub -->
+  <url>
+    <loc>https://dreamvacati.com/world-cup-2026-travel-guide.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://dreamvacati.com/world-cup-2026-atlanta.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dreamvacati.com/world-cup-2026-travel-budget.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dreamvacati.com/world-cup-trip-cost-calculator.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <url>
     <loc>https://dreamvacati.com/about.html</loc>
     <lastmod>2026-05-05</lastmod>
