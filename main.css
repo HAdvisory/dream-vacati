@@ -722,3 +722,65 @@ h1, h2, h3, h4, h5, h6,
   .btt-hero h1, .btt-hero p { color: #1e293b !important; }
   body { font-size: .85rem; }
 }
+
+/* ══ Destination map highlight component ════════════════════
+   Powers [data-dv-map] elements via js/dv-map-highlight.js.
+   Background is dark navy — matches the SVG ocean gradient.
+   ═══════════════════════════════════════════════════════════ */
+.dv-map-block {
+  margin: 2rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0a1628;
+  line-height: 0;
+}
+.dv-map-block [data-dv-map] {
+  display: block;
+  width: 100%;
+}
+/* Per-region aspect-ratio — matches viewBox dimensions exactly, eliminates CLS.
+   Each value mirrors the width/height in REGIONS{} in dv-map-highlight.js. */
+[data-dv-map][data-region="caribbean"]      { aspect-ratio: 195 / 110; }
+[data-dv-map][data-region="east-asia"]      { aspect-ratio: 220 / 185; }
+[data-dv-map][data-region="europe"]         { aspect-ratio: 275 / 215; }
+[data-dv-map][data-region="mediterranean"]  { aspect-ratio: 200 / 155; }
+[data-dv-map][data-region="southeast-asia"] { aspect-ratio: 230 / 205; }
+[data-dv-map][data-region="south-asia"]     { aspect-ratio: 195 / 185; }
+[data-dv-map][data-region="oceania"]        { aspect-ratio: 230 / 215; }
+[data-dv-map][data-region="north-america"]  { aspect-ratio: 355 / 265; }
+[data-dv-map][data-region="central-america"]{ aspect-ratio: 210 / 165; }
+[data-dv-map][data-region="north-africa"]   { aspect-ratio: 240 / 185; }
+[data-dv-map][data-region="middle-east"]    { aspect-ratio: 185 / 165; }
+[data-dv-map][data-region="world"]          { aspect-ratio: 1008 / 651; }
+.dv-map-block svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.dv-map-caption {
+  background: #0a1628;
+  padding: 5px 12px 8px;
+  font-size: .72rem;
+  color: rgba(255,255,255,.4);
+  text-align: center;
+  line-height: 1.5;
+}
+.dv-map-caption a {
+  color: rgba(46,196,182,.85);
+  text-decoration: none;
+  font-weight: 600;
+}
+.dv-map-caption a:hover { color: #2EC4B6; }
+.dv-map-error {
+  padding: 2rem;
+  text-align: center;
+  color: rgba(255,255,255,.3);
+  font-size: .8rem;
+  font-style: italic;
+}
+@media (max-width: 575px) {
+  .dv-map-block {
+    border-radius: 8px;
+    margin: 1.25rem 0;
+  }
+}
