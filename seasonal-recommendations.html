@@ -17,6 +17,9 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://dreamvacati.com/seasonal-recommendations.html">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="When Should I Travel? Seasonal Destination Finder | DreamVacati">
@@ -31,11 +34,12 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
+    "@type": "SoftwareApplication",
     "name": "DreamVacati Seasonal Destination Finder",
     "url": "https://dreamvacati.com/seasonal-recommendations.html",
-    "description": "A free interactive tool that recommends travel destinations based on month, budget, and travel style.",
+    "description": "A free interactive tool that recommends travel destinations based on travel month, budget tier, and trip style. Filter by beach, culture, adventure, romance, family, or luxury travel across 30+ global destinations.",
     "applicationCategory": "TravelApplication",
+    "operatingSystem": "Web",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "publisher": { "@type": "Organization", "name": "DreamVacati", "url": "https://dreamvacati.com" }
   }
@@ -178,7 +182,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:var(--deep-navy,#03045E)">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="/">
         <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
           <rect width="32" height="32" rx="7" fill="#03045E"/>
           <path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -191,7 +195,7 @@
       </button>
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
           <li class="nav-item"><a class="nav-link active" href="seasonal-recommendations.html">Destination Finder</a></li>
           <li class="nav-item"><a class="nav-link" href="tools.html">Travel Tools</a></li>
           <li class="nav-item"><a class="nav-link" href="blog.html">Guides</a></li>
@@ -207,7 +211,7 @@
     <p>Select your travel month, budget, and trip style — get instant destination recommendations based on real seasonal data.</p>
   </header>
 
-  <main class="container py-5" style="max-width:940px">
+  <main class="container py-5" style="max-width:940px" data-dv-tool="seasonal_recommendations">
 
     <!-- Filters -->
     <div class="filter-card">
@@ -276,6 +280,9 @@
         <p class="mb-3" style="font-size:.84rem;color:#475569">Estimate your total trip cost, check entry requirements, and build a packing list — all free, no sign-up needed.</p>
         <div class="d-flex gap-2 flex-wrap">
           <a href="tools.html#tool-budget" class="btn btn-sm fw-bold" style="background:#03045E;color:#fff;border:none">Budget Calculator &rarr;</a>
+          <a href="best-time.html" class="btn btn-sm btn-outline-secondary">&#128197; Best Time to Visit</a>
+          <a href="tourism-demand-index.html" class="btn btn-sm btn-outline-secondary">&#128201; Crowd Levels</a>
+          <a href="world-cup-trip-cost-calculator.html" class="btn btn-sm btn-outline-secondary">&#9917; World Cup Budget</a>
           <a href="tools.html#tool-requirements" class="btn btn-sm btn-outline-secondary">Entry Requirements</a>
           <a href="tools.html#tool-packing" class="btn btn-sm btn-outline-secondary">Packing Checklist</a>
           <a href="saved-trips.html" class="btn btn-sm btn-outline-secondary">&#10084; Saved Trips</a>
@@ -297,10 +304,41 @@
       </div>
     </section>
 
+    <!-- Destination cluster links — shown below tool info -->
+    <section class="mb-4">
+      <p class="fw-bold mb-3" style="font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:#94a3b8">Popular Destination Guides</p>
+      <div class="row g-2">
+        <div class="col-6 col-md-3">
+          <a href="jamaica-travel-guide.html" class="d-block p-3 rounded-3 text-decoration-none h-100" style="background:#f0fdf4;border:1px solid #bbf7d0">
+            <div class="fw-bold text-dark" style="font-size:.88rem">&#127471;&#127474; Jamaica Travel Guide</div>
+            <div class="small text-muted mt-1">Best time, resorts, 5-day itinerary</div>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a href="japan-travel-guide.html" class="d-block p-3 rounded-3 text-decoration-none h-100" style="background:#fff0f0;border:1px solid #fca5a5">
+            <div class="fw-bold text-dark" style="font-size:.88rem">&#127470;&#127477; Japan Travel Guide</div>
+            <div class="small text-muted mt-1">Budgets, transport, Tokyo vs Osaka</div>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a href="caribbean-travel-guide.html" class="d-block p-3 rounded-3 text-decoration-none h-100" style="background:#f0f9ff;border:1px solid #bae6fd">
+            <div class="fw-bold text-dark" style="font-size:.88rem">&#127796; Caribbean Travel Guide</div>
+            <div class="small text-muted mt-1">Island comparison, best beaches</div>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a href="best-time-greece.html" class="d-block p-3 rounded-3 text-decoration-none h-100" style="background:#fefce8;border:1px solid #fde68a">
+            <div class="fw-bold text-dark" style="font-size:.88rem">&#127468;&#127479; Best Time to Visit Greece</div>
+            <div class="small text-muted mt-1">Month-by-month weather &amp; crowds</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Ad — below all tool content and planner CTAs -->
     <div class="my-4">
       <p class="text-muted text-center mb-1" style="font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8">Advertisement</p>
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978658918402683" data-ad-slot="9149500460" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-8978658918402683" data-ad-slot="9149500460" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
 
   </main>
@@ -481,7 +519,7 @@
       tagline: 'Ancient history, island variety, strong value in spring and autumn',
       season_note: 'Apr–Jun & Sep–Oct best; skip Aug peak crowds',
       reason: 'Mild hiking temperatures, open archaeological sites, and hotel rates well below the July–August peak.',
-      link: 'blog-best-time-greece.html'
+      link: 'best-time-greece.html'
     },
     {
       name: 'Japan',
@@ -742,7 +780,7 @@
       <div class="dfg-grid">
 
         <div>
-          <a href="index.html" class="dfg-logo" aria-label="DreamVacati home">
+          <a href="/" class="dfg-logo" aria-label="DreamVacati home">
             <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#03045E" stroke="rgba(255,255,255,.15)" stroke-width="1"/><path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="26" cy="6" r="2.5" fill="#0077B6"/></svg>
             DreamVacati
           </a>
@@ -788,7 +826,7 @@
       <div class="dfg-bottom">
         <p>&copy; 2026 DreamVacati. All rights reserved.</p>
         <div class="dfg-bottom-links">
-          <a href="index.html">Home</a>
+          <a href="/">Home</a>
           <a href="privacy.html">Privacy</a>
           <a href="about.html">About</a>
         </div>
@@ -796,6 +834,7 @@
     </div>
   </footer>
 
+<script src="js/dv-analytics.js"></script>
 <script src="js/email-capture.js"></script>
 <script src="/adsense-push.js"></script>
 </body>

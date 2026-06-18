@@ -16,6 +16,9 @@
   <meta name="description" content="Compare crowd pressure and budget demand for 30 top destinations. Filter by region, tourism level, and traveler type to find destinations before they peak.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://dreamvacati.com/tourism-demand-index.html">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Tourism Demand Index 2026 — Crowd &amp; Budget Pressure by Destination">
@@ -382,7 +385,7 @@
   <!-- Nav -->
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:var(--deep-navy,#03045E)">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="/">
         <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect width="32" height="32" rx="7" fill="#03045E" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
           <path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -395,7 +398,7 @@
       </button>
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="seasonal-recommendations.html">Destination Finder</a></li>
           <li class="nav-item"><a class="nav-link active" href="tools.html">Travel Tools</a></li>
           <li class="nav-item"><a class="nav-link" href="blog.html">Guides</a></li>
@@ -456,7 +459,7 @@
   </div>
 
   <!-- ══ FILTER CONTROLS ══════════════════════════════════════ -->
-  <div class="tdi-controls" id="tdi-tool">
+  <div class="tdi-controls" id="tdi-tool" data-dv-tool="tourism_demand_index">
     <div class="container">
       <div id="tdi-error"></div>
       <div class="tdi-controls-inner">
@@ -594,6 +597,36 @@
             <div class="small text-muted">All 13 host cities ranked by crowd pressure, budget, and transit — with city-by-city cost breakdowns</div>
           </a>
         </div>
+        <div class="col-md-4">
+          <a href="jamaica-travel-guide.html" class="tdi-related-tile" style="border-left:3px solid #006B3F">
+            <div class="fw-bold text-dark">&#127471;&#127474; Jamaica Travel Guide</div>
+            <div class="small text-muted">Complete planning guide — best time, resorts, Montego Bay vs Negril, itinerary, and honest budgets</div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="japan-travel-guide.html" class="tdi-related-tile" style="border-left:3px solid #bc002d">
+            <div class="fw-bold text-dark">&#127470;&#127477; Japan Travel Guide</div>
+            <div class="small text-muted">Full planning resource for Japan — budgets, transport, food, Tokyo neighborhoods, and seasonal timing</div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="caribbean-travel-guide.html" class="tdi-related-tile" style="border-left:3px solid #0077B6">
+            <div class="fw-bold text-dark">&#127796; Caribbean Travel Guide</div>
+            <div class="small text-muted">Island-by-island comparison across budget, beach quality, family suitability, and crowd levels</div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="world-cup-trip-cost-calculator.html" class="tdi-related-tile" style="border-left:3px solid #D97706">
+            <div class="fw-bold text-dark">&#9917; World Cup Trip Cost Calculator</div>
+            <div class="small text-muted">Estimate your 2026 World Cup budget by host city, hotel tier, nights, and group size</div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="destination-comparison.html" class="tdi-related-tile" style="border-left:3px solid #7c3aed">
+            <div class="fw-bold text-dark">&#9878;&#65039; Compare Two Destinations</div>
+            <div class="small text-muted">Side-by-side comparison of cost, crowd level, best season, and traveler fit for any two destinations</div>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -626,7 +659,7 @@
       <div class="dfg-grid">
 
         <div>
-          <a href="index.html" class="dfg-logo" aria-label="DreamVacati home">
+          <a href="/" class="dfg-logo" aria-label="DreamVacati home">
             <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#03045E" stroke="rgba(255,255,255,.15)" stroke-width="1"/><path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="26" cy="6" r="2.5" fill="#0077B6"/></svg>
             DreamVacati
           </a>
@@ -672,7 +705,7 @@
       <div class="dfg-bottom">
         <p>&copy; 2026 DreamVacati. All rights reserved.</p>
         <div class="dfg-bottom-links">
-          <a href="index.html">Home</a>
+          <a href="/">Home</a>
           <a href="privacy.html">Privacy</a>
           <a href="about.html">About</a>
         </div>
@@ -683,6 +716,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/tourism-demand-data.js"></script>
   <script src="js/tourism-demand-index.js"></script>
+  <script src="js/dv-analytics.js"></script>
   <script src="/adsense-push.js"></script>
   <script src="js/email-capture.js"></script>
 </body>

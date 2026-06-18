@@ -17,6 +17,9 @@
   <meta name="description" content="Find the best time to visit 22 destinations. Seasonal calendars show peak, shoulder, and months to avoid — for Caribbean, Europe, Asia, and the Pacific.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://dreamvacati.com/best-time.html">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -55,6 +58,79 @@
     "operatingSystem": "Web",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "publisher": { "@type": "Organization", "name": "DreamVacati" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "When is the best time to visit Japan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The best times to visit Japan are March to May (spring, cherry blossom season) and October to November (autumn foliage). Both windows offer mild weather and the country's most iconic scenery. Summer (June–August) is hot and humid with a rainy season in June. Winter is cold but uncrowded and less expensive outside of ski resorts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is the best time to visit Greece?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The best time to visit Greece is late April through June or September through October. These shoulder months offer warm, dry weather, fewer crowds than peak summer, and lower accommodation prices. July and August are hot (35°C+), very crowded on the islands, and the most expensive. The islands are largely closed from November through March."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is the best time to visit Jamaica?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The best time to visit Jamaica is December through April — Jamaica's dry season. Temperatures stay around 80–84°F (27–29°C) with low humidity and minimal rain. The core of hurricane season (August–October) carries real risk of tropical storms. May, November, and early December offer good value with fewer crowds and manageable weather."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is the best time to visit the Maldives?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The best time to visit the Maldives is November through April — the dry northeast monsoon season. This window brings calm seas, excellent visibility for snorkeling and diving, and minimal rainfall. May through October is the wet southwest monsoon season: prices drop significantly but expect rain, rougher seas, and reduced visibility underwater."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is shoulder season and why does it matter for travel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Shoulder season is the period between peak and off-season for a destination — typically spring and fall in Europe, and transitional months in tropical destinations. It matters because accommodation prices are 20–40% lower than peak, crowds are thinner, and weather is often still excellent. For most destinations, shoulder season represents the best overall value for travel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is the best time to visit Bali?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The best time to visit Bali is April through October — the dry season. July and August are peak season with higher prices and more crowds; April, May, and September offer dry weather with fewer tourists. November through March is the wet season: daily afternoon rain and occasional flooding, but significantly cheaper and still warm."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find out what month is best to visit a specific destination?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the Best Time to Visit tool on this page — select your destination from the dropdown to see a color-coded 12-month calendar showing best months (green), shoulder months (yellow), and months to avoid (red). You can also filter by month, region, budget level, and trip type to see which destinations are ideal for your specific travel window."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the cheapest time to travel internationally?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The cheapest time to travel internationally is generally shoulder season — the weeks immediately before and after peak season. For Europe, this means May to mid-June and September to October. For Caribbean destinations, it means May and late November. For Asia, it depends on the destination but often means avoiding Chinese New Year, cherry blossom season in Japan, and Diwali in India. Prices for flights and accommodation can be 30–50% lower in shoulder season versus peak."
+        }
+      }
+    ]
   }
   </script>
 
@@ -284,7 +360,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:var(--deep-navy,#03045E)">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="/">
         <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect width="32" height="32" rx="7" fill="#03045E"/>
           <path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -297,7 +373,7 @@
       </button>
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="seasonal-recommendations.html">Destination Finder</a></li>
           <li class="nav-item"><a class="nav-link active" href="tools.html">Travel Tools</a></li>
           <li class="nav-item"><a class="nav-link" href="blog.html">Guides</a></li>
@@ -346,7 +422,7 @@
     </div>
   </header>
 
-  <main class="container-xl py-5">
+  <main class="container-xl py-5" data-dv-tool="best_time_tool">
 
     <div id="btt-error"></div>
 
@@ -544,6 +620,20 @@
           <a href="best-time-greece.html" class="badge text-decoration-none py-2 px-3 rounded-pill" style="background:#0369a1;color:#fff;font-size:.85rem;">Best Time to Visit Greece</a>
           <a href="blog-best-time-japan.html" class="badge text-decoration-none py-2 px-3 rounded-pill" style="background:#0369a1;color:#fff;font-size:.85rem;">Best Time to Visit Japan</a>
           <a href="blog-best-time-maldives.html" class="badge text-decoration-none py-2 px-3 rounded-pill" style="background:#0369a1;color:#fff;font-size:.85rem;">Best Time to Visit the Maldives</a>
+          <a href="best-time-to-visit-jamaica.html" class="badge text-decoration-none py-2 px-3 rounded-pill" style="background:#0369a1;color:#fff;font-size:.85rem;">Best Time to Visit Jamaica</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- World Cup 2026 calculator CTA -->
+    <section class="mt-3 mb-3">
+      <div class="p-3 rounded-3" style="background:#fffbeb;border:1px solid #fde68a;">
+        <div class="fw-bold mb-1" style="color:#B45309;">&#9917; Planning a 2026 World Cup Trip?</div>
+        <p class="small text-muted mb-2">The tournament is underway — estimate your total budget by host city, hotel tier, and group size before remaining hotel prices spike further.</p>
+        <div class="d-flex flex-wrap gap-2 mt-2">
+          <a href="world-cup-trip-cost-calculator.html" class="badge text-decoration-none py-2 px-3 rounded-pill" style="background:#D97706;color:#fff;font-size:.85rem;">&#128200; World Cup Trip Cost Calculator</a>
+          <a href="seasonal-recommendations.html" class="badge text-decoration-none py-2 px-3 rounded-pill" style="background:#0369a1;color:#fff;font-size:.85rem;">&#127759; Find a Destination by Month</a>
+          <a href="world-cup-2026-travel-guide.html" class="badge text-decoration-none py-2 px-3 rounded-pill" style="background:#15803D;color:#fff;font-size:.85rem;">All 13 Host Cities</a>
         </div>
       </div>
     </section>
@@ -570,7 +660,7 @@
       <div class="dfg-grid">
 
         <div>
-          <a href="index.html" class="dfg-logo" aria-label="DreamVacati home">
+          <a href="/" class="dfg-logo" aria-label="DreamVacati home">
             <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#03045E" stroke="rgba(255,255,255,.15)" stroke-width="1"/><path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="26" cy="6" r="2.5" fill="#0077B6"/></svg>
             DreamVacati
           </a>
@@ -616,7 +706,7 @@
       <div class="dfg-bottom">
         <p>&copy; 2026 DreamVacati. All rights reserved.</p>
         <div class="dfg-bottom-links">
-          <a href="index.html">Home</a>
+          <a href="/">Home</a>
           <a href="privacy.html">Privacy</a>
           <a href="about.html">About</a>
         </div>
@@ -624,6 +714,7 @@
     </div>
   </footer>
 
+<script src="js/dv-analytics.js"></script>
 <script src="js/email-capture.js"></script>
 </body>
 </html>

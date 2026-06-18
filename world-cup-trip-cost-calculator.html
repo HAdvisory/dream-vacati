@@ -16,6 +16,9 @@
 <title>2026 World Cup Trip Cost Calculator | DreamVacati</title>
 <meta name="description" content="Estimate your 2026 World Cup travel budget by host city, nights, travelers, hotels, food, local transportation, and trip style. Free planning calculator by DreamVacati.">
 <link rel="canonical" href="https://dreamvacati.com/world-cup-trip-cost-calculator.html">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://pagead2.googlesyndication.com">
 
 <!-- Open Graph -->
 <meta property="og:title" content="2026 World Cup Trip Cost Calculator — Estimate Your Budget by City">
@@ -235,8 +238,14 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   color: var(--text);
   width: 100%;
   appearance: auto;
-  cursor: not-allowed;
-  opacity: .8;
+  cursor: pointer;
+  transition: border-color .2s;
+}
+.calc-field select:focus,
+.calc-field input[type="number"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff;
 }
 .calc-field.full-width { grid-column: 1 / -1; }
 .calc-coming-soon {
@@ -250,6 +259,27 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   color: #0369a1;
 }
 .calc-coming-soon strong { display: block; font-size: 1rem; color: var(--deep-navy); margin-bottom: .3rem; }
+
+/* Calculate button */
+.calc-btn { display: block; width: 100%; background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: .75rem 1.5rem; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: .25rem; transition: background .2s; letter-spacing: .01em; }
+.calc-btn:hover { background: var(--accent-dark); }
+.calc-btn:active { transform: translateY(1px); }
+
+/* Result panel */
+.calc-result { border: 1.5px solid #7ec8d8; border-radius: 10px; padding: 1.35rem 1.5rem; grid-column: 1 / -1; margin-top: .25rem; background: linear-gradient(135deg, #e6f5f7, #d0eef5); }
+.crp-total { text-align: center; margin-bottom: 1rem; }
+.crp-range { font-size: 1.85rem; font-weight: 800; color: var(--deep-navy); display: block; line-height: 1.2; }
+.crp-label { font-size: .82rem; color: var(--text-light); margin-top: .25rem; display: block; }
+.crp-rows { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem .75rem; margin: .9rem 0; }
+.crp-row { display: flex; justify-content: space-between; font-size: .85rem; padding: .28rem 0; border-bottom: 1px solid rgba(0,0,0,.07); }
+.crp-row .crp-cat { color: var(--text-light); }
+.crp-row .crp-val { font-weight: 700; color: var(--deep-navy); }
+.crp-row-total { border-bottom: 2px solid var(--accent) !important; font-weight: 700; }
+.crp-row-total .crp-cat { color: var(--deep-navy); }
+.crp-row-total .crp-val { color: var(--accent); font-size: .92rem; }
+.crp-tip { background: #fffbeb; border: 1px solid #fcd34d; border-left: 3px solid var(--wc-gold); border-radius: 6px; padding: .65rem .9rem; font-size: .82rem; color: #78350f; margin-top: .8rem; }
+.crp-fine { font-size: .75rem; color: var(--text-light); margin-top: .7rem; margin-bottom: 0; }
+@media (max-width: 640px) { .crp-rows { grid-template-columns: 1fr; } .crp-range { font-size: 1.5rem; } }
 
 /* Reference cost table */
 .ref-table-wrap { overflow-x: auto; margin: 1.25rem 0 2rem; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
@@ -314,7 +344,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 <body>
 
 <nav class="site-nav" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo" aria-label="DreamVacati home">
+  <a href="/" class="nav-logo" aria-label="DreamVacati home">
     <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#03045E" stroke="rgba(255,255,255,.15)" stroke-width="1"/><path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="26" cy="6" r="2.5" fill="#0077B6"/></svg>
     DreamVacati
   </a>
@@ -328,7 +358,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 </nav>
 
 <div class="breadcrumb" aria-label="Breadcrumb navigation">
-  <a href="index.html">DreamVacati</a>
+  <a href="/">DreamVacati</a>
   <span>›</span>
   <a href="world-cup-2026-travel-guide.html">World Cup 2026</a>
   <span>›</span>
@@ -356,24 +386,15 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 
   <p>The 2026 FIFA World Cup spans 13 host cities across the United States, Canada, and Mexico — and every city has a completely different cost profile. A 5-night trip in Guadalajara can cost 60–70% less than the same trip in New York. Getting your budget right before prices spike means the difference between a stress-free trip and a financial scramble.</p>
 
-  <p>This tool lets you build a total trip cost estimate based on the inputs that matter most: which city, how many nights, how many people, what hotel tier, and how much you typically spend on food and transport. The full interactive calculator is launching soon — the reference table and planning guide below are available now.</p>
+  <p>This tool builds a total trip cost estimate from the inputs that matter most: which city, how many nights, how many people, what hotel tier, and how much you typically spend on food and transport. Select your inputs and click <strong>Calculate</strong> for an instant budget range.</p>
 
-  <!-- PREVIEW BANNER -->
-  <div class="preview-banner" id="calc-tool" role="status" aria-label="Calculator status">
-    <div class="pb-icon">&#9881;&#65039;</div>
-    <div class="pb-body">
-      <strong>Calculator launching soon — planning guide available now</strong>
-      <p>The interactive cost calculator is in final development. In the meantime, use the Cost Reference Table below to manually estimate your total spend by city and tier, then visit our <a href="world-cup-2026-travel-budget.html" style="color:#92400e;font-weight:700">City-by-City Budget Guide</a> for detailed daily cost breakdowns and <a href="tools.html" style="color:#92400e;font-weight:700">all free planning tools</a>.</p>
-    </div>
-  </div>
-
-  <!-- STATIC CALCULATOR FIELDS -->
-  <div class="calc-form" aria-label="World Cup trip cost estimator fields">
+  <!-- CALCULATOR -->
+  <div id="calc-tool" class="calc-form" data-dv-tool="world_cup_calculator" aria-label="World Cup trip cost estimator">
     <div class="calc-form-header">
       <div class="cfh-icon">&#128200;</div>
       <div>
         <h2>Trip Cost Estimator</h2>
-        <p>Interactive calculation launching soon — select your inputs to preview</p>
+        <p>Select your trip details below and click Calculate for an instant budget estimate</p>
       </div>
     </div>
     <div class="calc-body">
@@ -381,7 +402,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 
         <div class="calc-field full-width">
           <label for="calc-city">&#127974; Host City</label>
-          <select id="calc-city" disabled aria-disabled="true">
+          <select id="calc-city">
             <option>Atlanta, GA (Mercedes-Benz Stadium)</option>
             <option>Boston, MA (Gillette Stadium)</option>
             <option>Dallas, TX (AT&amp;T Stadium)</option>
@@ -404,19 +425,19 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 
         <div class="calc-field">
           <label for="calc-nights">&#127769; Nights</label>
-          <input type="number" id="calc-nights" value="5" min="1" max="30" disabled aria-disabled="true">
+          <input type="number" id="calc-nights" value="5" min="1" max="30">
           <span class="field-note">Typical World Cup visit: 3–7 nights per city.</span>
         </div>
 
         <div class="calc-field">
           <label for="calc-travelers">&#128101; Travelers</label>
-          <input type="number" id="calc-travelers" value="2" min="1" max="10" disabled aria-disabled="true">
+          <input type="number" id="calc-travelers" value="2" min="1" max="10">
           <span class="field-note">Costs split per person; hotel is per room.</span>
         </div>
 
         <div class="calc-field">
           <label for="calc-hotel">&#127968; Hotel Tier</label>
-          <select id="calc-hotel" disabled aria-disabled="true">
+          <select id="calc-hotel">
             <option>Budget (hostel / 2-star motel)</option>
             <option selected>Mid-Range (3-star hotel)</option>
             <option>Upscale (4-star hotel / Airbnb with host)</option>
@@ -426,7 +447,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 
         <div class="calc-field">
           <label for="calc-food">&#127859; Daily Food Budget (per person)</label>
-          <select id="calc-food" disabled aria-disabled="true">
+          <select id="calc-food">
             <option>Budget — $20–$35/day (street food, groceries)</option>
             <option selected>Mid-Range — $50–$80/day (sit-down meals)</option>
             <option>Generous — $100–$150/day (nice restaurants)</option>
@@ -436,7 +457,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 
         <div class="calc-field">
           <label for="calc-transport">&#128652; Local Transportation</label>
-          <select id="calc-transport" disabled aria-disabled="true">
+          <select id="calc-transport">
             <option>Public transit only (subway, bus, commuter rail)</option>
             <option selected>Mix of transit + rideshare</option>
             <option>Rideshare / taxi primary</option>
@@ -447,7 +468,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 
         <div class="calc-field">
           <label for="calc-matches">&#9917; Match Day Buffer (per match)</label>
-          <select id="calc-matches" disabled aria-disabled="true">
+          <select id="calc-matches">
             <option>No matches / watching in fan zones</option>
             <option>1 match — Group Stage (~$175–$350 tickets)</option>
             <option selected>2 matches — Group Stage + Round of 16</option>
@@ -458,7 +479,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 
         <div class="calc-field">
           <label for="calc-flights">&#9992;&#65039; Flights (round-trip per person)</label>
-          <select id="calc-flights" disabled aria-disabled="true">
+          <select id="calc-flights">
             <option>Already there / driving (no flight cost)</option>
             <option>Under $300 (nearby / budget airline)</option>
             <option selected>$300–$600 (typical domestic)</option>
@@ -468,10 +489,11 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
           <span class="field-note">Flight costs added to total per person then multiplied by group size.</span>
         </div>
 
-        <div class="calc-coming-soon" role="status">
-          <strong>&#9989; Your estimate will appear here</strong>
-          Interactive calculation launching soon. Use the reference table below while the calculator finalizes.
+        <div class="calc-field full-width" style="padding-top:.1rem">
+          <button class="calc-btn" id="calc-submit" type="button">&#128200; Calculate My Trip Budget</button>
         </div>
+
+        <div id="calc-result" class="calc-result" style="display:none"></div>
 
       </div>
 
@@ -487,7 +509,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   <div class="ad-container">
     <p style="font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8;text-align:center;margin-bottom:.4rem">Advertisement</p>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8978658918402683" crossorigin="anonymous"></script>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978658918402683" data-ad-slot="9149500460" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-8978658918402683" data-ad-slot="9149500460" data-ad-format="auto" data-full-width-responsive="true"></ins>
   </div>
 
   <!-- COST REFERENCE TABLE -->
@@ -632,7 +654,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   <!-- ADSENSE 2 -->
   <div class="ad-container">
     <p style="font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8;text-align:center;margin-bottom:.4rem">Advertisement</p>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978658918402683" data-ad-slot="8572655744" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-8978658918402683" data-ad-slot="8572655744" data-ad-format="auto" data-full-width-responsive="true"></ins>
   </div>
 
   <!-- WHAT TO ENTER -->
@@ -701,7 +723,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   <!-- ADSENSE 3 -->
   <div class="ad-container">
     <p style="font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8;text-align:center;margin-bottom:.4rem">Advertisement</p>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8978658918402683" data-ad-slot="9149500460" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-8978658918402683" data-ad-slot="9149500460" data-ad-format="auto" data-full-width-responsive="true"></ins>
   </div>
 
   <!-- FAQ -->
@@ -757,7 +779,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   <div class="dfg-inner">
     <div class="dfg-grid">
       <div>
-        <a href="index.html" class="dfg-logo" aria-label="DreamVacati home">
+        <a href="/" class="dfg-logo" aria-label="DreamVacati home">
           <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#03045E" stroke="rgba(255,255,255,.15)" stroke-width="1"/><path d="M8 7 L16 22 L20 14 Q23 8 26 6" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="26" cy="6" r="2.5" fill="#0077B6"/></svg>
           DreamVacati
         </a>
@@ -800,7 +822,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
     <div class="dfg-bottom">
       <p>&copy; 2026 DreamVacati. All rights reserved. Cost estimates are independent approximations for planning purposes and subject to change.</p>
       <div class="dfg-bottom-links">
-        <a href="index.html">Home</a>
+        <a href="/">Home</a>
         <a href="privacy.html">Privacy</a>
         <a href="about.html">About</a>
       </div>
@@ -808,7 +830,141 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   </div>
 </footer>
 
+<script src="js/dv-analytics.js"></script>
 <script src="js/email-capture.js"></script>
 <script src="/adsense-push.js"></script>
+<script>
+(function () {
+  // City cost data: [hotelBudget, hotelMid, hotelUpscale] $/room/night, foodMult, transportRates [transit,mix,rideshare,rental] $/person/day
+  var CITIES = [
+    { h:[120,200,380], fm:1.0,  tr:[10,25,45,55]  }, // 0  Atlanta
+    { h:[140,250,460], fm:1.0,  tr:[10,25,45,55]  }, // 1  Boston
+    { h:[110,185,350], fm:1.0,  tr:[8, 20,38,52]  }, // 2  Dallas
+    { h:[110,180,340], fm:1.0,  tr:[8, 20,38,52]  }, // 3  Houston
+    { h:[95, 165,305], fm:1.0,  tr:[7, 18,32,48]  }, // 4  Kansas City
+    { h:[160,280,490], fm:1.0,  tr:[12,28,50,60]  }, // 5  Los Angeles
+    { h:[150,260,475], fm:1.0,  tr:[10,25,48,58]  }, // 6  Miami
+    { h:[185,330,600], fm:1.0,  tr:[12,28,52,65]  }, // 7  New York/NJ
+    { h:[130,220,400], fm:1.0,  tr:[10,22,42,52]  }, // 8  Philadelphia
+    { h:[170,300,520], fm:1.0,  tr:[12,28,50,62]  }, // 9  San Francisco
+    { h:[150,260,450], fm:1.0,  tr:[10,25,45,55]  }, // 10 Seattle
+    { h:[120,210,390], fm:0.85, tr:[9, 22,40,50]  }, // 11 Toronto
+    { h:[125,220,400], fm:0.85, tr:[9, 22,40,50]  }, // 12 Vancouver
+    { h:[45, 85, 175], fm:0.45, tr:[4, 10,20,28]  }, // 13 Guadalajara
+    { h:[55, 100,200], fm:0.45, tr:[4, 10,20,28]  }, // 14 Mexico City
+    { h:[45, 85, 165], fm:0.45, tr:[4, 10,20,28]  }  // 15 Monterrey
+  ];
+  var CITY_NAMES = ['Atlanta','Boston','Dallas','Houston','Kansas City','Los Angeles',
+    'Miami','New York/NJ','Philadelphia','San Francisco','Seattle',
+    'Toronto','Vancouver','Guadalajara','Mexico City','Monterrey'];
+  // $/person/day US baseline — budget, mid, generous
+  var FOOD_BASE = [27.5, 65, 125];
+  // total match buffer (tickets + food + surge transport) — 0,1,2,3+ matches
+  var MATCH_BUFFERS = [0, 350, 700, 1050];
+  // round-trip per person — none, <300, 300-600, 600-1200, 1200+
+  var FLIGHT_PP = [0, 200, 450, 900, 1500];
+
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function calculate(fireAnalytics) {
+    var cityIdx   = document.getElementById('calc-city').selectedIndex;
+    var nights    = Math.min(90, Math.max(1, parseInt(document.getElementById('calc-nights').value)   || 5));
+    var travelers = Math.min(20, Math.max(1, parseInt(document.getElementById('calc-travelers').value) || 2));
+    var hotelTier = document.getElementById('calc-hotel').selectedIndex;
+    var foodTier  = document.getElementById('calc-food').selectedIndex;
+    var transport = document.getElementById('calc-transport').selectedIndex;
+    var matches   = document.getElementById('calc-matches').selectedIndex;
+    var flights   = document.getElementById('calc-flights').selectedIndex;
+
+    var city  = CITIES[cityIdx];
+    var rooms = Math.ceil(travelers / 2);
+
+    var hotelCost   = city.h[hotelTier] * nights * rooms;
+    var foodCost    = Math.round(FOOD_BASE[foodTier] * city.fm * nights * travelers);
+    var transportCt = Math.round(city.tr[transport]  * nights * travelers);
+    var matchCost   = MATCH_BUFFERS[matches];
+    var flightCost  = FLIGHT_PP[flights] * travelers;
+    var totalMid    = hotelCost + foodCost + transportCt + matchCost + flightCost;
+    var totalLow    = Math.round(totalMid * 0.87 / 50) * 50;
+    var totalHigh   = Math.round(totalMid * 1.15 / 50) * 50;
+    var perPerson   = Math.round(totalMid / travelers / 10) * 10;
+
+    var tip = '';
+    // Suggest Mexico comparison for expensive US cities
+    if (cityIdx <= 10 && totalMid > 3000) {
+      var gdl = CITIES[13];
+      var gdlHotel = gdl.h[hotelTier] * nights * rooms;
+      var gdlFood  = Math.round(FOOD_BASE[foodTier] * gdl.fm * nights * travelers);
+      var gdlTrans = Math.round(gdl.tr[transport]   * nights * travelers);
+      var gdlTotal = gdlHotel + gdlFood + gdlTrans + matchCost + flightCost;
+      var savings  = totalMid - gdlTotal;
+      if (savings > 800) {
+        tip = '<div class="crp-tip">&#128161; <strong>Budget tip:</strong> A similar stay in Guadalajara (Group Stage host) would cost approximately '
+          + fmt(gdlTotal) + ' — saving around ' + fmt(savings)
+          + ' in city costs. Mexican host cities run 50–70% cheaper than US markets on daily spend.</div>';
+      }
+    }
+
+    var matchLabel = matchCost > 0 ? fmt(matchCost) : 'Not included';
+    var flightLabel = flightCost > 0 ? fmt(flightCost) : 'Not included';
+    var pLabel = travelers > 1 ? ' · ' + fmt(perPerson) + '/person avg' : '';
+
+    var html = '<div class="crp-total">'
+      + '<span class="crp-range">' + fmt(totalLow) + ' &ndash; ' + fmt(totalHigh) + '</span>'
+      + '<span class="crp-label">Estimated total for ' + travelers + ' traveler' + (travelers > 1 ? 's' : '')
+        + ', ' + nights + ' night' + (nights > 1 ? 's' : '') + ' in ' + CITY_NAMES[cityIdx] + pLabel + '</span>'
+      + '</div>'
+      + '<div class="crp-rows">'
+      + '<div class="crp-row"><span class="crp-cat">&#127968; Hotel (' + rooms + ' room' + (rooms > 1 ? 's' : '') + ')</span><span class="crp-val">' + fmt(hotelCost) + '</span></div>'
+      + '<div class="crp-row"><span class="crp-cat">&#127859; Food &amp; dining</span><span class="crp-val">' + fmt(foodCost) + '</span></div>'
+      + '<div class="crp-row"><span class="crp-cat">&#128652; Local transport</span><span class="crp-val">' + fmt(transportCt) + '</span></div>'
+      + '<div class="crp-row"><span class="crp-cat">&#9917; Match buffer</span><span class="crp-val">' + matchLabel + '</span></div>'
+      + '<div class="crp-row"><span class="crp-cat">&#9992;&#65039; Flights</span><span class="crp-val">' + flightLabel + '</span></div>'
+      + '<div class="crp-row crp-row-total"><span class="crp-cat">Total estimate</span><span class="crp-val">' + fmt(totalMid) + '</span></div>'
+      + '</div>'
+      + tip
+      + '<p class="crp-fine">Estimates are planning approximations. Costs vary by booking timing and availability. Match ticket prices are sold separately through FIFA and are not guaranteed.</p>';
+
+    var el = document.getElementById('calc-result');
+    el.innerHTML = html;
+    el.style.display = '';
+
+    if (fireAnalytics && typeof window.dvTrack === 'function') {
+      window.dvTrack('tool_complete', {
+        tool_name: 'world_cup_calculator',
+        city: CITY_NAMES[cityIdx],
+        nights: nights,
+        travelers: travelers,
+        estimated_total: totalMid
+      });
+    }
+  }
+
+  // Auto-calculate with defaults on load
+  document.addEventListener('DOMContentLoaded', function () {
+    calculate(false);
+
+    // Live recalculate on any input change
+    ['calc-city','calc-hotel','calc-food','calc-transport','calc-matches','calc-flights'].forEach(function (id) {
+      document.getElementById(id).addEventListener('change', function () { calculate(false); });
+    });
+    var debounce;
+    ['calc-nights','calc-travelers'].forEach(function (id) {
+      document.getElementById(id).addEventListener('input', function () {
+        clearTimeout(debounce);
+        debounce = setTimeout(function () { calculate(false); }, 300);
+      });
+    });
+
+    // Button click fires analytics + scrolls result into view
+    document.getElementById('calc-submit').addEventListener('click', function () {
+      calculate(true);
+      document.getElementById('calc-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+})();
+</script>
 </body>
 </html>
