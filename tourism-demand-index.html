@@ -378,6 +378,34 @@
       .tdi-count-label { margin-left: 0; }
       .tdi-select, .tdi-search-input { width: 100%; }
     }
+
+    /* ── TDI Map ────────────────────────────────────────────── */
+    .tdi-map-section { background: #f8fafc; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+    .tdi-map-title { font-size: 1.1rem; font-weight: 800; color: #03045E; margin: 0 0 .2rem; }
+    .tdi-map-subtitle { font-size: .82rem; color: #64748b; margin: 0; }
+    .tdi-map-toggle { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tdi-map-btn {
+      background: #fff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: .78rem;
+      font-weight: 600;
+      color: #64748b;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .tdi-map-btn:hover { border-color: #2EC4B6; color: #0d9488; }
+    .tdi-map-btn--active { background: #2EC4B6; border-color: #2EC4B6; color: #fff; }
+    [data-tdi-map] { display: block; width: 100%; aspect-ratio: 1008 / 651; }
+    .tdi-map-legend-item { font-weight: 700; }
+    .tdi-map-legend--low   { color: #2EC4B6; }
+    .tdi-map-legend--mod   { color: #f4a261; }
+    .tdi-map-legend--high  { color: #e76f51; }
+    .tdi-map-legend--vhigh { color: #d62828; }
+    .tdi-map-legend-sep { color: rgba(255,255,255,.25); margin: 0 3px; }
+    .tdi-map-note { font-size: .78rem; color: #94a3b8; margin: .5rem 0 0; line-height: 1.5; }
+    .tdi-map-note a { color: #2EC4B6; }
   </style>
 </head>
 <body>
@@ -457,6 +485,39 @@
       </div>
     </div>
   </div>
+
+  <!-- ══ TDI WORLD MAP ═════════════════════════════════════════ -->
+  <section class="tdi-map-section py-4" aria-labelledby="tdi-map-heading">
+    <div class="container" style="max-width:960px">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+        <div>
+          <h2 id="tdi-map-heading" class="tdi-map-title">Global Demand Map</h2>
+          <p class="tdi-map-subtitle">Crowd pressure, budget pressure, and tourism level across mapped destinations.</p>
+        </div>
+        <div class="tdi-map-toggle" id="tdi-map-toggle" role="group" aria-label="Map color layer">
+          <button class="tdi-map-btn tdi-map-btn--active" data-tdi-mode="crowd">Crowd Pressure</button>
+          <button class="tdi-map-btn" data-tdi-mode="budget">Budget Pressure</button>
+          <button class="tdi-map-btn" data-tdi-mode="level">Tourism Level</button>
+        </div>
+      </div>
+      <div class="dv-map-block">
+        <div data-tdi-map role="img" aria-label="World map showing crowd pressure by destination"></div>
+        <p class="dv-map-caption" style="margin:.5rem 0 0;font-size:.76rem;color:#94a3b8;line-height:1.6">
+          <span class="tdi-map-legend-item tdi-map-legend--low">&#9632; Low (1–3)</span><span class="tdi-map-legend-sep">|</span>
+          <span class="tdi-map-legend-item tdi-map-legend--mod">&#9632; Moderate (4–6)</span><span class="tdi-map-legend-sep">|</span>
+          <span class="tdi-map-legend-item tdi-map-legend--high">&#9632; High (7–8)</span><span class="tdi-map-legend-sep">|</span>
+          <span class="tdi-map-legend-item tdi-map-legend--vhigh">&#9632; Very High (9–10)</span>
+          &ensp;&#183;&ensp;<a href="#tdi-tool">Jump to destination cards &darr;</a>
+        </p>
+      </div>
+      <p class="tdi-map-note">
+        Map shows 25 countries across 30 TDI destinations. 4 destinations not shown
+        (absent from world-scale SVG): Maldives, Bora Bora, Singapore, and Barbados —
+        see their cards below. Where multiple destinations share a country (Cancún and
+        Mexico City → Mexico), the higher score is shown.
+      </p>
+    </div>
+  </section>
 
   <!-- ══ FILTER CONTROLS ══════════════════════════════════════ -->
   <div class="tdi-controls" id="tdi-tool" data-dv-tool="tourism_demand_index">
@@ -714,8 +775,10 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/dv-destinations.js"></script>
   <script src="js/tourism-demand-data.js"></script>
   <script src="js/tourism-demand-index.js"></script>
+  <script src="js/dv-tdi-map.js"></script>
   <script src="js/dv-analytics.js"></script>
   <script src="/adsense-push.js"></script>
   <script src="js/email-capture.js"></script>

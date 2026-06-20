@@ -1,15 +1,19 @@
 /*!
- * dv-map-highlight.js  v1.0
+ * dv-map-highlight.js  v1.1
  * DreamVacati — Destination highlight map component
  *
  * Reuses assets/maps/world-map.svg (176 ISO paths, viewBox 0 0 1008 651).
- * Read-only. No tracker state. No localStorage. No click handlers.
+ * Read-only display. When DV_BY_ISO is available (via dv-destinations.js),
+ * primary ISO paths with a guideUrl become keyboard-focusable links.
+ * Context-country paths (BS, CU, etc.) are display-only — never interactive.
+ * No tracker state. No localStorage.
  *
  * Usage:
  *   <div data-dv-map data-iso="JM" data-region="caribbean"></div>
  *   <div data-dv-map data-iso="ID,TH" data-region="southeast-asia"></div>
  *
- * Add once per page, before </body>:
+ * Load order (both defer):
+ *   <script src="js/dv-destinations.js" defer></script>
  *   <script src="js/dv-map-highlight.js" defer></script>
  *
  * Coordinate reference — all values are sub-rectangles of "0 0 1008 651":
@@ -89,6 +93,7 @@
 
   // ── 3. ISO → human-readable name lookup ──────────────────────────────
   // Used for aria-label only — keeps screen-reader output meaningful.
+  // Hardcoded entries are the authoritative fallback; never overwritten by registry.
   var ISO_NAMES = {
     JM: 'Jamaica',   JP: 'Japan',        GR: 'Greece',     ID: 'Indonesia',
     TH: 'Thailand',  MX: 'Mexico',       US: 'United States', CA: 'Canada',
@@ -96,6 +101,36 @@
     VN: 'Vietnam',   CR: 'Costa Rica',   BS: 'Bahamas',    CU: 'Cuba',
     DO: 'Dominican Republic', HT: 'Haiti', PR: 'Puerto Rico', TT: 'Trinidad and Tobago'
   };
+
+  // Extend ISO_NAMES from DV_BY_ISO when the registry is available.
+  // Uses .country (not .name) to resolve sovereign state, not sub-destination.
+  // Only adds ISOs not already hardcoded above — existing entries are never overwritten.
+  if (window.DV_BY_ISO && typeof window.DV_BY_ISO === 'object') {
+    Object.keys(window.DV_BY_ISO).forEach(function (iso) {
+      if (!ISO_NAMES[iso]) {
+        var c = window.DV_BY_ISO[iso].country;
+        if (c) { ISO_NAMES[iso] = c; }
+      }
+    });
+  }
+
+  // ── 3.5. Destination link resolver ────────────────────────────────────
+  // Returns the guideUrl for a primary ISO when DV_BY_ISO is available.
+  // Returns null when: ISO is a display-only context country, no guideUrl
+  // exists in the registry, or guideUrl points to the current page.
+  var _CONTEXT_ISOS = { BS: 1, CU: 1, DO: 1, HT: 1, PR: 1 };
+
+  function resolveDestLink(iso) {
+    if (_CONTEXT_ISOS[iso])               { return null; }
+    var byIso = window.DV_BY_ISO;
+    if (!byIso || !byIso[iso])            { return null; }
+    var url = byIso[iso].guideUrl;
+    if (!url)                             { return null; }
+    var rel     = url.replace(/^\//, '');
+    var current = window.location.pathname.split('/').pop() || '';
+    if (rel === current)                  { return null; }
+    return url;
+  }
 
   // ── 4. SVG module cache ────────────────────────────────────────────────
   // One fetch per page load, shared by ALL [data-dv-map] elements on the page.
@@ -132,17 +167,27 @@
     el.dataset.dvMapReady = '1';
 
     // Parse attributes
-    var isoAttr  = (el.getAttribute('data-iso') || '').toUpperCase().trim();
-    var region   = (el.getAttribute('data-region') || 'world').toLowerCase().trim();
-    var isos     = isoAttr ? isoAttr.split(',').map(function (s) { return s.trim(); }).filter(Boolean) : [];
+    var isoAttr   = (el.getAttribute('data-iso') || '').toUpperCase().trim();
+    var region    = (el.getAttribute('data-region') || 'world').toLowerCase().trim();
+    var isos      = isoAttr ? isoAttr.split(',').map(function (s) { return s.trim(); }).filter(Boolean) : [];
     var regionBox = REGIONS[region] || REGIONS['world'];
 
-    // aria-label set early so screen readers get context before SVG injects.
-    // Layout space is reserved by aspect-ratio CSS rules in main.css (not min-height).
-    el.setAttribute('aria-label', isos.length
-      ? isos.map(function (iso) { return ISO_NAMES[iso] || iso; }).join(' and ') + ' shown on world map'
-      : 'World map');
-    el.setAttribute('role', 'img');
+    // Resolve primary ISO destination link now (DV_BY_ISO already populated by defer order).
+    var primaryDestUrl = isos.length ? resolveDestLink(isos[0]) : null;
+
+    // ── Container semantics — set before SVG injects to prevent AT misread ─
+    // Layout space is reserved by per-region aspect-ratio rules in main.css.
+    if (primaryDestUrl) {
+      // role="group" lets AT discover the role="link" path inside.
+      // role="img" would make the container opaque to AT and hide the inner link.
+      el.setAttribute('role', 'group');
+      el.setAttribute('aria-label', (ISO_NAMES[isos[0]] || isos[0]) + ' location map');
+    } else {
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', isos.length
+        ? isos.map(function (iso) { return ISO_NAMES[iso] || iso; }).join(' and ') + ' shown on world map'
+        : 'World map');
+    }
 
     getSVG(function (txt) {
       if (!txt) {
@@ -166,14 +211,12 @@
       svgEl.style.cssText = 'width:100%;height:auto;display:block;cursor:default';
 
       // ── Dim all country paths first ───────────────────────────────────
-      // Removes the hover/active styles the tracker CSS applies
       svgEl.querySelectorAll('.country-path').forEach(function (path) {
-        path.style.fill        = DIM.fill;
-        path.style.stroke      = DIM.stroke;
-        path.style.strokeWidth = DIM.width;
-        path.style.cursor      = 'default';
-        path.style.pointerEvents = 'none';  // read-only: no hover state
-        // Remove tracker event classes
+        path.style.fill          = DIM.fill;
+        path.style.stroke        = DIM.stroke;
+        path.style.strokeWidth   = DIM.width;
+        path.style.cursor        = 'default';
+        path.style.pointerEvents = 'none';  // non-interactive by default
         path.classList.remove('visited', 'just-marked');
       });
 
@@ -193,7 +236,29 @@
         path.style.fill        = col.fill;
         path.style.stroke      = col.stroke;
         path.style.strokeWidth = col.width;
-        path.style.cursor      = 'default';
+
+        // ── Keyboard accessibility — primary ISO with a guide link only ─
+        // Context countries (idx > 0 or no guideUrl) remain display-only.
+        if (idx === 0 && primaryDestUrl) {
+          path.setAttribute('tabindex', '0');
+          path.setAttribute('role', 'link');
+          path.setAttribute('aria-label', 'View ' + (ISO_NAMES[iso] || iso) + ' travel guide');
+          path.classList.add('dv-map-link-path');
+          path.style.cursor        = 'pointer';
+          path.style.pointerEvents = 'auto';
+          path.addEventListener('click', function () {
+            window.location.href = primaryDestUrl;
+          });
+          path.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              window.location.href = primaryDestUrl;
+            }
+          });
+        } else {
+          path.style.cursor = 'default';
+          // pointerEvents remains 'none' from dim phase
+        }
       });
 
       // ── Inject into DOM ───────────────────────────────────────────────

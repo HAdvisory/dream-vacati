@@ -457,6 +457,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 <script src="js/dv-analytics.js"></script>
 <script src="js/email-capture.js"></script>
 <script src="/adsense-push.js"></script>
+<script src="js/dv-destinations.js"></script>
 
 <script>
 (function () {
@@ -477,8 +478,69 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
     }).join(', ');
   }
 
-  // Destination data — crowd, budgetPressure, trend, dailyCostMid, bestMonths, bestFor, guideUrl
-  var DESTS = {
+  // ── Comparison-specific metadata ────────────────────────────────────────────
+  // Fields that cannot be safely derived from DV_DESTINATIONS as-is:
+  //   name   — display name in the UI (santorini shows as 'Greece')
+  //   region — comparison card region string (differs from DV taxonomy for several)
+  //   cost   — dailyCostMid used in this tool (differs from DV's field)
+  //   guide  — CTA guide URL (comparison-specific, not DV's guideUrl)
+  //   bf     — 'Best For' display string (truncated/formatted travelerTypes)
+  //   tags   — tag chips (comparison-specific subset)
+  var COMP_META = {
+    japan:        { name:'Japan',       region:'East Asia',      cost:145, guide:'japan-travel-guide.html',          bf:'Culture, solo, couples, adventure',        tags:['culture','food','temples','cities'] },
+    bali:         { name:'Bali',        region:'Southeast Asia', cost:75,  guide:null,                               bf:'Couples, solo, budget, culture',           tags:['beach','temples','rice terraces','yoga'] },
+    thailand:     { name:'Thailand',    region:'Southeast Asia', cost:65,  guide:null,                               bf:'Budget, families, solo, couples',          tags:['beach','temples','street food','islands'] },
+    maldives:     { name:'Maldives',    region:'South Asia',     cost:550, guide:'blog-best-time-maldives.html',     bf:'Couples, luxury, honeymoon',               tags:['overwater villas','diving','luxury'] },
+    jamaica:      { name:'Jamaica',     region:'Caribbean',      cost:160, guide:'jamaica-travel-guide.html',        bf:'Couples, families, budget',                tags:['beach','all-inclusive','culture','music'] },
+    santorini:    { name:'Greece',      region:'Europe',         cost:210, guide:'best-time-greece.html',            bf:'Couples, luxury, honeymoon',               tags:['caldera views','sunsets','wine','history'] },
+    barcelona:    { name:'Barcelona',   region:'Europe',         cost:185, guide:null,                               bf:'Culture, couples, solo, families',         tags:['architecture','beach','tapas','nightlife'] },
+    paris:        { name:'Paris',       region:'Europe',         cost:240, guide:null,                               bf:'Couples, culture, families, solo',         tags:['art','food','museums','romance'] },
+    rome:         { name:'Rome',        region:'Europe',         cost:180, guide:null,                               bf:'Culture, couples, families, solo',         tags:['history','food','art','architecture'] },
+    amsterdam:    { name:'Amsterdam',   region:'Europe',         cost:200, guide:null,                               bf:'Culture, couples, solo',                   tags:['canals','museums','cycling','art'] },
+    prague:       { name:'Prague',      region:'Europe',         cost:110, guide:null,                               bf:'Budget, culture, couples, solo',           tags:['architecture','beer','castle','history'] },
+    dubrovnik:    { name:'Dubrovnik',   region:'Europe',         cost:175, guide:null,                               bf:'Culture, couples, photography',            tags:['walled city','Adriatic','history'] },
+    'bora-bora':  { name:'Bora Bora',   region:'Pacific',        cost:650, guide:'blog-maldives-vs-bora-bora.html', bf:'Luxury, couples, honeymoon',               tags:['overwater bungalows','lagoon','luxury'] },
+    fiji:         { name:'Fiji',        region:'Pacific',        cost:165, guide:null,                               bf:'Families, couples, adventure',             tags:['islands','diving','culture','resort'] },
+    cancun:       { name:'Cancun',      region:'Americas',       cost:130, guide:null,                               bf:'Families, budget, couples',                tags:['beach','all-inclusive','cenotes','nightlife'] },
+    'costa-rica': { name:'Costa Rica',  region:'Americas',       cost:155, guide:null,                               bf:'Adventure, families, solo',                tags:['wildlife','volcanoes','rainforest','surfing'] },
+    vietnam:      { name:'Vietnam',     region:'Southeast Asia', cost:45,  guide:null,                               bf:'Budget, solo, culture, adventure',         tags:['food','history','motorbikes','caves'] },
+    singapore:    { name:'Singapore',   region:'Southeast Asia', cost:220, guide:null,                               bf:'Culture, families, solo, luxury',          tags:['food','gardens','architecture','shopping'] },
+    'new-zealand':{ name:'New Zealand', region:'Pacific',        cost:195, guide:null,                               bf:'Adventure, couples, solo, families',       tags:['hiking','adventure','fjords','wildlife'] },
+    iceland:      { name:'Iceland',     region:'Europe',         cost:230, guide:null,                               bf:'Adventure, solo, couples, photography',    tags:['northern lights','waterfalls','glaciers'] }
+  };
+
+  // ── Month abbreviation → integer (same converter as TDI) ────────────────────
+  var MON_TO_INT_COMP = {Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
+
+  function buildDestsFromRegistry(DV) {
+    var out = {};
+    Object.keys(COMP_META).forEach(function (slug) {
+      var d = DV[slug];
+      var m = COMP_META[slug];
+      if (!d) {
+        console.warn('[destination-comparison] DV_DESTINATIONS missing slug: ' + slug);
+        return;
+      }
+      var t = d.trend || '';
+      out[slug] = {
+        name:   m.name,
+        emoji:  d.emoji,
+        region: m.region,
+        crowd:  d.crowdScore,
+        bp:     d.budgetPressure,
+        trend:  t.charAt(0).toUpperCase() + t.slice(1),
+        cost:   m.cost,
+        bm:     (d.bestMonths || []).map(function (mo) { return MON_TO_INT_COMP[mo] || 0; }),
+        bf:     m.bf,
+        guide:  m.guide,
+        tags:   m.tags
+      };
+    });
+    return out;
+  }
+
+  // ── Hardcoded fallback — used if dv-destinations.js fails to load ────────────
+  var DESTS_FALLBACK = {
     japan:       { name:'Japan',       emoji:'🇯🇵', region:'East Asia',       crowd:8, bp:6, trend:'Rising',  cost:145, bm:[3,4,9,10,11], bf:'Culture, solo, couples, adventure', guide:'japan-travel-guide.html',    tags:['culture','food','temples','cities'] },
     bali:        { name:'Bali',        emoji:'🇮🇩', region:'Southeast Asia',  crowd:7, bp:3, trend:'Rising',  cost:75,  bm:[4,5,6,9,10],  bf:'Couples, solo, budget, culture',   guide:null,                          tags:['beach','temples','rice terraces','yoga'] },
     thailand:    { name:'Thailand',    emoji:'🇹🇭', region:'Southeast Asia',  crowd:7, bp:3, trend:'Rising',  cost:65,  bm:[11,12,1,2,3], bf:'Budget, families, solo, couples',  guide:null,                          tags:['beach','temples','street food','islands'] },
@@ -500,6 +562,15 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
     'new-zealand':{ name:'New Zealand',emoji:'🇳🇿', region:'Pacific',         crowd:3, bp:8, trend:'Rising',  cost:195, bm:[12,1,2,3],    bf:'Adventure, couples, solo, families',guide:null,                         tags:['hiking','adventure','fjords','wildlife'] },
     iceland:     { name:'Iceland',     emoji:'🇮🇸', region:'Europe',          crowd:5, bp:9, trend:'Cooling', cost:230, bm:[6,7,8],       bf:'Adventure, solo, couples, photography',guide:null,                      tags:['northern lights','waterfalls','glaciers'] }
   };
+
+  // ── Boot: derive from registry or use hardcoded fallback ────────────────────
+  var DESTS;
+  if (window.DV_DESTINATIONS && typeof window.DV_DESTINATIONS === 'object') {
+    DESTS = buildDestsFromRegistry(window.DV_DESTINATIONS);
+  } else {
+    console.warn('[destination-comparison] DV_DESTINATIONS not available — using hardcoded fallback.');
+    DESTS = DESTS_FALLBACK;
+  }
 
   var ORDER = ['jamaica','japan','bali','thailand','cancun','vietnam','costa-rica','prague','santorini','barcelona','rome','paris','amsterdam','dubrovnik','maldives','bora-bora','fiji','new-zealand','iceland','singapore'];
 

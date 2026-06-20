@@ -771,6 +771,11 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 600;
 }
 .dv-map-caption a:hover { color: #2EC4B6; }
+/* Keyboard focus ring on interactive country paths (.dv-map-link-path set by JS) */
+[data-dv-map] .dv-map-link-path:focus-visible {
+  outline: 3px solid #2EC4B6;
+  outline-offset: 2px;
+}
 .dv-map-error {
   padding: 2rem;
   text-align: center;

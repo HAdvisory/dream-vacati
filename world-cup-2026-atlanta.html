@@ -323,6 +323,20 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   .related-grid { grid-template-columns: 1fr; }
   .stats-bar { gap: .5rem; font-size: .8rem; padding: .8rem 1rem; }
 }
+
+/* ── WC Host Country Map ─────────────────────────────────── */
+.wc-map-section { margin: 1.25rem 0 1.5rem; padding: 1.25rem 0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+.wc-map-title { font-size: 1rem; font-weight: 800; color: #03045E; margin: 0 0 .2rem; border: none !important; padding: 0 !important; }
+.wc-map-subtitle { font-size: .82rem; color: #64748b; margin: 0 0 .75rem; }
+[data-wc-map] { display: block; width: 100%; aspect-ratio: 1008 / 651; }
+.wc-city-list { padding: 0; margin: 0; list-style: none; font-size: .82rem; line-height: 1.8; }
+.wc-city-list a { color: #03045E; text-decoration: none; }
+.wc-city-list a:hover { text-decoration: underline; color: #0A7E8C; }
+.wc-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: middle; }
+.wc-dot--us { background: #03045E; }
+.wc-dot--ca { background: #c80000; }
+.wc-dot--mx { background: #006838; }
+.wc-map-note { font-size: .75rem; color: #94a3b8; margin: .5rem 0 0; line-height: 1.5; }
 </style>
 </head>
 <body>
@@ -493,6 +507,28 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
        data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
+
+  <!-- ══ WC 2026 HOST COUNTRY MAP ════════════════════════════ -->
+  <section class="wc-map-section" aria-labelledby="wc-map-heading">
+    <h2 id="wc-map-heading" class="wc-map-title">Atlanta in the Tournament Context</h2>
+    <p class="wc-map-subtitle">Atlanta is one of 8 US host cities across a 3-nation, 13-city tournament. Map shows host countries only — exact city locations are not shown at world-map scale.</p>
+    <div style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap">
+      <div style="flex:1 1 400px;min-width:0">
+        <div data-wc-map data-region="north-america" role="img" aria-label="Map of North America highlighting the 3 FIFA World Cup 2026 host countries: United States in navy blue, Canada in red, and Mexico in green"></div>
+      </div>
+      <div style="flex:0 1 210px;min-width:160px">
+        <p style="font-weight:700;color:#03045E;margin:0 0 .3rem;font-size:.84rem">Atlanta, GA — US host city</p>
+        <p style="font-size:.8rem;color:#64748b;margin:0 0 .75rem">Mercedes-Benz Stadium &mdash; <a href="#stadium" style="color:#03045E;text-decoration:none">see details below</a></p>
+        <ul class="wc-city-list" style="font-size:.8rem">
+          <li style="font-weight:700;color:#03045E;margin-bottom:.2rem">&#127482;&#127480; United States — 8 cities</li>
+          <li style="font-weight:700;color:#c80000;margin-top:.5rem;margin-bottom:.2rem">&#127464;&#127462; Canada — 2 cities</li>
+          <li style="font-weight:700;color:#006838;margin-top:.5rem;margin-bottom:.2rem">&#127474;&#127485; Mexico — 3 cities</li>
+        </ul>
+        <a href="world-cup-2026-travel-guide.html" style="display:inline-block;margin-top:.75rem;font-size:.8rem;font-weight:700;color:#0A7E8C;text-decoration:none">See all 13 host cities &#8594;</a>
+      </div>
+    </div>
+    <p class="wc-map-note">Map shows host country outlines only. Atlanta's exact location within the US is not pinpointed at world-map scale.</p>
+  </section>
 
   <h2 id="stadium">Mercedes-Benz Stadium</h2>
 
@@ -760,6 +796,8 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   </div>
 </footer>
 
+<script src="js/dv-destinations.js"></script>
+<script src="js/dv-wc-map.js"></script>
 <script src="js/email-capture.js"></script>
 <script src="/adsense-push.js"></script>
 </body>

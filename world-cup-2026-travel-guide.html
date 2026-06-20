@@ -445,6 +445,20 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   .tools-grid { grid-template-columns: 1fr; }
   .related-grid { grid-template-columns: 1fr; }
 }
+
+/* ── WC Host Country Map ─────────────────────────────────── */
+.wc-map-section { margin: 1.25rem 0 1.5rem; padding: 1.25rem 0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+.wc-map-title { font-size: 1rem; font-weight: 800; color: #03045E; margin: 0 0 .2rem; border: none !important; padding: 0 !important; }
+.wc-map-subtitle { font-size: .82rem; color: #64748b; margin: 0 0 .75rem; }
+[data-wc-map] { display: block; width: 100%; aspect-ratio: 1008 / 651; }
+.wc-city-list { padding: 0; margin: 0; list-style: none; font-size: .82rem; line-height: 1.8; }
+.wc-city-list a { color: #03045E; text-decoration: none; }
+.wc-city-list a:hover { text-decoration: underline; color: #0A7E8C; }
+.wc-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: middle; }
+.wc-dot--us { background: #03045E; }
+.wc-dot--ca { background: #c80000; }
+.wc-dot--mx { background: #006838; }
+.wc-map-note { font-size: .75rem; color: #94a3b8; margin: .5rem 0 0; line-height: 1.5; }
 </style>
 </head>
 <body>
@@ -502,6 +516,38 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 
   <h2 id="host-cities">All 13 Host Cities at a Glance</h2>
   <p>The 2026 tournament is hosted across the United States (8 cities), Canada (2 cities), and Mexico (3 cities). Here's how every city compares on the metrics that matter most to travelers.</p>
+
+  <!-- ══ WC 2026 HOST COUNTRY MAP ════════════════════════════ -->
+  <section class="wc-map-section" aria-labelledby="wc-map-heading">
+    <h3 id="wc-map-heading" class="wc-map-title">Host Countries at a Glance</h3>
+    <p class="wc-map-subtitle">Map highlights the 3 host nations. Stadium and city locations are not shown at world-map scale — see city detail below.</p>
+    <div style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap">
+      <div style="flex:1 1 480px;min-width:0">
+        <div data-wc-map data-region="north-america" role="img" aria-label="Map of North America highlighting the 3 FIFA World Cup 2026 host countries: United States in navy blue, Canada in red, and Mexico in green"></div>
+      </div>
+      <nav aria-label="Host cities by country" style="flex:0 1 210px;min-width:160px">
+        <ul class="wc-city-list">
+          <li style="font-weight:700;color:#03045E;margin-bottom:.2rem">&#127482;&#127480; United States — 8 cities</li>
+          <li><span class="wc-dot wc-dot--us"></span><a href="world-cup-2026-atlanta.html">Atlanta, GA</a></li>
+          <li><span class="wc-dot wc-dot--us"></span>Dallas/Fort Worth, TX</li>
+          <li><span class="wc-dot wc-dot--us"></span>Houston, TX</li>
+          <li><span class="wc-dot wc-dot--us"></span>Kansas City, MO</li>
+          <li><span class="wc-dot wc-dot--us"></span>Los Angeles, CA</li>
+          <li><span class="wc-dot wc-dot--us"></span>Miami, FL</li>
+          <li><span class="wc-dot wc-dot--us"></span>New York / New Jersey</li>
+          <li><span class="wc-dot wc-dot--us"></span>Seattle, WA</li>
+          <li style="font-weight:700;color:#c80000;margin-top:.6rem;margin-bottom:.2rem">&#127464;&#127462; Canada — 2 cities</li>
+          <li><span class="wc-dot wc-dot--ca"></span>Toronto, ON</li>
+          <li><span class="wc-dot wc-dot--ca"></span>Vancouver, BC</li>
+          <li style="font-weight:700;color:#006838;margin-top:.6rem;margin-bottom:.2rem">&#127474;&#127485; Mexico — 3 cities</li>
+          <li><span class="wc-dot wc-dot--mx"></span>Guadalajara</li>
+          <li><span class="wc-dot wc-dot--mx"></span>Mexico City</li>
+          <li><span class="wc-dot wc-dot--mx"></span>Monterrey</li>
+        </ul>
+      </nav>
+    </div>
+    <p class="wc-map-note">Map shows host country outlines only. Stadium addresses, transit options, and daily cost estimates are in the city sections below.</p>
+  </section>
 
   <div class="compare-table-wrap">
     <table class="compare-table" aria-label="Host city budget comparison">
@@ -838,6 +884,8 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   </div>
 </footer>
 
+<script src="js/dv-destinations.js"></script>
+<script src="js/dv-wc-map.js"></script>
 <script src="js/email-capture.js"></script>
 <script src="/adsense-push.js"></script>
 </body>
