@@ -1,0 +1,77 @@
+/* dv-article.css — DreamVacati article media card
+   Shared card style for blog images across destination pages.
+   Loaded by destination/blog pages that don't include main.css.
+*/
+
+/* ── Media card (photos) ──────────────────────────────── */
+.dv-media-card {
+  margin: 1.5rem 0;
+  padding: .55rem;
+  border: 1px solid rgba(15, 23, 42, .10);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, .07);
+  overflow: hidden;
+}
+.dv-media-card img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+.dv-media-card figcaption {
+  margin: .45rem .25rem 0;
+  font-size: .78rem;
+  line-height: 1.4;
+  color: #64748b;
+  text-align: right;
+}
+
+/* ── Map card (light wrapper for dv-map-block on pages needing it) ── */
+.dv-map-card {
+  margin: 1.5rem 0;
+  padding: .55rem;
+  border: 1px solid rgba(15, 23, 42, .10);
+  border-radius: 16px;
+  background: #f8fafc;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, .07);
+  overflow: hidden;
+}
+.dv-map-card [data-dv-map],
+.dv-map-card [data-wc-map],
+.dv-map-card [data-tdi-map] {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+.dv-map-caption-card {
+  margin: .45rem .25rem 0;
+  font-size: .78rem;
+  line-height: 1.4;
+  color: #64748b;
+  text-align: center;
+}
+
+/* ── Mobile ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .dv-media-card,
+  .dv-map-card {
+    margin: 1.1rem 0;
+    padding: .4rem;
+    border-radius: 13px;
+  }
+  .dv-media-card img {
+    border-radius: 10px;
+    max-height: 360px;
+  }
+  .dv-map-card [data-dv-map],
+  .dv-map-card [data-wc-map],
+  .dv-map-card [data-tdi-map] {
+    border-radius: 10px;
+  }
+}

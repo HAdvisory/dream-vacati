@@ -723,6 +723,46 @@ h1, h2, h3, h4, h5, h6,
   body { font-size: .85rem; }
 }
 
+/* ══ Article media card (photos in blog posts) ══════════════
+   Also defined in dv-article.css for pages that don't load main.css.
+   ═══════════════════════════════════════════════════════════ */
+.dv-media-card {
+  margin: 1.5rem 0;
+  padding: .55rem;
+  border: 1px solid rgba(15, 23, 42, .10);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, .07);
+  overflow: hidden;
+}
+.dv-media-card img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+.dv-media-card figcaption {
+  margin: .45rem .25rem 0;
+  font-size: .78rem;
+  line-height: 1.4;
+  color: #64748b;
+  text-align: right;
+}
+@media (max-width: 640px) {
+  .dv-media-card {
+    margin: 1.1rem 0;
+    padding: .4rem;
+    border-radius: 13px;
+  }
+  .dv-media-card img {
+    border-radius: 10px;
+    max-height: 360px;
+  }
+}
+
 /* ══ Destination map highlight component ════════════════════
    Powers [data-dv-map] elements via js/dv-map-highlight.js.
    Background is dark navy — matches the SVG ocean gradient.
@@ -733,6 +773,8 @@ h1, h2, h3, h4, h5, h6,
   overflow: hidden;
   background: #0a1628;
   line-height: 0;
+  border: 1px solid rgba(15, 23, 42, .15);
+  box-shadow: 0 4px 20px rgba(3, 4, 94, .10);
 }
 .dv-map-block [data-dv-map] {
   display: block;
