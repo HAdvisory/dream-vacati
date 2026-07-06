@@ -228,9 +228,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ─── Email Signup ────────────────────────────────────────────
-// Forms now use Mailchimp's standard embed format and POST directly
-// to Mailchimp's servers — no JavaScript handler needed.
-//
-// To activate: replace REPLACE_U_PARAM and REPLACE_LIST_ID in
-// index.html and blog.html with your actual Mailchimp audience values.
-// Get them from: Mailchimp → Audience → Signup Forms → Embedded Forms
+// Forms use data-dv-signup attribute and are handled by email-capture.js
+// which submits via fetch to the DreamVacati Vercel backend.

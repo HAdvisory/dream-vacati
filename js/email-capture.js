@@ -2,8 +2,8 @@
  * email-capture.js — DreamVacati newsletter signup
  *
  * Intercepts all newsletter forms on DreamVacati pages.
- * Submits via fetch to the Vercel backend only — no Mailchimp redirect,
- * no external page navigation, no broken provider pages.
+ * Submits via fetch to the DreamVacati backend endpoint.
+ * No external page navigation or broken provider pages.
  *
  * States: idle → loading → success | duplicate | error | invalid
  */
@@ -78,7 +78,7 @@
 
       case 'error':
         if (btn) { btn.disabled = false; btn.textContent = btn.dataset.origText || 'Get Travel Tips'; }
-        feedback.textContent = 'Travel updates are coming soon — thanks for exploring DreamVacati.';
+        feedback.textContent = 'Thanks for exploring DreamVacati.';
         feedback.className   = 'dv-signup-feedback dv-signup-unavailable';
         break;
     }
