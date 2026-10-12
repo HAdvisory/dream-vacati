@@ -114,7 +114,11 @@
           const data = await res.json().catch(() => ({}));
           if (!data.duplicate && typeof gtag !== 'undefined') {
             gtag('event', 'newsletter_signup', {event_category: 'engagement', event_label: pageSource()});
-            gtag('event', 'conversion', {'send_to': 'AW-10993996478/y0s5CID92I0ZEL6lrPoo'});
+            // Ads conversion for newsletter leads is intentionally omitted here.
+            // The purchase conversion tag (y0s5CID92I0ZEL6lrPoo) is reserved for
+            // verified paid trips only (trip-results.html). A separate Ads conversion
+            // action for newsletter leads should be created in the Ads dashboard and
+            // wired here when available.
           }
           setState(form, data.duplicate ? 'duplicate' : 'success');
         } else {

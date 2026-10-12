@@ -9,9 +9,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 
 gtag('config', 'AW-10993996478');
-gtag('event', 'conversion', {
-  'send_to': 'AW-10993996478/y0s5CID92I0ZEL6lrPoo'
-});
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -337,6 +334,30 @@ function renderFullPlan(plan) {
   hideLoading();
   showResult();
   isPaid = true;
+
+  // Fire purchase conversion exactly once per verified paid planId.
+  // Gate: backend confirmed data.paid === true before this function runs.
+  // Primary dedup: transaction_id=planId — Google Ads deduplicates server-side
+  //   across tabs, sessions, and devices.
+  // Secondary dedup: sessionStorage key skips the gtag call on same-session reload.
+  //   Storage is optional — a storage failure must NOT suppress the conversion.
+  //   Each storage operation is wrapped independently so one failure cannot
+  //   affect the other.
+  const _convKey = 'dv_cv_' + planId;
+  let _alreadyFired = false;
+  try {
+    _alreadyFired = sessionStorage.getItem(_convKey) === '1';
+  } catch (_e) { /* storage unavailable — treat as not yet fired */ }
+
+  if (!_alreadyFired && typeof gtag === 'function') {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-10993996478/y0s5CID92I0ZEL6lrPoo',
+      'transaction_id': planId
+    });
+    try {
+      sessionStorage.setItem(_convKey, '1');
+    } catch (_e) { /* storage unavailable — transaction_id handles cross-session dedup */ }
+  }
 
   const meta = plan.meta || {};
   renderHero(meta, plan.trip_overview);
