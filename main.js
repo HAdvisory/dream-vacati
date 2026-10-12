@@ -44,6 +44,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const genBtn = document.getElementById('generate-packing');
   if (genBtn) {
+    // Fire tool_start on first selector change — visitor is configuring the checklist
+    let packStartFired = false;
+    const packDestSel  = document.getElementById('pack-destination');
+    const packSeasonSel = document.getElementById('pack-season');
+    function firePackStart() {
+      if (!packStartFired) {
+        window.dvTrack('tool_start', { tool_name: 'packing_checklist' });
+        packStartFired = true;
+      }
+    }
+    if (packDestSel)   packDestSel.addEventListener('change', firePackStart);
+    if (packSeasonSel) packSeasonSel.addEventListener('change', firePackStart);
+
     genBtn.addEventListener('click', () => {
       const dest = document.getElementById('pack-destination').value;
       const season = document.getElementById('pack-season').value;
@@ -60,7 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Show CTA after generating list
       if (ctaEl && items.length > 0) ctaEl.style.display = 'block';
       if (items.length > 0 && typeof gtag !== 'undefined') {
-        gtag('event', 'tool_used', {event_category: 'tools', event_label: 'packing_checklist', destination_type: dest, season: season});
+        // tool_used preserved for GA4 continuity; tool_complete is the normalized replacement
+        gtag('event', 'tool_used',     {event_category: 'tools', event_label: 'packing_checklist', destination_type: dest, season: season});
+        gtag('event', 'tool_complete', {event_category: 'tools', event_label: 'packing_checklist', destination_type: dest, season: season});
       }
     });
   }
@@ -90,7 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
     totalInput.addEventListener('input', updateBudget);
     totalInput.addEventListener('input', function () {
       if (typeof gtag !== 'undefined') {
-        gtag('event', 'tool_used', {event_category: 'tools', event_label: 'budget_calculator'});
+        // tool_used preserved for GA4 continuity; tool_start is the normalized replacement
+        gtag('event', 'tool_used',  {event_category: 'tools', event_label: 'budget_calculator'});
+        gtag('event', 'tool_start', {event_category: 'tools', event_label: 'budget_calculator'});
       }
     }, {once: true});
     sliders.forEach(s => s.addEventListener('input', updateBudget));
@@ -109,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out.innerHTML = `
           <div class="alert alert-info">
             <strong>Planning tip:</strong> Use the <a href="tools.html#tool-requirements">Travel Requirements Planning Guide</a>
-            to get destination-specific passport, visa, eTA, health, and customs guidance for 15 destinations.
+            to get destination-specific passport, visa, eTA, health, and customs guidance for 14 destinations.
             <br><small class="text-muted mt-1 d-block">Planning guidance only — always verify with official embassy or immigration sources before travel.</small>
           </div>`;
       }

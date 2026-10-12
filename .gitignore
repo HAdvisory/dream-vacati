@@ -9,3 +9,11 @@ Thumbs.db
 
 # Netlify local dev
 .netlify/
+
+# Internal development reports — kept locally but must not be deployed
+DREAMVACATI_PHASE2A_FRONTEND_GROWTH_PLAN.md
+DREAMVACATI_PHASE2B_IMPLEMENTATION_REPORT.md
+DREAMVACATI_DEFECT_CLOSURE_REPORT.md
+
+# Test suites — local validation only, not part of the static site output
+tests/
