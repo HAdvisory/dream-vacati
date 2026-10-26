@@ -182,9 +182,18 @@
       ? `<a href="${dest.internalLink}" class="tdi-cta-link">Full guide →</a>`
       : '';
 
-    const arrivalsFmt = dest.annualArrivals >= 1
-      ? `${dest.annualArrivals.toFixed(1)}M visitors/yr`
-      : `${(dest.annualArrivals * 1000).toFixed(0)}K visitors/yr`;
+    const hasArrivals = Number.isFinite(dest.annualArrivals) && dest.annualArrivals >= 0;
+    const arrivalsFmt = !hasArrivals ? 'Unavailable' : dest.annualArrivals >= 1
+      ? `${dest.annualArrivals.toFixed(1)}M`
+      : `${(dest.annualArrivals * 1000).toFixed(0)}K`;
+    const source = hasArrivals ? dest.arrivalsSource : null;
+    const arrivalsHtml = source
+      ? `${arrivalsFmt} ${source.metric} (${source.referenceYear})<br>` +
+        `<a href="${source.url}">Source: JNTO (${source.geographicScope}, ${source.status})</a><br>` +
+        `Published ${source.publishedAt}; arrival figure checked ${source.verifiedOn}.`
+      : hasArrivals
+        ? `Unverified visitor estimate: ${arrivalsFmt}. Scope and reference year unconfirmed.`
+        : 'Visitor estimate unavailable.';
 
     return `
       <div class="tdi-card">
@@ -199,7 +208,7 @@
           </div>
         </div>
 
-        <p class="tdi-arrivals">${arrivalsFmt}</p>
+        <p class="tdi-arrivals">${arrivalsHtml}</p>
 
         <div class="tdi-scores">
           <div class="tdi-score-row">

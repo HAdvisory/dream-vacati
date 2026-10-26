@@ -1,0 +1,32 @@
+{
+  "exclude": [
+    "reports",
+    "tests",
+    "scripts",
+    "deployment",
+    "DREAMVACATI_PHASE2A_FRONTEND_GROWTH_PLAN.md",
+    "DREAMVACATI_PHASE2B_IMPLEMENTATION_REPORT.md",
+    "DREAMVACATI_DEFECT_CLOSURE_REPORT.md",
+    "images/destinations/README.md",
+    "images/og/README.md",
+    "images/pinterest/README.md",
+    "images/ui/README.md",
+    "README.md",
+    ".git",
+    ".gitignore",
+    ".env",
+    ".env.local",
+    ".env.production",
+    ".vscode",
+    ".idea",
+    ".netlify",
+    ".bundle",
+    ".sass-cache",
+    ".jekyll-cache",
+    "node_modules",
+    "vendor",
+    "gemfiles",
+    "Gemfile",
+    "Gemfile.lock"
+  ]
+}

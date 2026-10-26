@@ -74,7 +74,7 @@
         "name": "What is the Tourism Demand Index?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Tourism Demand Index is a free DreamVacati tool that scores 30 global destinations on crowd pressure (1–10) and budget pressure (1–10). Each destination is tagged with a trend direction (rising, stable, or cooling) and annual international arrivals. The goal is to help travelers identify where to go before crowds or prices peak."
+          "text": "The Tourism Demand Index compares 30 destinations using editorial crowd and budget pressure ratings (1–10) and trend labels. Visitor figures show source details where checked; other figures are labeled unverified estimates with unconfirmed scope and reference year. These ratings are planning guidance, not live measurements or forecasts."
         }
       },
       {
@@ -82,7 +82,7 @@
         "name": "What does crowd pressure score mean?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The crowd pressure score (1–10) reflects actual in-person density at attractions, beaches, and transport hubs. A score of 1 means you'll have major sites largely to yourself; a 10 means shoulder-to-shoulder queues, sold-out hotels months in advance, and significant premium pricing. Scores reflect mid-range traveler conditions during typical travel months."
+          "text": "The crowd pressure score (1–10) is an editorial estimate of relative crowd pressure. Lower scores suggest quieter conditions and higher scores suggest busier conditions. It is not a measured density statistic, a live count, or a guarantee for a particular place or travel date."
         }
       },
       {
@@ -90,7 +90,7 @@
         "name": "Which destinations are least crowded in 2026?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Filter the index by \"Low Tourism\" and sort by \"Least Crowded First\" to find destinations with crowd pressure scores of 1–3. Typically these include Eastern European capitals, select Central American destinations, and parts of Southeast Asia that haven't yet hit peak mass tourism. Destinations tagged \"Cooling\" are also worth checking — they may have recently eased from higher crowd levels."
+          "text": "Sort by \"Least Crowded First\" to compare lower editorial crowd scores, then check the destination's season and local conditions. These scores do not establish which destinations are statistically least crowded in 2026. Trend labels are editorial context, not verified growth forecasts."
         }
       },
       {
@@ -106,7 +106,7 @@
         "name": "How often is the Tourism Demand Index updated?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The index is reviewed quarterly and updated when significant demand shifts occur — typically following peak travel seasons, major events, or published international tourism data. Trend labels (rising, stable, cooling) are based on 12–18 month direction changes and are updated as new arrival and pricing data becomes available."
+          "text": "Checked visitor figures carry their own data reference year, source publication date, and verification date. Those dates apply only to the specified arrival figure, not the destination's scores or the entire dataset. Other figures and editorial notes remain unverified. A file update does not mean every record has been reviewed."
         }
       }
     ]
@@ -629,8 +629,8 @@
           <option value="crowd-desc">Most Crowded First</option>
           <option value="budget-asc">Lowest Budget Pressure</option>
           <option value="budget-desc">Highest Budget Pressure</option>
-          <option value="arrivals-desc">Most Visited</option>
-          <option value="arrivals-asc">Least Visited</option>
+          <option value="arrivals-desc">Visitor Figures: High to Low (Mixed Scope)</option>
+          <option value="arrivals-asc">Visitor Figures: Low to High (Mixed Scope)</option>
           <option value="az">A – Z</option>
         </select>
 
@@ -669,25 +669,25 @@
         <div class="col-md-6">
           <div class="p-3 rounded-3" style="background:#f0f9ff;border:1px solid #bae6fd">
             <div class="fw-bold mb-1" style="color:#0369a1">&#128101; Crowd Pressure (1–10)</div>
-            <p class="small text-muted mb-0">Reflects actual in-person crowd density at attractions, beaches, and transport hubs. A 1 means you'll have places to yourself; a 10 means shoulder-to-shoulder queues and sold-out hotels months ahead.</p>
+            <p class="small text-muted mb-0">An editorial estimate of relative crowd pressure: lower scores suggest quieter conditions, higher scores suggest busier conditions. Not measured density, live counts, or a guarantee for your travel dates.</p>
           </div>
         </div>
         <div class="col-md-6">
           <div class="p-3 rounded-3" style="background:#f0fdf4;border:1px solid #bbf7d0">
             <div class="fw-bold mb-1" style="color:#166534">&#128176; Budget Pressure (1–10)</div>
-            <p class="small text-muted mb-0">Reflects realistic daily spend for a mid-range traveler including accommodation, meals, and activities. A 1 means low-cost living; a 10 means premium prices with limited budget options.</p>
+            <p class="small text-muted mb-0">An editorial estimate of relative spending pressure for a mid-range traveler. Lower scores suggest lower costs and higher scores suggest premium costs. Not a currency amount, price quote, or calculation from annual arrivals.</p>
           </div>
         </div>
         <div class="col-md-6">
           <div class="p-3 rounded-3" style="background:#fef9c3;border:1px solid #fde68a">
             <div class="fw-bold mb-1" style="color:#713f12">&#128200; Trend Direction</div>
-            <p class="small text-muted mb-0"><strong>Rising</strong> = growing fast, prices increasing. <strong>Stable</strong> = steady demand and pricing. <strong>Cooling</strong> = easing crowds or softening prices — often a window of opportunity.</p>
+            <p class="small text-muted mb-0"><strong>Rising</strong>, <strong>Stable</strong>, and <strong>Cooling</strong> are editorial trend assessments. They do not establish measured growth rates, current price movements, or future demand. Unsourced numerical context remains unverified.</p>
           </div>
         </div>
         <div class="col-md-6">
           <div class="p-3 rounded-3" style="background:#fdf4ff;border:1px solid #e9d5ff">
-            <div class="fw-bold mb-1" style="color:#6b21a8">&#128203; Annual Arrivals</div>
-            <p class="small text-muted mb-0">International tourist arrivals in millions per year (pre-pandemic baseline adjusted for 2025–26 recovery trends). Used to contextualize crowd and pricing scores.</p>
+            <div class="fw-bold mb-1" style="color:#6b21a8">&#128203; Visitor Figures &amp; Sources</div>
+            <p class="small text-muted mb-0">Japan's sourced figure identifies its reference year, publication date, and arrival-figure verification date. Other figures are unverified legacy estimates: year, geography, and visitor definition are unconfirmed. They may mix city, island, country, domestic, or international coverage and are not comparable density measures. Editorial notes may also contain unverified estimates. Updating a file does not verify every record.</p>
           </div>
         </div>
       </div>
@@ -707,7 +707,7 @@
             </button>
           </h3>
           <div id="tfaq-c1" class="accordion-collapse collapse" aria-labelledby="tfaq-h1" data-bs-parent="#tdi-faq">
-            <div class="accordion-body small text-muted">The Tourism Demand Index is a free DreamVacati tool that scores 30 global destinations on crowd pressure (1–10) and budget pressure (1–10). Each destination is tagged with a trend direction (rising, stable, or cooling) and annual international arrivals. The goal is to help travelers identify where to go before crowds or prices peak.</div>
+            <div class="accordion-body small text-muted">The Tourism Demand Index compares 30 destinations using editorial crowd and budget pressure ratings (1–10) and trend labels. Visitor figures show source details where checked; other figures are labeled unverified estimates with unconfirmed scope and reference year. These ratings are planning guidance, not live measurements or forecasts.</div>
           </div>
         </div>
 
@@ -718,7 +718,7 @@
             </button>
           </h3>
           <div id="tfaq-c2" class="accordion-collapse collapse" aria-labelledby="tfaq-h2" data-bs-parent="#tdi-faq">
-            <div class="accordion-body small text-muted">The crowd pressure score (1–10) reflects actual in-person density at attractions, beaches, and transport hubs. A score of 1 means you'll have major sites largely to yourself; a 10 means shoulder-to-shoulder queues, sold-out hotels months in advance, and significant premium pricing. Scores reflect mid-range traveler conditions during typical travel months.</div>
+            <div class="accordion-body small text-muted">The crowd pressure score (1–10) is an editorial estimate of relative crowd pressure. Lower scores suggest quieter conditions and higher scores suggest busier conditions. It is not a measured density statistic, a live count, or a guarantee for a particular place or travel date.</div>
           </div>
         </div>
 
@@ -729,7 +729,7 @@
             </button>
           </h3>
           <div id="tfaq-c3" class="accordion-collapse collapse" aria-labelledby="tfaq-h3" data-bs-parent="#tdi-faq">
-            <div class="accordion-body small text-muted">Filter the index by "Low Tourism" and sort by "Least Crowded First" to find destinations with crowd pressure scores of 1–3. Typically these include Eastern European capitals, select Central American destinations, and parts of Southeast Asia that haven't yet hit peak mass tourism. Destinations tagged "Cooling" are also worth checking — they may have recently eased from higher crowd levels.</div>
+            <div class="accordion-body small text-muted">Sort by "Least Crowded First" to compare lower editorial crowd scores, then check the destination's season and local conditions. These scores do not establish which destinations are statistically least crowded in 2026. Trend labels are editorial context, not verified growth forecasts.</div>
           </div>
         </div>
 
@@ -751,7 +751,7 @@
             </button>
           </h3>
           <div id="tfaq-c5" class="accordion-collapse collapse" aria-labelledby="tfaq-h5" data-bs-parent="#tdi-faq">
-            <div class="accordion-body small text-muted">The index is reviewed quarterly and updated when significant demand shifts occur — typically following peak travel seasons, major events, or published international tourism data. Trend labels (rising, stable, cooling) are based on 12–18 month direction changes and are updated as new arrival and pricing data becomes available.</div>
+            <div class="accordion-body small text-muted">Checked visitor figures carry their own data reference year, source publication date, and verification date. Those dates apply only to the specified arrival figure, not the destination's scores or the entire dataset. Other figures and editorial notes remain unverified. A file update does not mean every record has been reviewed.</div>
           </div>
         </div>
 
@@ -890,17 +890,10 @@
           </ul>
         </div>
 
-        <div class="dfg-newsletter-col">
-          <div class="dfg-col-heading">Stay Updated</div>
-          <p class="dfg-newsletter-desc">Destination ideas, seasonal tips, and planning guides — straight to your inbox.</p>
-          <form class="dfg-form" action="#" method="post" novalidate data-dv-signup>
-            <input type="email" name="EMAIL" placeholder="Enter your email" required aria-label="Email address">
-            <div style="position:absolute;left:-5000px" aria-hidden="true">
-            <input type="text" name="dv_hp" tabindex="-1" value="" autocomplete="off">
-            </div>
-            <button type="submit">Get Travel Tips</button>
-          </form>
-          <p class="dfg-legal">Occasional travel tips and destination ideas. Unsubscribe anytime.</p>
+        <div class="dfg-newsletter-col" data-dv-newsletter-paused>
+          <div class="dfg-col-heading">Travel Updates Coming Soon</div>
+          <p class="dfg-newsletter-desc">Newsletter updates are currently unavailable.</p>
+          <p class="dfg-newsletter-desc">Explore our free <a href="destination-comparison.html">destination guides</a> and <a href="tools.html">travel planning tools</a>.</p>
         </div>
 
       </div>

@@ -5,21 +5,22 @@
  * (js/dv-destinations.js) for the 30 TDI destinations.
  *
  * Requires: js/dv-destinations.js loaded first.
- * Fallback:  if DV_DESTINATIONS is unavailable, hardcoded array is used silently.
+ * Fallback: if DV_DESTINATIONS is unavailable, a hardcoded array is used with a warning.
  *
- * TDI_META table: holds the 5 fields that are TDI-specific and cannot be
+ * TDI_META table: holds the 3 fields that are TDI-specific and cannot be
  * auto-derived from DV_DESTINATIONS without format conversion or taxonomy mapping:
  *   region      — TDI's own region taxonomy (differs from DV_DESTINATIONS.region)
  *   country     — display string as it appears on TDI cards (two entries differ)
  *   internalLink — relative file URL to destination guide (not in DV schema)
  *
  * Format conversions applied during generation:
- *   annualArrivals: DV string '31.9M' → TDI number 31.9  (consumer calls .toFixed())
+ *   annualArrivals: DV string in millions → TDI number in millions
  *   bestMonths:     DV strings ['Mar','Apr'] → TDI integers [3, 4]  (consumer uses m-1)
  *
- * Arrivals figures based on 2024 UNWTO, national tourism board estimates, and published reports.
- * Crowd and budget pressure scores are editorially calibrated composite metrics (not single-source).
- * Updated: 2026-06-19
+ * Legacy visitor estimates do not have verified reference years or consistent scopes.
+ * Only arrivalsSource identifies a checked figure; dates apply to that statistic alone.
+ * Crowd, budget and trend labels are editorial estimates, not measured live conditions.
+ * Baseline assembled: 2026-06-19. Later corrections retain per-statistic provenance.
  */
 (function () {
   'use strict';
@@ -70,7 +71,7 @@
     return months.map(function (m) { return MON_TO_INT[m] || 0; });
   }
 
-  // DV_DESTINATIONS stores annualArrivals as '31.9M'; TDI consumer needs a number.
+  // DV_DESTINATIONS stores annualArrivals as a string in millions.
   function parseArrivals(s) {
     return parseFloat(String(s).replace('M', ''));
   }
@@ -89,6 +90,7 @@
         country:        meta.country,
         region:         meta.region,
         annualArrivals: parseArrivals(d.annualArrivals),
+        arrivalsSource: d.arrivalsSource || null,
         tourismLevel:   d.tourismLevel,
         trend:          d.trend,
         trendNote:      d.trendNote,
@@ -109,16 +111,26 @@
   } else {
     console.warn('[tourism-demand-data] DV_DESTINATIONS not available — using hardcoded fallback. ' +
       'Ensure js/dv-destinations.js is loaded before this file.');
-    // ── Hardcoded fallback (verbatim Phase 1 validated data) ─────────────────
+    // ── Legacy fallback; only explicitly sourced statistics are verified ────
     // Remove once dv-destinations.js is confirmed stable across all environments.
     window.TOURISM_DEMAND_DATA = [
       {
         id: "japan", name: "Japan", country: "Japan", region: "East Asia",
-        annualArrivals: 31.9, tourismLevel: "very-high", trend: "rising",
-        trendNote: "Record 31.9M arrivals in 2024, up 47% YoY",
+        annualArrivals: 36.8699, tourismLevel: "very-high", trend: "rising",
+        arrivalsSource: {
+          publisher: 'Japan National Tourism Organization (JNTO)',
+          url: 'https://www.jnto.go.jp/news/press/20250115_monthly.html',
+          referenceYear: 2024,
+          publishedAt: '2025-01-15',
+          verifiedOn: '2026-10-25',
+          metric: 'international visitor arrivals',
+          geographicScope: 'Japan (national)',
+          status: 'provisional'
+        },
+        trendNote: "JNTO reported 36,869,900 international visitor arrivals in 2024, up 47.1% year on year (provisional release).",
         crowdScore: 8, budgetPressure: 6, bestMonths: [3,4,9,10,11],
         travelerTypes: ["culture","solo","couples","adventure","budget"],
-        notes: "Japan hit a record 31.9 million arrivals in 2024, straining popular spots like Kyoto's Arashiyama, Osaka's Dotonbori, and Mount Fuji trails. Cities like Kanazawa, Matsumoto, and Hiroshima offer a far less congested alternative. The historically weak yen has kept it accessible budget-wise despite rising demand. Overtourism measures are now being trialled at several sites.",
+        notes: "JNTO reported 36,869,900 international visitor arrivals in 2024 (provisional). This is a national annual visitor total, not a measurement of crowd density in Kyoto, Osaka, or at Mount Fuji. Compare routes and travel seasons before choosing a base.",
         tags: ["culture","food","temples","cities","nature"],
         internalLink: "japan-travel-guide.html"
       },

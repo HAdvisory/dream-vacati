@@ -1,213 +1,716 @@
 {
   "_meta": {
-    "disclaimer": "This data is for general planning guidance only and is not legal advice. Entry requirements change frequently. Always verify current rules with the official embassy, consulate, or government immigration website of your destination before travel.",
-    "audience": "U.S. passport holders",
-    "lastReviewed": "2026-01"
+    "schemaVersion": 2,
+    "audience": "U.S. citizens using ordinary passport books for short tourism visits by air",
+    "citizenship": "US",
+    "purpose": "tourism",
+    "passportType": "ordinary",
+    "lastReviewed": "2026-10-25",
+    "disclaimer": "Planning guidance only, not an entry guarantee or individualized legal or medical advice. Other citizenships, work, study, residence, emergency passports, dual nationality, transit and land/sea routes require separate checks. Confirm again before departure.",
+    "reviewPolicy": "lastReviewed records actual source review, not guaranteed current law. VERIFIED covers only the stated claim and assumptions; PARTIALLY VERIFIED means incomplete coverage or conflicting sources; UNVERIFIED means not established. OUTDATED denotes superseded legacy claims documented in the report. Null source publication dates mean unavailable, not today. Currency and plugs are inherited planning information, not verified entry claims."
+  },
+  "countryMappings": {
+    "JP": {
+      "destinationId": "japan",
+      "name": "Japan"
+    },
+    "GB": {
+      "destinationId": "uk",
+      "name": "United Kingdom"
+    },
+    "FR": {
+      "destinationId": "schengen",
+      "name": "France / Schengen Europe",
+      "electricity": "Type C/E; check appliance voltage."
+    },
+    "IT": {
+      "destinationId": "schengen",
+      "name": "Italy (Schengen)",
+      "electricity": "Type C/F/L; check appliance voltage."
+    },
+    "GR": {
+      "destinationId": "schengen",
+      "name": "Greece (Schengen)",
+      "electricity": "Type C/F; check appliance voltage."
+    },
+    "ES": {
+      "destinationId": "schengen",
+      "name": "Spain (Schengen)",
+      "electricity": "Type C/F; check appliance voltage."
+    },
+    "AU": {
+      "destinationId": "australia",
+      "name": "Australia"
+    },
+    "NZ": {
+      "destinationId": "new-zealand",
+      "name": "New Zealand"
+    },
+    "AE": {
+      "destinationId": "uae",
+      "name": "UAE (Dubai / Abu Dhabi)"
+    },
+    "TH": {
+      "destinationId": "thailand",
+      "name": "Thailand"
+    },
+    "MX": {
+      "destinationId": "mexico",
+      "name": "Mexico"
+    },
+    "CA": {
+      "destinationId": "canada",
+      "name": "Canada"
+    },
+    "JM": {
+      "destinationId": "jamaica",
+      "name": "Jamaica"
+    },
+    "MV": {
+      "destinationId": "maldives",
+      "name": "Maldives"
+    }
+  },
+  "sources": {
+    "jp": {
+      "label": "U.S. Department of State - japan",
+      "url": "https://travel.state.gov/en/international-travel/travel-advisories/japan.html",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "ae": {
+      "label": "U.S. Department of State - united-arab-emirates",
+      "url": "https://travel.state.gov/en/international-travel/travel-advisories/united-arab-emirates.html",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "th": {
+      "label": "U.S. Department of State - thailand",
+      "url": "https://travel.state.gov/en/international-travel/travel-advisories/thailand.html",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "mx": {
+      "label": "U.S. Department of State - mexico",
+      "url": "https://travel.state.gov/en/international-travel/travel-advisories/mexico.html",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "ca": {
+      "label": "U.S. Department of State - canada",
+      "url": "https://travel.state.gov/en/international-travel/travel-advisories/canada.html",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "jm": {
+      "label": "U.S. Department of State - jamaica",
+      "url": "https://travel.state.gov/en/international-travel/travel-advisories/jamaica.html",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "au": {
+      "label": "U.S. Department of State - australia",
+      "url": "https://travel.state.gov/en/international-travel/travel-advisories/australia.html",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "mv-state": {
+      "label": "U.S. Department of State - maldives",
+      "url": "https://travel.state.gov/en/international-travel/travel-advisories/maldives.html",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "uk-border": {
+      "label": "UK government - passport documents",
+      "url": "https://www.gov.uk/uk-border-control/before-you-leave-for-the-uk",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "uk-eta": {
+      "label": "UK government - ETA",
+      "url": "https://www.gov.uk/eta",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "uk-exempt": {
+      "label": "UK government - ETA exemptions and transit",
+      "url": "https://www.gov.uk/eta/when-not-need-eta",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "schengen": {
+      "label": "U.S. Department of State - Schengen travel",
+      "url": "https://travel.state.gov/en/international-travel/planning/guidance/europe.html",
+      "publicationDate": "2025-11-24",
+      "checkedOn": "2026-10-25"
+    },
+    "eu-visa": {
+      "label": "European Commission - Schengen visa policy",
+      "url": "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
+      "publicationDate": "2025-06-23",
+      "checkedOn": "2026-10-25"
+    },
+    "etias": {
+      "label": "Official EU ETIAS portal - confirm current status",
+      "url": "https://travel-europe.europa.eu/en/etias",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25",
+      "accessNote": "Reached portal, but current launch/application status was not readable. No operational-status verification."
+    },
+    "au-eta": {
+      "label": "Australian Home Affairs - ETA subclass 601",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25",
+      "accessNote": "JavaScript-only detail page; fees and full conditions not independently verified."
+    },
+    "nz": {
+      "label": "Immigration New Zealand - NZeTA",
+      "url": "https://www.immigration.govt.nz/visas/new-zealand-electronic-travel-authority-nzeta/",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "nz-waiver": {
+      "label": "Immigration New Zealand - U.S. visa-waiver eligibility and arrival declaration",
+      "url": "https://www.immigration.govt.nz/visit/what-you-need-to-visit-new-zealand/visa-waiver-countries-and-territories/",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "nz-ivl": {
+      "label": "Immigration New Zealand - visitor levy",
+      "url": "https://www.immigration.govt.nz/process-to-apply/applying-for-a-visa/fees-processing-times-and-refunds/paying-the-international-visitor-levy/",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "ca-eta": {
+      "label": "Canadian government - eTA eligibility",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/eligibility.html",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "ca-stay": {
+      "label": "Canadian government - visitor stay duration",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/about-visitor-visa.html",
+      "publicationDate": "2026-05-26",
+      "checkedOn": "2026-10-25"
+    },
+    "jm-c5": {
+      "label": "Jamaica PICA - official electronic C5",
+      "url": "https://enterjamaica.gov.jm/",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25"
+    },
+    "mv": {
+      "label": "Maldives Immigration - tourist entry conditions",
+      "url": "https://www.immigration.gov.mv/visa/tourist-visa",
+      "publicationDate": null,
+      "checkedOn": "2026-10-25",
+      "publicationDateRaw": "10/09/2026"
+    }
   },
   "destinations": [
     {
       "id": "uk",
       "name": "United Kingdom",
-      "flag": "🇬🇧",
-      "passport": "Valid U.S. passport required. Must be valid for the duration of your stay — no 6-month rule, but carry extra time as buffer.",
-      "visa": "No visa required for tourism stays up to 6 months.",
-      "eta": "UK ETA required from January 2025 for most non-visa nationals including U.S. citizens. Apply at eta.homeoffice.gov.uk — approx. £10, usually approved within hours.",
-      "health": "No mandatory vaccinations. Travel insurance strongly recommended. GHIC (NHS access) is for UK residents only — U.S. visitors need private travel insurance.",
-      "customs": "Duty-free allowance: 200 cigarettes or equivalent, 2L wine + 1L spirits, £390 in goods.",
-      "currency": "British Pound (GBP). Most cards accepted. Inform your bank before travel. ATMs widely available.",
-      "electricity": "Type G plug (3 flat rectangular pins). 230V/50Hz. Adapter required for U.S. devices.",
-      "tips": ["Apply for UK ETA well before travel — it's quick but can have delays.", "Drive on the left.", "Tipping 10–15% is customary in restaurants."],
-      "officialLinks": [
-        { "label": "UK ETA Application", "url": "https://www.gov.uk/apply-uk-visit-visa" },
-        { "label": "UK Border Force Entry Requirements", "url": "https://www.gov.uk/check-uk-visa" }
-      ]
+      "status": "PARTIALLY VERIFIED",
+      "lastReviewed": "2026-10-25",
+      "claims": {
+        "passport": {
+          "text": "Passport must remain valid throughout your stay.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "uk-border"
+          ]
+        },
+        "visa": {
+          "text": "Eligible U.S. tourists generally use an ETA rather than a visitor visa for visits up to six months; individual circumstances may require a visa.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "uk-eta"
+          ]
+        },
+        "eta": {
+          "text": "ETA costs GBP 20. Eligible visitors and landside transit passengers need it; airside transit without crossing border control is exempt. British/Irish citizenship and existing UK permission can change the requirement.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "uk-eta",
+            "uk-exempt"
+          ]
+        },
+        "health": {
+          "text": "Route-specific health, vaccination and medication rules have not been fully reviewed. Check official health guidance and seek individual clinical advice.",
+          "status": "UNVERIFIED",
+          "lastReviewed": null,
+          "sources": [
+            "uk-border"
+          ]
+        }
+      },
+      "currency": "British Pound (GBP)",
+      "electricity": "Type G; check appliance voltage.",
+      "notes": "ETA approval does not guarantee admission. Longer stays, work and study require separate checks."
     },
     {
       "id": "schengen",
-      "name": "Schengen Europe (France, Italy, Spain, Germany, etc.)",
-      "flag": "🇪🇺",
-      "passport": "Valid U.S. passport required. Must be valid at least 3 months beyond your planned departure from the Schengen Area.",
-      "visa": "No visa required for stays up to 90 days within any 180-day period across all Schengen countries combined.",
-      "eta": "ETIAS (European Travel Information and Authorization System) expected to launch late 2026. Once live, U.S. citizens will need pre-travel authorization (approx. €7). Check etias.eu for launch updates.",
-      "health": "No mandatory vaccinations. U.S. health insurance rarely covers abroad — purchase travel insurance. EHIC/GHIC only for EU/UK residents.",
-      "customs": "200 cigarettes or equivalent, 4L wine, 1L spirits, €430 in goods when entering from outside the EU.",
-      "currency": "Euro (EUR) in most Schengen countries. Switzerland uses CHF. Sweden uses SEK. All widely accept cards.",
-      "electricity": "Type C/E/F plug (2 round pins). 230V/50Hz. Adapter required for U.S. devices.",
-      "tips": ["Track your 90/180 day count carefully if visiting multiple Schengen countries.", "UK is not in Schengen — separate rules apply.", "Museum tickets in Paris/Rome/Florence sell out — book well ahead."],
-      "officialLinks": [
-        { "label": "Schengen Visa Info", "url": "https://www.schengenvisainfo.com/" },
-        { "label": "ETIAS Info", "url": "https://travel-europe.europa.eu/etias_en" }
-      ]
+      "name": "Schengen Europe",
+      "status": "PARTIALLY VERIFIED",
+      "lastReviewed": "2026-10-25",
+      "claims": {
+        "passport": {
+          "text": "At least three months validity after planned departure from the Schengen Area; confirm all document conditions with the destination authority.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "schengen"
+          ]
+        },
+        "visa": {
+          "text": "U.S. tourists may visit visa-free for up to 90 days in any rolling 180-day period across Schengen countries combined, not per country.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "schengen",
+            "eu-visa"
+          ]
+        },
+        "eta": {
+          "text": "Current ETIAS launch and application status could not be confirmed. Check the official EU portal before travel; do not rely on older launch dates or fees.",
+          "status": "UNVERIFIED",
+          "lastReviewed": null,
+          "sources": [
+            "etias"
+          ]
+        },
+        "health": {
+          "text": "Route-specific health, vaccination and medication rules have not been fully reviewed. Check official health guidance and seek individual clinical advice.",
+          "status": "UNVERIFIED",
+          "lastReviewed": null,
+          "sources": [
+            "schengen"
+          ]
+        }
+      },
+      "currency": "Euro (EUR) for the four countries in this selector; other Schengen currencies vary.",
+      "electricity": "Plug types vary by country; check appliance voltage.",
+      "notes": "France, Italy, Greece and Spain share this short-stay record. Residence permits, prior stays, border procedures and other document conditions require separate checks. The UK is not part of this shared allowance."
     },
     {
       "id": "japan",
       "name": "Japan",
-      "flag": "🇯🇵",
-      "passport": "Valid U.S. passport required. No minimum validity requirement beyond the duration of stay for ordinary U.S. passports — passport must be valid for the entire trip. Verify current requirements at the Embassy of Japan before travel.",
-      "visa": "No visa required for U.S. citizens for stays up to 90 days for tourism.",
-      "eta": "Visit Japan Web is recommended for pre-registration of immigration/customs forms but is not mandatory. No ETA or K-ETA equivalent currently required for U.S. citizens.",
-      "health": "No required vaccinations. Japan has excellent medical facilities. Travel insurance strongly recommended. Some rural areas may have limited English-speaking doctors.",
-      "customs": "200 cigarettes, 3 bottles of spirits (760ml each), and gifts/souvenirs up to ¥200,000 (~$1,300).",
-      "currency": "Japanese Yen (JPY). Japan remains heavily cash-dependent — carry yen. 7-Eleven ATMs reliably accept foreign cards. IC transport cards (Suica/Pasmo) are essential.",
-      "electricity": "Type A plug (2 flat pins — same as U.S.). 100V/50–60Hz. U.S. devices generally work; check your device's voltage range.",
-      "tips": ["Book Shinkansen (bullet train) tickets through JR Pass for multi-city travel.", "Cherry blossom (late Mar–early Apr) and autumn foliage (Nov) are peak — book 6+ months ahead.", "Bow as a greeting — handshakes are not the norm."],
-      "officialLinks": [
-        { "label": "Japan Tourism Agency", "url": "https://www.jnto.go.jp/eng/" },
-        { "label": "Visit Japan Web", "url": "https://vjw-lp.digital.go.jp/en/" }
-      ]
+      "status": "PARTIALLY VERIFIED",
+      "lastReviewed": "2026-10-25",
+      "claims": {
+        "passport": {
+          "text": "Passport must remain valid for the entire stay, with space for the entry stamp.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "jp"
+          ]
+        },
+        "visa": {
+          "text": "U.S. tourists qualify for visa-free short stays of up to 90 days, subject to admission conditions. Paid work is not covered.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "jp"
+          ]
+        },
+        "eta": {
+          "text": "Current electronic registration procedures have not been fully reviewed. Confirm with Japanese authorities rather than assuming authorization is unnecessary.",
+          "status": "UNVERIFIED",
+          "lastReviewed": null,
+          "sources": [
+            "jp"
+          ]
+        },
+        "health": {
+          "text": "State Department lists no required vaccinations. Individual health, medication and route-specific restrictions still need checking.",
+          "status": "PARTIALLY VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "jp"
+          ]
+        }
+      },
+      "currency": "Japanese Yen (JPY)",
+      "electricity": "Type A/B, 100V; check device voltage.",
+      "notes": "Check onward travel and medication permissions separately. Lost or stolen passport reports can affect acceptance."
     },
     {
       "id": "uae",
-      "name": "United Arab Emirates (Dubai / Abu Dhabi)",
-      "flag": "🇦🇪",
-      "passport": "Valid U.S. passport required. Passport must be valid at least 6 months beyond intended stay.",
-      "visa": "Visa on arrival available to U.S. passport holders — 30 days, extendable once for another 30 days. Free of charge.",
-      "eta": "No separate ETA required. Visa on arrival is processed at the airport.",
-      "health": "No mandatory vaccinations for U.S. citizens. Hepatitis A and typhoid recommended. Summer heat (110°F+) means hydration is critical.",
-      "customs": "Alcohol is legal in Dubai but restricted elsewhere. Non-Muslims allowed to bring 4L of alcohol or 2 cartons of beer. Medications: carry prescription paperwork — some common U.S. medications are controlled in UAE.",
-      "currency": "UAE Dirham (AED). Pegged to USD at approximately 3.67 AED/USD. Cards widely accepted in Dubai. Some markets are cash-only.",
-      "electricity": "Type G plug (same as UK — 3 flat rectangular pins). 220–240V/50Hz. Adapter required for U.S. devices.",
-      "tips": ["Ramadan timing: some restaurants closed during daytime fasting hours. Check dates.", "Dress modestly in malls, mosques, and Abu Dhabi's Sheikh Zayed Mosque (abayas provided).", "Public displays of affection are technically illegal — keep it private."],
-      "officialLinks": [
-        { "label": "UAE Tourism", "url": "https://visitdubai.com/" },
-        { "label": "UAE Visa Info", "url": "https://icp.gov.ae/en/services/visa-services/" }
-      ]
+      "name": "United Arab Emirates",
+      "status": "PARTIALLY VERIFIED",
+      "lastReviewed": "2026-10-25",
+      "claims": {
+        "passport": {
+          "text": "Ordinary passport needs six months validity beyond entry. U.S. emergency passports are not accepted; X sex markers and some prior marker changes can prevent entry or transit.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "ae"
+          ]
+        },
+        "visa": {
+          "text": "Eligible ordinary U.S. passport holders with M/F markers can receive a visa on arrival for up to 90 days in a 180-day period. Confirm personal eligibility with UAE authorities.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "ae"
+          ]
+        },
+        "eta": {
+          "text": "Visa-on-arrival eligibility is described in the official source; other authorizations and transit circumstances have not been fully reviewed.",
+          "status": "PARTIALLY VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "ae"
+          ]
+        },
+        "health": {
+          "text": "Route-specific health, vaccination and medication rules have not been fully reviewed. Check official health guidance and seek individual clinical advice.",
+          "status": "UNVERIFIED",
+          "lastReviewed": null,
+          "sources": [
+            "ae"
+          ]
+        }
+      },
+      "currency": "UAE Dirham (AED)",
+      "electricity": "Type G; check appliance voltage.",
+      "notes": "Read current advisories. Controlled medications, passport acceptance, work and residence rules can materially affect travel."
     },
     {
       "id": "canada",
       "name": "Canada",
-      "flag": "🇨🇦",
-      "passport": "Valid U.S. passport recommended. U.S. citizens can technically enter with just a passport card or enhanced driver's license at land/sea borders, but a full passport is required for air travel.",
-      "visa": "No visa required for U.S. citizens.",
-      "eta": "eTA (Electronic Travel Authorization) required for U.S. citizens flying into Canada since 2016. Cost: CAD $7 (~$5 USD). Apply at canada.ca/en/immigration-refugees-citizenship. Usually approved instantly.",
-      "health": "No mandatory vaccinations. Canada has universal healthcare for residents — U.S. visitors need private travel insurance or check if your U.S. plan covers Canada.",
-      "customs": "800 CAD duty-free allowance when returning to the U.S. from Canada (U.S. Customs rules). Within Canada: no restrictions on bringing personal use alcohol within provincial limits.",
-      "currency": "Canadian Dollar (CAD). Cards widely accepted. USD often accepted at border towns and tourist areas but at unfavorable rates.",
-      "electricity": "Type A/B plug (same as U.S.). 120V/60Hz. No adapter needed for U.S. devices.",
-      "tips": ["National parks (Banff, Jasper) require Parks Canada day passes — purchase online to skip queues.", "NEXUS card allows expedited border crossing for pre-approved travelers.", "Cannabis is legal federally — but do not cross the U.S. border with any."],
-      "officialLinks": [
-        { "label": "Canada eTA Application", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
-        { "label": "Parks Canada Passes", "url": "https://parks.canada.ca/voyage-travel/admission" }
-      ]
+      "status": "PARTIALLY VERIFIED",
+      "lastReviewed": "2026-10-25",
+      "claims": {
+        "passport": {
+          "text": "A valid U.S. passport book is the appropriate document for air travel. Other modes and non-citizen residents have different document rules.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "ca",
+            "ca-eta"
+          ]
+        },
+        "visa": {
+          "text": "U.S. citizens do not normally require a tourist visa. Most visitors are allowed up to six months, but the officer can set a shorter or longer stay, subject to passport validity and other conditions.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "ca",
+            "ca-stay"
+          ]
+        },
+        "eta": {
+          "text": "U.S. citizens are exempt from Canadian eTA requirements. This does not mean all other travelers need an eTA rather than a visa.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "ca-eta"
+          ]
+        },
+        "health": {
+          "text": "Route-specific health, vaccination and medication rules have not been fully reviewed. Check official health guidance and seek individual clinical advice.",
+          "status": "UNVERIFIED",
+          "lastReviewed": null,
+          "sources": [
+            "ca"
+          ]
+        }
+      },
+      "currency": "Canadian Dollar (CAD)",
+      "electricity": "Type A/B; check appliance voltage.",
+      "notes": "No unlimited stay is implied. Criminal history, prior immigration issues, work, study and dual nationality require separate checks."
     },
     {
       "id": "mexico",
       "name": "Mexico",
-      "flag": "🇲🇽",
-      "passport": "Valid U.S. passport required for air travel. Must be valid for the duration of your stay.",
-      "visa": "No visa required for U.S. citizens for tourism stays up to 180 days.",
-      "eta": "No eTA or prior authorization required. Tourist card (FMM) previously required — now issued digitally at entry.",
-      "health": "No mandatory vaccinations. Hepatitis A, typhoid, and traveler's diarrhea precautions recommended. Avoid tap water in all regions. Travel insurance is strongly recommended.",
-      "customs": "Bring receipts for electronics and valuables to prove they're not for resale. $75 USD duty-free on return to U.S. (separate from standard $800 personal exemption — check current CBP rules).",
-      "currency": "Mexican Peso (MXN). USD widely accepted in tourist areas but you'll get better rates using pesos. ATMs in airports charge higher fees — use local bank ATMs in town.",
-      "electricity": "Type A/B plug (same as U.S.). 127V/60Hz. No adapter needed for most U.S. devices.",
-      "tips": ["U.S. State Dept Travel Advisory: check specific state advisories — Yucatan/Quintana Roo (Cancun/Tulum) is Level 2 (Exercise Increased Caution) as of 2026.", "Travel insurance covering medical evacuation is strongly recommended.", "Avoid flashing valuables and use hotel safes."],
-      "officialLinks": [
-        { "label": "U.S. State Dept — Mexico", "url": "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Mexico.html" },
-        { "label": "Mexico Tourism Board", "url": "https://www.visitmexico.com/en" }
-      ]
+      "status": "PARTIALLY VERIFIED",
+      "lastReviewed": "2026-10-25",
+      "claims": {
+        "passport": {
+          "text": "Air travelers need a U.S. passport book valid on entry, with a blank page. Check the full itinerary and carrier document conditions.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "mx"
+          ]
+        },
+        "visa": {
+          "text": "U.S. tourists generally do not need a visa for visits up to 180 days. The officer determines the actual authorized stay; 180 days is not automatic.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "mx"
+          ]
+        },
+        "eta": {
+          "text": "Air arrivals use digital immigration records (FMMD). Land and sea procedures differ; check the process and permitted stay for your route.",
+          "status": "PARTIALLY VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "mx"
+          ]
+        },
+        "health": {
+          "text": "Route-specific health, vaccination and medication rules have not been fully reviewed. Check official health guidance and seek individual clinical advice.",
+          "status": "UNVERIFIED",
+          "lastReviewed": null,
+          "sources": [
+            "mx"
+          ]
+        }
+      },
+      "currency": "Mexican Peso (MXN)",
+      "electricity": "Type A/B; check appliance voltage.",
+      "notes": "Retain authorized-stay information and check regional advisories. This record makes no tourist-area safety guarantee."
     },
     {
       "id": "jamaica",
       "name": "Jamaica",
-      "flag": "🇯🇲",
-      "passport": "Valid U.S. passport required. Must be valid for at least 6 months beyond your departure date.",
-      "visa": "No visa required for U.S. citizens for stays up to 90 days.",
-      "eta": "C5 Form required before arrival — completed online or on the flight. Free of charge. Submit at enterjamaica.com within 24 hours of departure.",
-      "health": "No mandatory vaccinations. Hepatitis A and typhoid recommended. Travel insurance required by some resorts. Tap water in major hotels is generally safe; elsewhere use bottled water.",
-      "customs": "Duty-free: 1L spirits + 1L wine, 200 cigarettes, gifts up to $500 USD.",
-      "currency": "Jamaican Dollar (JMD). USD widely accepted at resorts and tourist areas. ATMs available in major towns and airports. Tip in USD or JMD.",
-      "electricity": "Type A/B plug (same as U.S.). 110V/50Hz. U.S. devices should work; some appliances may run slightly differently due to 50Hz vs 60Hz.",
-      "tips": ["All-inclusive resorts handle most logistics — good for first-time visitors.", "Outside resort zones: hire a licensed taxi, not unlicensed drivers.", "Negril for beaches and sunsets, Ocho Rios for Dunn's River Falls, Kingston for culture."],
-      "officialLinks": [
-        { "label": "Jamaica C5 Entry Form", "url": "https://enterjamaica.com" },
-        { "label": "Jamaica Tourism Board", "url": "https://www.visitjamaica.com/" }
-      ]
-    },
-    {
-      "id": "barbados",
-      "name": "Barbados",
-      "flag": "🇧🇧",
-      "passport": "Valid U.S. passport required. No minimum validity beyond duration of stay, but 6 months beyond departure recommended.",
-      "visa": "No visa required for U.S. citizens for stays up to 6 months.",
-      "eta": "Barbados Immigration Embarkation/Disembarkation form required — now completed digitally. Submit at travelform.gov.bb before departure.",
-      "health": "No mandatory vaccinations. Tap water is safe to drink — one of the few Caribbean islands where this is true. Travel insurance strongly recommended.",
-      "customs": "Duty-free: 1 liter of alcohol, 200 cigarettes, gifts up to BBD $125.",
-      "currency": "Barbadian Dollar (BBD). Fixed to USD at 2 BBD = 1 USD. USD widely accepted. Cards accepted everywhere. ATMs readily available.",
-      "electricity": "Type A/B plug (same as U.S.). 115V/50Hz. U.S. devices work without an adapter.",
-      "tips": ["Bridgetown UNESCO Garrison is worth a half-day visit.", "St. Lawrence Gap has the best nightlife and restaurant strip.", "Harrison's Cave is a popular family attraction — book ahead in peak season.", "Barbados is considered one of the safest Caribbean islands."],
-      "officialLinks": [
-        { "label": "Barbados Travel Form", "url": "https://travelform.gov.bb" },
-        { "label": "Barbados Tourism", "url": "https://www.visitbarbados.org/" }
-      ]
+      "status": "PARTIALLY VERIFIED",
+      "lastReviewed": "2026-10-25",
+      "claims": {
+        "passport": {
+          "text": "U.S. passport must be valid at entry and exit.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "jm"
+          ]
+        },
+        "visa": {
+          "text": "U.S. citizens do not need a tourist visa for stays of 90 days or less, subject to admission conditions.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "jm"
+          ]
+        },
+        "eta": {
+          "text": "Complete the official electronic C5 immigration/customs form before entering Jamaica. Use the government-linked PICA portal, not an unofficial paid service.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "jm-c5"
+          ]
+        },
+        "health": {
+          "text": "Yellow fever proof can be required for arrivals from designated risk countries. Exact route, age and transit exceptions require official confirmation.",
+          "status": "PARTIALLY VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "jm"
+          ]
+        }
+      },
+      "currency": "Jamaican Dollar (JMD)",
+      "electricity": "Type A/B; check appliance voltage.",
+      "notes": "Confirm onward travel, funds and personal admission conditions. Read current advisories rather than assuming resort areas are risk-free."
     },
     {
       "id": "thailand",
       "name": "Thailand",
-      "flag": "🇹🇭",
-      "passport": "Valid U.S. passport required. Must be valid at least 6 months beyond your entry date.",
-      "visa": "No visa required for U.S. citizens for stays up to 60 days (extended from 30 days in 2024). For stays 60–90 days, apply for a Tourist Visa at a Thai embassy.",
-      "eta": "No ETA currently required. Thailand Visa on Arrival program exists for some nationalities — not needed for U.S. citizens under 60-day exemption.",
-      "health": "No mandatory vaccinations. Hepatitis A and typhoid recommended. Malaria risk in border areas with Myanmar and Cambodia — carry repellent. Rabies risk: avoid stray animals.",
-      "customs": "Duty-free: 200 cigarettes, 1L alcohol, gifts up to THB 20,000 (~$560 USD). Buddha images: cannot export without a permit.",
-      "currency": "Thai Baht (THB). Cards accepted in cities and resorts; cash essential in markets and rural areas. Superrich Currency Exchange kiosks offer good rates in Bangkok.",
-      "electricity": "Type A/B/C plug (multiple types used). 220V/50Hz. Adapter likely needed. Surge protectors recommended for electronics.",
-      "tips": ["Cover shoulders and knees at temples (Wat Pho, Wat Arun, Grand Palace).", "SIM cards: buy at airport for data plans (AIS, DTAC, True Move).", "Tuk-tuks and taxis: negotiate price upfront or insist on meter.", "Songkran (Thai New Year) in April is a huge water festival — very fun but extremely crowded."],
-      "officialLinks": [
-        { "label": "Thailand Tourism Authority", "url": "https://www.tourismthailand.org/" },
-        { "label": "Royal Thai Embassy", "url": "https://thaiembdc.org/visas/" }
-      ]
+      "status": "PARTIALLY VERIFIED",
+      "lastReviewed": "2026-10-25",
+      "claims": {
+        "passport": {
+          "text": "At least six months validity beyond arrival is required.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "th"
+          ]
+        },
+        "visa": {
+          "text": "State Department describes a 60-day tourist exemption for U.S. citizens but warns the period may be reduced. Confirm the current exemption and admitted-until date with Thai authorities.",
+          "status": "PARTIALLY VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "th"
+          ]
+        },
+        "eta": {
+          "text": "Thailand Digital Arrival Card (TDAC) registration is required before arrival. Follow the immigration link in the official source; this is not a visa.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "th"
+          ]
+        },
+        "health": {
+          "text": "Yellow fever certification depends on travel from risk countries. Other vaccination advice is individual, not a blanket entry requirement.",
+          "status": "PARTIALLY VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "th"
+          ]
+        }
+      },
+      "currency": "Thai Baht (THB)",
+      "electricity": "Type A/B/C; check appliance voltage.",
+      "notes": "Onward travel, funds, repeat entries and officer discretion matter. Employment and study are outside this tourist summary."
     },
     {
       "id": "australia",
       "name": "Australia",
-      "flag": "🇦🇺",
-      "passport": "Valid U.S. passport required. Must be valid for the duration of your stay.",
-      "visa": "Electronic Travel Authority (ETA — subclass 601) required for U.S. citizens. Apply through the Australian ETA app or authorized agents. Cost: AUD $20 (~$13 USD). Valid multiple entries, 12 months, up to 3 months per visit.",
-      "eta": "ETA (subclass 601) IS the required authorization. Apply via the official Australian ETA app before travel.",
-      "health": "No mandatory vaccinations. Travel insurance strongly recommended — Australian healthcare does not cover non-residents. Unique wildlife hazards: box jellyfish (Oct–Apr in tropical north), sharks, and various venomous animals.",
-      "customs": "Biosecurity is strict — declare ALL food, plant material, wood, and animal products on arrival. Fines for non-declaration are significant. $900 AUD duty-free allowance.",
-      "currency": "Australian Dollar (AUD). Cards widely accepted. Tipping is not customary but appreciated.",
-      "electricity": "Type I plug (3 flat angled pins). 230V/50Hz. Adapter required for U.S. devices.",
-      "tips": ["Fly into Sydney or Melbourne for the most direct routes from the U.S. East Coast.", "Book Uluru (Ayers Rock) accommodation 6+ months ahead — limited options.", "Swim between the flags on beaches — flags mark patrolled safe zones.", "Time zones: Australia spans 3 time zones, plus daylight saving only in some states."],
-      "officialLinks": [
-        { "label": "Australian ETA App", "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601" },
-        { "label": "Tourism Australia", "url": "https://www.australia.com/en-us" }
-      ]
+      "status": "PARTIALLY VERIFIED",
+      "lastReviewed": "2026-10-25",
+      "claims": {
+        "passport": {
+          "text": "A valid U.S. passport is required. Confirm validity for your full stay, transit route and carrier; detailed document exceptions were not fully reviewed.",
+          "status": "PARTIALLY VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "au"
+          ]
+        },
+        "visa": {
+          "text": "A visa or ETA is required before travel. Eligible U.S. tourists can use the ETA route; confirm current eligibility and conditions with Home Affairs.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "au"
+          ]
+        },
+        "eta": {
+          "text": "Use the official ETA subclass 601 instructions. Current app fees and detailed conditions could not be independently confirmed from the JavaScript-only page.",
+          "status": "PARTIALLY VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "au-eta",
+            "au"
+          ]
+        },
+        "health": {
+          "text": "State Department lists no required vaccinations; route-specific exceptions and personal health or medication conditions still need checking.",
+          "status": "PARTIALLY VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "au"
+          ]
+        }
+      },
+      "currency": "Australian Dollar (AUD)",
+      "electricity": "Type I; check appliance voltage.",
+      "notes": "Authorization is not admission. Confirm biosecurity declarations and any character, health or prior-immigration conditions separately."
     },
     {
       "id": "new-zealand",
       "name": "New Zealand",
-      "flag": "🇳🇿",
-      "passport": "Valid U.S. passport required. Must be valid at least 3 months beyond your intended departure from New Zealand.",
-      "visa": "No visa required for U.S. citizens for stays up to 90 days.",
-      "eta": "NZeTA (New Zealand Electronic Travel Authority) required for visa-waiver nationals including U.S. citizens. Cost: NZD $23 (~$14 USD) via app or NZD $17 via website. Also pay the International Visitor Conservation and Tourism Levy (IVL): NZD $35. Apply at eta.immigration.govt.nz.",
-      "health": "No mandatory vaccinations. Travel insurance strongly recommended. No dangerous land mammals — but water activities carry risks (rip currents, white water).",
-      "customs": "Very strict biosecurity — similar to Australia. Declare all food, plant, and animal products. NZD $700 duty-free allowance.",
-      "currency": "New Zealand Dollar (NZD). Cards widely accepted. Tipping is not expected but appreciated at restaurants.",
-      "electricity": "Type I plug (3 flat angled pins — same shape as Australia but with slight differences). 230V/50Hz. Adapter required.",
-      "tips": ["Hire a campervan for the South Island — the most flexible way to see Fiordland and Queenstown.", "Hobbiton (Matamata) requires pre-booked tickets.", "Best months: Dec–Feb for South Island hiking (Milford Track, Tongariro). Northern winter is quiet and affordable.", "New Zealand has some of the world's best trail running and hiking."],
-      "officialLinks": [
-        { "label": "NZeTA Application", "url": "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/nzeta" },
-        { "label": "Tourism New Zealand", "url": "https://www.newzealand.com/us/" }
-      ]
+      "status": "PARTIALLY VERIFIED",
+      "lastReviewed": "2026-10-25",
+      "claims": {
+        "passport": {
+          "text": "Passport must be valid at least three months after planned departure from New Zealand.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "nz"
+          ]
+        },
+        "visa": {
+          "text": "Eligible visa-waiver visitors may travel with an NZeTA and receive a visitor visa on arrival, normally up to three months per visit. Aggregate stay and other conditions apply.",
+          "status": "PARTIALLY VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "nz"
+          ]
+        },
+        "eta": {
+          "text": "Eligible U.S. tourist arrivals need an NZeTA and a completed New Zealand Traveller Declaration (NZTD). Most applicants also pay the NZD 100 International Visitor Levy; check exemptions and NZeTA fees with Immigration New Zealand.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "nz",
+            "nz-ivl",
+            "nz-waiver"
+          ]
+        },
+        "health": {
+          "text": "Route-specific health, vaccination and medication rules have not been fully reviewed. Check official health guidance and seek individual clinical advice.",
+          "status": "UNVERIFIED",
+          "lastReviewed": null,
+          "sources": [
+            "nz"
+          ]
+        }
+      },
+      "currency": "New Zealand Dollar (NZD)",
+      "electricity": "Type I; check appliance voltage.",
+      "notes": "Carry onward travel and funds evidence. NZeTA does not guarantee entry. Prior stays, residence and transit need separate checks."
+    },
+    {
+      "id": "maldives",
+      "name": "Maldives",
+      "status": "PARTIALLY VERIFIED",
+      "lastReviewed": "2026-10-25",
+      "claims": {
+        "passport": {
+          "text": "Official sources conflict: Maldives Immigration lists an MRZ passport with at least one month validity; State Department lists six months beyond arrival. Confirm directly with immigration and your carrier before booking; do not rely on the old one-month-beyond-departure wording.",
+          "status": "PARTIALLY VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "mv",
+            "mv-state"
+          ]
+        },
+        "visa": {
+          "text": "Tourist visa is issued on arrival subject to conditions. State Department describes a no-fee visitor visa for up to 30 days; confirm the duration actually granted.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "mv",
+            "mv-state"
+          ]
+        },
+        "eta": {
+          "text": "Each arriving traveler, including children, must submit the free IMUGA Traveller Declaration within 96 hours before arrival. Immigration guidance does not require advance tourist-visa approval.",
+          "status": "VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "mv"
+          ]
+        },
+        "health": {
+          "text": "Yellow fever proof depends on risk-country travel or transit. Official sources differ on detailed child exceptions; obtain health-authority confirmation for your route and age.",
+          "status": "PARTIALLY VERIFIED",
+          "lastReviewed": "2026-10-25",
+          "sources": [
+            "mv",
+            "mv-state"
+          ]
+        }
+      },
+      "currency": "Maldivian Rufiyaa (MVR)",
+      "electricity": "Type G; verify accommodation and appliance voltage.",
+      "notes": "Registered accommodation or approved sponsorship, onward travel and funds are required. Other passport nationalities, including dual-national travel documents, can face additional restrictions. Entry remains an immigration decision."
+    },
+    {
+      "id": "barbados",
+      "name": "Barbados",
+      "status": "UNVERIFIED",
+      "lastReviewed": null,
+      "claims": {},
+      "currency": "Barbadian Dollar (BBD)",
+      "electricity": "Not reviewed.",
+      "notes": "Legacy ID preserved for compatibility, not offered in the current selector. Old unsourced rules withdrawn pending review, including the unsupported Costa Rica mandatory COVID-insurance claim."
     },
     {
       "id": "costa-rica",
       "name": "Costa Rica",
-      "flag": "🇨🇷",
-      "passport": "Valid U.S. passport required. Must be valid for at least 6 months beyond your entry date.",
-      "visa": "No visa required for U.S. citizens for stays up to 90 days.",
-      "eta": "No eTA required. Proof of onward travel (return or onward ticket) may be requested at entry.",
-      "health": "No mandatory vaccinations. Hepatitis A and typhoid recommended. Malaria risk in some lowland areas — consult CDC. Travel insurance is mandatory — Costa Rica requires proof of travel insurance covering $50,000 medical and $2,000 COVID-related expenses at entry.",
-      "customs": "Duty-free: $500 USD in purchases, 200 cigarettes, 5L alcohol.",
-      "currency": "Costa Rican Colón (CRC). USD widely accepted in tourist areas. Cards accepted at most hotels and restaurants. ATMs available in towns.",
-      "electricity": "Type A/B plug (same as U.S.). 120V/60Hz. No adapter needed.",
-      "tips": ["Travel insurance with coverage proof is required at the border — bring a printed or digital copy.", "Dry season (Dec–Apr) is peak for the Pacific coast. Caribbean coast (Puerto Viejo) is better May–Sep.", "4WD rental is recommended for accessing remote lodges and beaches.", "Pura Vida is the national saying — life is good, slow down."],
-      "officialLinks": [
-        { "label": "Costa Rica Tourism (ICT)", "url": "https://www.visitcostarica.com/en" },
-        { "label": "U.S. Embassy — Costa Rica", "url": "https://cr.usembassy.gov/" }
-      ]
+      "status": "UNVERIFIED",
+      "lastReviewed": null,
+      "claims": {},
+      "currency": "Costa Rican Colon (CRC)",
+      "electricity": "Not reviewed.",
+      "notes": "Legacy ID preserved for compatibility, not offered in the current selector. Old unsourced rules withdrawn pending review, including the unsupported Costa Rica mandatory COVID-insurance claim."
     }
   ]
 }
