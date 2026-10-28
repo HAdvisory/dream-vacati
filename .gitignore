@@ -25,3 +25,5 @@ DREAMVACATI_DEFECT_CLOSURE_REPORT.md
 !/tests/newsletter-failsafe.test.js
 !/tests/newsletter-failsafe-browser.js
 !/tests/deployment-packaging.test.js
+!/tests/phase1c-japan-rail.test.js
+!/tests/phase1c-japan-rail-browser.js

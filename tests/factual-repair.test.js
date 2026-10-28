@@ -150,6 +150,15 @@ test('visible TDI FAQs and structured answers agree on estimates, measurement an
   assert.doesNotMatch(html, /reflects actual in-person density|reviewed quarterly|pre-pandemic baseline adjusted/);
 });
 
+test('Greece FAQ navigation has one static target on the existing FAQ section', () => {
+  const html = read('best-time-greece.html');
+  assert.match(html, /<a\b[^>]*href="#faq"[^>]*>FAQs<\/a>/);
+  assert.equal((html.match(/\bid\s*=\s*["']faq["']/g) || []).length, 1);
+  assert.match(html, /<section\b[^>]*class="faq-section"[^>]*id="faq"[^>]*>\s*<h2>Frequently Asked Questions<\/h2>/);
+  assert.ok(html.includes('<link rel="canonical" href="https://dreamvacati.com/best-time-greece.html">'));
+  assert.ok(html.includes('<meta name="robots" content="index, follow">'));
+});
+
 test('JSON, JSON-LD and JS syntax, local links and the 48 sitemap canonicals remain valid', () => {
   for (const dir of ['', 'js']) {
     for (const file of fs.readdirSync(path.join(root, dir)).filter(f => f.endsWith('.js'))) {

@@ -24,6 +24,34 @@ const server = http.createServer((req, res) => {
   res.end(fs.readFileSync(file));
 });
 
+async function checkGreeceFaq(page, base, viewport, mode) {
+  await page.setViewportSize(viewport);
+  await page.goto(`${base}/best-time-greece.html`, { waitUntil: 'networkidle' });
+  assert.equal(await page.locator('[id="faq"]').count(), 1);
+  assert.equal(await page.locator('section.faq-section#faq > h2').textContent(), 'Frequently Asked Questions');
+  const before = await page.evaluate(() => scrollY);
+  await page.locator('a[href="#faq"]').click();
+  // Poll from Node rather than relying on page timers when JavaScript is disabled.
+  let arrived = false;
+  for (let attempt = 0; attempt < 50; attempt++) {
+    arrived = await page.evaluate(previous => {
+      const section = document.getElementById('faq');
+      const top = section.getBoundingClientRect().top;
+      // Existing asynchronous content can shift layout after the native anchor jump.
+      const heading = section.querySelector('h2').getBoundingClientRect();
+      return location.hash === '#faq' && scrollY > previous && top >= -1 &&
+        heading.top >= 0 && heading.bottom <= innerHeight;
+    }, before);
+    if (arrived) break;
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+  assert.ok(arrived, 'Native FAQ navigation scrolls the existing heading into view');
+  assert.equal(new URL(page.url()).hash, '#faq');
+  assert.equal(await page.locator('#faq .faq-answer').count(), 4);
+  assert.equal(await page.locator('[data-dv-signup], [name="EMAIL"], [name="dv_hp"]').count(), 0);
+  console.log(`PASS Greece FAQ native anchor and scroll: ${viewport.width}x${viewport.height}, ${mode}`);
+}
+
 (async function () {
   let browser;
   try {
@@ -52,6 +80,7 @@ const server = http.createServer((req, res) => {
       if (r.url().includes('bootstrap.min.css') && r.ok()) stylesheetLoaded = true;
     });
     for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }]) {
+      await checkGreeceFaq(page, base, viewport, 'JavaScript enabled');
       await page.setViewportSize(viewport);
       await page.goto(`${base}/tourism-demand-index.html`, { waitUntil: 'networkidle' });
       await page.waitForFunction(() => document.querySelectorAll('.tdi-card').length === 30);
@@ -123,6 +152,21 @@ const server = http.createServer((req, res) => {
         }
       }
       console.log(`PASS desktop/mobile page, source wrapping, TDI filters and paused newsletter: ${viewport.width}px`);
+    }
+    const noScriptContext = await browser.newContext({ javaScriptEnabled: false });
+    try {
+      await noScriptContext.route('**/*', route => {
+        const request = route.request(), url = new URL(request.url());
+        if (request.method() === 'GET' && (url.origin === base ||
+          ['cdn.jsdelivr.net', 'fonts.googleapis.com', 'fonts.gstatic.com'].includes(url.hostname))) return route.continue();
+        return route.abort();
+      });
+      const noScriptPage = await noScriptContext.newPage();
+      for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }]) {
+        await checkGreeceFaq(noScriptPage, base, viewport, 'JavaScript disabled');
+      }
+    } finally {
+      await noScriptContext.close();
     }
     await page.goto(`${base}/best-time.html`, { waitUntil: 'networkidle' });
     await page.waitForFunction(() => document.querySelector('#btt-destination').options.length === 23);
