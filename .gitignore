@@ -27,3 +27,5 @@ DREAMVACATI_DEFECT_CLOSURE_REPORT.md
 !/tests/deployment-packaging.test.js
 !/tests/phase1c-japan-rail.test.js
 !/tests/phase1c-japan-rail-browser.js
+!/tests/phase1d-tool-navigation.test.js
+!/tests/phase1d-tool-navigation-browser.js

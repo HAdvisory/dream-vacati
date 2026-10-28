@@ -586,6 +586,23 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
     return t === 'Rising' ? 'trend-rising' : t === 'Cooling' ? 'trend-cooling' : 'trend-stable';
   }
 
+  function initializeComparison() {
+    var params = new URLSearchParams(window.location.search);
+    var valuesA = params.getAll('a');
+    var valuesB = params.getAll('b');
+    var a = valuesA[0], b = valuesB[0];
+    var supported = function (key) {
+      return ORDER.indexOf(key) !== -1 && Object.prototype.hasOwnProperty.call(DESTS, key);
+    };
+
+    // Reject partial or ambiguous pairs together; keep the populated defaults.
+    if (valuesA.length === 1 && valuesB.length === 1 && a !== b && supported(a) && supported(b)) {
+      document.getElementById('dest-a').value = a;
+      document.getElementById('dest-b').value = b;
+    }
+    renderComparison(document.getElementById('dest-a').value, document.getElementById('dest-b').value);
+  }
+
   function scoreBar(score, colorA, isA) {
     var color = isA ? '#0A7E8C' : '#7c3aed';
     return '<div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:' + (score*10) + '%;background:' + color + '"></div></div><span style="font-size:.78rem;color:#64748b;flex-shrink:0">' + score + '/10</span></div>';
@@ -680,7 +697,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
       '<div class="comp-cta-card"><div class="cta-dest">' + a.emoji + ' ' + a.name + ' Planning Guide</div>' + ctaA + '</div>'
       + '<div class="comp-cta-card"><div class="cta-dest">' + b.emoji + ' ' + b.name + ' Planning Guide</div>' + ctaB + '</div>';
 
-    document.getElementById('comp-result').style.display = '';
+    document.getElementById('comp-result').style.display = 'block';
 
     if (typeof window.dvTrack === 'function') {
       window.dvTrack('comparison_generated', {
@@ -713,8 +730,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
       });
     });
 
-    // Auto-render default comparison on load
-    renderComparison('jamaica', 'bali');
+    initializeComparison();
   });
 })();
 </script>
