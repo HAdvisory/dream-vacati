@@ -86,23 +86,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const remaining = document.getElementById('remaining-budget');
 
   if (totalInput && totalSpan) {
-    const sliders = ['accom', 'food', 'activities']
-      .map(id => document.getElementById(`budget-${id}`))
-      .filter(Boolean);
-    const values = sliders.map(s => document.getElementById(`val-${s.id.split('-')[1]}`));
+    // The four-category interface has its own renderer in tools.html.
+    if (!document.getElementById('budget-flights')) {
+      const sliders = ['accom', 'food', 'activities']
+        .map(id => document.getElementById(`budget-${id}`))
+        .filter(Boolean);
+      const values = sliders.map(s => document.getElementById(`val-${s.id.split('-')[1]}`));
 
-    function updateBudget() {
-      const total = parseInt(totalInput.value) || 0;
-      totalSpan.textContent = total;
-      let used = 0;
-      sliders.forEach((s, i) => {
-        const v = parseInt(s.value) || 0;
-        if (values[i]) values[i].textContent = v;
-        used += v;
-      });
-      if (remaining) remaining.textContent = Math.max(total - used, 0);
+      function updateBudget() {
+        const total = parseInt(totalInput.value) || 0;
+        totalSpan.textContent = total;
+        let used = 0;
+        sliders.forEach((s, i) => {
+          const v = parseInt(s.value) || 0;
+          if (values[i]) values[i].textContent = v;
+          used += v;
+        });
+        if (remaining) remaining.textContent = Math.max(total - used, 0);
+      }
+      totalInput.addEventListener('input', updateBudget);
+      sliders.forEach(s => s.addEventListener('input', updateBudget));
+      updateBudget();
     }
-    totalInput.addEventListener('input', updateBudget);
     totalInput.addEventListener('input', function () {
       if (typeof gtag !== 'undefined') {
         // tool_used preserved for GA4 continuity; tool_start is the normalized replacement
@@ -110,8 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
         gtag('event', 'tool_start', {event_category: 'tools', event_label: 'budget_calculator'});
       }
     }, {once: true});
-    sliders.forEach(s => s.addEventListener('input', updateBudget));
-    updateBudget();
   }
 
   // ─── 4) Travel Prep — redirect to full requirements tool ──

@@ -64,7 +64,7 @@ const server = http.createServer((req, res) => {
       assert.equal(events.filter(e => e.name === 'tool_start').length, 1);
       assert.deepEqual(events.filter(e => e.name === 'requirements_lookup').map(e => e.payload.destination), Object.keys(data.countryMappings));
       await page.fill('#budget-input', '4000');
-      assert.equal(await page.locator('#budget-total').textContent(), '4000');
+      assert.equal(await page.locator('#budget-total').textContent(), '4,000');
       await page.click('#generate-packing');
       assert.ok(await page.locator('#pack-list li').count());
       await page.fill('#custom-activity-input', 'Phase 1B regression activity');
