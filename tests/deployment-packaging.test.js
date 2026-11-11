@@ -23,7 +23,7 @@ function fixture() {
 test('actual allowlist covers every runtime asset with exact case and required module', () => {
   assert.deepEqual([...validatePaths(root, manifest.files)].sort(), publicCandidates(root));
   for (const file of essential) assert.ok(manifest.files.includes(file), file);
-  assert.equal(manifest.files.filter(f => f.endsWith('.html')).length, 54);
+  assert.equal(manifest.files.filter(f => f.endsWith('.html')).length, 55);
 });
 test('traversal, absolute, backslash and hidden paths reject', () => {
   for (const file of ['../index.html', '/index.html', 'C:\\secret.js', 'js\\travel-requirements.js', '.env', '.git/config', 'images/../index.html']) {
