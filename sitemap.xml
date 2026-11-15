@@ -350,6 +350,20 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- M2C Destination Comparison articles -->
+  <url>
+    <loc>https://dreamvacati.com/blog-punta-cana-vs-puerto-plata.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dreamvacati.com/blog-cancun-vs-playa-del-carmen.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- REMOVED from sitemap:
        trip-planner.html  — has <meta name="robots" content="noindex">
        trip-results.html  — has <meta name="robots" content="noindex">
