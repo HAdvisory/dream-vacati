@@ -13,6 +13,10 @@
       }
       var banner = document.getElementById('dv-cookie-banner');
       if (banner) banner.style.display = 'none';
+      /* Notify same-tab listeners (storage event does not fire in the originating tab) */
+      try {
+        document.dispatchEvent(new CustomEvent('dvConsentUpdated', {detail: {value: value}}));
+      } catch (e) {}
     } catch (err) {
       console.warn('Cookie consent error:', err);
     }
