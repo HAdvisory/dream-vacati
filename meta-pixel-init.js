@@ -2,18 +2,31 @@
    External file so script-src CSP allows it without unsafe-inline.
    Gated on marketing consent: reads localStorage key 'dv_cookies_ok'
    (set by cookie-consent.js). Pixel fires only when value === 'accepted'.
-   Listens for dvConsentUpdated (same-tab) and storage (cross-tab) events
-   so late-grant sessions initialize without a page reload.
-   Withdrawal: if consent is declined after acceptance, marks pixelLoaded
-   false so a future accepted state will correctly reinitialize.          */
-(function () {
-  var PIXEL_ID = '1416821763772251';
-  var CONSENT_KEY = 'dv_cookies_ok';
-  var pixelLoaded = false;
 
-  function loadPixel() {
-    if (pixelLoaded) return;
-    pixelLoaded = true;
+   State model — three independent flags:
+     sdkLoaded    : fbevents.js injected + fbq('init') called — one-time per document.
+     consentGranted: marketing consent currently active.
+     pageViewSent : PageView sent in the current consent period.
+
+   Lifecycle:
+     First accept  → bootstrapSdk() + fbq('track','PageView')
+     Re-accept     → fbq('consent','grant') + fbq('track','PageView')  [no second init]
+     Withdraw      → fbq('consent','revoke')  [real revocation, not just a flag reset]
+     New page load → state resets; page-load check re-runs the grant path if accepted   */
+
+(function () {
+  var PIXEL_ID   = '1416821763772251';
+  var CONSENT_KEY = 'dv_cookies_ok';
+
+  var sdkLoaded     = false; /* fbevents.js injected + fbq('init') called */
+  var consentGranted = false; /* tracking currently permitted             */
+  var pageViewSent  = false; /* PageView sent in this consent period     */
+
+  /* Inject the SDK and call fbq('init') exactly once per document. */
+  function bootstrapSdk() {
+    if (sdkLoaded) return;
+    sdkLoaded = true;
+    /* Meta Pixel base code — do not alter PIXEL_ID here */
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -23,26 +36,49 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', PIXEL_ID);
-    fbq('track', 'PageView');
+  }
+
+  /* Activate tracking for a consent-granted session. Idempotent. */
+  function grantConsent() {
+    if (consentGranted) return;
+    consentGranted = true;
+    if (!sdkLoaded) {
+      bootstrapSdk();           /* first-time: inject SDK + init */
+    } else {
+      fbq('consent', 'grant');  /* subsequent: re-enable via Meta consent API */
+    }
+    if (!pageViewSent) {
+      pageViewSent = true;
+      fbq('track', 'PageView');
+    }
+  }
+
+  /* Revoke tracking consent for the active Pixel. Idempotent. */
+  function revokeConsent() {
+    if (!consentGranted) return;
+    consentGranted = false;
+    pageViewSent   = false; /* reset so re-accept sends one fresh PageView */
+    if (typeof fbq === 'function') {
+      fbq('consent', 'revoke');
+    }
   }
 
   function handleConsentChange(value) {
     if (value === 'accepted') {
-      loadPixel();
+      grantConsent();
     } else if (value === 'declined') {
-      /* Consent withdrawn — allow re-evaluation if user later re-accepts */
-      pixelLoaded = false;
+      revokeConsent();
     }
   }
 
-  /* Check consent on page load (handles returning visitors who already accepted) */
+  /* Page load: returning visitors who already accepted */
   try {
     if (localStorage.getItem(CONSENT_KEY) === 'accepted') {
-      loadPixel();
+      grantConsent();
     }
   } catch (e) {}
 
-  /* Same-tab: fired by cookie-consent.js via dispatchEvent */
+  /* Same-tab: dispatched by cookie-consent.js (storage event silent in origin tab) */
   document.addEventListener('dvConsentUpdated', function (evt) {
     if (evt.detail && evt.detail.value) {
       handleConsentChange(evt.detail.value);
