@@ -159,7 +159,7 @@ test('Greece FAQ navigation has one static target on the existing FAQ section', 
   assert.ok(html.includes('<meta name="robots" content="index, follow">'));
 });
 
-test('JSON, JSON-LD and JS syntax, local links and the 48 sitemap canonicals remain valid', () => {
+test('JSON, JSON-LD and JS syntax, local links and the 56 sitemap canonicals remain valid', () => {
   for (const dir of ['', 'js']) {
     for (const file of fs.readdirSync(path.join(root, dir)).filter(f => f.endsWith('.js'))) {
       new vm.Script(read(path.join(dir, file)));
@@ -170,7 +170,7 @@ test('JSON, JSON-LD and JS syntax, local links and the 48 sitemap canonicals rem
   }
   const sitemap = read('sitemap.xml');
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-  assert.equal(urls.length, 48);
+  assert.equal(urls.length, 56);
   for (const url of urls) {
     const file = new URL(url).pathname === '/' ? 'index.html' : new URL(url).pathname.slice(1);
     const html = read(file);
